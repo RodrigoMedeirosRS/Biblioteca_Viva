@@ -1,0 +1,18 @@
+BUILD: Compila o codigo.
+
+dotnet build
+
+PUBLISH: Gera versão publicável.
+
+donet publish
+
+Release: Gera versão que requer apenas os runtimes.
+
+--configuration Release
+
+SCAFFOLD: Faz uma copia do banco de dado nas aplicação.
+
+dotnet ef dbcontext scaffold "User ID=T_APLICACOES;Password=compuletra;Server=10.0.18.18;Database=T_UGC;Integrated Security=false;Pooling=false;Trusted_Connection=False;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Model\DAL\Context -f
+
+MIGRATTIONS: Atualiza o banco de dados conforme as alterações no código.
+
