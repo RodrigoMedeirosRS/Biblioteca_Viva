@@ -1,24 +1,18 @@
 CREATE TABLE Trilha (
   codtrilha SERIAL  NOT NULL ,
-  nometrilha VARCHAR(50)   NOT NULL   ,
+  nometrilha VARCHAR(50) UNIQUE  NOT NULL   ,
 PRIMARY KEY(codtrilha));
-
-
-
 
 CREATE TABLE Aplicacao (
   codaplicacao SERIAL  NOT NULL ,
-  nomeaplicacao VARCHAR(50)      ,
+  nomeaplicacao VARCHAR(50) UNIQUE NOT NULL ,
 PRIMARY KEY(codaplicacao));
-
-
-
 
 CREATE TABLE Registro (
   codregistro SERIAL  NOT NULL ,
   codaplicacao INTEGER   NOT NULL ,
   codtrilha INTEGER   NOT NULL ,
-  tituloregistro VARCHAR(50)    ,
+  tituloregistro VARCHAR(50) UNIQUE NOT NULL ,
   dataregistro DATE    ,
   sinopseregistro VARCHAR(200)      ,
 PRIMARY KEY(codregistro)    ,
@@ -40,7 +34,7 @@ CREATE TABLE RegistroLink (
   codlink SERIAL  NOT NULL ,
   codregistro INTEGER   NOT NULL ,
   link VARCHAR(100)   NOT NULL ,
-  titulolink VARCHAR(50)   NOT NULL   ,
+  titulolink VARCHAR(50)  UNIQUE NOT NULL   ,
 PRIMARY KEY(codlink)  ,
   FOREIGN KEY(codregistro)
     REFERENCES Registro(codregistro));
@@ -56,7 +50,7 @@ CREATE TABLE RegistroTexto (
   codtexto SERIAL  NOT NULL ,
   codregistro INTEGER   NOT NULL ,
   texto TEXT    ,
-  titulotexto VARCHAR(50)      ,
+  titulotexto VARCHAR(50) UNIQUE NOT NULL  ,
 PRIMARY KEY(codtexto)  ,
   FOREIGN KEY(codregistro)
     REFERENCES Registro(codregistro));
@@ -72,7 +66,7 @@ CREATE TABLE RegistroVideo (
   codvideo SERIAL  NOT NULL ,
   codregistro INTEGER   NOT NULL ,
   videobase64 TEXT   NOT NULL ,
-  titulovideo VARCHAR(50)   NOT NULL   ,
+  titulovideo VARCHAR(50) UNIQUE  NOT NULL   ,
 PRIMARY KEY(codvideo)  ,
   FOREIGN KEY(codregistro)
     REFERENCES Registro(codregistro));
@@ -88,7 +82,7 @@ CREATE TABLE Registro3D (
   codregistro3D SERIAL  NOT NULL ,
   codregistro INTEGER   NOT NULL ,
   regsitro3dbase64 TEXT    ,
-  titloregistro VARCHAR(50)      ,
+  titloregistro VARCHAR(50)  UNIQUE NOT NULL    ,
 PRIMARY KEY(codregistro3D)  ,
   FOREIGN KEY(codregistro)
     REFERENCES Registro(codregistro));
@@ -104,7 +98,7 @@ CREATE TABLE RegistroAudio (
   codaudio SERIAL  NOT NULL ,
   codregistro INTEGER   NOT NULL ,
   audiobase64 TEXT   NOT NULL ,
-  tituloaudio VARCHAR(50)   NOT NULL   ,
+  tituloaudio VARCHAR(50) UNIQUE  NOT NULL   ,
 PRIMARY KEY(codaudio)  ,
   FOREIGN KEY(codregistro)
     REFERENCES Registro(codregistro));
@@ -120,7 +114,7 @@ CREATE TABLE RegistroImagem (
   codimagem SERIAL  NOT NULL ,
   codregistro INTEGER   NOT NULL ,
   imagembase64 TEXT    ,
-  tituloimagem VARCHAR(50)      ,
+  tituloimagem VARCHAR(50) UNIQUE NOT NULL     ,
 PRIMARY KEY(codimagem)  ,
   FOREIGN KEY(codregistro)
     REFERENCES Registro(codregistro));
@@ -130,6 +124,4 @@ CREATE INDEX RegistroImagem_FKIndex1 ON RegistroImagem (codregistro);
 
 
 CREATE INDEX IFK_Rel_04 ON RegistroImagem (codregistro);
-
-
 
