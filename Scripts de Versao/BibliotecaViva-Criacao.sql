@@ -1,23 +1,23 @@
 CREATE TABLE linhadotempo (
   id SERIAL  NOT NULL ,
-  nome VARCHAR(50)   NOT NULL ,
+  nome VARCHAR(50) UNIQUE NOT NULL ,
   descricacao TEXT   NOT NULL   ,
 PRIMARY KEY(id));
 
 CREATE TABLE idioma (
   id SERIAL  NOT NULL ,
-  nome VARCHAR(20)   NOT NULL   ,
+  nome VARCHAR(20) UNIQUE NOT NULL   ,
 PRIMARY KEY(id));
 
 CREATE TABLE glossario (
   id SERIAL  NOT NULL ,
-  nome VARCHAR(50)   NOT NULL ,
+  nome VARCHAR(50) UNIQUE NOT NULL ,
   descricao TEXT   NOT NULL   ,
 PRIMARY KEY(id));
 
 CREATE TABLE localizacao (
   id SERIAL  NOT NULL ,
-  nome VARCHAR(100)   NOT NULL ,
+  nome VARCHAR(100) UNIQUE NOT NULL ,
   latitude DOUBLE   NOT NULL ,
   longitude DOUBLE   NOT NULL ,
   datahora TIMESTAMP   NOT NULL   ,
@@ -25,23 +25,23 @@ PRIMARY KEY(id));
 
 CREATE TABLE tipoparticipacao (
   id SERIAL  NOT NULL ,
-  nome INTEGER   NOT NULL   ,
+  nome INTEGER UNIQUE NOT NULL   ,
 PRIMARY KEY(id));
 
 CREATE TABLE tipoevento (
   id SERIAL  NOT NULL ,
-  nome VARCHAR(50)   NOT NULL   ,
+  nome VARCHAR(50) UNIQUE NOT NULL   ,
 PRIMARY KEY(id));
 
 CREATE TABLE pessoa (
   id SERIAL  NOT NULL ,
   nome VARCHAR(25)   NOT NULL ,
-  sobrenome VARCHAR(100)   NOT NULL   ,
+  sobrenome VARCHAR(100) UNIQUE NOT NULL   ,
 PRIMARY KEY(id));
 
 CREATE TABLE documento (
   id SERIAL  NOT NULL ,
-  nome VARCHAR(50)   NOT NULL ,
+  nome VARCHAR(50) UNIQUE NOT NULL ,
   dataregistro TIMESTAMP   NOT NULL ,
   datadigitalizacao TIMESTAMP   NOT NULL   ,
 PRIMARY KEY(id));
@@ -93,7 +93,7 @@ CREATE INDEX IFK_Rel_46 ON nomesocial (pessoa_id);
 CREATE TABLE termo (
   id SERIAL  NOT NULL ,
   pessoa_id INTEGER   NOT NULL ,
-  nome INTEGER   NOT NULL ,
+  nome INTEGER UNIQUE NOT NULL ,
   texto INTEGER   NOT NULL ,
   aceito BOOL  DEFAULT false NOT NULL   ,
 PRIMARY KEY(id),
@@ -115,7 +115,7 @@ CREATE INDEX IFK_Rel_03 ON video (documento_id);
 CREATE TABLE evento (
   id SERIAL  NOT NULL ,
   tipoevento_id INTEGER   NOT NULL ,
-  nome VARCHAR(100)   NOT NULL ,
+  nome VARCHAR(100) UNIQUE NOT NULL ,
   datahora TIMESTAMP   NOT NULL ,
   descricao TEXT   NOT NULL   ,
 PRIMARY KEY(id),
@@ -127,7 +127,7 @@ CREATE INDEX IFK_Rel_27 ON evento (tipoevento_id);
 CREATE TABLE dossie (
   id SERIAL  NOT NULL ,
   documento_id INTEGER   NOT NULL ,
-  nome VARCHAR(50)   NOT NULL ,
+  nome VARCHAR(50) UNIQUE NOT NULL ,
   text TEXT   NOT NULL   ,
 PRIMARY KEY(id),
   FOREIGN KEY(documento_id)
@@ -138,7 +138,7 @@ CREATE INDEX IFK_Rel_37 ON dossie (documento_id);
 CREATE TABLE apelido (
   id SERIAL  NOT NULL ,
   pessoa_id INTEGER   NOT NULL ,
-  nome VARCHAR(20)   NOT NULL   ,
+  nome VARCHAR(20) UNIQUE NOT NULL   ,
 PRIMARY KEY(id)  ,
   FOREIGN KEY(pessoa_id)
     REFERENCES pessoa(id));
@@ -150,7 +150,7 @@ CREATE INDEX IFK_Rel_45 ON apelido (pessoa_id);
 CREATE TABLE genero (
   id SERIAL  NOT NULL ,
   pessoa_id INTEGER   NOT NULL ,
-  nome VARCHAR(20)   NOT NULL   ,
+  nome VARCHAR(20) UNIQUE NOT NULL   ,
 PRIMARY KEY(id)  ,
   FOREIGN KEY(pessoa_id)
     REFERENCES pessoa(id));
