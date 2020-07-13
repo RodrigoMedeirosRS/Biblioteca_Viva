@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace RestVideo.Models.DAL.AutoMapper
+namespace BibliotecaViva.Models.DTO.Dominio
 {
     public class AutoMapperGenerico
     {
