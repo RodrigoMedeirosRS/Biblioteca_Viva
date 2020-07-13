@@ -31,3 +31,6 @@
 #dotnet-ef migrations update
 
 #INSERT INTO filmagens ("InspecaoMovelId", "EmpresaId", "ExisteVideo", "EnviouVideo", "Processado", "DataInicial", "DataFinal") VALUES (400, 127, false, false, false, '2019-11-19 14:00:00', '2019-11-19 14:10:00');
+
+# Atualiza scaffold
+dotnet ef dbcontext scaffold "Host=localhost;Database=biblioteca_viva;Username=rmlehnemann;Password=jh3niffer" Npgsql.EntityFrameworkCore.PostgreSQL -o Models/DTO
