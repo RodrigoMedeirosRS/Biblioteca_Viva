@@ -1,36 +1,36 @@
-DROP TABLE participacao;
-
 DROP TABLE audiodescricaoimagem;
 
 DROP TABLE audiodescricaovideo;
 
-DROP TABLE linhadotempoevento;
-
-DROP TABLE localevento;
-
-DROP TABLE linhadotempopessoa;
-
-DROP TABLE documentodossie;
+DROP TABLE participacao;
 
 DROP TABLE eventodocumento;
 
 DROP TABLE documentoglossario;
 
-DROP TABLE linhadotempodocumento;
+DROP TABLE localevento;
+
+DROP TABLE linhadotempopessoa;
+
+DROP TABLE linhadotempoevento;
 
 DROP TABLE legenda;
 
 DROP TABLE imagem;
 
-DROP TABLE significado;
+DROP TABLE documentodossie;
 
-DROP TABLE transcricao;
+DROP TABLE linhadotempodocumento;
 
 DROP TABLE localglossario;
 
-DROP TABLE genero;
+DROP TABLE termopessoa;
 
-DROP TABLE apelido;
+DROP TABLE transcricao;
+
+DROP TABLE significado;
+
+DROP TABLE genero;
 
 DROP TABLE dossie;
 
@@ -38,11 +38,11 @@ DROP TABLE evento;
 
 DROP TABLE video;
 
-DROP TABLE termo;
-
-DROP TABLE nomesocial;
+DROP TABLE apelido;
 
 DROP TABLE conceito;
+
+DROP TABLE nomesocial;
 
 DROP TABLE audio;
 
@@ -50,17 +50,19 @@ DROP TABLE texto;
 
 DROP TABLE documento;
 
-DROP TABLE pessoa;
+DROP TABLE termo;
 
-DROP TABLE tipoevento;
+DROP TABLE pessoa;
 
 DROP TABLE tipoparticipacao;
 
-DROP TABLE localizacao;
+DROP TABLE tipoevento;
+
+DROP TABLE idioma;
 
 DROP TABLE glossario;
 
-DROP TABLE idioma;
+DROP TABLE localizacao;
 
 DROP TABLE linhadotempo;
 

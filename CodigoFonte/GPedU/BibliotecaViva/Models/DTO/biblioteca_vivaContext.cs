@@ -43,6 +43,7 @@ namespace BibliotecaViva.Models.DTO
         public virtual DbSet<Pessoa> Pessoa { get; set; }
         public virtual DbSet<Significado> Significado { get; set; }
         public virtual DbSet<Termo> Termo { get; set; }
+        public virtual DbSet<Termopessoa> Termopessoa { get; set; }
         public virtual DbSet<Texto> Texto { get; set; }
         public virtual DbSet<Tipoevento> Tipoevento { get; set; }
         public virtual DbSet<Tipoparticipacao> Tipoparticipacao { get; set; }
@@ -64,12 +65,8 @@ namespace BibliotecaViva.Models.DTO
             {
                 entity.ToTable("apelido");
 
-                entity.HasIndex(e => e.Nome)
-                    .HasName("apelido_nome_key")
-                    .IsUnique();
-
                 entity.HasIndex(e => e.PessoaId)
-                    .HasName("ifk_rel_45");
+                    .HasName("ifk_rel_31");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -92,7 +89,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("audio");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_04b");
+                    .HasName("ifk_rel_17");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -117,10 +114,10 @@ namespace BibliotecaViva.Models.DTO
                     .HasName("ifk_rel_19");
 
                 entity.HasIndex(e => e.IdiomaId)
-                    .HasName("ifk_rel_22");
+                    .HasName("ifk_rel_42");
 
                 entity.HasIndex(e => e.ImagemId)
-                    .HasName("ifk_rel_17");
+                    .HasName("ifk_rel_41");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -154,13 +151,13 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("audiodescricaovideo");
 
                 entity.HasIndex(e => e.AudioId)
-                    .HasName("ifk_rel_13");
+                    .HasName("ifk_rel_15");
 
                 entity.HasIndex(e => e.IdiomaId)
-                    .HasName("ifk_rel_23");
+                    .HasName("ifk_rel_43");
 
                 entity.HasIndex(e => e.VideoId)
-                    .HasName("ifk_rel_12");
+                    .HasName("ifk_rel_18");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -194,7 +191,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("conceito");
 
                 entity.HasIndex(e => e.GlossarioId)
-                    .HasName("ifk_rel_39");
+                    .HasName("ifk_rel_03");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -237,7 +234,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("documentodossie");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_08");
+                    .HasName("ifk_rel_20");
 
                 entity.HasIndex(e => e.DossieId)
                     .HasName("ifk_rel_09");
@@ -266,10 +263,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("documentoglossario");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_40");
+                    .HasName("ifk_rel_23");
 
                 entity.HasIndex(e => e.GlossarioId)
-                    .HasName("ifk_rel_41");
+                    .HasName("ifk_rel_08");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -295,7 +292,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("dossie");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_37");
+                    .HasName("ifk_rel_10");
 
                 entity.HasIndex(e => e.Nome)
                     .HasName("dossie_nome_key")
@@ -330,7 +327,7 @@ namespace BibliotecaViva.Models.DTO
                     .IsUnique();
 
                 entity.HasIndex(e => e.TipoeventoId)
-                    .HasName("ifk_rel_27");
+                    .HasName("ifk_rel_28");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -359,7 +356,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("eventodocumento");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_26");
+                    .HasName("ifk_rel_21");
 
                 entity.HasIndex(e => e.EventoId)
                     .HasName("ifk_rel_25");
@@ -392,7 +389,7 @@ namespace BibliotecaViva.Models.DTO
                     .IsUnique();
 
                 entity.HasIndex(e => e.PessoaId)
-                    .HasName("ifk_rel_47");
+                    .HasName("ifk_rel_32");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -451,10 +448,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("imagem");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_02");
+                    .HasName("ifk_rel_40");
 
                 entity.HasIndex(e => e.TermoId)
-                    .HasName("ifk_rel_11");
+                    .HasName("ifk_rel_39");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -484,10 +481,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("legenda");
 
                 entity.HasIndex(e => e.TextoId)
-                    .HasName("ifk_rel_16");
+                    .HasName("ifk_rel_12");
 
                 entity.HasIndex(e => e.VideoId)
-                    .HasName("ifk_rel_15");
+                    .HasName("ifk_rel_16");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -533,7 +530,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("linhadotempodocumento");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_35b");
+                    .HasName("ifk_rel_22");
 
                 entity.HasIndex(e => e.LinhadotempoId)
                     .HasName("ifk_rel_36");
@@ -562,10 +559,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("linhadotempoevento");
 
                 entity.HasIndex(e => e.EventoId)
-                    .HasName("ifk_rel_35");
+                    .HasName("ifk_rel_26");
 
                 entity.HasIndex(e => e.LinhadotempoId)
-                    .HasName("ifk_rel_36b");
+                    .HasName("ifk_rel_24");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -591,10 +588,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("linhadotempopessoa");
 
                 entity.HasIndex(e => e.LinhadotempoId)
-                    .HasName("ifk_rel_39b");
+                    .HasName("ifk_rel_37");
 
                 entity.HasIndex(e => e.PessoaId)
-                    .HasName("ifk_rel_38b");
+                    .HasName("ifk_rel_35");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -620,10 +617,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("localevento");
 
                 entity.HasIndex(e => e.EventoId)
-                    .HasName("ifk_rel_33");
+                    .HasName("ifk_rel_07");
 
                 entity.HasIndex(e => e.LocalizacaoId)
-                    .HasName("ifk_rel_34");
+                    .HasName("ifk_rel_06");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -649,10 +646,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("localglossario");
 
                 entity.HasIndex(e => e.GlossarioId)
-                    .HasName("ifk_rel_43");
+                    .HasName("ifk_rel_04");
 
                 entity.HasIndex(e => e.LocalizacaoId)
-                    .HasName("ifk_rel_42");
+                    .HasName("ifk_rel_05");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -700,7 +697,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("nomesocial");
 
                 entity.HasIndex(e => e.PessoaId)
-                    .HasName("ifk_rel_46");
+                    .HasName("ifk_rel_33");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -723,13 +720,13 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("participacao");
 
                 entity.HasIndex(e => e.EventoId)
-                    .HasName("ifk_rel_30");
+                    .HasName("ifk_rel_27");
 
                 entity.HasIndex(e => e.PessoaId)
-                    .HasName("ifk_rel_32");
+                    .HasName("ifk_rel_30");
 
                 entity.HasIndex(e => e.TipoparticipacaoId)
-                    .HasName("ifk_rel_28");
+                    .HasName("ifk_rel_29");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -784,10 +781,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("significado");
 
                 entity.HasIndex(e => e.ConceitoId)
-                    .HasName("ifk_rel_38");
+                    .HasName("ifk_rel_01");
 
                 entity.HasIndex(e => e.IdiomaId)
-                    .HasName("ifk_rel_37b");
+                    .HasName("ifk_rel_02");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -824,24 +821,42 @@ namespace BibliotecaViva.Models.DTO
                     .HasName("termo_nome_key")
                     .IsUnique();
 
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Nome).HasColumnName("nome");
+
+                entity.Property(e => e.Texto).HasColumnName("texto");
+            });
+
+            modelBuilder.Entity<Termopessoa>(entity =>
+            {
+                entity.ToTable("termopessoa");
+
                 entity.HasIndex(e => e.PessoaId)
-                    .HasName("ifk_rel_10");
+                    .HasName("ifk_rel_34");
+
+                entity.HasIndex(e => e.TermoId)
+                    .HasName("ifk_rel_38");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Aceito).HasColumnName("aceito");
 
-                entity.Property(e => e.Nome).HasColumnName("nome");
-
                 entity.Property(e => e.PessoaId).HasColumnName("pessoa_id");
 
-                entity.Property(e => e.Texto).HasColumnName("texto");
+                entity.Property(e => e.TermoId).HasColumnName("termo_id");
 
                 entity.HasOne(d => d.Pessoa)
-                    .WithMany(p => p.Termo)
+                    .WithMany(p => p.Termopessoa)
                     .HasForeignKey(d => d.PessoaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("termo_pessoa_id_fkey");
+                    .HasConstraintName("termopessoa_pessoa_id_fkey");
+
+                entity.HasOne(d => d.Termo)
+                    .WithMany(p => p.Termopessoa)
+                    .HasForeignKey(d => d.TermoId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("termopessoa_termo_id_fkey");
             });
 
             modelBuilder.Entity<Texto>(entity =>
@@ -849,7 +864,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("texto");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_04");
+                    .HasName("ifk_rel_11");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -900,10 +915,10 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("transcricao");
 
                 entity.HasIndex(e => e.AudioId)
-                    .HasName("ifk_rel_21");
+                    .HasName("ifk_rel_14");
 
                 entity.HasIndex(e => e.TextoId)
-                    .HasName("ifk_rel_20");
+                    .HasName("ifk_rel_13");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -929,7 +944,7 @@ namespace BibliotecaViva.Models.DTO
                 entity.ToTable("video");
 
                 entity.HasIndex(e => e.DocumentoId)
-                    .HasName("ifk_rel_03");
+                    .HasName("ifk_rel_19b");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 

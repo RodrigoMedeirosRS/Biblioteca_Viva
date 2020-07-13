@@ -12,7 +12,7 @@ namespace BibliotecaViva.Models.DTO
             Linhadotempopessoa = new HashSet<Linhadotempopessoa>();
             Nomesocial = new HashSet<Nomesocial>();
             Participacao = new HashSet<Participacao>();
-            Termo = new HashSet<Termo>();
+            Termopessoa = new HashSet<Termopessoa>();
         }
 
         public int Id { get; set; }
@@ -24,6 +24,6 @@ namespace BibliotecaViva.Models.DTO
         public virtual ICollection<Linhadotempopessoa> Linhadotempopessoa { get; set; }
         public virtual ICollection<Nomesocial> Nomesocial { get; set; }
         public virtual ICollection<Participacao> Participacao { get; set; }
-        public virtual ICollection<Termo> Termo { get; set; }
+        public virtual ICollection<Termopessoa> Termopessoa { get; set; }
     }
 }
