@@ -1,0 +1,33 @@
+# Os parâmetros mostrados entre colchetes devem ser subituídos pela nome da variavel usada.
+
+#public async Task metodo(argumento);
+#Task.Run(async () => await metodo(argumentos)).Wait();
+
+# Compilar C++
+#'c:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe' .\FILMAGEMV3.vcxproj
+
+# Compila o código 64bits
+#dotnet build
+
+# Executa o código 64bits
+#dotnet run
+
+# Publica o projeto 64bits
+#dotnet publish -c Release
+
+# Compila o código 32bits
+#dotnet build --runtime win7-x86
+
+# Executa o código 32bits
+#dotnet run --runtime win7-x86
+
+# Publica o projeto 32bits
+#dotnet publish --runtime win7-x86 -c Release
+
+# Gera um novo migration para o banco de dados
+#dotnet-ef migrations add [Nome da migration]
+
+# Atualiza banco de dados com base na migration
+#dotnet-ef migrations update
+
+#INSERT INTO filmagens ("InspecaoMovelId", "EmpresaId", "ExisteVideo", "EnviouVideo", "Processado", "DataInicial", "DataFinal") VALUES (400, 127, false, false, false, '2019-11-19 14:00:00', '2019-11-19 14:10:00');
