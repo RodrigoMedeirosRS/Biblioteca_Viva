@@ -18,8 +18,8 @@ PRIMARY KEY(id));
 CREATE TABLE localizacao (
   id SERIAL  NOT NULL ,
   nome VARCHAR(100) UNIQUE NOT NULL ,
-  latitude DOUBLE   NOT NULL ,
-  longitude DOUBLE   NOT NULL ,
+  latitude FLOAT   NOT NULL ,
+  longitude FLOAT   NOT NULL ,
   datahora TIMESTAMP   NOT NULL   ,
 PRIMARY KEY(id));
 
@@ -64,7 +64,7 @@ PRIMARY KEY(id),
   FOREIGN KEY(documento_id)
     REFERENCES documento(id));
 
-CREATE INDEX IFK_Rel_04 ON audio (documento_id);
+CREATE INDEX IFK_Rel_04B ON audio (documento_id);
 
 CREATE TABLE conceito (
   id SERIAL  NOT NULL ,
@@ -202,7 +202,7 @@ PRIMARY KEY(id)  ,
 
 CREATE INDEX significado_FKIndex1 ON significado (conceito_id);
 
-CREATE INDEX IFK_Rel_37 ON significado (idioma_id);
+CREATE INDEX IFK_Rel_37B ON significado (idioma_id);
 CREATE INDEX IFK_Rel_38 ON significado (conceito_id);
 
 CREATE TABLE imagem (
@@ -242,7 +242,7 @@ PRIMARY KEY(id),
   FOREIGN KEY(linhadotempo_id)
     REFERENCES linhadotempo(id));
 
-CREATE INDEX IFK_Rel_35 ON linhadotempodocumento (documento_id);
+CREATE INDEX IFK_Rel_35b ON linhadotempodocumento (documento_id);
 CREATE INDEX IFK_Rel_36 ON linhadotempodocumento (linhadotempo_id);
 
 CREATE TABLE documentoglossario (
@@ -297,8 +297,8 @@ PRIMARY KEY(id),
   FOREIGN KEY(linhadotempo_id)
     REFERENCES linhadotempo(id));
 
-CREATE INDEX IFK_Rel_38 ON linhadotempopessoa (pessoa_id);
-CREATE INDEX IFK_Rel_39 ON linhadotempopessoa (linhadotempo_id);
+CREATE INDEX IFK_Rel_38b ON linhadotempopessoa (pessoa_id);
+CREATE INDEX IFK_Rel_39b ON linhadotempopessoa (linhadotempo_id);
 
 CREATE TABLE localevento (
   id SERIAL  NOT NULL ,
@@ -324,7 +324,7 @@ PRIMARY KEY(id),
     REFERENCES linhadotempo(id));
 
 CREATE INDEX IFK_Rel_35 ON linhadotempoevento (evento_id);
-CREATE INDEX IFK_Rel_36 ON linhadotempoevento (linhadotempo_id);
+CREATE INDEX IFK_Rel_36b ON linhadotempoevento (linhadotempo_id);
 
 CREATE TABLE audiodescricaovideo (
   id SERIAL  NOT NULL ,
