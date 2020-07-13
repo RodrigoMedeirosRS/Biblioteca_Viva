@@ -17,7 +17,7 @@ namespace BibliotecaViva.Models.DTO.Dominio
             Aceito = aceito;
             Pessoa = pessoa;
         }
-
+        public int ID { get; set; }
         public string Nome { get; set; }
         public string Texto { get; set; }
         public bool Aceito { get; set; }
