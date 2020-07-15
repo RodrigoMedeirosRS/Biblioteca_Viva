@@ -8,15 +8,14 @@ namespace BibliotecaViva.Models.DTO
         public Termo()
         {
             Imagem = new HashSet<Imagem>();
+            Termopessoa = new HashSet<Termopessoa>();
         }
 
         public int Id { get; set; }
-        public int PessoaId { get; set; }
         public int Nome { get; set; }
         public int Texto { get; set; }
-        public bool Aceito { get; set; }
 
-        public virtual Pessoa Pessoa { get; set; }
         public virtual ICollection<Imagem> Imagem { get; set; }
+        public virtual ICollection<Termopessoa> Termopessoa { get; set; }
     }
 }
