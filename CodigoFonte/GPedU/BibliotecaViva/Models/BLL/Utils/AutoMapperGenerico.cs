@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace BibliotecaViva.Models.DTO.Dominio.Utils
+namespace BibliotecaViva.Models.BLL.Utils
 {
     public class AutoMapperGenerico
     {
