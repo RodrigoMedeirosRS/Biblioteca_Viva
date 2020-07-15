@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Uq/eIRRr5py+zFWKvdteDhTl3IQgVrezKQKWlffCekYICSu0q+UJZQWEoLQZD8qBIcL6JzAeJoFMX3292ztuOA==",
+  "dgSpecHash": "3eb4Amkx3mVJF2vCcdQ65cz0x1EQBh2Gofejr3e3nEN7ndc/K777qbrWswnmxZUGVqLjVdjX9JyjLlu+iZ8oLA==",
   "success": true,
   "projectFilePath": "/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BibliotecaViva.csproj",
   "expectedPackageFiles": [
     "/home/rmlehnemann/.nuget/packages/automapper/10.0.0/automapper.10.0.0.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/microsoft.aspnet.webapi.client/4.0.20710/microsoft.aspnet.webapi.client.4.0.20710.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/microsoft.aspnet.webapi.core/4.0.20710/microsoft.aspnet.webapi.core.4.0.20710.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
@@ -15,6 +17,7 @@
     "/home/rmlehnemann/.nuget/packages/microsoft.entityframeworkcore.relational/3.1.5/microsoft.entityframeworkcore.relational.3.1.5.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.entityframeworkcore.relational.design/1.1.0/microsoft.entityframeworkcore.relational.design.1.1.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.entityframeworkcore.tools.dotnet/2.0.3/microsoft.entityframeworkcore.tools.dotnet.2.0.3.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.extensions.caching.abstractions/3.1.5/microsoft.extensions.caching.abstractions.3.1.5.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.extensions.caching.memory/3.1.5/microsoft.extensions.caching.memory.3.1.5.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.extensions.configuration/3.1.5/microsoft.extensions.configuration.3.1.5.nupkg.sha512",
@@ -26,22 +29,70 @@
     "/home/rmlehnemann/.nuget/packages/microsoft.extensions.logging.abstractions/3.1.5/microsoft.extensions.logging.abstractions.3.1.5.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.extensions.options/3.1.5/microsoft.extensions.options.3.1.5.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.extensions.primitives/3.1.5/microsoft.extensions.primitives.3.1.5.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/microsoft.net.http/2.0.20710/microsoft.net.http.2.0.20710.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.app/2.2.8/microsoft.netcore.app.2.2.8.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.dotnetapphost/2.2.8/microsoft.netcore.dotnetapphost.2.2.8.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.dotnethostpolicy/2.2.8/microsoft.netcore.dotnethostpolicy.2.2.8.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.dotnethostresolver/2.2.8/microsoft.netcore.dotnethostresolver.2.2.8.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/2.2.4/microsoft.netcore.platforms.2.2.4.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.targets/2.0.0/microsoft.netcore.targets.2.0.0.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/microsoft.openapi/1.1.4/microsoft.openapi.1.1.4.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/npgsql/4.1.3.1/npgsql.4.1.3.1.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/npgsql.entityframeworkcore.postgresql/3.1.4/npgsql.entityframeworkcore.postgresql.3.1.4.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/npgsql.entityframeworkcore.postgresql.design/1.1.0/npgsql.entityframeworkcore.postgresql.design.1.1.0.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/swashbuckle.aspnetcore/5.5.1/swashbuckle.aspnetcore.5.5.1.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/swashbuckle.aspnetcore.swagger/5.5.1/swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.5.1/swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.5.1/swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/swashbuckle.core/5.6.0/swashbuckle.core.5.6.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/system.collections.immutable/1.7.1/system.collections.immutable.1.7.1.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/system.componentmodel.annotations/4.7.0/system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/system.diagnostics.diagnosticsource/4.7.1/system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.AspNet.WebApi.Client 4.0.20710' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.AspNet.WebApi.Client",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.AspNet.WebApi.Core 4.0.20710' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.AspNet.WebApi.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.Net.Http 2.0.20710' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.Net.Http",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Swashbuckle.Core 5.6.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Swashbuckle.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

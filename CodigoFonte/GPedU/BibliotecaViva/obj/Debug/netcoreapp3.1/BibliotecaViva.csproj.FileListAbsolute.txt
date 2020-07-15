@@ -46,3 +46,11 @@
 /home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll
 /home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
 /home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.csproj.CopyComplete
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/System.Net.Http.Formatting.dll
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/System.Web.Http.dll
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Swashbuckle.Core.dll
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.Swagger.dll
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/rmlehnemann/Documentos/GameDev/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.MvcApplicationPartsAssemblyInfo.cs
