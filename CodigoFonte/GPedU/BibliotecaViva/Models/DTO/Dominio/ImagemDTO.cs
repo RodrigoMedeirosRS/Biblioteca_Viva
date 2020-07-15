@@ -3,6 +3,10 @@ namespace BibliotecaViva.Models.DTO.Dominio
 {
     public class ImagemDTO : DocumentoDTO
     {
+        public ImagemDTO()
+        {
+
+        }
         public ImagemDTO(int id, string nome, string base64, TermoDTO termo, DateTime dataRegistro, DateTime dataDataDigtalizacao) : base(id, nome, dataRegistro, dataDataDigtalizacao)
         {
             Base64 = base64;

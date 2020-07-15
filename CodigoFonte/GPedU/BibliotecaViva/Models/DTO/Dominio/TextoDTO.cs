@@ -3,6 +3,10 @@ namespace BibliotecaViva.Models.DTO.Dominio
 {
     public class TextoDTO : DocumentoDTO
     {
+        public TextoDTO()
+        {
+
+        }
         public TextoDTO (int id, string nome, string texto, DateTime dataRegistro, DateTime dataDataDigtalizacao) : base(id, nome, dataRegistro, dataDataDigtalizacao)
         {
             Texto = texto;

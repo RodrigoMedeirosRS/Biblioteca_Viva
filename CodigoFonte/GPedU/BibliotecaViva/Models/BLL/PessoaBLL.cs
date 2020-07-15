@@ -37,11 +37,24 @@ namespace BibliotecaViva.Models.BLL
 
         private Pessoa Mapear(PessoaDTO pessoaDTO)
         {
-            return new AutoMapperGenerico().Mapear<PessoaDTO,Pessoa>(pessoaDTO);
+            var pessoa = new Pessoa();
+
+            if (pessoaDTO.Id >= 1)
+                pessoa.Id = pessoaDTO.Id;
+
+            pessoa.Nome = pessoaDTO.Nome;
+            pessoa.Sobrenome = pessoaDTO.Sobrenome;
+
+            return pessoa;
         }
         private PessoaDTO Mapear(Pessoa pessoa)
         {
-            return new AutoMapperGenerico().Mapear<Pessoa,PessoaDTO>(pessoa);
+            var pessoaDTO = new PessoaDTO();
+            pessoaDTO.Id = pessoa.Id;
+            pessoaDTO.Nome = pessoa.Nome;
+            pessoaDTO.Sobrenome = pessoa.Sobrenome;
+
+            return pessoaDTO;
         }
     }
 }

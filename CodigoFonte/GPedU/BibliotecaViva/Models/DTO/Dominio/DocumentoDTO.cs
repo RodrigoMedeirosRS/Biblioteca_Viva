@@ -3,6 +3,10 @@ namespace BibliotecaViva.Models.DTO.Dominio
 {
     public abstract class DocumentoDTO
     {
+        protected DocumentoDTO()
+        {
+
+        }
         protected DocumentoDTO(int id, string nome, DateTime dataRegistro, DateTime dataDataDigtalizacao)
         {
             ID = id;

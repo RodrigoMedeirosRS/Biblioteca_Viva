@@ -4,6 +4,10 @@ namespace BibliotecaViva.Models.DTO.Dominio
 {
     public class LinhaDoTempoDTO
     {
+        public LinhaDoTempoDTO()
+        {
+
+        }
         public LinhaDoTempoDTO(string nome, string descricao)
         {
             Nome = nome;

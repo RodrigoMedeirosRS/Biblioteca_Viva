@@ -25,7 +25,7 @@ namespace BibliotecaViva
         {
             services.AddControllers();
             services.AddEntityFrameworkNpgsql().AddDbContext<biblioteca_vivaContext>(options=>
-            options.UseNpgsql(Configuration.GetConnectionString("FilmagemRestAPIConection")));
+            options.UseNpgsql(Configuration.GetConnectionString("BibliotecaVivaApiConnection")));
 
             services.AddTransient(typeof(PessoaController));
 

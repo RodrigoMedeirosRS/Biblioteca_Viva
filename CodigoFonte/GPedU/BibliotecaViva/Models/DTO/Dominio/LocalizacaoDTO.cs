@@ -5,6 +5,10 @@ namespace BibliotecaViva.Models.DTO.Dominio
 {
     public class LocalizacaoDTO
     {
+        public LocalizacaoDTO()
+        {
+
+        }
         public LocalizacaoDTO(string nome, double latitude, double longitude, DateTime dataHora, List<LocalizacaoDTO> locais = null)
         {
             Nome = nome;

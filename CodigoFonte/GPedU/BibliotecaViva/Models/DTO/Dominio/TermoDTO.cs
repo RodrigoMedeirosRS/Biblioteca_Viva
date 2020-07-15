@@ -2,6 +2,10 @@ namespace BibliotecaViva.Models.DTO.Dominio
 {
     public class TermoDTO
     {
+        public TermoDTO()
+        {
+            
+        }
         public TermoDTO(string nome, string texto)
         {
             Nome = nome;
@@ -9,7 +13,6 @@ namespace BibliotecaViva.Models.DTO.Dominio
             Aceito = false;
             Pessoa = null;
         }
-
         public TermoDTO(string nome, string texto, PessoaDTO pessoa, bool aceito = false)
         {
             Nome = nome;
