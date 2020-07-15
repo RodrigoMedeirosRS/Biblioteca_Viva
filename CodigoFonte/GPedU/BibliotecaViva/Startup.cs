@@ -24,14 +24,14 @@ namespace BibliotecaViva
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddEntityFrameworkNpgsql().AddDbContext<biblioteca_vivaContext>(opt=>
-            opt.UseNpgsql(Configuration.GetConnectionString("FilmagemRestAPIConection")));
+            services.AddEntityFrameworkNpgsql().AddDbContext<biblioteca_vivaContext>(options=>
+            options.UseNpgsql(Configuration.GetConnectionString("FilmagemRestAPIConection")));
 
             services.AddTransient(typeof(PessoaController));
 
-            services.AddSwaggerGen(c=>
+            services.AddSwaggerGen(options=>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Biblioteca Viva", Version = "Protótipo" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Biblioteca Viva", Version = "v1" });
             });
         }
 

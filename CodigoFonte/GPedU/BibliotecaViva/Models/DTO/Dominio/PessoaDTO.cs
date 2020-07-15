@@ -2,17 +2,10 @@ namespace BibliotecaViva.Models.DTO.Dominio
 {
     public class PessoaDTO
     {
-        public PessoaDTO(int id, string nome, string sobrenome, string genero, string apelido = "", string nomeSocial = "")
+        public PessoaDTO(int? id, string nome, string sobrenome, string genero, string apelido = "", string nomeSocial = "")
         {
-            ID = id;
-            Nome = nome;
-            Sobrenome = sobrenome;
-            Genero = genero;
-            Apelido = apelido;
-            NomeSocial = nomeSocial;
-        }
-        public PessoaDTO(string nome, string sobrenome, string genero, string apelido = "", string nomeSocial = "")
-        {
+            if (id != null)
+                ID = (int)id;
             Nome = nome;
             Sobrenome = sobrenome;
             Genero = genero;

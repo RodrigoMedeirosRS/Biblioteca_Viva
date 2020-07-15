@@ -26,6 +26,7 @@ namespace BibliotecaViva.Controllers
             return Ok(retorno);
         }
 
+        [HttpPost("EditarPessoa")]
         public async Task<IActionResult> EditarPessoa(PessoaDTO pessoa)
         {
             var retorno = "";
@@ -33,6 +34,7 @@ namespace BibliotecaViva.Controllers
             return Ok(retorno);
         }
 
+        [HttpPost("ConsultarPessoa")]
         public async Task<IActionResult> Consultar(PessoaDTO pessoa)
         {
             var retorno = "";
