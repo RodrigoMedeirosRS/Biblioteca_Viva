@@ -1,0 +1,26 @@
+# Compila o código 64bits
+dotnet build
+
+# Executa o código 64bits
+dotnet run
+
+# Publica o projeto 64bits
+dotnet publish -c Release
+
+# Compila o código 32bits
+dotnet build --runtime win7-x86
+
+# Executa o código 32bits
+dotnet run --runtime win7-x86
+
+# Publica o projeto 32bits
+dotnet publish --runtime win7-x86 -c Release
+
+# Gera um novo migration para o banco de dados
+dotnet-ef migrations add [Nome da migration]
+
+# Atualiza banco de dados com base na migration
+dotnet-ef migrations update
+
+# Executa o Scaffold, atualizando os dados do rest conforme o banco de dados
+dotnet ef dbcontext scaffold "Host=localhost;Database=biblioteca_viva;Username=rmlehnemann;Password=jh3niffer" Npgsql.EntityFrameworkCore.PostgreSQL -o Models/DTO

@@ -1,26 +1,21 @@
 ﻿<Properties StartupConfiguration="{238D6BF6-1B25-42B8-BD29-631BA9830881}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BibliotecaViva/Models/BLL/PessoaBLL.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BibliotecaViva/Recursos/ComandosNetCore.txt">
     <Files>
       <File FileName="BibliotecaViva/appsettings.json" Line="3" Column="33" />
-      <File FileName="BibliotecaViva/Models/BLL/PessoaBLL.cs" Line="42" Column="29" />
+      <File FileName="BibliotecaViva/Models/BLL/PessoaBLL.cs" Line="42" Column="34" />
       <File FileName="BibliotecaViva/Models/DTO/Pessoa.cs" Line="8" Column="16" />
+      <File FileName="BibliotecaViva/Controllers/PessoaController.cs" Line="23" Column="2" />
+      <File FileName="BibliotecaViva/Recursos/ComandosNetCore.txt" Line="25" Column="77" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GPedU" expanded="True">
             <Node name="BibliotecaViva" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="BLL" expanded="True">
-                  <Node name="Utils" expanded="True" />
-                  <Node name="PessoaBLL.cs" selected="True" />
-                </Node>
-                <Node name="DTO" expanded="True">
-                  <Node name="Dominio" expanded="True" />
-                </Node>
-              </Node>
               <Node name="Properties" expanded="True" />
+              <Node name="Recursos" expanded="True">
+                <Node name="ComandosNetCore.txt" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
