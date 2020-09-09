@@ -9,6 +9,21 @@
     <LaunchUrl>swagger/index.html</LaunchUrl>
     <ApplicationURL>http://localhost:5000</ApplicationURL>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BLL\**" />
+    <Compile Remove="DAL\**" />
+    <Compile Remove="DTO\**" />
+    <Content Remove="BLL\**" />
+    <Content Remove="DAL\**" />
+    <Content Remove="DTO\**" />
+    <EmbeddedResource Remove="BLL\**" />
+    <EmbeddedResource Remove="DAL\**" />
+    <EmbeddedResource Remove="DTO\**" />
+    <None Remove="BLL\**" />
+    <None Remove="DAL\**" />
+    <None Remove="DTO\**" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
@@ -31,5 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Recursos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="BLL\BLL.csproj" />
+    <ProjectReference Include="DTO\DTO.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="BibliotecaViva.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
