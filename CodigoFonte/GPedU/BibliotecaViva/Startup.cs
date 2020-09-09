@@ -1,13 +1,16 @@
+using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
-using Microsoft.OpenApi.Models;
-using BibliotecaViva.Models.DTO;
+using BibliotecaViva.BLL;
+using BibliotecaViva.DTO;
 using BibliotecaViva.Controllers;
+using BibliotecaViva.BLL.Interfaces;
+
 
 namespace BibliotecaViva
 {
@@ -20,22 +23,35 @@ namespace BibliotecaViva
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AdicionarControladores(services);
+            RealizarInjecaoDeDependencias(services);
+            DefinirConfiguracaoSwagger(services);           
+        }
+
+        private static void AdicionarControladores(IServiceCollection services)
+        {
             services.AddControllers();
-            services.AddEntityFrameworkNpgsql().AddDbContext<biblioteca_vivaContext>(options=>
-            options.UseNpgsql(Configuration.GetConnectionString("BibliotecaVivaApiConnection")));
+        }
 
-            services.AddTransient(typeof(PessoaController));
+        private static void RealizarInjecaoDeDependencias(IServiceCollection services)
+        {
+            services.AddScoped<IPerssoaBLL, PessoaBLL>();
+            //services.AddScoped<IFFMPEG, FFMPEG>();
+            //services.AddScoped<ITerminalBashBLL, TerminalBashBLL>();
+            //services.AddScoped<IRequisicao, Requisicao>();
+        }
 
-            services.AddSwaggerGen(options=>
+        private static void DefinirConfiguracaoSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Biblioteca Viva", Version = "v1" });
+                options.CustomOperationIds(d => (d.ActionDescriptor as ControllerActionDescriptor)?.ActionName);
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

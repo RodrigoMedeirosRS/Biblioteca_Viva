@@ -1,59 +1,36 @@
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using BibliotecaViva.DAL;
 using BibliotecaViva.DTO;
 using BibliotecaViva.BLL.Utils;
+using BibliotecaViva.BLL.Interfaces;
 
 namespace BibliotecaViva.BLL
 {
-    //public class PessoaBLL
-    //{
-    //    private biblioteca_vivaContext DataContext;
+    public class PessoaBLL : IPerssoaBLL
+    {
+        public PessoaBLL()
+        {
 
-    //    public PessoaBLL(biblioteca_vivaContext dataContext)
-    //    {
-    //        DataContext = dataContext;
-    //    }
+        }
 
-    //    public string Cadastrar(PessoaDTO pessoa)
-    //    {
-    //        return new PessoaDAL(DataContext).Cadastrar(Mapear(pessoa));
-    //    }
+        public async Task<string> Cadastrar(PessoaDTO pessoa)
+        {
+            return "Cadastrar";
+        }
 
-    //    public string Editar(PessoaDTO pessoa)
-    //    {
-    //        return new PessoaDAL(DataContext).Editar(Mapear(pessoa));
-    //    }
+        public async Task<string> Editar(PessoaDTO pessoa)
+        {
+            return "Editar";
+        }
 
-    //    public string Consultar(PessoaDTO pessoa)
-    //    {
-    //        var retorno = new PessoaDAL(DataContext).Consultar(Mapear(pessoa));
-    //        return JsonConvert.SerializeObject(Mapear(retorno));
-    //    }
-
-    //    private Pessoa Mapear(PessoaDTO pessoaDTO)
-    //    {
-    //        var pessoa = new Pessoa();
-
-    //        if (pessoaDTO.Id >= 1)
-    //            pessoa.Id = pessoaDTO.Id;
-
-    //        pessoa.Nome = pessoaDTO.Nome;
-    //        pessoa.Sobrenome = pessoaDTO.Sobrenome;
-
-    //        return pessoa;
-    //    }
-    //    private PessoaDTO Mapear(Pessoa pessoa)
-    //    {
-    //        var pessoaDTO = new PessoaDTO();
-    //        pessoaDTO.Id = pessoa.Id;
-    //        pessoaDTO.Nome = pessoa.Nome;
-    //        pessoaDTO.Sobrenome = pessoa.Sobrenome;
-
-    //        return pessoaDTO;
-    //    }
-    //}
+        public async Task<string> Consultar(PessoaDTO pessoa)
+        {
+            return "Consultar";
+        }
+    }
 }

@@ -3,3 +3,12 @@ C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\Bi
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\obj\Debug\netstandard2.0\BibliotecaViva.BLL.csprojAssemblyReference.cache
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\obj\Debug\netstandard2.0\BibliotecaViva.BLL.AssemblyInfoInputs.cache
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\obj\Debug\netstandard2.0\BibliotecaViva.BLL.AssemblyInfo.cs
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\bin\Debug\netstandard2.0\BibliotecaViva.BLL.deps.json
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\bin\Debug\netstandard2.0\BibliotecaViva.BLL.dll
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\bin\Debug\netstandard2.0\BibliotecaViva.BLL.pdb
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\bin\Debug\netstandard2.0\BibliotecaViva.DAL.pdb
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\bin\Debug\netstandard2.0\BibliotecaViva.DTO.pdb
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\obj\Debug\netstandard2.0\BibliotecaViva.BLL.csproj.CoreCompileInputs.cache
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\obj\Debug\netstandard2.0\BibliotecaViva.BLL.csproj.CopyComplete
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\obj\Debug\netstandard2.0\BibliotecaViva.BLL.dll
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\BLL\obj\Debug\netstandard2.0\BibliotecaViva.BLL.pdb
