@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaViva", "BibliotecaViva\BibliotecaViva.csproj", "{238D6BF6-1B25-42B8-BD29-631BA9830881}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "BibliotecaViva\DAL\DAL.csproj", "{70730335-9255-449B-B432-952B43E2C4D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaViva.DAL", "BibliotecaViva\DAL\BibliotecaViva.DAL.csproj", "{70730335-9255-449B-B432-952B43E2C4D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BibliotecaViva\BLL\BLL.csproj", "{C062C3F2-E534-4F93-8051-95E27431003D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaViva.BLL", "BibliotecaViva\BLL\BibliotecaViva.BLL.csproj", "{C062C3F2-E534-4F93-8051-95E27431003D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "BibliotecaViva\DTO\DTO.csproj", "{F7998399-6397-4978-98BE-2BDF36094BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaViva.DTO", "BibliotecaViva\DTO\BibliotecaViva.DTO.csproj", "{F7998399-6397-4978-98BE-2BDF36094BB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

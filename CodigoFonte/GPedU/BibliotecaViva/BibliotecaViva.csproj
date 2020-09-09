@@ -48,8 +48,8 @@
     <Folder Include="Recursos\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="BLL\BLL.csproj" />
-    <ProjectReference Include="DTO\DTO.csproj" />
+    <ProjectReference Include="BLL\BibliotecaViva.BLL.csproj" />
+    <ProjectReference Include="DTO\BibliotecaViva.DTO.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="BibliotecaViva.db">

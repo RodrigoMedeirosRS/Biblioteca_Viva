@@ -3,11 +3,11 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-using BibliotecaViva.Models.DAL;
-using BibliotecaViva.Models.DTO;
-using BibliotecaViva.Models.BLL.Utils;
+using BibliotecaViva.DAL;
+using BibliotecaViva.DTO;
+using BibliotecaViva.BLL.Utils;
 
-namespace BibliotecaViva.Models.BLL
+namespace BibliotecaViva.BLL
 {
     //public class PessoaBLL
     //{

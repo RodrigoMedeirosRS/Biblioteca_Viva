@@ -1,4 +1,4 @@
-namespace BibliotecaViva.Models.DTO
+namespace BibliotecaViva.DTO
 {
     public class TermoDTO
     {

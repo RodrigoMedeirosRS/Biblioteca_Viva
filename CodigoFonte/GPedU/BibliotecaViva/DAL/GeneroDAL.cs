@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-using BibliotecaViva.Models.DTO;
+using BibliotecaViva.DTO;
 
-namespace BibliotecaViva.Models.DAL
+namespace BibliotecaViva.DAL
 {
     public class GeneroDAL
     {

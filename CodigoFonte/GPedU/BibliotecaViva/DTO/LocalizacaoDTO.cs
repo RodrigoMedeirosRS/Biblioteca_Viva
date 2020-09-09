@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BibliotecaViva.Models.DTO
+namespace BibliotecaViva.DTO
 {
     public class LocalizacaoDTO
     {

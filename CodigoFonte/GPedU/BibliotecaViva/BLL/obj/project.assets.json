@@ -78,27 +78,27 @@
           "lib/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
         }
       },
-      "DAL/1.0.0": {
+      "BibliotecaViva.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "DTO": "1.0.0"
+          "BibliotecaViva.DTO": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/DAL.dll": {}
+          "bin/placeholder/BibliotecaViva.DAL.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DAL.dll": {}
+          "bin/placeholder/BibliotecaViva.DAL.dll": {}
         }
       },
-      "DTO/1.0.0": {
+      "BibliotecaViva.DTO/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "compile": {
-          "bin/placeholder/DTO.dll": {}
+          "bin/placeholder/BibliotecaViva.DTO.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DTO.dll": {}
+          "bin/placeholder/BibliotecaViva.DTO.dll": {}
         }
       }
     }
@@ -476,46 +476,41 @@
         "version.txt"
       ]
     },
-    "DAL/1.0.0": {
+    "BibliotecaViva.DAL/1.0.0": {
       "type": "project",
-      "path": "../DAL/DAL.csproj",
-      "msbuildProject": "../DAL/DAL.csproj"
+      "path": "../DAL/BibliotecaViva.DAL.csproj",
+      "msbuildProject": "../DAL/BibliotecaViva.DAL.csproj"
     },
-    "DTO/1.0.0": {
+    "BibliotecaViva.DTO/1.0.0": {
       "type": "project",
-      "path": "../DTO/DTO.csproj",
-      "msbuildProject": "../DTO/DTO.csproj"
+      "path": "../DTO/BibliotecaViva.DTO.csproj",
+      "msbuildProject": "../DTO/BibliotecaViva.DTO.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "AutoMapper >= 10.0.0",
-      "DAL >= 1.0.0",
-      "DTO >= 1.0.0",
+      "BibliotecaViva.DAL >= 1.0.0",
+      "BibliotecaViva.DTO >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 12.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\edmundo\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\edmundo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BLL.csproj",
-      "projectName": "BLL",
-      "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BLL.csproj",
+      "projectUniqueName": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
+      "projectName": "BibliotecaViva.BLL",
+      "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
       "packagesPath": "C:\\Users\\edmundo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\edmundo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -527,11 +522,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\DAL.csproj"
+            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj": {
+              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj"
             },
-            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\DTO.csproj"
+            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj": {
+              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj"
             }
           }
         }
@@ -570,7 +565,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

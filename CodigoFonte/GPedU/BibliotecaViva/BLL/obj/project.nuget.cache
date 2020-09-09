@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x5XKaH0JNQfxr+K/HF17L7+fiSf6kLufojqAeiQwsIcqe4oJKXtSqhlPCeccplL8aG4fjEyuMKy2b3yOznYvbg==",
+  "dgSpecHash": "UsoDknk9StftHAAZJ22yi9CpCrsKjLOl23fTtBJ1iYgWzkGHYxHl2yZXNaruID2ukIlywbmDDmXpUrzj+shDTw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BLL.csproj",
+  "projectFilePath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\edmundo\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\edmundo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

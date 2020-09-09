@@ -1,5 +1,5 @@
 using System;
-namespace BibliotecaViva.Models.DTO
+namespace BibliotecaViva.DTO
 {
     public class TextoDTO : DocumentoDTO
     {
