@@ -20,7 +20,7 @@ namespace BibliotecaViva.Controllers
         [HttpPost("CadastrarPessoa")]
         public async Task<IActionResult> CadastrarPessoa(PessoaDTO pessoa)
         {
-            return Ok(Task.Run(async () => await _BLL.Cadastrar(pessoa)));
+            return Ok(await Task.Run(async () => await _BLL.Cadastrar(pessoa)));
         }
 
         [HttpPost("EditarPessoa")]
