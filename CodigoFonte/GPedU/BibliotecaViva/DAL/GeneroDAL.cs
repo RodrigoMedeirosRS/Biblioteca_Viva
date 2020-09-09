@@ -3,10 +3,11 @@ using System.Linq;
 using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
 {
-    public class GeneroDAL
+    public class GeneroDAL : IGeneroDAL
     {
         //private biblioteca_vivaContext DataContext;
 

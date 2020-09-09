@@ -7,8 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
 using BibliotecaViva.BLL;
+using BibliotecaViva.DAL;
 using BibliotecaViva.DTO;
 using BibliotecaViva.Controllers;
+using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 
 
@@ -26,7 +28,8 @@ namespace BibliotecaViva
         public void ConfigureServices(IServiceCollection services)
         {
             AdicionarControladores(services);
-            RealizarInjecaoDeDependencias(services);
+            RealizarInjecaoDeDependenciasBLL(services);
+            RealizarInjecaoDeDependenciasDAL(services);
             DefinirConfiguracaoSwagger(services);           
         }
 
@@ -35,12 +38,14 @@ namespace BibliotecaViva
             services.AddControllers();
         }
 
-        private static void RealizarInjecaoDeDependencias(IServiceCollection services)
+        private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
-            //services.AddScoped<IFFMPEG, FFMPEG>();
-            //services.AddScoped<ITerminalBashBLL, TerminalBashBLL>();
-            //services.AddScoped<IRequisicao, Requisicao>();
+        }
+
+        private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
+        {    
+            services.AddScoped<IPessoaDAL, PessoaDAL>();
         }
 
         private static void DefinirConfiguracaoSwagger(IServiceCollection services)

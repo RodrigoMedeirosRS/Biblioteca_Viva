@@ -8,4 +8,10 @@
     <ProjectReference Include="..\DTO\BibliotecaViva.DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="BibliotecaViva.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

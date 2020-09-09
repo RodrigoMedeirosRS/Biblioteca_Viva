@@ -6,4 +6,3 @@ C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\Bi
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\DTO\obj\Debug\netstandard2.0\BibliotecaViva.DTO.csproj.CoreCompileInputs.cache
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\DTO\obj\Debug\netstandard2.0\BibliotecaViva.DTO.dll
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\DTO\obj\Debug\netstandard2.0\BibliotecaViva.DTO.pdb
-C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\DTO\obj\Debug\netstandard2.0\BibliotecaViva.DTO.csprojAssemblyReference.cache
