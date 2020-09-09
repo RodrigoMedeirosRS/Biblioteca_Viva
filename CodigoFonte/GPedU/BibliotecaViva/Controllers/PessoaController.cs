@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-using BibliotecaViva.Models.BLL;
-using BibliotecaViva.Models.DTO;
-using BibliotecaViva.Models.DTO.Dominio;
+
+using BibliotecaViva.DTO;
+using BibliotecaViva.BLL.Interfaces;
 
 namespace BibliotecaViva.Controllers
 {
@@ -11,35 +11,28 @@ namespace BibliotecaViva.Controllers
     [ApiController]
     public class PessoaController : Controller
     {
-        private biblioteca_vivaContext DataContext;
-
-        public PessoaController(biblioteca_vivaContext dataContext)
+        private IPerssoaBLL _BLL;
+        public PessoaController(IPerssoaBLL bll)
         {
-            DataContext = dataContext;
+            _BLL = bll;
         }
 
         [HttpPost("CadastrarPessoa")]
         public async Task<IActionResult> CadastrarPessoa(PessoaDTO pessoa)
         {
-            var retorno = "";
-            await Task.Run(() => { retorno = new PessoaBLL(DataContext).Cadastrar(pessoa); });
-            return Ok(retorno);
+            return Ok(await Task.Run(async () => await _BLL.Cadastrar(pessoa)));
         }
 
         [HttpPost("EditarPessoa")]
         public async Task<IActionResult> EditarPessoa(PessoaDTO pessoa)
         {
-            var retorno = "";
-            await Task.Run(() => { retorno = new PessoaBLL(DataContext).Editar(pessoa); });
-            return Ok(retorno);
+            return Ok(await Task.Run(async () => await _BLL.Editar(pessoa)));
         }
 
         [HttpPost("ConsultarPessoa")]
         public async Task<IActionResult> Consultar(PessoaDTO pessoa)
         {
-            var retorno = "";
-            await Task.Run(() => { retorno = new PessoaBLL(DataContext).Consultar(pessoa); });
-            return Ok(retorno);
+            return Ok(await Task.Run(async () => await _BLL.Consultar(pessoa)));
         }
     }
 }

@@ -1,439 +1,545 @@
-CREATE TABLE linhadotempo (
-  id SERIAL  NOT NULL ,
-  nome VARCHAR(50) UNIQUE  NOT NULL ,
-  descricacao TEXT   NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE localizacao (
-  id SERIAL  NOT NULL ,
-  nome VARCHAR(100) UNIQUE  NOT NULL ,
-  latitude FLOAT   NOT NULL ,
-  longitude FLOAT   NOT NULL ,
-  datahora TIMESTAMP   NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE glossario (
-  id SERIAL  NOT NULL ,
-  nome VARCHAR(50) UNIQUE  NOT NULL ,
-  descricao TEXT   NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE idioma (
-  id SERIAL  NOT NULL ,
-  nome VARCHAR(20) UNIQUE  NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE tipoevento (
-  id SERIAL  NOT NULL ,
-  nome VARCHAR(50) UNIQUE  NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE tipoparticipacao (
-  id SERIAL  NOT NULL ,
-  nome INTEGER UNIQUE  NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE pessoa (
-  id SERIAL  NOT NULL ,
-  nome VARCHAR(25)   NOT NULL ,
-  sobrenome VARCHAR(100) UNIQUE  NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE termo (
-  id SERIAL  NOT NULL ,
-  nome INTEGER UNIQUE  NOT NULL ,
-  texto INTEGER   NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE documento (
-  id SERIAL  NOT NULL ,
-  nome VARCHAR(50) UNIQUE  NOT NULL ,
-  dataregistro TIMESTAMP   NOT NULL ,
-  datadigitalizacao TIMESTAMP   NOT NULL   ,
-PRIMARY KEY(id));
-
-CREATE TABLE texto (
-  id SERIAL  NOT NULL ,
-  documento_id INTEGER   NOT NULL ,
-  texto TEXT   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id));
-
-CREATE INDEX texto_FKIndex1 ON texto (documento_id);
-
-CREATE INDEX IFK_Rel_11 ON texto (documento_id);
-
-CREATE TABLE audio (
-  id SERIAL  NOT NULL ,
-  documento_id INTEGER   NOT NULL ,
-  base64 TEXT   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id));
-
-CREATE INDEX audio_FKIndex1 ON audio (documento_id);
-
-CREATE INDEX IFK_Rel_17 ON audio (documento_id);
-
-CREATE TABLE nomesocial (
-  id SERIAL  NOT NULL ,
-  pessoa_id INTEGER   NOT NULL ,
-  nome VARCHAR(20)   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(pessoa_id)
-    REFERENCES pessoa(id));
-
-CREATE INDEX nomesocial_FKIndex1 ON nomesocial (pessoa_id);
-
-CREATE INDEX IFK_Rel_33 ON nomesocial (pessoa_id);
-
-CREATE TABLE conceito (
-  id SERIAL  NOT NULL ,
-  glossario_id INTEGER   NOT NULL ,
-  nome VARCHAR(50)   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(glossario_id)
-    REFERENCES glossario(id));
-
-CREATE INDEX conceito_FKIndex1 ON conceito (glossario_id);
-
-CREATE INDEX IFK_Rel_03 ON conceito (glossario_id);
-
-CREATE TABLE apelido (
-  id SERIAL  NOT NULL ,
-  pessoa_id INTEGER   NOT NULL ,
-  nome VARCHAR(20)   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(pessoa_id)
-    REFERENCES pessoa(id));
-
-CREATE INDEX apelido_FKIndex1 ON apelido (pessoa_id);
-
-CREATE INDEX IFK_Rel_31 ON apelido (pessoa_id);
-
-CREATE TABLE video (
-  id SERIAL  NOT NULL ,
-  documento_id INTEGER   NOT NULL ,
-  url VARCHAR(100)   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id));
-
-CREATE INDEX video_FKIndex1 ON video (documento_id);
-
-CREATE INDEX IFK_Rel_19B ON video (documento_id);
-
-CREATE TABLE evento (
-  id SERIAL  NOT NULL ,
-  tipoevento_id INTEGER   NOT NULL ,
-  nome VARCHAR(100) UNIQUE NOT NULL ,
-  datahora TIMESTAMP   NOT NULL ,
-  descricao TEXT   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(tipoevento_id)
-    REFERENCES tipoevento(id));
-
-CREATE INDEX evento_FKIndex1 ON evento (tipoevento_id);
-
-CREATE INDEX IFK_Rel_28 ON evento (tipoevento_id);
-
-CREATE TABLE dossie (
-  id SERIAL  NOT NULL ,
-  documento_id INTEGER   NOT NULL ,
-  nome VARCHAR(50) UNIQUE  NOT NULL ,
-  text TEXT   NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id));
-
-CREATE INDEX dossie_FKIndex1 ON dossie (documento_id);
-
-CREATE INDEX IFK_Rel_10 ON dossie (documento_id);
-
-CREATE TABLE genero (
-  id SERIAL  NOT NULL ,
-  pessoa_id INTEGER   NOT NULL ,
-  nome VARCHAR(20) UNIQUE  NOT NULL   ,
-PRIMARY KEY(id)  ,
-  FOREIGN KEY(pessoa_id)
-    REFERENCES pessoa(id));
-
-CREATE INDEX genero_FKIndex1 ON genero (pessoa_id);
-
-CREATE INDEX IFK_Rel_32 ON genero (pessoa_id);
-
-CREATE TABLE significado (
-  id SERIAL  NOT NULL ,
-  conceito_id INTEGER   NOT NULL ,
-  idioma_id INTEGER   NOT NULL ,
-  link VARCHAR(100)    ,
-  descricao  TEXT   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(idioma_id)
-    REFERENCES idioma(id),
-  FOREIGN KEY(conceito_id)
-    REFERENCES conceito(id));
-
-CREATE INDEX significado_FKIndex1 ON significado (conceito_id);
-CREATE INDEX significado_FKIndex2 ON significado (idioma_id);
-
-CREATE INDEX IFK_Rel_02 ON significado (idioma_id);
-CREATE INDEX IFK_Rel_01 ON significado (conceito_id);
-
-CREATE TABLE transcricao (
-  id SERIAL  NOT NULL ,
-  texto_id INTEGER   NOT NULL ,
-  audio_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(texto_id)
-    REFERENCES texto(id),
-  FOREIGN KEY(audio_id)
-    REFERENCES audio(id));
-
-CREATE INDEX transcricao_FKIndex1 ON transcricao (texto_id);
-CREATE INDEX transcricao_FKIndex2 ON transcricao (audio_id);
-
-CREATE INDEX IFK_Rel_13 ON transcricao (texto_id);
-CREATE INDEX IFK_Rel_14 ON transcricao (audio_id);
-
-CREATE TABLE termopessoa (
-  id SERIAL  NOT NULL ,
-  pessoa_id INTEGER   NOT NULL ,
-  termo_id INTEGER   NOT NULL ,
-  aceito BOOL  DEFAULT false NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(termo_id)
-    REFERENCES termo(id),
-  FOREIGN KEY(pessoa_id)
-    REFERENCES pessoa(id));
-
-CREATE INDEX termopessoa_FKIndex1 ON termopessoa (termo_id);
-CREATE INDEX termopessoa_FKIndex2 ON termopessoa (pessoa_id);
-
-CREATE INDEX IFK_Rel_38 ON termopessoa (termo_id);
-CREATE INDEX IFK_Rel_34 ON termopessoa (pessoa_id);
-
-CREATE TABLE localglossario (
-  id SERIAL  NOT NULL ,
-  glossario_id INTEGER   NOT NULL ,
-  localizacao_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(localizacao_id)
-    REFERENCES localizacao(id),
-  FOREIGN KEY(glossario_id)
-    REFERENCES glossario(id));
-
-CREATE INDEX localglossario_FKIndex1 ON localglossario (localizacao_id);
-CREATE INDEX localglossario_FKIndex2 ON localglossario (glossario_id);
-
-CREATE INDEX IFK_Rel_05 ON localglossario (localizacao_id);
-CREATE INDEX IFK_Rel_04 ON localglossario (glossario_id);
-
-CREATE TABLE linhadotempodocumento (
-  id SERIAL  NOT NULL ,
-  documento_id INTEGER   NOT NULL ,
-  linhadotempo_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id),
-  FOREIGN KEY(linhadotempo_id)
-    REFERENCES linhadotempo(id));
-
-CREATE INDEX linhadotempodocumento_FKIndex1 ON linhadotempodocumento (documento_id);
-CREATE INDEX linhadotempodocumento_FKIndex2 ON linhadotempodocumento (linhadotempo_id);
-
-CREATE INDEX IFK_Rel_22 ON linhadotempodocumento (documento_id);
-CREATE INDEX IFK_Rel_36 ON linhadotempodocumento (linhadotempo_id);
-
-CREATE TABLE documentodossie (
-  id SERIAL  NOT NULL ,
-  dossie_id INTEGER   NOT NULL ,
-  documento_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id),
-  FOREIGN KEY(dossie_id)
-    REFERENCES dossie(id));
-
-CREATE INDEX documentodossie_FKIndex1 ON documentodossie (documento_id);
-CREATE INDEX documentodossie_FKIndex2 ON documentodossie (dossie_id);
-
-CREATE INDEX IFK_Rel_20 ON documentodossie (documento_id);
-CREATE INDEX IFK_Rel_09 ON documentodossie (dossie_id);
-
-CREATE TABLE imagem (
-  id SERIAL  NOT NULL ,
-  termo_id INTEGER   NOT NULL ,
-  documento_id INTEGER   NOT NULL ,
-  base64 TEXT   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id),
-  FOREIGN KEY(termo_id)
-    REFERENCES termo(id));
-
-CREATE INDEX imagem_FKIndex1 ON imagem (documento_id);
-CREATE INDEX imagem_FKIndex2 ON imagem (termo_id);
-
-CREATE INDEX IFK_Rel_40 ON imagem (documento_id);
-CREATE INDEX IFK_Rel_39 ON imagem (termo_id);
-
-CREATE TABLE legenda (
-  id SERIAL  NOT NULL ,
-  texto_id INTEGER   NOT NULL ,
-  video_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(video_id)
-    REFERENCES video(id),
-  FOREIGN KEY(texto_id)
-    REFERENCES texto(id));
-
-CREATE INDEX legenda_FKIndex1 ON legenda (video_id);
-CREATE INDEX legenda_FKIndex2 ON legenda (texto_id);
-
-CREATE INDEX IFK_Rel_16 ON legenda (video_id);
-CREATE INDEX IFK_Rel_12 ON legenda (texto_id);
-
-CREATE TABLE linhadotempoevento (
-  id SERIAL  NOT NULL ,
-  linhadotempo_id INTEGER   NOT NULL ,
-  evento_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(evento_id)
-    REFERENCES evento(id),
-  FOREIGN KEY(linhadotempo_id)
-    REFERENCES linhadotempo(id));
-
-CREATE INDEX linhadotempoevento_FKIndex1 ON linhadotempoevento (evento_id);
-CREATE INDEX linhadotempoevento_FKIndex2 ON linhadotempoevento (linhadotempo_id);
-
-CREATE INDEX IFK_Rel_26 ON linhadotempoevento (evento_id);
-CREATE INDEX IFK_Rel_24 ON linhadotempoevento (linhadotempo_id);
-
-CREATE TABLE linhadotempopessoa (
-  id SERIAL  NOT NULL ,
-  pessoa_id INTEGER   NOT NULL ,
-  linhadotempo_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(pessoa_id)
-    REFERENCES pessoa(id),
-  FOREIGN KEY(linhadotempo_id)
-    REFERENCES linhadotempo(id));
-
-CREATE INDEX linhadotempopessoa_FKIndex1 ON linhadotempopessoa (pessoa_id);
-CREATE INDEX linhadotempopessoa_FKIndex2 ON linhadotempopessoa (linhadotempo_id);
-
-CREATE INDEX IFK_Rel_35 ON linhadotempopessoa (pessoa_id);
-CREATE INDEX IFK_Rel_37 ON linhadotempopessoa (linhadotempo_id);
-
-CREATE TABLE localevento (
-  id SERIAL  NOT NULL ,
-  localizacao_id INTEGER   NOT NULL ,
-  evento_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(evento_id)
-    REFERENCES evento(id),
-  FOREIGN KEY(localizacao_id)
-    REFERENCES localizacao(id));
-
-CREATE INDEX localevento_FKIndex1 ON localevento (evento_id);
-CREATE INDEX localevento_FKIndex2 ON localevento (localizacao_id);
-
-CREATE INDEX IFK_Rel_07 ON localevento (evento_id);
-CREATE INDEX IFK_Rel_06 ON localevento (localizacao_id);
-
-CREATE TABLE documentoglossario (
-  id SERIAL  NOT NULL ,
-  glossario_id INTEGER   NOT NULL ,
-  documento_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id),
-  FOREIGN KEY(glossario_id)
-    REFERENCES glossario(id));
-
-CREATE INDEX documentoglossario_FKIndex1 ON documentoglossario (documento_id);
-CREATE INDEX documentoglossario_FKIndex2 ON documentoglossario (glossario_id);
-
-CREATE INDEX IFK_Rel_23 ON documentoglossario (documento_id);
-CREATE INDEX IFK_Rel_08 ON documentoglossario (glossario_id);
-
-CREATE TABLE eventodocumento (
-  id SERIAL  NOT NULL ,
-  documento_id INTEGER   NOT NULL ,
-  evento_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)    ,
-  FOREIGN KEY(evento_id)
-    REFERENCES evento(id),
-  FOREIGN KEY(documento_id)
-    REFERENCES documento(id));
-
-CREATE INDEX eventodocumento_FKIndex1 ON eventodocumento (evento_id);
-CREATE INDEX eventodocumento_FKIndex2 ON eventodocumento (documento_id);
-
-CREATE INDEX IFK_Rel_25 ON eventodocumento (evento_id);
-CREATE INDEX IFK_Rel_21 ON eventodocumento (documento_id);
-
-CREATE TABLE participacao (
-  id SERIAL  NOT NULL ,
-  pessoa_id INTEGER   NOT NULL ,
-  tipoparticipacao_id INTEGER   NOT NULL ,
-  evento_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)      ,
-  FOREIGN KEY(tipoparticipacao_id)
-    REFERENCES tipoparticipacao(id),
-  FOREIGN KEY(evento_id)
-    REFERENCES evento(id),
-  FOREIGN KEY(pessoa_id)
-    REFERENCES pessoa(id));
-
-CREATE INDEX participacao_FKIndex1 ON participacao (tipoparticipacao_id);
-CREATE INDEX participacao_FKIndex2 ON participacao (evento_id);
-CREATE INDEX participacao_FKIndex3 ON participacao (pessoa_id);
-
-CREATE INDEX IFK_Rel_29 ON participacao (tipoparticipacao_id);
-CREATE INDEX IFK_Rel_27 ON participacao (evento_id);
-CREATE INDEX IFK_Rel_30 ON participacao (pessoa_id);
-
-CREATE TABLE audiodescricaovideo (
-  id SERIAL  NOT NULL ,
-  idioma_id INTEGER   NOT NULL ,
-  audio_id INTEGER   NOT NULL ,
-  video_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)      ,
-  FOREIGN KEY(video_id)
-    REFERENCES video(id),
-  FOREIGN KEY(audio_id)
-    REFERENCES audio(id),
-  FOREIGN KEY(idioma_id)
-    REFERENCES idioma(id));
-
-CREATE INDEX audiodescricaovideo_FKIndex1 ON audiodescricaovideo (video_id);
-CREATE INDEX audiodescricaovideo_FKIndex2 ON audiodescricaovideo (audio_id);
-CREATE INDEX audiodescricaovideo_FKIndex3 ON audiodescricaovideo (idioma_id);
-
-CREATE INDEX IFK_Rel_18 ON audiodescricaovideo (video_id);
-CREATE INDEX IFK_Rel_15 ON audiodescricaovideo (audio_id);
-CREATE INDEX IFK_Rel_43 ON audiodescricaovideo (idioma_id);
-
-CREATE TABLE audiodescricaoimagem (
-  id SERIAL  NOT NULL ,
-  idioma_id INTEGER   NOT NULL ,
-  audio_id INTEGER   NOT NULL ,
-  imagem_id INTEGER   NOT NULL   ,
-PRIMARY KEY(id)      ,
-  FOREIGN KEY(imagem_id)
-    REFERENCES imagem(id),
-  FOREIGN KEY(audio_id)
-    REFERENCES audio(id),
-  FOREIGN KEY(idioma_id)
-    REFERENCES idioma(id));
-
-CREATE INDEX audiodescricaoimagem_FKIndex1 ON audiodescricaoimagem (imagem_id);
-CREATE INDEX audiodescricaoimagem_FKIndex2 ON audiodescricaoimagem (audio_id);
-CREATE INDEX audiodescricaoimagem_FKIndex3 ON audiodescricaoimagem (idioma_id);
-
-CREATE INDEX IFK_Rel_41 ON audiodescricaoimagem (imagem_id);
-CREATE INDEX IFK_Rel_19 ON audiodescricaoimagem (audio_id);
-CREATE INDEX IFK_Rel_42 ON audiodescricaoimagem (idioma_id);
+CREATE TABLE TipoParticipacao (
+  Id INTEGER  NOT NULL  ,
+  Nome INTEGER  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE Glossario (
+  Id INTEGER  NOT NULL  ,
+  Nome VARCHAR(50)  NOT NULL  ,
+  Descricao TEXT  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE Termo (
+  Id INTEGER  NOT NULL  ,
+  Nome INTEGER  NOT NULL  ,
+  Texto INTEGER  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE TipoEvento (
+  Id INTEGER  NOT NULL  ,
+  Nome VARCHAR(50)  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE Idioma (
+  Id INTEGER  NOT NULL  ,
+  Nome VARCHAR(20)  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE Localizacao (
+  Id INTEGER  NOT NULL  ,
+  Nome VARCHAR(100)  NOT NULL  ,
+  Latitude DOUBLE  NOT NULL  ,
+  Longitude DOUBLE  NOT NULL  ,
+  DataHora TIMESTAMP  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE Pessoa (
+  Id INTEGER  NOT NULL  ,
+  Nome VARCHAR(25)  NOT NULL  ,
+  Sobrenome VARCHAR(100)  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE LinhaDoTempo (
+  Id INTEGER  NOT NULL  ,
+  Nome VARCHAR(50)  NOT NULL  ,
+  Descricao TEXT  NOT NULL    ,
+PRIMARY KEY(Id));
+
+
+
+CREATE TABLE NomeSocial (
+  Pessoa INTEGER  NOT NULL  ,
+  Nome VARCHAR(20)  NOT NULL    ,
+PRIMARY KEY(Pessoa)  ,
+  FOREIGN KEY(Pessoa)
+    REFERENCES Pessoa(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX NomeSocial_FKIndex1 ON NomeSocial (Pessoa);
+
+
+
+CREATE TABLE Genero (
+  Pessoa INTEGER  NOT NULL  ,
+  Nome VARCHAR(20)  NOT NULL    ,
+PRIMARY KEY(Pessoa)  ,
+  FOREIGN KEY(Pessoa)
+    REFERENCES Pessoa(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX Genero_FKIndex1 ON Genero (Pessoa);
+
+
+
+CREATE TABLE Conceito (
+  Glossario INTEGER  NOT NULL  ,
+  Nome VARCHAR(50)  NOT NULL    ,
+PRIMARY KEY(Glossario)  ,
+  FOREIGN KEY(Glossario)
+    REFERENCES Glossario(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX conceito_FKIndex1 ON Conceito (Glossario);
+
+
+
+CREATE TABLE Apelido (
+  Pessoa INTEGER  NOT NULL  ,
+  Nome VARCHAR(20)  NOT NULL    ,
+PRIMARY KEY(Pessoa)  ,
+  FOREIGN KEY(Pessoa)
+    REFERENCES Pessoa(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX Apelido_FKIndex1 ON Apelido (Pessoa);
+
+
+
+CREATE TABLE Evento (
+  Id INTEGER  NOT NULL  ,
+  TipoEvento INTEGER  NOT NULL  ,
+  Nome VARCHAR(100)  NOT NULL  ,
+  DataHora TIMESTAMP  NOT NULL  ,
+  Descricao TEXT  NOT NULL    ,
+PRIMARY KEY(Id)  ,
+  FOREIGN KEY(TipoEvento)
+    REFERENCES TipoEvento(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX evento_FKIndex1 ON Evento (TipoEvento);
+
+
+
+CREATE TABLE Documento (
+  Id INTEGER  NOT NULL  ,
+  Idioma INTEGER  NOT NULL  ,
+  Nome VARCHAR(50)  NOT NULL  ,
+  DataRegistro TIMESTAMP  NOT NULL  ,
+  DataDigitalizacao TIMESTAMP  NOT NULL    ,
+PRIMARY KEY(Id)  ,
+  FOREIGN KEY(Idioma)
+    REFERENCES Idioma(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX Documento_FKIndex1 ON Documento (Idioma);
+
+
+
+CREATE TABLE Significado (
+  Conceito INTEGER  NOT NULL  ,
+  Idioma INTEGER  NOT NULL  ,
+  Link VARCHAR(100)    ,
+  Descricao TEXT  NOT NULL    ,
+PRIMARY KEY(Conceito)    ,
+  FOREIGN KEY(Idioma)
+    REFERENCES Idioma(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Conceito)
+    REFERENCES Conceito(Glossario)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX significado_FKIndex2 ON Significado (Idioma);
+CREATE INDEX Significado_FKIndex2 ON Significado (Conceito);
+
+
+
+CREATE TABLE RegiaoLocal (
+  Regiao INTEGER  NOT NULL  ,
+  Local INTEGER  NOT NULL    ,
+PRIMARY KEY(Regiao)    ,
+  FOREIGN KEY(Regiao)
+    REFERENCES Localizacao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Local)
+    REFERENCES Localizacao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX localizacaolocalizacao_FKIndex1 ON RegiaoLocal (Regiao);
+CREATE INDEX localizacaolocalizacao_FKIndex2 ON RegiaoLocal (Local);
+
+
+
+CREATE TABLE PessoaTermo (
+  Pessoa INTEGER  NOT NULL  ,
+  Termo INTEGER  NOT NULL  ,
+  Aceito BOOL  NOT NULL DEFAULT false   ,
+PRIMARY KEY(Pessoa)    ,
+  FOREIGN KEY(Termo)
+    REFERENCES Termo(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Pessoa)
+    REFERENCES Pessoa(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX termopessoa_FKIndex1 ON PessoaTermo (Termo);
+CREATE INDEX TermoPessoa_FKIndex2 ON PessoaTermo (Pessoa);
+
+
+
+CREATE TABLE EventoDocumento (
+  Evento INTEGER  NOT NULL  ,
+  Documento_Id INTEGER  NOT NULL    ,
+PRIMARY KEY(Evento)    ,
+  FOREIGN KEY(Evento)
+    REFERENCES Evento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Documento_Id)
+    REFERENCES Documento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX eventodocumento_FKIndex2 ON EventoDocumento (Evento);
+CREATE INDEX EventoDocumento_FKIndex2 ON EventoDocumento (Documento_Id);
+
+
+
+CREATE TABLE EventoLocalizacao (
+  Evento INTEGER  NOT NULL  ,
+  Localizacao INTEGER  NOT NULL    ,
+PRIMARY KEY(Evento)    ,
+  FOREIGN KEY(Localizacao)
+    REFERENCES Localizacao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Evento)
+    REFERENCES Evento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX localevento_FKIndex2 ON EventoLocalizacao (Localizacao);
+CREATE INDEX EventoLocalizacao_FKIndex2 ON EventoLocalizacao (Evento);
+
+
+
+CREATE TABLE DocumentoGlossario (
+  Glossario INTEGER  NOT NULL  ,
+  Documento INTEGER  NOT NULL    ,
+PRIMARY KEY(Glossario)    ,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Glossario)
+    REFERENCES Glossario(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX documentoglossario_FKIndex1 ON DocumentoGlossario (Documento);
+CREATE INDEX DocumentoGlossario_FKIndex2 ON DocumentoGlossario (Glossario);
+
+
+
+CREATE TABLE GlossarioLocal (
+  Glossario INTEGER  NOT NULL  ,
+  Localizacao INTEGER  NOT NULL    ,
+PRIMARY KEY(Glossario)    ,
+  FOREIGN KEY(Localizacao)
+    REFERENCES Localizacao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Glossario)
+    REFERENCES Glossario(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX localglossario_FKIndex1 ON GlossarioLocal (Localizacao);
+CREATE INDEX GlossarioLocal_FKIndex2 ON GlossarioLocal (Glossario);
+
+
+
+CREATE TABLE LinhaDoTempoEvento (
+  LinhaDoTempo INTEGER  NOT NULL  ,
+  Evento INTEGER  NOT NULL    ,
+PRIMARY KEY(LinhaDoTempo)    ,
+  FOREIGN KEY(Evento)
+    REFERENCES Evento(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(LinhaDoTempo)
+    REFERENCES LinhaDoTempo(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX linhadotempoevento_FKIndex1 ON LinhaDoTempoEvento (Evento);
+CREATE INDEX LinhaDoTempoEvento_FKIndex2 ON LinhaDoTempoEvento (LinhaDoTempo);
+
+
+
+CREATE TABLE LinhaDoTempoPessoa (
+  LinhaDoTempo INTEGER  NOT NULL  ,
+  Pessoa INTEGER  NOT NULL    ,
+PRIMARY KEY(LinhaDoTempo)    ,
+  FOREIGN KEY(Pessoa)
+    REFERENCES Pessoa(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(LinhaDoTempo)
+    REFERENCES LinhaDoTempo(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX linhadotempopessoa_FKIndex1 ON LinhaDoTempoPessoa (Pessoa);
+CREATE INDEX linhadotempopessoa_FKIndex2 ON LinhaDoTempoPessoa (LinhaDoTempo);
+
+
+
+CREATE TABLE LinhaDoTempoDocumento (
+  LinhaDoTempo INTEGER  NOT NULL  ,
+  Documento INTEGER  NOT NULL    ,
+PRIMARY KEY(LinhaDoTempo)    ,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(LinhaDoTempo)
+    REFERENCES LinhaDoTempo(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX linhadotempodocumento_FKIndex1 ON LinhaDoTempoDocumento (Documento);
+CREATE INDEX LinhaDoTempoDocumento_FKIndex2 ON LinhaDoTempoDocumento (LinhaDoTempo);
+
+
+
+CREATE TABLE Imagem (
+  Documento INTEGER  NOT NULL  ,
+  Termo INTEGER  NOT NULL  ,
+  Base64 TEXT  NOT NULL    ,
+PRIMARY KEY(Documento)    ,
+  FOREIGN KEY(Termo)
+    REFERENCES Termo(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX imagem_FKIndex2 ON Imagem (Termo);
+CREATE INDEX imagem_FKIndex2 ON Imagem (Documento);
+
+
+
+CREATE TABLE Participacao (
+  Id INTEGER  NOT NULL  ,
+  Evento INTEGER  NOT NULL  ,
+  TipoParticipacao INTEGER  NOT NULL  ,
+  Pessoa INTEGER  NOT NULL    ,
+PRIMARY KEY(Id)      ,
+  FOREIGN KEY(TipoParticipacao)
+    REFERENCES TipoParticipacao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Evento)
+    REFERENCES Evento(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Pessoa)
+    REFERENCES Pessoa(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX participacao_FKIndex1 ON Participacao (TipoParticipacao);
+CREATE INDEX participacao_FKIndex2 ON Participacao (Evento);
+CREATE INDEX participacao_FKIndex3 ON Participacao (Pessoa);
+
+
+
+CREATE TABLE Texto (
+  Documento INTEGER  NOT NULL  ,
+  Texto TEXT  NOT NULL    ,
+PRIMARY KEY(Documento)  ,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX texto_FKIndex1 ON Texto (Documento);
+
+
+
+CREATE TABLE Audio (
+  Documento INTEGER  NOT NULL  ,
+  Base64 TEXT  NOT NULL    ,
+PRIMARY KEY(Documento)  ,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX Audio_FKIndex1 ON Audio (Documento);
+
+
+
+CREATE TABLE Video (
+  Documento INTEGER  NOT NULL  ,
+  Url VARCHAR(100)  NOT NULL    ,
+PRIMARY KEY(Documento)  ,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX video_FKIndex1 ON Video (Documento);
+
+
+
+CREATE TABLE Dossie (
+  Documento INTEGER  NOT NULL  ,
+  Nome VARCHAR(50)  NOT NULL  ,
+  Texto TEXT  NOT NULL    ,
+PRIMARY KEY(Documento)  ,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(Id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX Dossie_FKIndex1 ON Dossie (Documento);
+
+
+
+CREATE TABLE Transcricao (
+  Audio INTEGER  NOT NULL  ,
+  Texto INTEGER  NOT NULL    ,
+PRIMARY KEY(Audio)    ,
+  FOREIGN KEY(Texto)
+    REFERENCES Texto(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Audio)
+    REFERENCES Audio(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX Transcricao_FKIndex1 ON Transcricao (Audio);
+CREATE INDEX Transcricao_FKIndex2 ON Transcricao (Texto);
+
+
+
+CREATE TABLE DossieDocumento (
+  Dossie INTEGER  NOT NULL  ,
+  Documento INTEGER  NOT NULL    ,
+PRIMARY KEY(Dossie)    ,
+  FOREIGN KEY(Documento)
+    REFERENCES Documento(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Dossie)
+    REFERENCES Dossie(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX documentodossie_FKIndex1 ON DossieDocumento (Documento);
+CREATE INDEX DossieDocumento_FKIndex2 ON DossieDocumento (Dossie);
+
+
+
+CREATE TABLE AudioDescricaoImagem (
+  Imagem INTEGER  NOT NULL  ,
+  Audio INTEGER  NOT NULL    ,
+PRIMARY KEY(Imagem)    ,
+  FOREIGN KEY(Audio)
+    REFERENCES Audio(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Imagem)
+    REFERENCES Imagem(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX AudioDescricaoImagem_FKIndex1 ON AudioDescricaoImagem (Imagem);
+CREATE INDEX AudioDescricaoImagem_FKIndex2 ON AudioDescricaoImagem (Audio);
+
+
+
+CREATE TABLE AudioDescricaoVideo (
+  Video INTEGER  NOT NULL  ,
+  Audio INTEGER  NOT NULL    ,
+PRIMARY KEY(Video)    ,
+  FOREIGN KEY(Audio)
+    REFERENCES Audio(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Video)
+    REFERENCES Video(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX AudioDescricao_FKIndex2 ON AudioDescricaoVideo (Video);
+CREATE INDEX AudioDescricaoVideo_FKIndex2 ON AudioDescricaoVideo (Audio);
+
+
+
+CREATE TABLE Legenda (
+  Video INTEGER  NOT NULL  ,
+  Texto INTEGER  NOT NULL    ,
+PRIMARY KEY(Video)    ,
+  FOREIGN KEY(Texto)
+    REFERENCES Texto(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Video)
+    REFERENCES Video(Documento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION);
+
+
+CREATE INDEX legenda_FKIndex1 ON Legenda (Video);
+CREATE INDEX Legenda_FKIndex2 ON Legenda (Texto);
+
+
+
+
