@@ -1,11 +1,11 @@
-﻿using BibliotecaViva.DTO.Model;
+﻿using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Model;
 
 namespace BibliotecaViva.DAL.Interfaces
 {
     public interface IPessoaDAL
     {
-        void Cadastrar(Pessoa pessoa);
-        Pessoa Consultar(int Id);
-        Pessoa Consultar(string Nome, string Sobrenome);
+        void Cadastrar(PessoaDTO pessoa);
+        PessoaDTO Consultar(PessoaDTO pessoa);
     }
 }

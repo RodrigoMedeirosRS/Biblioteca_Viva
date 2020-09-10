@@ -26,27 +26,18 @@ namespace BibliotecaViva.BLL
 
         public async Task<string> Cadastrar(PessoaDTO pessoa)
         {
-            _DAL.Cadastrar(pessoa.Dados);
+            _DAL.Cadastrar(pessoa);
             return pessoa.Dados.Nome + " " + pessoa.Dados.Sobrenome + " Cadastrada com Sucesso!";
         }
 
         public async Task<string> Consultar(PessoaDTO pessoa)
         {
-            if (pessoa.Dados.Id > 0)
-                return SerializarRetorno(_DAL.Consultar(pessoa.Dados.Id));
-
-            if (!string.IsNullOrEmpty(pessoa.Dados.Nome) || !string.IsNullOrEmpty(pessoa.Dados.Sobrenome))
-                return SerializarRetorno(_DAL.Consultar(pessoa.Dados.Nome, pessoa.Dados.Sobrenome));
-
-            throw new Exception("Parâmetro de Consulta Inválido");
+            return SerializarRetorno(_DAL.Consultar(pessoa));
         }
 
-        private string SerializarRetorno(Pessoa pessoa)
+        private string SerializarRetorno(PessoaDTO pessoa)
         {
-            return pessoa == null ? "Pessoa Não Encontrada" : JsonConvert.SerializeObject(new PessoaDTO()
-            {
-                Dados = pessoa
-            });
+            return pessoa == null ? "Pessoa Não Encontrada" : JsonConvert.SerializeObject(pessoa);
         }
     }
 }

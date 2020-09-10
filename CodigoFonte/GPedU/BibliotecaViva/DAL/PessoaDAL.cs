@@ -1,46 +1,41 @@
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
+using BibliotecaViva.DTO;
 
 namespace BibliotecaViva.DAL
 {
     public class PessoaDAL : IPessoaDAL
     {
         private ISQLiteDataContext DataContext;
+        private IGeneroDAL GeneroDAL;
 
-        public PessoaDAL(ISQLiteDataContext dataContext)
+        public PessoaDAL(ISQLiteDataContext dataContext, IGeneroDAL generoDAL)
         {
             DataContext = dataContext;
+            GeneroDAL = generoDAL;
         }
 
-        public void Cadastrar(Pessoa pessoa)
+        public void Cadastrar(PessoaDTO pessoa)
         {
-            pessoa.Id = VerificarJaRegistrado(pessoa);
-            DataContext.ObterDataContext().InsertOrReplace(pessoa);
+            pessoa.Dados.Id = VerificarJaRegistrado(pessoa);
+            pessoa.Dados.Genero = GeneroDAL.Consultar(pessoa.Genero.Nome).Id;
+            DataContext.ObterDataContext().InsertOrReplace(pessoa.Dados);
         }
 
-        private int VerificarJaRegistrado(Pessoa pessoa)
+        private int VerificarJaRegistrado(PessoaDTO pessoa)
         {
-            if (pessoa.Id != 0)
-                return pessoa.Id;
-            
-            var pessoaCadastrada = Consultar(pessoa.Nome, pessoa.Sobrenome);
-            
-            if (pessoaCadastrada != null)
-                return pessoaCadastrada.Id;
-            
-            return pessoa.Id;
+            var pessoaCadastrada = Consultar(pessoa);
+            return pessoaCadastrada.Dados != null ? pessoaCadastrada.Dados.Id : pessoa.Dados.Id;
         }
 
-
-        public Pessoa Consultar(int id)
+        public PessoaDTO Consultar(PessoaDTO pessoa)
         {
-            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoa => pessoa.Id == id);
-        }
+            var retorno = new PessoaDTO();
 
-        public Pessoa Consultar(string nome, string sobrenome)
-        {
-            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoa => pessoa.Nome == nome && pessoa.Sobrenome == sobrenome);
-        }
+            retorno.Dados = DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Id == pessoa.Dados.Id) ?? DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Nome == pessoa.Dados.Nome && pessoaDB.Sobrenome == pessoa.Dados.Sobrenome);
+            retorno.Genero = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == retorno.Dados.Genero);
 
+            return retorno;
+        }
     }
 }
