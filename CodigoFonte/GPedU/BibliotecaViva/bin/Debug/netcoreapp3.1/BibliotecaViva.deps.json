@@ -784,7 +784,8 @@
       },
       "BibliotecaViva.DAL/1.0.0": {
         "dependencies": {
-          "BibliotecaViva.DTO": "1.0.0"
+          "BibliotecaViva.DTO": "1.0.0",
+          "System.Data.SQLite.NetStandard": "1.0.0"
         },
         "runtime": {
           "BibliotecaViva.DAL.dll": {}
@@ -794,11 +795,22 @@
         }
       },
       "BibliotecaViva.DTO/1.0.0": {
+        "dependencies": {
+          "System.Data.SQLite.NetStandard": "1.0.0"
+        },
         "runtime": {
           "BibliotecaViva.DTO.dll": {}
         },
         "compile": {
           "BibliotecaViva.DTO.dll": {}
+        }
+      },
+      "System.Data.SQLite.NetStandard/1.0.0": {
+        "runtime": {
+          "System.Data.SQLite.NetStandard.dll": {}
+        },
+        "compile": {
+          "System.Data.SQLite.NetStandard.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -2742,6 +2754,11 @@
       "sha512": ""
     },
     "BibliotecaViva.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Data.SQLite.NetStandard/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

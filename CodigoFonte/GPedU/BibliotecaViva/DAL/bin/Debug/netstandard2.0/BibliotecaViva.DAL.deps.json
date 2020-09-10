@@ -10,7 +10,8 @@
       "BibliotecaViva.DAL/1.0.0": {
         "dependencies": {
           "BibliotecaViva.DTO": "1.0.0",
-          "NETStandard.Library": "2.0.3"
+          "NETStandard.Library": "2.0.3",
+          "System.Data.SQLite.NetStandard": "1.0.0"
         },
         "runtime": {
           "BibliotecaViva.DAL.dll": {}
@@ -23,8 +24,16 @@
         }
       },
       "BibliotecaViva.DTO/1.0.0": {
+        "dependencies": {
+          "System.Data.SQLite.NetStandard": "1.0.0"
+        },
         "runtime": {
           "BibliotecaViva.DTO.dll": {}
+        }
+      },
+      "System.Data.SQLite.NetStandard/1.0.0": {
+        "runtime": {
+          "System.Data.SQLite.NetStandard.dll": {}
         }
       }
     }
@@ -50,6 +59,11 @@
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
     "BibliotecaViva.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Data.SQLite.NetStandard/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\System.Data.SQLite.NetStandard\System.Data.SQLite.NetStandard.csproj" />
   </ItemGroup>
 
 </Project>

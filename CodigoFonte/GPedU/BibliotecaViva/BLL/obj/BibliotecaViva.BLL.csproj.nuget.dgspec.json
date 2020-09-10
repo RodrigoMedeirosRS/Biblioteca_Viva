@@ -158,7 +158,11 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj": {
+                "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

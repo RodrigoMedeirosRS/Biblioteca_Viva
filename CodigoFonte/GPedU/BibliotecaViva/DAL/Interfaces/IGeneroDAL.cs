@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BibliotecaViva.DTO.Model;
 
 namespace BibliotecaViva.DAL.Interfaces
 {
     public interface IGeneroDAL
     {
+        Genero Consultar(string nome);
+        Genero Consultar(int id);
     }
 }

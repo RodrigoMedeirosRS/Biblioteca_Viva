@@ -1,12 +1,8 @@
 using System;
-using System.Linq;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-
 
 using BibliotecaViva.DTO;
-using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 
@@ -23,17 +19,18 @@ namespace BibliotecaViva.BLL
 
         public async Task<string> Cadastrar(PessoaDTO pessoa)
         {
-            return "Cadastrar";
-        }
-
-        public async Task<string> Editar(PessoaDTO pessoa)
-        {
-            return "Editar";
+            _DAL.Cadastrar(pessoa);
+            return "Sucesso!";
         }
 
         public async Task<string> Consultar(PessoaDTO pessoa)
         {
-            return "Consultar";
+            return SerializarRetorno(_DAL.Consultar(pessoa));
+        }
+
+        private string SerializarRetorno(PessoaDTO pessoa)
+        {
+            return pessoa != null ? JsonConvert.SerializeObject(pessoa) : throw new Exception("Pessoa Não Encontrada");
         }
     }
 }

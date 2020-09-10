@@ -102,3 +102,5 @@ C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\Bi
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\obj\Debug\netcoreapp3.1\BibliotecaViva.dll
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\obj\Debug\netcoreapp3.1\BibliotecaViva.pdb
 C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\obj\Debug\netcoreapp3.1\BibliotecaViva.genruntimeconfig.cache
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\bin\Debug\netcoreapp3.1\System.Data.SQLite.NetStandard.dll
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\bin\Debug\netcoreapp3.1\System.Data.SQLite.NetStandard.pdb

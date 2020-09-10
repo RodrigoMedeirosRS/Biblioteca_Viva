@@ -14,4 +14,8 @@
     <ProjectReference Include="..\DTO\BibliotecaViva.DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enum\" />
+  </ItemGroup>
+
 </Project>
