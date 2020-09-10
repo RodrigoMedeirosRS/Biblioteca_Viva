@@ -14,15 +14,19 @@
     <Compile Remove="BLL\**" />
     <Compile Remove="DAL\**" />
     <Compile Remove="DTO\**" />
+    <Compile Remove="System.Data.SQLite.NetStandard\**" />
     <Content Remove="BLL\**" />
     <Content Remove="DAL\**" />
     <Content Remove="DTO\**" />
+    <Content Remove="System.Data.SQLite.NetStandard\**" />
     <EmbeddedResource Remove="BLL\**" />
     <EmbeddedResource Remove="DAL\**" />
     <EmbeddedResource Remove="DTO\**" />
+    <EmbeddedResource Remove="System.Data.SQLite.NetStandard\**" />
     <None Remove="BLL\**" />
     <None Remove="DAL\**" />
     <None Remove="DTO\**" />
+    <None Remove="System.Data.SQLite.NetStandard\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
@@ -44,16 +48,16 @@
     <Content Remove="appsettings.json" />
     <Content Remove="appsettings.Development.json" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <None Remove="BibliotecaViva.db" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="Recursos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="BLL\BibliotecaViva.BLL.csproj" />
     <ProjectReference Include="DTO\BibliotecaViva.DTO.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="BibliotecaViva.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

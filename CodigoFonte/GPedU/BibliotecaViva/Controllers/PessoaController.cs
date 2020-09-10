@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,19 +21,27 @@ namespace BibliotecaViva.Controllers
         [HttpPost("CadastrarPessoa")]
         public async Task<IActionResult> CadastrarPessoa(PessoaDTO pessoa)
         {
-            return Ok(await Task.Run(async () => await _BLL.Cadastrar(pessoa)));
-        }
-
-        [HttpPost("EditarPessoa")]
-        public async Task<IActionResult> EditarPessoa(PessoaDTO pessoa)
-        {
-            return Ok(await Task.Run(async () => await _BLL.Editar(pessoa)));
+            try
+            {
+                return Ok(await Task.Run(async () => await _BLL.Cadastrar(pessoa)));
+            }
+            catch(Exception ex)
+            {
+                return Problem(ex.Message);
+            }
         }
 
         [HttpPost("ConsultarPessoa")]
         public async Task<IActionResult> Consultar(PessoaDTO pessoa)
         {
-            return Ok(await Task.Run(async () => await _BLL.Consultar(pessoa)));
+            try
+            {
+                return Ok(await Task.Run(async () => await _BLL.Consultar(pessoa)));
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
         }
     }
 }

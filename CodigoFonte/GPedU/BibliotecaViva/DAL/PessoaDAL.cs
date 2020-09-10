@@ -1,62 +1,46 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
-
-using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
 {
     public class PessoaDAL : IPessoaDAL
     {
-        //    private biblioteca_vivaContext DataContext;
+        private ISQLiteDataContext DataContext;
 
-        //    public PessoaDAL(biblioteca_vivaContext dataContext)
-        //    {
-        //        DataContext = dataContext;
-        //    }
+        public PessoaDAL(ISQLiteDataContext dataContext)
+        {
+            DataContext = dataContext;
+        }
 
-        //    public Pessoa Consultar(Pessoa pessoa)
-        //    { 
-        //        return DataContext.Pessoa.FirstOrDefault(p => p.Nome == pessoa.Nome && p.Sobrenome == pessoa.Sobrenome);
-        //    }
+        public void Cadastrar(Pessoa pessoa)
+        {
+            pessoa.Id = VerificarJaRegistrado(pessoa);
+            DataContext.ObterDataContext().InsertOrReplace(pessoa);
+        }
 
-        //    public List<Pessoa> ListarFamilia (string sobrenome)
-        //    {
-        //        return DataContext.Pessoa.Where(p => p.Sobrenome == sobrenome).ToList();
-        //    }
+        private int VerificarJaRegistrado(Pessoa pessoa)
+        {
+            if (pessoa.Id != 0)
+                return pessoa.Id;
+            
+            var pessoaCadastrada = Consultar(pessoa.Nome, pessoa.Sobrenome);
+            
+            if (pessoaCadastrada != null)
+                return pessoaCadastrada.Id;
+            
+            return pessoa.Id;
+        }
 
-        //    public string Cadastrar(Pessoa pessoa)
-        //    {
-        //        try
-        //        {
-        //            if (Consultar(pessoa) != null)
-        //                throw new Exception("Pessoa já cadastrada");
 
-        //            DataContext.Pessoa.Add(pessoa);
-        //            DataContext.SaveChanges();
-        //            return "Sucesso!";
-        //        }
-        //        catch(Exception ex)
-        //        {
-        //            return ex.Message;
-        //        }
-        //    }
-        //    public string Editar(Pessoa pessoa)
-        //    {
-        //        try
-        //        {
-        //             if (Consultar(pessoa) == null)
-        //                throw new Exception("Pessoa não cadastrada");
+        public Pessoa Consultar(int id)
+        {
+            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(v => v.Id == id);
+        }
 
-        //            DataContext.Update(pessoa);
-        //            DataContext.SaveChanges();
-        //            return "Sucesso";
-        //        }
-        //        catch(Exception ex)
-        //        {
-        //            return ex.Message;
-        //        }
-        //    }
+        public Pessoa Consultar(string nome, string sobrenome)
+        {
+            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(v => v.Nome == nome && v.Sobrenome == sobrenome);
+        }
+
     }
 }

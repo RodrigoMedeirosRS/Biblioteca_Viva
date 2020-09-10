@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using BibliotecaViva.BLL;
 using BibliotecaViva.DAL;
 using BibliotecaViva.DTO;
+using BibliotecaViva.DataContext;
 using BibliotecaViva.Controllers;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
+
 
 
 namespace BibliotecaViva
@@ -41,11 +43,13 @@ namespace BibliotecaViva
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
+            
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
         {    
             services.AddScoped<IPessoaDAL, PessoaDAL>();
+            services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 
         private static void DefinirConfiguracaoSwagger(IServiceCollection services)
