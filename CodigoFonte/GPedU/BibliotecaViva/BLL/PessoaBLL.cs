@@ -1,33 +1,26 @@
 using System;
-using System.Linq;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-
 
 using BibliotecaViva.DTO;
-using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
-using BibliotecaViva.DTO.Model;
 
 namespace BibliotecaViva.BLL
 {
     public class PessoaBLL : IPerssoaBLL
     {
         private IPessoaDAL _DAL;
-        private ISQLiteDataContext _DataContext;
         
-        public PessoaBLL(IPessoaDAL dal, ISQLiteDataContext dataContext)
+        public PessoaBLL(IPessoaDAL dal)
         {
             _DAL = dal;
-            _DataContext = dataContext;
         }
 
         public async Task<string> Cadastrar(PessoaDTO pessoa)
         {
             _DAL.Cadastrar(pessoa);
-            return pessoa.Nome + " " + pessoa.Sobrenome + " Cadastrada com Sucesso!";
+            return "Sucesso!";
         }
 
         public async Task<string> Consultar(PessoaDTO pessoa)
@@ -37,7 +30,7 @@ namespace BibliotecaViva.BLL
 
         private string SerializarRetorno(PessoaDTO pessoa)
         {
-            return pessoa == null ? "Pessoa Não Encontrada" : JsonConvert.SerializeObject(pessoa);
+            return pessoa != null ? JsonConvert.SerializeObject(pessoa) : throw new Exception("Pessoa Não Encontrada");
         }
     }
 }

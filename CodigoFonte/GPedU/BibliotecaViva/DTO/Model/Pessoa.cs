@@ -5,7 +5,7 @@ namespace BibliotecaViva.DTO.Model
     public class Pessoa
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Indexed]
         public int Genero { get; set; }

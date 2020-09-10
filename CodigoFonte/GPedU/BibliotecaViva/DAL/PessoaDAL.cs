@@ -1,9 +1,7 @@
-using System;
-
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
+using BibliotecaViva.DAL.Mapeadores;
 using BibliotecaViva.DAL.Interfaces;
-using System.Runtime.CompilerServices;
 
 namespace BibliotecaViva.DAL
 {
@@ -20,14 +18,14 @@ namespace BibliotecaViva.DAL
 
         public void Cadastrar(PessoaDTO pessoaDTO)
         {
-            Pessoa pessoa = MapearPessoa(pessoaDTO);
-            DataContext.ObterDataContext().InsertOrReplace(pessoa);
+            pessoaDTO.SetId(VerificarJaRegistrado(pessoaDTO));
+            DataContext.ObterDataContext().InsertOrReplace(MapeadorPessoa.MapearPessoa(pessoaDTO, GeneroDAL.Consultar(pessoaDTO.Genero).Id));
         }
 
-        private int VerificarJaRegistrado(PessoaDTO pessoa)
+        private int? VerificarJaRegistrado(PessoaDTO pessoa)
         {
             var pessoaCadastrada = Consultar(pessoa);
-            return pessoaCadastrada != null ? pessoaCadastrada.Id : pessoa.Id;
+            return pessoaCadastrada != null ? pessoaCadastrada.GetId() : pessoa.GetId();
         }
 
         public PessoaDTO Consultar(PessoaDTO pessoaDTO)
@@ -39,29 +37,7 @@ namespace BibliotecaViva.DAL
             
             var generdoDB = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == pessoaDB.Genero);
 
-            return MapearPessoa(pessoaDB, generdoDB);
-        }
-
-        private Pessoa MapearPessoa(PessoaDTO pessoaDTO)
-        {
-            return new Pessoa()
-            {
-                Id = VerificarJaRegistrado(pessoaDTO),
-                Genero = GeneroDAL.Consultar(pessoaDTO.Genero).Id,
-                Nome = pessoaDTO.Nome,
-                Sobrenome = pessoaDTO.Sobrenome
-            };
-        }
-
-        private PessoaDTO MapearPessoa(Pessoa pessoa, Genero genero)
-        {
-            return new PessoaDTO()
-            {
-                Id = pessoa.Id,
-                Nome = pessoa.Nome,
-                Sobrenome = pessoa.Sobrenome,
-                Genero = genero.Nome
-            };
+            return MapeadorPessoa.MapearPessoa(pessoaDB, generdoDB);
         }
     }
 }
