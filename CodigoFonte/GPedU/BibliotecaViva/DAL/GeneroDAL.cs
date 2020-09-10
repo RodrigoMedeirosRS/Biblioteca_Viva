@@ -4,6 +4,7 @@ using System.Data.SQLite.Tools;
 using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
 
@@ -11,49 +12,22 @@ namespace BibliotecaViva.DAL
 {
     public class GeneroDAL : IGeneroDAL
     {
-        
-        //private biblioteca_vivaContext DataContext;
 
-        //public GeneroDAL(biblioteca_vivaContext dataContext)
-        //{
+        private ISQLiteDataContext DataContext;
 
-        //}
-        //public Genero Consultar(Genero genero)
-        //{ 
-        //    return DataContext.Genero.FirstOrDefault(p => p.Nome == genero.Nome);
-        //}
+        public GeneroDAL(ISQLiteDataContext dataContext)
+        {
+            DataContext = dataContext;
+        }
 
-        //public string Cadastrar(Genero genero)
-        //{
-        //    try
-        //    {
-        //        if (Consultar(genero) != null)
-        //            throw new Exception("Genero já cadastrado");
+        public Genero Consultar(string nome)
+        {
+            return DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(genero => genero.Nome == nome);
+        }
 
-        //        DataContext.Genero.Add(genero);
-        //        DataContext.SaveChanges();
-        //        return "Sucesso!";
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        return ex.Message;
-        //    }
-        //}
-        //public string Editar(Genero genero)
-        //{
-        //    try
-        //    {
-        //         if (Consultar(genero) == null)
-        //            throw new Exception("Genero não cadastrado");
-
-        //        DataContext.Update(genero);
-        //        DataContext.SaveChanges();
-        //        return "Sucesso";
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        return ex.Message;
-        //    }
-        //}
+        public Genero Consultar(int id)
+        {
+            return DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(genero => genero.Id == id);
+        }
     }
 }

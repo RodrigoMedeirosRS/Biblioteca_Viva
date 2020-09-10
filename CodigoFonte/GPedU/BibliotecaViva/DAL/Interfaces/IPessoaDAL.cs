@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using BibliotecaViva.DTO.Model;
+﻿using BibliotecaViva.DTO.Model;
 
 namespace BibliotecaViva.DAL.Interfaces
 {

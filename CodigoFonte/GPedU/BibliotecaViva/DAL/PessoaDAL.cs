@@ -34,12 +34,12 @@ namespace BibliotecaViva.DAL
 
         public Pessoa Consultar(int id)
         {
-            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(v => v.Id == id);
+            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoa => pessoa.Id == id);
         }
 
         public Pessoa Consultar(string nome, string sobrenome)
         {
-            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(v => v.Nome == nome && v.Sobrenome == sobrenome);
+            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoa => pessoa.Nome == nome && pessoa.Sobrenome == sobrenome);
         }
 
     }
