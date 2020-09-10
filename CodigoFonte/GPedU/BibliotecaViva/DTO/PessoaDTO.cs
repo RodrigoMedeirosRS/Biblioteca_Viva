@@ -8,9 +8,11 @@ namespace BibliotecaViva.DTO
         {
 
         }
-        public Pessoa Dados { get; set; }
-        public Genero Genero { get; set; }
-        public NomeSocial NomeSocial { get; set; }
-        public Apelido Apelido { get; set; }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public string Genero { get; set; }
+        public string Apelido { get; set; }
+        public string NomeSocial { get; set; }
     }
 }

@@ -1,6 +1,9 @@
+using System;
+
+using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
-using BibliotecaViva.DTO;
+using System.Runtime.CompilerServices;
 
 namespace BibliotecaViva.DAL
 {
@@ -15,27 +18,50 @@ namespace BibliotecaViva.DAL
             GeneroDAL = generoDAL;
         }
 
-        public void Cadastrar(PessoaDTO pessoa)
+        public void Cadastrar(PessoaDTO pessoaDTO)
         {
-            pessoa.Dados.Id = VerificarJaRegistrado(pessoa);
-            pessoa.Dados.Genero = GeneroDAL.Consultar(pessoa.Genero.Nome).Id;
-            DataContext.ObterDataContext().InsertOrReplace(pessoa.Dados);
+            Pessoa pessoa = MapearPessoa(pessoaDTO);
+            DataContext.ObterDataContext().InsertOrReplace(pessoa);
         }
 
         private int VerificarJaRegistrado(PessoaDTO pessoa)
         {
             var pessoaCadastrada = Consultar(pessoa);
-            return pessoaCadastrada.Dados != null ? pessoaCadastrada.Dados.Id : pessoa.Dados.Id;
+            return pessoaCadastrada != null ? pessoaCadastrada.Id : pessoa.Id;
         }
 
-        public PessoaDTO Consultar(PessoaDTO pessoa)
+        public PessoaDTO Consultar(PessoaDTO pessoaDTO)
         {
-            var retorno = new PessoaDTO();
+            var pessoaDB = DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoa => pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome);
+            
+            if (pessoaDB == null)
+                return null;
+            
+            var generdoDB = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == pessoaDB.Genero);
 
-            retorno.Dados = DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Id == pessoa.Dados.Id) ?? DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Nome == pessoa.Dados.Nome && pessoaDB.Sobrenome == pessoa.Dados.Sobrenome);
-            retorno.Genero = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == retorno.Dados.Genero);
+            return MapearPessoa(pessoaDB, generdoDB);
+        }
 
-            return retorno;
+        private Pessoa MapearPessoa(PessoaDTO pessoaDTO)
+        {
+            return new Pessoa()
+            {
+                Id = VerificarJaRegistrado(pessoaDTO),
+                Genero = GeneroDAL.Consultar(pessoaDTO.Genero).Id,
+                Nome = pessoaDTO.Nome,
+                Sobrenome = pessoaDTO.Sobrenome
+            };
+        }
+
+        private PessoaDTO MapearPessoa(Pessoa pessoa, Genero genero)
+        {
+            return new PessoaDTO()
+            {
+                Id = pessoa.Id,
+                Nome = pessoa.Nome,
+                Sobrenome = pessoa.Sobrenome,
+                Genero = genero.Nome
+            };
         }
     }
 }
