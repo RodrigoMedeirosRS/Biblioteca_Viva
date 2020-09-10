@@ -1,26 +1,29 @@
+using BibliotecaViva.DTO.Model;
+
 namespace BibliotecaViva.DTO
 {
     public class PessoaDTO
     {
         public PessoaDTO()
         {
+            Id = null;
+        }
 
-        }
-        public PessoaDTO(int? id, string nome, string sobrenome, string genero, string apelido = "", string nomeSocial = "")
-        {
-            if (id != null)
-                Id = (int)id;
-            Nome = nome;
-            Sobrenome = sobrenome;
-            Genero = genero;
-            Apelido = apelido;
-            NomeSocial = nomeSocial;
-        }
-        public int Id { get; set; }
+        private int? Id { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public string Genero { get; set; }
         public string Apelido { get; set; }
         public string NomeSocial { get; set; }
+
+        public int? GetId()
+        {
+            return Id;
+        }
+
+        public void SetId(int? id)
+        {
+            Id = id;
+        }
     }
 }

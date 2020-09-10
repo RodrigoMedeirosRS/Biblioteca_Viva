@@ -6,3 +6,11 @@ C:\Users\edmundo\Documents\Rodrigo\Projetos\SQLiteSharp-NET\System.Data.SQLite.N
 C:\Users\edmundo\Documents\Rodrigo\Projetos\SQLiteSharp-NET\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.csproj.CoreCompileInputs.cache
 C:\Users\edmundo\Documents\Rodrigo\Projetos\SQLiteSharp-NET\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.dll
 C:\Users\edmundo\Documents\Rodrigo\Projetos\SQLiteSharp-NET\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.pdb
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\bin\Debug\netstandard2.0\System.Data.SQLite.NetStandard.deps.json
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\bin\Debug\netstandard2.0\System.Data.SQLite.NetStandard.dll
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\bin\Debug\netstandard2.0\System.Data.SQLite.NetStandard.pdb
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.AssemblyInfoInputs.cache
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.AssemblyInfo.cs
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.csproj.CoreCompileInputs.cache
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.dll
+C:\Users\edmundo\Documents\Rodrigo\Projetos\Biblioteca_Viva\CodigoFonte\GPedU\BibliotecaViva\System.Data.SQLite.NetStandard\obj\Debug\netstandard2.0\System.Data.SQLite.NetStandard.pdb

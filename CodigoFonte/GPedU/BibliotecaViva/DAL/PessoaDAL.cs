@@ -1,62 +1,43 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
-
 using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Model;
+using BibliotecaViva.DAL.Mapeadores;
 using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
 {
     public class PessoaDAL : IPessoaDAL
     {
-        //    private biblioteca_vivaContext DataContext;
+        private ISQLiteDataContext DataContext;
+        private IGeneroDAL GeneroDAL;
 
-        //    public PessoaDAL(biblioteca_vivaContext dataContext)
-        //    {
-        //        DataContext = dataContext;
-        //    }
+        public PessoaDAL(ISQLiteDataContext dataContext, IGeneroDAL generoDAL)
+        {
+            DataContext = dataContext;
+            GeneroDAL = generoDAL;
+        }
 
-        //    public Pessoa Consultar(Pessoa pessoa)
-        //    { 
-        //        return DataContext.Pessoa.FirstOrDefault(p => p.Nome == pessoa.Nome && p.Sobrenome == pessoa.Sobrenome);
-        //    }
+        public void Cadastrar(PessoaDTO pessoaDTO)
+        {
+            pessoaDTO.SetId(VerificarJaRegistrado(pessoaDTO));
+            DataContext.ObterDataContext().InsertOrReplace(MapeadorPessoa.MapearPessoa(pessoaDTO, GeneroDAL.Consultar(pessoaDTO.Genero).Id));
+        }
 
-        //    public List<Pessoa> ListarFamilia (string sobrenome)
-        //    {
-        //        return DataContext.Pessoa.Where(p => p.Sobrenome == sobrenome).ToList();
-        //    }
+        private int? VerificarJaRegistrado(PessoaDTO pessoa)
+        {
+            var pessoaCadastrada = Consultar(pessoa);
+            return pessoaCadastrada != null ? pessoaCadastrada.GetId() : pessoa.GetId();
+        }
 
-        //    public string Cadastrar(Pessoa pessoa)
-        //    {
-        //        try
-        //        {
-        //            if (Consultar(pessoa) != null)
-        //                throw new Exception("Pessoa já cadastrada");
+        public PessoaDTO Consultar(PessoaDTO pessoaDTO)
+        {
+            var pessoaDB = DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoa => pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome);
+            
+            if (pessoaDB == null)
+                return null;
+            
+            var generdoDB = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == pessoaDB.Genero);
 
-        //            DataContext.Pessoa.Add(pessoa);
-        //            DataContext.SaveChanges();
-        //            return "Sucesso!";
-        //        }
-        //        catch(Exception ex)
-        //        {
-        //            return ex.Message;
-        //        }
-        //    }
-        //    public string Editar(Pessoa pessoa)
-        //    {
-        //        try
-        //        {
-        //             if (Consultar(pessoa) == null)
-        //                throw new Exception("Pessoa não cadastrada");
-
-        //            DataContext.Update(pessoa);
-        //            DataContext.SaveChanges();
-        //            return "Sucesso";
-        //        }
-        //        catch(Exception ex)
-        //        {
-        //            return ex.Message;
-        //        }
-        //    }
+            return MapeadorPessoa.MapearPessoa(pessoaDB, generdoDB);
+        }
     }
 }
