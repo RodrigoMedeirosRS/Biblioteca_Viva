@@ -3,7 +3,7 @@ using BibliotecaViva.DTO.Model;
 
 namespace BibliotecaViva.DAL.Mapeadores
 {
-    public static class MapeadorPessoa
+    public static class Mapeador
     {
         public static Pessoa MapearPessoa(PessoaDTO pessoaDTO, int genero)
         {
@@ -16,17 +16,27 @@ namespace BibliotecaViva.DAL.Mapeadores
             };
         }
 
-        public static PessoaDTO MapearPessoa(Pessoa pessoa, Genero genero)
+        public static PessoaDTO MapearPessoa(Pessoa pessoa, Genero genero, Apelido apelido)
         {
             var pessoaDTO = new PessoaDTO()
             {
                 Nome = pessoa.Nome,
                 Sobrenome = pessoa.Sobrenome,
-                Genero = genero.Nome
+                Genero = genero.Nome,
+                Apelido = apelido != null ? apelido.Nome : string.Empty
             };
 
             pessoaDTO.SetId(pessoa.Id);
             return pessoaDTO;
+        }
+
+        public static Apelido MapearApelido(PessoaDTO pessoaDTO, int? apelidoId)
+        {
+            return new Apelido()
+            {
+                Id = apelidoId,
+                Nome = pessoaDTO.Apelido
+            };
         }
     }
 }

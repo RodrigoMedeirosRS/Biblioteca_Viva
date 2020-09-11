@@ -9,17 +9,20 @@ namespace BibliotecaViva.DAL
     {
         private ISQLiteDataContext DataContext;
         private IGeneroDAL GeneroDAL;
+        private IApelidoDAL ApelidoDAL;
 
-        public PessoaDAL(ISQLiteDataContext dataContext, IGeneroDAL generoDAL)
+        public PessoaDAL(ISQLiteDataContext dataContext, IGeneroDAL generoDAL, IApelidoDAL apelidoDAL)
         {
             DataContext = dataContext;
             GeneroDAL = generoDAL;
+            ApelidoDAL = apelidoDAL;
         }
 
         public void Cadastrar(PessoaDTO pessoaDTO)
         {
             pessoaDTO.SetId(VerificarJaRegistrado(pessoaDTO));
-            DataContext.ObterDataContext().InsertOrReplace(MapeadorPessoa.MapearPessoa(pessoaDTO, GeneroDAL.Consultar(pessoaDTO.Genero).Id));
+            DataContext.ObterDataContext().InsertOrReplace(Mapeador.MapearPessoa(pessoaDTO, GeneroDAL.Consultar(pessoaDTO.Genero).Id));
+            ApelidoDAL.CadastrarApelido(pessoaDTO);
         }
 
         private int? VerificarJaRegistrado(PessoaDTO pessoa)
@@ -36,8 +39,9 @@ namespace BibliotecaViva.DAL
                 return null;
             
             var generdoDB = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == pessoaDB.Genero);
+            var apelidoDB = ApelidoDAL.ConsultarApelido(pessoaDB);
 
-            return MapeadorPessoa.MapearPessoa(pessoaDB, generdoDB);
+            return Mapeador.MapearPessoa(pessoaDB, generdoDB, apelidoDB);
         }
     }
 }
