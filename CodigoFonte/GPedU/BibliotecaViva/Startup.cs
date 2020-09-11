@@ -51,6 +51,7 @@ namespace BibliotecaViva
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IGeneroDAL, GeneroDAL>();
             services.AddScoped<IApelidoDAL, ApelidoDAL>();
+            services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 

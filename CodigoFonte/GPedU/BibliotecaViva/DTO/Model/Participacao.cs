@@ -7,13 +7,13 @@ namespace BibliotecaViva.DTO.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         
-        [Unique]
+        [Indexed]
         public int Evento { get; set; }
 
-        [Unique]
+        [Indexed]
         public int TipoParticipacao { get; set; }
 
-        [Unique]
+        [Indexed]
         public int Pessoa { get; set; }
     }
 }

@@ -5,20 +5,21 @@ using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
 {
-    public class ApelidoDAL : IApelidoDAL
+    public class NomeSocialDAL : INomeSocialDAL
     {
         private ISQLiteDataContext DataContext;
 
-        public ApelidoDAL(ISQLiteDataContext dataContext)
+        public NomeSocialDAL(ISQLiteDataContext dataContext)
         {
             DataContext = dataContext;
         }
+
         public void Cadastrar(PessoaDTO pessoaDTO)
         {
-            DataContext.ObterDataContext().InsertOrReplace(new Apelido()
+            DataContext.ObterDataContext().InsertOrReplace(new NomeSocial()
             {
                 Pessoa = (int)pessoaDTO.GetId(),
-                Nome = pessoaDTO.Apelido
+                Nome = pessoaDTO.NomeSocial
             });
         }
 
@@ -28,16 +29,17 @@ namespace BibliotecaViva.DAL
             {
                 DataContext.ObterDataContext().Delete(Consultar(pessoaDTO.GetId()));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (ex.Message != "Cannot delete Object: it has no PK")
                     throw ex;
             }
+            
         }
 
-        public Apelido Consultar(int? pessoaId)
+        public NomeSocial Consultar(int? pessoaId)
         {
-            return DataContext.ObterDataContext().Table<Apelido>().FirstOrDefault(apelido => apelido.Pessoa == pessoaId);
+            return DataContext.ObterDataContext().Table<NomeSocial>().FirstOrDefault(nomeSocial => nomeSocial.Pessoa == pessoaId);
         }
     }
 }

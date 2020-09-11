@@ -5,7 +5,7 @@ namespace BibliotecaViva.DTO.Model
     public class Apelido
     {
         [PrimaryKey, AutoIncrement]
-        public int? Id { get; set; }
+        public int? Pessoa { get; set; }
         
         [Unique]
         public string Nome { get; set; }

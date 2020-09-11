@@ -16,27 +16,19 @@ namespace BibliotecaViva.DAL.Mapeadores
             };
         }
 
-        public static PessoaDTO MapearPessoa(Pessoa pessoa, Genero genero, Apelido apelido)
+        public static PessoaDTO MapearPessoa(Pessoa pessoa, Genero genero, Apelido apelido, NomeSocial nomeSocial)
         {
             var pessoaDTO = new PessoaDTO()
             {
                 Nome = pessoa.Nome,
                 Sobrenome = pessoa.Sobrenome,
                 Genero = genero.Nome,
-                Apelido = apelido != null ? apelido.Nome : string.Empty
+                Apelido = apelido != null ? apelido.Nome : string.Empty,
+                NomeSocial = nomeSocial != null ? nomeSocial.Nome : string.Empty
             };
 
             pessoaDTO.SetId(pessoa.Id);
             return pessoaDTO;
-        }
-
-        public static Apelido MapearApelido(PessoaDTO pessoaDTO, int? apelidoId)
-        {
-            return new Apelido()
-            {
-                Id = apelidoId,
-                Nome = pessoaDTO.Apelido
-            };
         }
     }
 }
