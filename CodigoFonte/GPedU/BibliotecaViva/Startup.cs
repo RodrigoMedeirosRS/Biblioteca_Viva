@@ -43,7 +43,7 @@ namespace BibliotecaViva
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
-            
+            services.AddScoped<IDocumentoBLL, DocumentoBLL>();
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)

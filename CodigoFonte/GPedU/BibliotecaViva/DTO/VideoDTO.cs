@@ -4,9 +4,6 @@ namespace BibliotecaViva.DTO
 {
     public class VideoDTO : DocumentoDTO
     {
-        public VideoDTO()
-        {
-
-        }
+        public string Url { get; set; }
     }
 }

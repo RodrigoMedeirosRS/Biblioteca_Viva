@@ -3,9 +3,6 @@ namespace BibliotecaViva.DTO
 {
     public class AudioDTO : DocumentoDTO
     {
-        public AudioDTO()
-        {
-
-        }
+        public string Base64 { get; set; }
     }
 }
