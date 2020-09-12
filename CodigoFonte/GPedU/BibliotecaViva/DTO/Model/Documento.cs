@@ -6,7 +6,7 @@ namespace BibliotecaViva.DTO.Model
     public class Documento
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         
         [Indexed]
         public int Idioma { get; set; }
