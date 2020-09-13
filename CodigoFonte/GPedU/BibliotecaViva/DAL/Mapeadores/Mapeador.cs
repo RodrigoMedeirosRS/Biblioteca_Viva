@@ -32,10 +32,11 @@ namespace BibliotecaViva.DAL.Mapeadores
             return pessoaDTO;
         }
 
-        public static Documento MapearCabecalhoDocumento(DocumentoDTO documentoDTO, int idioma)
+        public static Documento MapearCabecalhoDocumento(DocumentoDTO documentoDTO, int idioma, int? documentoId)
         {
             return new Documento()
             {
+                Id = documentoId,
                 Nome = documentoDTO.Nome,
                 Idioma = idioma,
                 DataRegistro = documentoDTO.DataRegistro,

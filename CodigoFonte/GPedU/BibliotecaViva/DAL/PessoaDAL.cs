@@ -7,10 +7,10 @@ namespace BibliotecaViva.DAL
 {
     public class PessoaDAL : IPessoaDAL
     {
-        private ISQLiteDataContext DataContext;
-        private IGeneroDAL GeneroDAL;
-        private IApelidoDAL ApelidoDAL;
-        private INomeSocialDAL NomeSocialDAL;
+        private ISQLiteDataContext DataContext { get; set; }
+        private IGeneroDAL GeneroDAL { get; set; }
+        private IApelidoDAL ApelidoDAL { get; set; }
+        private INomeSocialDAL NomeSocialDAL { get; set; }
 
         public PessoaDAL(ISQLiteDataContext dataContext, IGeneroDAL generoDAL, IApelidoDAL apelidoDAL, INomeSocialDAL nomeSocialDAL)
         {

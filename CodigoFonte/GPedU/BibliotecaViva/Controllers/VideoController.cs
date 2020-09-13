@@ -11,7 +11,7 @@ namespace BibliotecaViva.Controllers
     [ApiController]
     public class VideoController : Controller
     {
-        private IDocumentoBLL _BLL;
+        private IDocumentoBLL _BLL { get; set; }
         public VideoController(IDocumentoBLL bll)
         {
             _BLL = bll;
@@ -36,19 +36,6 @@ namespace BibliotecaViva.Controllers
             try
             {
                 return Ok(await Task.Run(async () => await _BLL.Consultar(documento)));
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
-        }
-
-        [HttpPost("Mencionar")]
-        public async Task<IActionResult> Mencionar(VideoDTO documento)
-        {
-            try
-            {
-                return Ok(await Task.Run(async () => await _BLL.Mencionar(documento)));
             }
             catch (Exception ex)
             {

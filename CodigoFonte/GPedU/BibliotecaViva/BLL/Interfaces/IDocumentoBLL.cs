@@ -8,6 +8,5 @@ namespace BibliotecaViva.BLL.Interfaces
     {
         Task<string> Cadastrar(DocumentoDTO documento);
         Task<string> Consultar(DocumentoDTO documento);
-        Task<string> Mencionar(DocumentoDTO documento);
     }
 }

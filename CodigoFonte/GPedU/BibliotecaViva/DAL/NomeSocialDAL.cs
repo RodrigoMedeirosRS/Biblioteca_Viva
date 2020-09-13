@@ -7,7 +7,7 @@ namespace BibliotecaViva.DAL
 {
     public class NomeSocialDAL : INomeSocialDAL
     {
-        private ISQLiteDataContext DataContext;
+        private ISQLiteDataContext DataContext { get; set; }
 
         public NomeSocialDAL(ISQLiteDataContext dataContext)
         {

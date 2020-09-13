@@ -11,7 +11,7 @@ namespace BibliotecaViva.Controllers
     [ApiController]
     public class PessoaController : Controller
     {
-        private IPerssoaBLL _BLL;
+        private IPerssoaBLL _BLL { get; set; }
         public PessoaController(IPerssoaBLL bll)
         {
             _BLL = bll;

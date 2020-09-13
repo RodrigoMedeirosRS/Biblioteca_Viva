@@ -10,17 +10,19 @@ namespace BibliotecaViva.BLL
 {
     public class DocumentoBLL : IDocumentoBLL
     {
+        IDocumentoDAL DocumentoDAL { get; set; }
+        public DocumentoBLL(IDocumentoDAL documentoDAL)
+        {
+            DocumentoDAL = documentoDAL;
+        }
         public async Task<string> Cadastrar(DocumentoDTO documento) 
         {
-            return "";
+            DocumentoDAL.Cadastrar(documento);
+            return "Sucesso!";
         }
         public async Task<string> Consultar(DocumentoDTO documento)
         {
-            return "";
-        }
-        public async Task<string> Mencionar(DocumentoDTO documento)
-        {
-            return ""; 
+            return JsonConvert.SerializeObject(DocumentoDAL.Consultar(documento));
         }
     }
 }
