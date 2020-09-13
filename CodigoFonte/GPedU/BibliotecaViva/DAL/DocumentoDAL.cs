@@ -12,12 +12,20 @@ namespace BibliotecaViva.DAL.Interfaces
         private IIdiomaDAL Idioma { get; set; }
         private IPessoaDAL Pessoa { get; set; }
         private ITipoRelacaoDAL TipoRelacao { get; set; }
+        private IAudioDAL Audio { get; set; }
+        private IVideoDAL Video { get; set; }
+        private IImagemDAL Imagem { get; set; }
+        private ITextoDAL Texto { get; set; }
 
-        public DocumentoDAL(ISQLiteDataContext dataContext, IIdiomaDAL idioma, IPessoaDAL pessoa, ITipoRelacaoDAL tipoRelacao)
+        public DocumentoDAL(ISQLiteDataContext dataContext, IIdiomaDAL idioma, IPessoaDAL pessoa, ITipoRelacaoDAL tipoRelacao, IAudioDAL audio, IVideoDAL video, IImagemDAL imagem, ITextoDAL texto)
         {
             DataContext = dataContext;
             Idioma = idioma;
             Pessoa = pessoa;
+            Texto = texto;
+            Imagem = imagem;
+            Audio = audio;
+            Video = video;
             TipoRelacao = tipoRelacao;
         }
 
@@ -27,6 +35,48 @@ namespace BibliotecaViva.DAL.Interfaces
             var documento = Mapeadores.Mapeador.MapearCabecalhoDocumento(documentoDTO, idioma, VerificarJaRegistrado(documentoDTO, idioma));
             DataContext.ObterDataContext().InsertOrReplace(documento);
             VincularAutoria(documentoDTO, idioma);
+
+            switch (documentoDTO.GetType().Name)
+            {
+                case ("AudioDTO"):
+                    {
+                        Audio.Cadastrar(new Audio()
+                        {
+                            Documento = documento.Id,
+                            Base64 = (documentoDTO as AudioDTO).Base64
+                        });
+                        break;
+                    }
+                case ("ImagemDTO"):
+                    {
+                        Imagem.Cadastrar(new Imagem()
+                        {
+                            Documento = documento.Id,
+                            Base64 = (documentoDTO as ImagemDTO).Base64
+                        });
+                        break;
+                    }
+                case ("TextoDTO"):
+                    {
+                        Texto.Cadastrar(new Texto()
+                        {
+                            Documento = documento.Id,
+                            Corpo = (documentoDTO as TextoDTO).Texto
+                        });
+                        break;
+                    }
+                case ("VideoDTO"):
+                    {
+                        Video.Cadastrar(new Video()
+                        {
+                            Documento = documento.Id,
+                            Url = (documentoDTO as VideoDTO).Url
+                        });
+                        break;
+                    }
+                default:
+                    throw new Exception("Documento Inválido");
+            }
         }
 
         private int? VerificarJaRegistrado(DocumentoDTO documentoDTO, int idioma)
@@ -73,19 +123,31 @@ namespace BibliotecaViva.DAL.Interfaces
         public DocumentoDTO Consultar(DocumentoDTO documentoDTO)
         {
             var idioma = Idioma.Consultar(documentoDTO.Idioma);
-            var documento = DataContext.ObterDataContext().Table<Documento>().FirstOrDefault(documentoDB => documentoDB.Nome == documentoDTO.Nome && documentoDB.Idioma == idioma.Id);
+            var documento = DataContext.ObterDataContext().Table<Documento>().FirstOrDefault(documentoDB => documentoDB.Nome == documentoDTO.Nome && documentoDB.Idioma == idioma.Id) ?? throw new Exception("Documento não encontrado");
             var autor = Pessoa.Consultar(BuscarPessoasVinculadas(documentoDTO, idioma.Id, "Autor", null).First().Pessoa);
 
             switch (documentoDTO.GetType().Name)
             {
                 case ("AudioDTO"):
-                    return new AudioDTO(documento, idioma.Nome, autor);
+                    {
+                        var audio = Audio.Consultar(documento.Id) ?? throw new Exception("Arquivo de audio não encontrado");
+                        return new AudioDTO(documento, idioma.Nome, autor, audio.Base64);
+                    }
                 case ("ImagemDTO"):
-                    return new ImagemDTO(documento, idioma.Nome, autor);
+                    {
+                        var imagem = Imagem.Consultar(documento.Id) ?? throw new Exception("Arquivo de imagem não encontrada");
+                        return new ImagemDTO(documento, idioma.Nome, autor, imagem.Base64);
+                    }
                 case ("TextoDTO"):
-                    return new TextoDTO(documento, idioma.Nome, autor);
+                    {
+                        var texto = Texto.Consultar(documento.Id) ?? throw new Exception("Arquivo de texto não encontrado");
+                        return new TextoDTO(documento, idioma.Nome, autor, texto.Corpo);
+                    }
                 case ("VideoDTO"):
-                    return new VideoDTO(documento, idioma.Nome, autor);
+                    {
+                        var video = Video.Consultar(documento.Id) ?? throw new Exception("Arquivo de video não encontrado");
+                        return new VideoDTO(documento, idioma.Nome, autor, video.Url);
+                    }
                 default:
                     throw new Exception("Documento Inválido");
             }       

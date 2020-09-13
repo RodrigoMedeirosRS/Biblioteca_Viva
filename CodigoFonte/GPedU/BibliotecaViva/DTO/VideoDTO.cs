@@ -8,9 +8,9 @@ namespace BibliotecaViva.DTO
         {
 
         }
-        public VideoDTO(Documento documento, string idioma, Pessoa autor) : base(documento, idioma, autor)
+        public VideoDTO(Documento documento, string idioma, Pessoa autor, string url) : base(documento, idioma, autor)
         {
-
+            Url = url;
         }
         public string Url { get; set; }
     }

@@ -8,9 +8,9 @@ namespace BibliotecaViva.DTO
         {
 
         }
-        public TextoDTO(Documento documento, string idioma, Pessoa autor) : base(documento, idioma, autor)
+        public TextoDTO(Documento documento, string idioma, Pessoa autor, string texto) : base(documento, idioma, autor)
         {
-
+            Texto = texto;
         }
         public string Texto { get; set; }
     }

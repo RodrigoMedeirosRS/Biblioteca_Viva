@@ -46,7 +46,11 @@ namespace BibliotecaViva
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
-        {    
+        {
+            services.AddScoped<ITextoDAL, TextoDAL>();
+            services.AddScoped<IVideoDAL, VideoDAL>();
+            services.AddScoped<IAudioDAL, AudioDAL>();
+            services.AddScoped<IImagemDAL, ImagemDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IGeneroDAL, GeneroDAL>();
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
