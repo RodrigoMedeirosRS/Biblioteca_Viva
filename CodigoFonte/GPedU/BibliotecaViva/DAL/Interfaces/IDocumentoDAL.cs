@@ -6,7 +6,7 @@ namespace BibliotecaViva.DAL.Interfaces
     public interface IDocumentoDAL
     {
         void Cadastrar(DocumentoDTO documentoDTO);
-        Documento Consultar(DocumentoDTO documentoDTO);
+        DocumentoDTO Consultar(DocumentoDTO documentoDTO);
         Documento Consultar(DocumentoDTO documentoDTO, int idioma);
     }
 }

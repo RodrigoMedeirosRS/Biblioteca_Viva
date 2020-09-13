@@ -59,16 +59,20 @@ namespace BibliotecaViva.DAL
 
         public PessoaDTO Consultar(PessoaDTO pessoaDTO)
         {
-            var pessoa = DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDb => pessoaDb.Nome == pessoaDTO.Nome && pessoaDb.Sobrenome == pessoaDTO.Sobrenome);
-            
+            var pessoa = DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Nome == pessoaDTO.Nome && pessoaDB.Sobrenome == pessoaDTO.Sobrenome);
+
             if (pessoa == null)
                 return null;
-            
+
             var genero = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == pessoa.Genero);
             var apelido = ApelidoDAL.Consultar(pessoa.Id);
             var nomesocial = NomeSocialDAL.Consultar(pessoa.Id);
 
             return Mapeador.MapearPessoa(pessoa, genero, apelido, nomesocial);
+        }
+        public Pessoa Consultar(int? pessoaId)
+        {
+            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Id == pessoaId);
         }
     }
 }

@@ -37,35 +37,58 @@ namespace BibliotecaViva.DAL.Interfaces
 
         private void VincularAutoria(DocumentoDTO documentoDTO, int idioma)
         {
-            var documento = Consultar(documentoDTO, idioma);
-            var tipoRelacao = TipoRelacao.Consultar("Autor");
-            var autor = Pessoa.Consultar(new PessoaDTO()
+            var autorAnterior = BuscarPessoasVinculadas(documentoDTO, idioma, "Autor", BuscarPessoa(documentoDTO).GetId());
+            DataContext.ObterDataContext().Delete(autorAnterior.First());
+            DataContext.ObterDataContext().InsertOrReplace(autorAnterior.First());
+        }
+
+        private PessoaDTO BuscarPessoa(DocumentoDTO documentoDTO)
+        {
+            return Pessoa.Consultar(new PessoaDTO()
             {
                 Nome = documentoDTO.NomeAutor,
                 Sobrenome = documentoDTO.SobreNomeAutor
             }) ?? throw new Exception("Autor não encontrado!");
-            var autorAnterior = ConsultarRelacaoPessoaDocumento(autor.GetId(), documento.Id, tipoRelacao.Id);
-
-            if (autorAnterior.Count > 0)
-                DataContext.ObterDataContext().Delete(autorAnterior.First());
-
-            DataContext.ObterDataContext().Insert(new PessoaDocumento()
-            {
-                Pessoa = (int)autor.GetId(),
-                Documento = (int)documento.Id,
-                TipoDeRelacao = tipoRelacao.Id
-            });
         }
 
-        private List<PessoaDocumento> ConsultarRelacaoPessoaDocumento(int? idPessoa, int? idDocumento, int idTipoRelacao)
+        private List<PessoaDocumento> BuscarPessoasVinculadas(DocumentoDTO documentoDTO, int idioma, string tipoVinculo, int? pessoa)
         {
-            return DataContext.ObterDataContext().Table<PessoaDocumento>().Where(pessoaDocumento => pessoaDocumento.Pessoa == idPessoa && pessoaDocumento.Documento == idDocumento && pessoaDocumento.TipoDeRelacao == idTipoRelacao).ToList();
+            var pessoaRelacionada = new PessoaDocumento()
+            {
+                Pessoa = pessoa,
+                Documento = Consultar(documentoDTO, idioma).Id,
+                TipoDeRelacao = TipoRelacao.Consultar(tipoVinculo).Id
+            };
+            var pessoaRelacionadas = ConsultarRelacaoPessoaDocumento(pessoaRelacionada).ToList();
+            return pessoaRelacionadas.Count > 0 ? pessoaRelacionadas : new List<PessoaDocumento>(){ pessoaRelacionada };
         }
 
-        public Documento Consultar(DocumentoDTO documentoDTO)
+        private List<PessoaDocumento> ConsultarRelacaoPessoaDocumento(PessoaDocumento pessoa)
+        {
+            return pessoa.Pessoa != null ?
+                DataContext.ObterDataContext().Table<PessoaDocumento>().Where(pessoaDocumento => pessoaDocumento.Documento == pessoa.Documento && pessoaDocumento.TipoDeRelacao == pessoa.TipoDeRelacao && pessoaDocumento.Pessoa == pessoa.Pessoa).ToList() :
+                DataContext.ObterDataContext().Table<PessoaDocumento>().Where(pessoaDocumento => pessoaDocumento.Documento == pessoa.Documento && pessoaDocumento.TipoDeRelacao == pessoa.TipoDeRelacao).ToList();
+        }
+
+        public DocumentoDTO Consultar(DocumentoDTO documentoDTO)
         {
             var idioma = Idioma.Consultar(documentoDTO.Idioma);
-            return DataContext.ObterDataContext().Table<Documento>().FirstOrDefault(documentoDB => documentoDB.Nome == documentoDTO.Nome && documentoDB.Idioma == idioma.Id);
+            var documento = DataContext.ObterDataContext().Table<Documento>().FirstOrDefault(documentoDB => documentoDB.Nome == documentoDTO.Nome && documentoDB.Idioma == idioma.Id);
+            var autor = Pessoa.Consultar(BuscarPessoasVinculadas(documentoDTO, idioma.Id, "Autor", null).First().Pessoa);
+
+            switch (documentoDTO.GetType().Name)
+            {
+                case ("AudioDTO"):
+                    return new AudioDTO(documento, idioma.Nome, autor);
+                case ("ImagemDTO"):
+                    return new ImagemDTO(documento, idioma.Nome, autor);
+                case ("TextoDTO"):
+                    return new TextoDTO(documento, idioma.Nome, autor);
+                case ("VideoDTO"):
+                    return new VideoDTO(documento, idioma.Nome, autor);
+                default:
+                    throw new Exception("Documento Inválido");
+            }       
         }
 
         public Documento Consultar(DocumentoDTO documentoDTO, int idioma)
