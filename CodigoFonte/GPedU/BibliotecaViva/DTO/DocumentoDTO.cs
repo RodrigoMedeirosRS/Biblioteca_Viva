@@ -5,22 +5,7 @@ using System.Collections.Generic;
 namespace BibliotecaViva.DTO
 {
     public abstract class DocumentoDTO
-    {
-        protected DocumentoDTO()
-        {
-
-        }
-
-        protected DocumentoDTO(Documento documento, string idioma, Pessoa autor)
-        {
-            Nome = documento.Nome;
-            Idioma = idioma;
-            NomeAutor = autor.Nome;
-            SobreNomeAutor = autor.Sobrenome;
-            DataRegistro = documento.DataRegistro;
-            DataDigitalizacao = documento.DataDigitalizacao;
-        }
-        
+    {        
         public string Nome { get; set; }
         public string Idioma { get; set; }
         public string NomeAutor { get; set; }

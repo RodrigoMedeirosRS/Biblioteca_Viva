@@ -8,5 +8,6 @@ namespace BibliotecaViva.DAL.Interfaces
         void Cadastrar(PessoaDTO pessoaDTO);
         PessoaDTO Consultar(PessoaDTO pessoaDTO);
         Pessoa Consultar(int? pessoaID);
+        Pessoa Consultar(string nome, string sobrenome);
     }
 }

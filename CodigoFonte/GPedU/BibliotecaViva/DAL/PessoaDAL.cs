@@ -74,5 +74,10 @@ namespace BibliotecaViva.DAL
         {
             return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Id == pessoaId);
         }
+
+        public Pessoa Consultar(string nome, string sobrenome)
+        {
+            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Nome == nome && pessoaDB.Sobrenome == sobrenome);
+        }
     }
 }

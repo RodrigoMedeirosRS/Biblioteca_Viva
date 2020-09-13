@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 
@@ -35,6 +36,7 @@ namespace BibliotecaViva.DAL.Interfaces
             var documento = Mapeadores.Mapeador.MapearCabecalhoDocumento(documentoDTO, idioma, VerificarJaRegistrado(documentoDTO, idioma));
             DataContext.ObterDataContext().InsertOrReplace(documento);
             VincularAutoria(documentoDTO, idioma);
+            VincularMencao(documento, documentoDTO);
 
             switch (documentoDTO.GetType().Name)
             {
@@ -87,18 +89,70 @@ namespace BibliotecaViva.DAL.Interfaces
 
         private void VincularAutoria(DocumentoDTO documentoDTO, int idioma)
         {
-            var autorAnterior = BuscarPessoasVinculadas(documentoDTO, idioma, "Autor", BuscarPessoa(documentoDTO).GetId());
+            var autorAnterior = BuscarPessoasVinculadas(documentoDTO, idioma, "Autor", BuscarPessoaAutor(documentoDTO).GetId());
             DataContext.ObterDataContext().Delete(autorAnterior.First());
             DataContext.ObterDataContext().InsertOrReplace(autorAnterior.First());
         }
 
-        private PessoaDTO BuscarPessoa(DocumentoDTO documentoDTO)
+        private void VincularMencao(Documento documento, DocumentoDTO documentoDTO)
+        {
+            var mencoes = BuscarPessoasVinculadas(documento.Id,"Mencao").ToList();
+            foreach (var mencao in mencoes)
+            {
+                DataContext.ObterDataContext().Delete(mencao);
+            }
+            foreach (var mencao in BuscarPessoasMencionada(documentoDTO))
+            {
+                DataContext.ObterDataContext().InsertOrReplace(new PessoaDocumento()
+                {
+                    Pessoa = mencao.Id,
+                    Documento = documento.Id,
+                    TipoDeRelacao = TipoRelacao.Consultar("Mencao").Id
+                });
+            }            
+        }
+
+        private DocumentoDTO ObterMencao(Documento documento, DocumentoDTO documentoDTO)
+        {
+            documentoDTO.NomeMencao = new List<string>();
+            documentoDTO.SobrenomeMencao = new List<string>();
+            foreach (var mencao in BuscarPessoasVinculadas(documento.Id, "Mencao"))
+            {
+                documentoDTO.NomeMencao.Add(mencao.Nome);
+                documentoDTO.SobrenomeMencao.Add(mencao.Sobrenome);
+            }
+            return documentoDTO;
+        }
+
+        private PessoaDTO BuscarPessoaAutor(DocumentoDTO documentoDTO)
         {
             return Pessoa.Consultar(new PessoaDTO()
             {
                 Nome = documentoDTO.NomeAutor,
                 Sobrenome = documentoDTO.SobreNomeAutor
             }) ?? throw new Exception("Autor não encontrado!");
+        }
+
+        private List<Pessoa> BuscarPessoasMencionada(DocumentoDTO documentoDTO)
+        {
+            var retorno = new List<Pessoa>();
+            for (int i = 0; i < documentoDTO.NomeMencao.Count; i ++)
+            {
+                retorno.Add(Pessoa.Consultar(documentoDTO.NomeMencao[i], documentoDTO.SobrenomeMencao[i]));
+            }
+            return retorno;
+        }
+
+        private List<Pessoa> BuscarPessoasVinculadas(int? documentoId, string tipoVinculo)
+        {
+            var relacao = TipoRelacao.Consultar(tipoVinculo);
+            var mencoes = DataContext.ObterDataContext().Table<PessoaDocumento>().Where(mencao => mencao.Documento == documentoId && mencao.TipoDeRelacao == relacao.Id);
+            var retorno = new List<Pessoa>();
+            foreach (var mencao in mencoes)
+            {
+                retorno.Add(Pessoa.Consultar(mencao.Pessoa));
+            }
+            return retorno;
         }
 
         private List<PessoaDocumento> BuscarPessoasVinculadas(DocumentoDTO documentoDTO, int idioma, string tipoVinculo, int? pessoa)
@@ -125,32 +179,47 @@ namespace BibliotecaViva.DAL.Interfaces
             var idioma = Idioma.Consultar(documentoDTO.Idioma);
             var documento = DataContext.ObterDataContext().Table<Documento>().FirstOrDefault(documentoDB => documentoDB.Nome == documentoDTO.Nome && documentoDB.Idioma == idioma.Id) ?? throw new Exception("Documento não encontrado");
             var autor = Pessoa.Consultar(BuscarPessoasVinculadas(documentoDTO, idioma.Id, "Autor", null).First().Pessoa);
+            documentoDTO = PopularRetorno(documentoDTO, idioma, documento, autor);
+            return documentoDTO;
+        }
+
+        private DocumentoDTO PopularRetorno(DocumentoDTO documentoDTO, Idioma idioma, Documento documento, Pessoa autor)
+        {
+            documentoDTO.Nome = documento.Nome;
+            documentoDTO.DataRegistro = documento.DataRegistro;
+            documentoDTO.DataDigitalizacao = documento.DataDigitalizacao;
+            documentoDTO.Idioma = idioma.Nome;
+            documentoDTO.NomeAutor = autor.Nome;
+            documentoDTO.SobreNomeAutor = autor.Sobrenome;
+            documentoDTO = ObterMencao(documento, documentoDTO);
 
             switch (documentoDTO.GetType().Name)
             {
                 case ("AudioDTO"):
                     {
-                        var audio = Audio.Consultar(documento.Id) ?? throw new Exception("Arquivo de audio não encontrado");
-                        return new AudioDTO(documento, idioma.Nome, autor, audio.Base64);
+                        (documentoDTO as AudioDTO).Base64 = Audio.Consultar(documento.Id).Base64;
+                        break;
                     }
                 case ("ImagemDTO"):
                     {
-                        var imagem = Imagem.Consultar(documento.Id) ?? throw new Exception("Arquivo de imagem não encontrada");
-                        return new ImagemDTO(documento, idioma.Nome, autor, imagem.Base64);
+                        (documentoDTO as ImagemDTO).Base64 = Imagem.Consultar(documento.Id).Base64;
+                        break;
                     }
                 case ("TextoDTO"):
                     {
-                        var texto = Texto.Consultar(documento.Id) ?? throw new Exception("Arquivo de texto não encontrado");
-                        return new TextoDTO(documento, idioma.Nome, autor, texto.Corpo);
+                        (documentoDTO as TextoDTO).Texto = Texto.Consultar(documento.Id).Corpo;
+                        break;
                     }
                 case ("VideoDTO"):
                     {
-                        var video = Video.Consultar(documento.Id) ?? throw new Exception("Arquivo de video não encontrado");
-                        return new VideoDTO(documento, idioma.Nome, autor, video.Url);
+                        (documentoDTO as VideoDTO).Url = Video.Consultar(documento.Id).Url;
+                        break;
                     }
                 default:
                     throw new Exception("Documento Inválido");
-            }       
+            }
+
+            return documentoDTO;
         }
 
         public Documento Consultar(DocumentoDTO documentoDTO, int idioma)
