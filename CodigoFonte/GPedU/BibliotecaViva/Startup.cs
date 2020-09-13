@@ -53,6 +53,7 @@ namespace BibliotecaViva
             services.AddScoped<IApelidoDAL, ApelidoDAL>();
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
+            services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 
