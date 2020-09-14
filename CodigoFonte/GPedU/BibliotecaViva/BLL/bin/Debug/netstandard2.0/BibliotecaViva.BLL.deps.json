@@ -9,7 +9,6 @@
     ".NETStandard,Version=v2.0/": {
       "BibliotecaViva.BLL/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.0.0",
           "BibliotecaViva.DAL": "1.0.0",
           "BibliotecaViva.DTO": "1.0.0",
           "NETStandard.Library": "2.0.3",
@@ -74,6 +73,7 @@
       },
       "BibliotecaViva.DAL/1.0.0": {
         "dependencies": {
+          "AutoMapper": "10.0.0",
           "BibliotecaViva.DTO": "1.0.0",
           "System.Data.SQLite.NetStandard": "1.0.0"
         },

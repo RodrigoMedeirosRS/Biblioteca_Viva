@@ -10,8 +10,7 @@ namespace BibliotecaViva.BLL
 {
     public class PessoaBLL : IPerssoaBLL
     {
-        private IPessoaDAL _DAL;
-        
+        private IPessoaDAL _DAL { get; set; }
         public PessoaBLL(IPessoaDAL dal)
         {
             _DAL = dal;

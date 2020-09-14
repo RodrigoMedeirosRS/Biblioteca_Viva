@@ -1,4 +1,5 @@
-﻿using BibliotecaViva.DTO;
+﻿using System;
+using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 
 namespace BibliotecaViva.DAL.Mapeadores
@@ -29,6 +30,52 @@ namespace BibliotecaViva.DAL.Mapeadores
 
             pessoaDTO.SetId(pessoa.Id);
             return pessoaDTO;
+        }
+
+        public static Documento MapearCabecalhoDocumento(DocumentoDTO documentoDTO, int idioma, int? documentoId)
+        {
+            return new Documento()
+            {
+                Id = documentoId,
+                Nome = documentoDTO.Nome,
+                Idioma = idioma,
+                DataRegistro = documentoDTO.DataRegistro,
+                DataDigitalizacao = documentoDTO.DataDigitalizacao
+            };           
+        }
+
+        public static CorpoDocumento MapearCorpoDocumento(DocumentoDTO documentoDTO, int documentoId, int termoId = 0)
+        {
+            switch (documentoDTO.GetType().Name)
+            {
+                case ("TextoDTO"):
+                    return new Texto()
+                    {
+                        Documento = documentoId,
+                        Corpo = (documentoDTO as TextoDTO).Texto
+                    };
+                case ("AudioDTO"):
+                    return new Audio()
+                    {
+                        Documento = documentoId,
+                        Base64 = (documentoDTO as AudioDTO).Base64
+                    };
+                case ("VideoDTO"):
+                    return new Video()
+                    {
+                        Documento = documentoId,
+                        Url = (documentoDTO as VideoDTO).Url
+                    };
+                case ("ImagemDTO"):
+                    return new Imagem()
+                    {
+                        Documento = documentoId,
+                        Base64 = (documentoDTO as ImagemDTO).Base64,
+                        Termo = termoId
+                    };
+                default:
+                    throw new Exception("Tipo de documento inválido!");
+            }
         }
     }
 }
