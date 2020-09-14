@@ -2,10 +2,10 @@
 
 namespace BibliotecaViva.DTO.Model
 {
-    public class Texto
+    public class Texto : CorpoDocumento
     {
         [PrimaryKey, Indexed]
-        public int Documento { get; set; }
+        public int? Documento { get; set; }
         public string Corpo { get; set; }
     }
 }

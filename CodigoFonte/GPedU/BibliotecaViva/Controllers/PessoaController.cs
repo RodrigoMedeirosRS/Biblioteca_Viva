@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-
 using BibliotecaViva.DTO;
 using BibliotecaViva.BLL.Interfaces;
 
@@ -12,14 +11,14 @@ namespace BibliotecaViva.Controllers
     [ApiController]
     public class PessoaController : Controller
     {
-        private IPerssoaBLL _BLL;
+        private IPerssoaBLL _BLL { get; set; }
         public PessoaController(IPerssoaBLL bll)
         {
             _BLL = bll;
         }
 
-        [HttpPost("CadastrarPessoa")]
-        public async Task<IActionResult> CadastrarPessoa(PessoaDTO pessoa)
+        [HttpPost("Cadastrar")]
+        public async Task<IActionResult> Cadastrar(PessoaDTO pessoa)
         {
             try
             {
@@ -31,7 +30,7 @@ namespace BibliotecaViva.Controllers
             }
         }
 
-        [HttpPost("ConsultarPessoa")]
+        [HttpPost("Consultar")]
         public async Task<IActionResult> Consultar(PessoaDTO pessoa)
         {
             try

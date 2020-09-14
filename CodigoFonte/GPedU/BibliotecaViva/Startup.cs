@@ -20,13 +20,12 @@ namespace BibliotecaViva
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
             AdicionarControladores(services);
@@ -43,15 +42,22 @@ namespace BibliotecaViva
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
-            
+            services.AddScoped<IDocumentoBLL, DocumentoBLL>();
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
-        {    
+        {
+            services.AddScoped<ITextoDAL, TextoDAL>();
+            services.AddScoped<IVideoDAL, VideoDAL>();
+            services.AddScoped<IAudioDAL, AudioDAL>();
+            services.AddScoped<IImagemDAL, ImagemDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IGeneroDAL, GeneroDAL>();
+            services.AddScoped<IIdiomaDAL, IdiomaDAL>();
             services.AddScoped<IApelidoDAL, ApelidoDAL>();
+            services.AddScoped<IDocumentoDAL, DocumentoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
+            services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 

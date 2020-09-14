@@ -2,13 +2,13 @@
 
 namespace BibliotecaViva.DTO.Model
 {
-    public class Imagem
+    public class Imagem : CorpoDocumento
     {
         [PrimaryKey, Indexed]
-        public int Documento { get; set; }
+        public int? Documento { get; set; }
         
         [Indexed]
-        public int Termo { get; set; }
+        public int? Termo { get; set; }
         public string Base64 { get; set; }
     }
 }

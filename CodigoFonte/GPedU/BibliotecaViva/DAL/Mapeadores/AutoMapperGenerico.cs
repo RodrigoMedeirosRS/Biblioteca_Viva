@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace BibliotecaViva.BLL.Utils
+namespace BibliotecaViva.DAL.Utils
 {
     public static class AutoMapperGenerico
     {

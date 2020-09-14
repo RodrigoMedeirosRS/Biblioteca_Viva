@@ -648,7 +648,6 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "AutoMapper": "10.0.0",
           "BibliotecaViva.DAL": "1.0.0",
           "BibliotecaViva.DTO": "1.0.0",
           "Newtonsoft.Json": "12.0.3"
@@ -664,6 +663,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "AutoMapper": "10.0.0",
           "BibliotecaViva.DTO": "1.0.0",
           "System.Data.SQLite.NetStandard": "1.0.0"
         },
