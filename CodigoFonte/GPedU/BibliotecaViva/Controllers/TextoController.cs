@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.Interface;
 using BibliotecaViva.BLL.Interfaces;
 
 namespace BibliotecaViva.Controllers
@@ -12,6 +13,7 @@ namespace BibliotecaViva.Controllers
     public class TextoController : Controller
     {
         private IDocumentoBLL _BLL { get; set; }
+        private IRequisicao _Requisicao { get; set; }
         public TextoController(IDocumentoBLL bll)
         {
             _BLL = bll;
@@ -20,27 +22,13 @@ namespace BibliotecaViva.Controllers
         [HttpPost("Cadastrar")]
         public async Task<IActionResult> Cadastrar(TextoDTO documento)
         {
-            try
-            {
-                return Ok(await Task.Run(async () => await _BLL.Cadastrar(documento)));
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Ok(_Requisicao.ExecutarRequisicao<TextoDTO>(documento, _BLL.Cadastrar));
         }
 
         [HttpPost("Consultar")]
         public async Task<IActionResult> Consultar(TextoDTO documento)
         {
-            try
-            {
-                return Ok(await Task.Run(async () => await _BLL.Consultar(documento)));
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Ok(_Requisicao.ExecutarRequisicao<TextoDTO>(documento, _BLL.Cadastrar));
         }
     }
 }

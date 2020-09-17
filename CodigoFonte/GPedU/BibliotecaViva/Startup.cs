@@ -9,12 +9,11 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using BibliotecaViva.BLL;
 using BibliotecaViva.DAL;
 using BibliotecaViva.DTO;
+using BibliotecaViva.Interface;
 using BibliotecaViva.DataContext;
 using BibliotecaViva.Controllers;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
-
-
 
 namespace BibliotecaViva
 {
@@ -54,6 +53,7 @@ namespace BibliotecaViva
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IGeneroDAL, GeneroDAL>();
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
+            services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IApelidoDAL, ApelidoDAL>();
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
