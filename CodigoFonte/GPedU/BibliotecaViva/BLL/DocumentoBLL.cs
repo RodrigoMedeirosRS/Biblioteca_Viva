@@ -29,7 +29,7 @@ namespace BibliotecaViva.BLL
         {
             documento.Idioma = documento.Idioma.Replace("string", string.Empty);
             documento.Nome = documento.Nome.Replace("string", string.Empty);
-            documento.NomeAutor = documento.Nome.Replace("string", string.Empty);
+            documento.NomeAutor = documento.NomeAutor.Replace("string", string.Empty);
             documento.SobreNomeAutor = documento.SobreNomeAutor.Replace("string", string.Empty);
             for (int i = 0; i < documento.NomeMencao.Count; i++)
             {
