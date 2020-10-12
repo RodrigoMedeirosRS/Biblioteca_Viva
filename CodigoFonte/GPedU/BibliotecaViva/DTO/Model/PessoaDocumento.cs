@@ -4,7 +4,10 @@ namespace BibliotecaViva.DTO.Model
 {
     public class PessoaDocumento
     {
-        [PrimaryKey, Indexed]
+        [PrimaryKey]
+        public int Id { get; set; }
+
+        [Indexed]
         public int? Pessoa { get; set; }
 
         [Indexed]

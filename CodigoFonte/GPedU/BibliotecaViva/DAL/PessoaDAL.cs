@@ -1,7 +1,6 @@
 using System.Linq;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
-using BibliotecaViva.DAL.Mapeadores;
 using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
@@ -24,8 +23,7 @@ namespace BibliotecaViva.DAL
         public void Cadastrar(PessoaDTO pessoaDTO)
         {
             TratarValoresSwagger(pessoaDTO);
-            pessoaDTO.SetId(VerificarJaRegistrado(pessoaDTO));
-            DataContext.ObterDataContext().InsertOrReplace(Mapeador.MapearPessoa(pessoaDTO, GeneroDAL.Consultar(pessoaDTO.Genero).Id));
+            DataContext.ObterDataContext().InsertOrReplace(VerificarJaRegistrado(pessoaDTO));
             CadastrarApelido(pessoaDTO);
             CadastrarNomeSocial(pessoaDTO);
         }
@@ -47,10 +45,17 @@ namespace BibliotecaViva.DAL
                 NomeSocialDAL.Cadastrar(pessoaDTO);
         }
 
-        private int? VerificarJaRegistrado(PessoaDTO pessoa)
+        private Pessoa VerificarJaRegistrado(PessoaDTO pessoa)
         {
             var pessoaCadastrada = Consultar(pessoa);
-            return pessoaCadastrada != null ? pessoaCadastrada.GetId() : pessoa.GetId();
+
+            return new Pessoa()
+            {
+                Id = pessoaCadastrada != null ? pessoaCadastrada.Id : null,
+                Nome = pessoa.Nome,
+                Sobrenome = pessoa.Sobrenome,
+                Genero = GeneroDAL.Consultar(pessoa.Genero).Id
+            };
         }
 
         private void TratarValoresSwagger(PessoaDTO pessoaDTO)
@@ -72,7 +77,7 @@ namespace BibliotecaViva.DAL
                     nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
                     on pessoa.Id equals nomeSocial.Pessoa into leftJoin2 from nomeSocialLeft in leftJoin2.DefaultIfEmpty()
                 where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
-                select new PessoaDTO
+                select new PessoaDTO(pessoa.Id)
                 {
                     Nome = pessoa.Nome,
                     Sobrenome = pessoa.Sobrenome,
