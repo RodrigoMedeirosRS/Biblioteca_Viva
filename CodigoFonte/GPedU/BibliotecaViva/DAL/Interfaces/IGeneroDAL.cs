@@ -5,6 +5,5 @@ namespace BibliotecaViva.DAL.Interfaces
     public interface IGeneroDAL
     {
         Genero Consultar(string nome);
-        Genero Consultar(int id);
     }
 }

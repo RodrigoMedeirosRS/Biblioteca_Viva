@@ -36,6 +36,7 @@ namespace BibliotecaViva.DAL
                 ApelidoDAL.Deletar(pessoaDTO);
             else
                 ApelidoDAL.Cadastrar(pessoaDTO);
+                
         }
 
         private void CadastrarNomeSocial(PessoaDTO pessoaDTO)
@@ -62,22 +63,22 @@ namespace BibliotecaViva.DAL
         {
             return (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
                 join
-                    apelido in DataContext.ObterDataContext().Table<Apelido>()
-                    on pessoa.Id equals apelido.Pessoa
-                join
                     genero in DataContext.ObterDataContext().Table<Genero>()
                     on pessoa.Genero equals genero.Id
                 join
+                    apelido in DataContext.ObterDataContext().Table<Apelido>()
+                    on pessoa.Id equals apelido.Pessoa into leftJoin from apelidoLeft in leftJoin.DefaultIfEmpty()
+                join
                     nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
-                    on pessoa.Id equals nomeSocial.Pessoa
+                    on pessoa.Id equals nomeSocial.Pessoa into leftJoin2 from nomeSocialLeft in leftJoin2.DefaultIfEmpty()
                 where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
                 select new PessoaDTO
                 {
                     Nome = pessoa.Nome,
                     Sobrenome = pessoa.Sobrenome,
                     Genero = genero.Nome,
-                    Apelido = apelido.Nome,
-                    NomeSocial = nomeSocial.Nome
+                    Apelido = apelidoLeft != null ? apelidoLeft.Nome : "",
+                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : ""
                 }).FirstOrDefault();
         }
         

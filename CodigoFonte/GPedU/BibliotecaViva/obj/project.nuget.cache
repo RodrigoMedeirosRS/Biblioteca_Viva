@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/LoCg+iMi4xv5fZSpNsvNn3LemExk5baKHw26RhvQd5GG5PUJL5G9wYeIzET6WVnMrL97lPRBm4WyYkrBj0y1A==",
+  "dgSpecHash": "JzAe9qF0x3pWxGDS1ub0TndBz7dVh7MGSoKBXaQh+dhXDYepyUdHTImuLftdJ1J8m+72pA3aktDPuXi0jk9AKQ==",
   "success": true,
   "projectFilePath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BibliotecaViva.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/2.2.4/microsoft.netcore.platforms.2.2.4.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.targets/2.0.0/microsoft.netcore.targets.2.0.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.openapi/1.1.4/microsoft.openapi.1.1.4.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/morelinq/3.3.2/morelinq.3.3.2.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/npgsql/4.1.3.1/npgsql.4.1.3.1.nupkg.sha512",

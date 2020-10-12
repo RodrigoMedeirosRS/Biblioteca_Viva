@@ -163,3 +163,4 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/staticwebassets/BibliotecaViva.StaticWebAssets.Manifest.cache
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/staticwebassets/BibliotecaViva.StaticWebAssets.xml
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.genruntimeconfig.cache
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/MoreLinq.dll
