@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
+using BibliotecaViva.DAL.Interfaces;
 
-namespace BibliotecaViva.DAL.Interfaces
+namespace BibliotecaViva.DAL
 {
     public class DocumentoDAL : IDocumentoDAL
     {

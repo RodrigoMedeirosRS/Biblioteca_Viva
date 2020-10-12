@@ -29,7 +29,7 @@ namespace BibliotecaViva.BLL
 
         private string SerializarRetorno(PessoaDTO pessoa)
         {
-            return pessoa != null ? JsonConvert.SerializeObject(pessoa) : throw new Exception("Pessoa N�o Encontrada");
+            return pessoa != null ? JsonConvert.SerializeObject(pessoa) : throw new Exception("Pessoa Não Encontrada");
         }
     }
 }

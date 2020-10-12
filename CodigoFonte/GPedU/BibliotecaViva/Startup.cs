@@ -42,6 +42,7 @@ namespace BibliotecaViva
         {
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
             services.AddScoped<IDocumentoBLL, DocumentoBLL>();
+            services.AddScoped<ILinhaDoTempoBLL, LinhaDoTempoBLL>();
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
@@ -58,6 +59,7 @@ namespace BibliotecaViva
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
             services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();
+            services.AddScoped<ILinhaDoTempoDAL, LinhaDoTempoDAL>();
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 

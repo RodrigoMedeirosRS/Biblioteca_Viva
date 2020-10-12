@@ -104,8 +104,6 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.dll
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.pdb
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.genruntimeconfig.cache
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.dll
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.pdb
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/BibliotecaViva.db
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/BibliotecaViva
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/BibliotecaViva.deps.json
@@ -134,6 +132,7 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/MoreLinq.dll
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Npgsql.dll
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll
@@ -162,5 +161,6 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.csproj.CopyComplete
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/staticwebassets/BibliotecaViva.StaticWebAssets.Manifest.cache
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/staticwebassets/BibliotecaViva.StaticWebAssets.xml
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.dll
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.pdb
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/obj/Debug/netcoreapp3.1/BibliotecaViva.genruntimeconfig.cache
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/bin/Debug/netcoreapp3.1/MoreLinq.dll
