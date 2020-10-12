@@ -14,9 +14,11 @@ namespace BibliotecaViva.Controllers
     {
         private IPerssoaBLL _BLL { get; set; }
         private IRequisicao _Requisicao { get; set; }
-        public PessoaController(IPerssoaBLL bll)
+        
+        public PessoaController(IPerssoaBLL bll, IRequisicao requisicao)
         {
             _BLL = bll;
+            _Requisicao= requisicao;
         }
 
         [HttpPost("Cadastrar")]
@@ -28,7 +30,7 @@ namespace BibliotecaViva.Controllers
         [HttpPost("Consultar")]
         public async Task<IActionResult> Consultar(PessoaDTO pessoa)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<PessoaDTO>(pessoa, _BLL.Cadastrar));
+            return Ok(_Requisicao.ExecutarRequisicao<PessoaDTO>(pessoa, _BLL.Consultar));
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Mapeadores;
@@ -59,17 +60,27 @@ namespace BibliotecaViva.DAL
 
         public PessoaDTO Consultar(PessoaDTO pessoaDTO)
         {
-            var pessoa = DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Nome == pessoaDTO.Nome && pessoaDB.Sobrenome == pessoaDTO.Sobrenome);
-
-            if (pessoa == null)
-                return null;
-
-            var genero = DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(generoDB => generoDB.Id == pessoa.Genero);
-            var apelido = ApelidoDAL.Consultar(pessoa.Id);
-            var nomesocial = NomeSocialDAL.Consultar(pessoa.Id);
-
-            return Mapeador.MapearPessoa(pessoa, genero, apelido, nomesocial);
+            return (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
+                join
+                    apelido in DataContext.ObterDataContext().Table<Apelido>()
+                    on pessoa.Id equals apelido.Pessoa
+                join
+                    genero in DataContext.ObterDataContext().Table<Genero>()
+                    on pessoa.Genero equals genero.Id
+                join
+                    nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
+                    on pessoa.Id equals nomeSocial.Pessoa
+                where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
+                select new PessoaDTO
+                {
+                    Nome = pessoa.Nome,
+                    Sobrenome = pessoa.Sobrenome,
+                    Genero = genero.Nome,
+                    Apelido = apelido.Nome,
+                    NomeSocial = nomeSocial.Nome
+                }).FirstOrDefault();
         }
+        
         public Pessoa Consultar(int? pessoaId)
         {
             return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Id == pessoaId);

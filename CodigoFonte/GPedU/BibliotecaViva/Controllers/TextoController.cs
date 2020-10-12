@@ -14,9 +14,11 @@ namespace BibliotecaViva.Controllers
     {
         private IDocumentoBLL _BLL { get; set; }
         private IRequisicao _Requisicao { get; set; }
-        public TextoController(IDocumentoBLL bll)
+        
+        public TextoController(IDocumentoBLL bll, IRequisicao requisicao)
         {
             _BLL = bll;
+            _Requisicao = requisicao;
         }
 
         [HttpPost("Cadastrar")]
