@@ -1,9 +1,4 @@
 using System;
-using System.Linq;
-using System.Data.SQLite.Tools;
-using System.Collections.Generic;
-
-using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
