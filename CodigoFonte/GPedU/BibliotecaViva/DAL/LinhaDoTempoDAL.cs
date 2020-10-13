@@ -45,11 +45,9 @@ namespace BibliotecaViva.DAL
         {
             var linhaDoTempoPessoa = new LinhaDoTempoPessoa()
             {
-                Pessoa = (int)PessoaDAL.Consultar(pessoaDTO.Nome, pessoaDTO.Sobrenome).Id,
+                Pessoa = PessoaDAL.Consultar(pessoaDTO.Nome, pessoaDTO.Sobrenome).Id,
                 LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).FirstOrDefault().Id
-            };
-            //var Pessoa = PessoaDAL.Consultar(pessoaDTO.Nome, pessoaDTO.Sobrenome);
-           //var LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).FirstOrDefault();         
+            };        
 
             DataContext.ObterDataContext().InsertOrReplace(linhaDoTempoPessoa);
         }
@@ -57,7 +55,7 @@ namespace BibliotecaViva.DAL
         {
             var linhaDoTempoDocumento = new LinhaDoTempoDocumento()
             {
-                Documento = (int)DocumentoDAL.Consultar(documentoDTO).FirstOrDefault().Id,
+                Documento = DocumentoDAL.Consultar(documentoDTO).FirstOrDefault().Id,
                 LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).FirstOrDefault().Id
             };         
 

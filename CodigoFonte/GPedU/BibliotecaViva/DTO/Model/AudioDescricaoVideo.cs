@@ -5,7 +5,7 @@ namespace BibliotecaViva.DTO.Model
     public class AudioDescricaoVideo
     {
         [PrimaryKey, Indexed]
-        public int Video { get; set; }
+        public int? Video { get; set; }
 
         [Indexed]
         public int Audio { get; set; }

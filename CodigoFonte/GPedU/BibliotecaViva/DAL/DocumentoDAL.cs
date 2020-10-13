@@ -105,7 +105,7 @@ namespace BibliotecaViva.DAL
         public void Cadastrar(DocumentoDTO documentoDTO)
         {
             var documento = VerificarJaRegistrado(documentoDTO);
-            RemoverVinculoAnterior(documentoDTO);
+            RemoverVinculoAnterior(documento);
 
             DataContext.ObterDataContext().InsertOrReplace(documento);
             documentoDTO.AtualizarId(ObterDocumentoPorNome(documentoDTO).FirstOrDefault().Id);
@@ -171,14 +171,14 @@ namespace BibliotecaViva.DAL
             foreach(var pessoa in documento.PessoaVinculadas)
                 DataContext.ObterDataContext().Insert(new PessoaDocumento()
                 {
-                    Pessoa = pessoa.Id,
+                    Pessoa = Pessoa.Consultar(pessoa).Id,
                     Documento = documento.Id,
                     TipoDeRelacao = TipoRelacao.Consultar(pessoa.TipoVinculo).Id
                 });
         }
-        private void RemoverVinculoAnterior(DocumentoDTO documento)
+        private void RemoverVinculoAnterior(Documento documento)
         {
-            if (documento.Id != null)
+            if (documento != null)
             {
                 var vinculosAnteriores = DataContext.ObterDataContext().Table<PessoaDocumento>().Where(vinculo => vinculo.Documento == documento.Id);
                 foreach(var vinculo in vinculosAnteriores)

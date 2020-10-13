@@ -4,8 +4,11 @@ namespace BibliotecaViva.DTO.Model
 {
     public class PessoaTermo
     {
-        [PrimaryKey, Indexed]
-        public int Pessoa { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int? Id { get; set; } 
+        
+        [Indexed]
+        public int? Pessoa { get; set; }
 
         [Indexed]
         public int Termo { get; set; }

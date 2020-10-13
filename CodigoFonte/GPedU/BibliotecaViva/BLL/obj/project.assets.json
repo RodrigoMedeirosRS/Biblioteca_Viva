@@ -130,7 +130,7 @@
   },
   "libraries": {
     "AutoMapper/10.0.0": {
-      "sha512": "21WYharxd5O59mz37+/yO9vHXEJXhg+8rNQDIUCFQUIUiAM830lwRDHhvAU8okMjCzJ+g/j9fXkQAaRRJJ9caw==",
+      "sha512": "T09NoqMZBqw0/JEauXulxnmmerl0Zj03e0r6VCcJ0LURWBIaYxZPPoiDv8bHf5Y4x2xcXJp4JPXoCaeOMJfHEA==",
       "type": "package",
       "path": "automapper/10.0.0",
       "files": [
@@ -146,7 +146,7 @@
       ]
     },
     "Microsoft.CSharp/4.7.0": {
-      "sha512": "LJaYhRX5VxTUuD9WUPGD3GpWTgs89SVfoOPvSEdt66tL3lQvny9sR/ZiC3px1qUV5EFebS44i2CBeiliHVaQ3w==",
+      "sha512": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
       "type": "package",
       "path": "microsoft.csharp/4.7.0",
       "files": [
@@ -215,7 +215,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -230,7 +230,7 @@
       ]
     },
     "morelinq/3.3.2": {
-      "sha512": "FalxWMfsg8+QmqSsxeQPWDROG8602pPqNcC96Rgr4Xb01xmGF0OPvnPWPl7emd1GuEwGn7xGGJHls4M5tgfyxg==",
+      "sha512": "MQc8GppZJLmjvcpEdf3EkC6ovsp7gRWt2e5mC7dcIOrgwSc+yjFd3JQ0iRqr3XrUT6rb/phv0IkEmBtbfVA7AQ==",
       "type": "package",
       "path": "morelinq/3.3.2",
       "files": [
@@ -251,7 +251,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -380,7 +380,7 @@
       ]
     },
     "Newtonsoft.Json/12.0.3": {
-      "sha512": "aTRmXwR5xYu+mWxE8r8W1DWnL02SeV8LwdQMsLwTWP8OZgrCCyTqvOAe5hRb1VNQYXjln7qr0PKpSyO/pcc19Q==",
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "type": "package",
       "path": "newtonsoft.json/12.0.3",
       "files": [
@@ -411,7 +411,7 @@
       ]
     },
     "System.Reflection.Emit/4.7.0": {
-      "sha512": "EMAyW5k6MdmTxYre7l8cb9f/Zhc78ivw0pXSm/sw8OAewwQqzqxeJFu2LY+/7WPOAq33TgTPVYEeDPPVQbiXqQ==",
+      "sha512": "VR4kk8XLKebQ4MZuKuIni/7oh+QGFmZW3qORd1GvBq/8026OpW501SzT/oypwiQl4TvT8ErnReh/NzY9u+C6wQ==",
       "type": "package",
       "path": "system.reflection.emit/4.7.0",
       "files": [
@@ -465,10 +465,11 @@
       ]
     },
     "System.Reflection.Emit.ILGeneration/4.7.0": {
-      "sha512": "iQ2Xw8qC8YCsh3+OUAMtD4g8LiA5r9ZxVhlDZn3Dok7C382JbLlPNyyXXCW3KRiv0Ebvwt7b1ZYqmIoCerrI2Q==",
+      "sha512": "AucBYo3DSI0IDxdUjKksBcQJXPHyoPyrCXYURW1WDsLI4M65Ar/goSHjdnHOAY9MiYDNKqDlIgaYm+zL2hA1KA==",
       "type": "package",
       "path": "system.reflection.emit.ilgeneration/4.7.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -558,7 +559,7 @@
       "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/rmlehnemann/.config/NuGet/NuGet.Config"
+        "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -607,7 +608,8 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
       }
     }
   }

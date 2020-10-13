@@ -4,10 +4,11 @@ namespace BibliotecaViva.DTO.Model
 {
     public class Conceito
     {
-        [PrimaryKey, Indexed]
-        public int Glossario { get; set; }
-
-        [Unique]
+        [PrimaryKey, AutoIncrement]
+        public int? Id { get; set; }
+        
+        [Indexed]
+        public int? Glossario { get; set; }
         public string Nome { get; set; }
     }
 }

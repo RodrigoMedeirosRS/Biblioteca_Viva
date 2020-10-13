@@ -4,10 +4,13 @@ namespace BibliotecaViva.DTO.Model
 {
     public class DossieDocumento
     {
-        [PrimaryKey, Indexed]
-        public int Dossie { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int? Id { get; set;}
         
         [Indexed]
-        public int Documento { get; set; }
+        public int? Dossie { get; set; }
+
+        [Indexed]
+        public int? Documento { get; set; }
     }
 }

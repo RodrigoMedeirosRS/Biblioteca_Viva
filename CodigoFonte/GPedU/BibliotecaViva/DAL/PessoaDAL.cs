@@ -33,8 +33,7 @@ namespace BibliotecaViva.DAL
             if (string.IsNullOrEmpty(pessoaDTO.Apelido))
                 ApelidoDAL.Deletar(pessoaDTO);
             else
-                ApelidoDAL.Cadastrar(pessoaDTO);
-                
+                ApelidoDAL.Cadastrar(pessoaDTO);              
         }
 
         private void CadastrarNomeSocial(PessoaDTO pessoaDTO)

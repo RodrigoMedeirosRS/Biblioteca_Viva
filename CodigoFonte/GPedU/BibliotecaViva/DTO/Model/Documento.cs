@@ -9,7 +9,7 @@ namespace BibliotecaViva.DTO.Model
         public int? Id { get; set; }
         
         [Indexed]
-        public int Idioma { get; set; }
+        public int? Idioma { get; set; }
         public string Nome { get; set; }
         public DateTime DataRegistro { get; set; }
         public DateTime DataDigitalizacao { get; set; }
