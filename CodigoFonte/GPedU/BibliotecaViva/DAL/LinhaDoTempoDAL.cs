@@ -1,5 +1,3 @@
-using System.CodeDom.Compiler;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using BibliotecaViva.DTO;
@@ -25,28 +23,31 @@ namespace BibliotecaViva.DAL
 
         public void Cadastrar(LinhaDoTempoDTO linhaDoTempoDTO)
         {
-            linhaDoTempoDTO.SetId(VerificaLinhaDoTempoExistente(linhaDoTempoDTO));
-            DataContext.ObterDataContext().InsertOrReplace(linhaDoTempoDTO);
+            DataContext.ObterDataContext().InsertOrReplace(VerificaLinhaDoTempoExistente(linhaDoTempoDTO));
         }
-        public LinhaDoTempoDTO Consultar(LinhaDoTempoDTO linhaDoTempoDTO)
+        public List<LinhaDoTempoDTO> Consultar(LinhaDoTempoDTO linhaDoTempoDTO)
         {
-            var linhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO);
-            return new LinhaDoTempoDTO()
+            var linhasDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO);
+            var retorno = new List<LinhaDoTempoDTO>();
+            foreach (var linhaDoTempo in linhasDoTempo)
             {
-                Nome = linhaDoTempo.Nome,
-                Descricao = linhaDoTempo.Descricao,
-                Pessoas = ObterPessoasNaLinhaDoTempo(linhaDoTempo),
-                Documentos = ObterDocumentosNaLinhaDoTempo(linhaDoTempo)
-            };
-
+                retorno.Add(new LinhaDoTempoDTO()
+                {
+                    Nome = linhaDoTempo.Nome,
+                    Descricao = linhaDoTempo.Descricao,
+                    Pessoas = ObterPessoasNaLinhaDoTempo(linhaDoTempo),
+                    Documentos = ObterDocumentosNaLinhaDoTempo(linhaDoTempo)
+                });
+            }
+            return retorno;
         }
         public void VincularPessoa(LinhaDoTempoDTO linhaDoTempoDTO,PessoaDTO pessoaDTO)
         {
             var linhaDoTempoPessoa = new LinhaDoTempoPessoa()
             {
-                Pessoa = (int)PessoaDAL.Consultar(pessoaDTO.Nome, pessoaDTO.Sobrenome).Id,
-                LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).Id
-            };         
+                Pessoa = PessoaDAL.Consultar(pessoaDTO.Nome, pessoaDTO.Sobrenome).Id,
+                LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).FirstOrDefault().Id
+            };        
 
             DataContext.ObterDataContext().InsertOrReplace(linhaDoTempoPessoa);
         }
@@ -54,8 +55,8 @@ namespace BibliotecaViva.DAL
         {
             var linhaDoTempoDocumento = new LinhaDoTempoDocumento()
             {
-                Documento = (int)DocumentoDAL.Consultar(documentoDTO, IdiomaDAL.Consultar(documentoDTO.Idioma).Id).Id,
-                LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).Id
+                Documento = DocumentoDAL.Consultar(documentoDTO).FirstOrDefault().Id,
+                LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).FirstOrDefault().Id
             };         
 
             DataContext.ObterDataContext().InsertOrReplace(linhaDoTempoDocumento);
@@ -64,12 +65,14 @@ namespace BibliotecaViva.DAL
         {
         }  
 
-        private LinhaDoTempo ObterLinhaDoTempo(LinhaDoTempoDTO linhaDoTempoDTO)
+        private List<LinhaDoTempo> ObterLinhaDoTempo(LinhaDoTempoDTO linhaDoTempoDTO)
         {
-            return DataContext.ObterDataContext().Table<LinhaDoTempo>().FirstOrDefault(linhaDoTempo => linhaDoTempo.Nome == linhaDoTempoDTO.Nome);
+            if (string.IsNullOrEmpty(linhaDoTempoDTO.Nome))
+                return DataContext.ObterDataContext().Table<LinhaDoTempo>().ToList();
+            return DataContext.ObterDataContext().Table<LinhaDoTempo>().Where(linhaDoTempo => linhaDoTempo.Nome == linhaDoTempoDTO.Nome).ToList();
         }
 
-        private List<CabecalhoDTO> ObterDocumentosNaLinhaDoTempo(LinhaDoTempo linhaDoTempo)
+        private List<DocumentoDTO> ObterDocumentosNaLinhaDoTempo(LinhaDoTempo linhaDoTempo)
         {
             return(from linhaDoTempoDB in DataContext.ObterDataContext().Table<LinhaDoTempo>()
                 join
@@ -82,11 +85,12 @@ namespace BibliotecaViva.DAL
                     idioma in DataContext.ObterDataContext().Table<Idioma>()
                     on documento.Idioma equals idioma.Id
                 where linhaDoTempo.Nome == linhaDoTempoDB.Nome
-                select new  CabecalhoDTO
+                select new  DocumentoDTO
                 {
                     Nome = documento.Nome,
                     Idioma = idioma.Nome,
-                    DataRegistro = documento.DataRegistro
+                    DataRegistro = documento.DataRegistro,
+                    DataDigitalizacao = documento.DataDigitalizacao
                 }).ToList();
         }
 
@@ -120,13 +124,13 @@ namespace BibliotecaViva.DAL
             ).ToList();
         } 
 
-        private int? VerificaLinhaDoTempoExistente(LinhaDoTempoDTO linhaDoTempo)
+        private LinhaDoTempo VerificaLinhaDoTempoExistente(LinhaDoTempoDTO linhaDoTempoDTO)
         {
-            var linhaDoTempoDB = ObterLinhaDoTempo(linhaDoTempo);
-            if (linhaDoTempoDB == null)
-                return null;
-            
-            return linhaDoTempoDB.Id;
+            return ObterLinhaDoTempo(linhaDoTempoDTO).FirstOrDefault() ?? new LinhaDoTempo()
+                {
+                    Nome = linhaDoTempoDTO.Nome,
+                    Descricao = linhaDoTempoDTO.Descricao
+                };
         }
     }
 }

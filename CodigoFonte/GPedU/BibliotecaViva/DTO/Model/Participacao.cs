@@ -5,15 +5,15 @@ namespace BibliotecaViva.DTO.Model
     public class Participacao
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         
         [Indexed]
-        public int Evento { get; set; }
+        public int? Evento { get; set; }
 
         [Indexed]
-        public int TipoParticipacao { get; set; }
+        public int? TipoParticipacao { get; set; }
 
         [Indexed]
-        public int Pessoa { get; set; }
+        public int? Pessoa { get; set; }
     }
 }

@@ -8,18 +8,14 @@ namespace BibliotecaViva.DTO
         {
             Id = null;
         }
-        public int? GetId()
-        {
-            return Id;
-        }
-        public void SetId(int? id)
+        public LinhaDoTempoDTO(int? id)
         {
             Id = id;
         }
-        private int? Id { get; set; }
+        public int? Id { get; protected set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public List<PessoaDTO> Pessoas { get; set; }
-        public List<CabecalhoDTO> Documentos { get; set; }
+        public List<DocumentoDTO> Documentos { get; set; }
     }
 }

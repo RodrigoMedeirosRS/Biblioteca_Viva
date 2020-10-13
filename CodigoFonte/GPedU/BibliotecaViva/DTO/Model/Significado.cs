@@ -4,11 +4,14 @@ namespace BibliotecaViva.DTO.Model
 {
     public class Significado
     {
-        [PrimaryKey, Indexed]
-        public int Conceito { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int? Id { get; set; } 
+        
+        [Indexed]
+        public int? Conceito { get; set; }
 
         [Indexed]
-        public int Idioma { get; set; }
+        public int? Idioma { get; set; }
         public string Link { get; set; }
         public string Descricao { get; set; }
     }

@@ -11,9 +11,17 @@ namespace BibliotecaViva.BLL
     public class DocumentoBLL : IDocumentoBLL
     {
         IDocumentoDAL DocumentoDAL { get; set; }
-        public DocumentoBLL(IDocumentoDAL documentoDAL)
+        private IAudioDAL AudioDAL { get; set; }
+        private IVideoDAL VideoDAL { get; set; }
+        private IImagemDAL ImagemDAL { get; set; }
+        private ITextoDAL TextoDAL { get; set; }
+        public DocumentoBLL(IDocumentoDAL documentoDAL, IAudioDAL audioDAL, IVideoDAL videoDAL,IImagemDAL imagemDAL, ITextoDAL textoDAL)
         {
             DocumentoDAL = documentoDAL;
+            AudioDAL = audioDAL;
+            VideoDAL = videoDAL;
+            ImagemDAL = imagemDAL;
+            TextoDAL = textoDAL;
         }
         public async Task<string> Cadastrar(DocumentoDTO documento) 
         {
@@ -22,23 +30,28 @@ namespace BibliotecaViva.BLL
         }
         public async Task<string> Consultar(DocumentoDTO documento)
         {
-            return JsonConvert.SerializeObject(DocumentoDAL.Consultar(documento));
+            var documentos = DocumentoDAL.Consultar(documento);
+            
+            switch (documento.GetType().Name)
+            {
+                case ("AudioDTO"):
+                    return JsonConvert.SerializeObject(AudioDAL.Listar(documentos));
+                case ("ImagemDTO"):
+                    return JsonConvert.SerializeObject(ImagemDAL.Listar(documentos));
+                case ("TextoDTO"):
+                    return JsonConvert.SerializeObject(TextoDAL.Listar(documentos));
+                case ("VideoDTO"):
+                    return JsonConvert.SerializeObject(VideoDAL.Listar(documentos));
+                default:
+                    throw new Exception("Documento Inválido");
+            }
         }
 
         private DocumentoDTO ProcessarDocumentoSwagger(DocumentoDTO documento)
         {
             documento.Idioma = documento.Idioma.Replace("string", string.Empty);
             documento.Nome = documento.Nome.Replace("string", string.Empty);
-            documento.NomeAutor = documento.NomeAutor.Replace("string", string.Empty);
-            documento.SobreNomeAutor = documento.SobreNomeAutor.Replace("string", string.Empty);
-            for (int i = 0; i < documento.NomeMencao.Count; i++)
-            {
-                if (documento.NomeMencao[i] == "string" || string.IsNullOrEmpty(documento.NomeMencao[i]) || documento.SobrenomeMencao[i] == "string" || string.IsNullOrEmpty(documento.SobrenomeMencao[i]))
-                {
-                    documento.NomeMencao.RemoveAt(i);
-                    documento.SobrenomeMencao.RemoveAt(i);
-                }
-            }
+
             switch (documento.GetType().Name)
             {
                 case ("AudioDTO"):

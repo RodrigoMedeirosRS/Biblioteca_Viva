@@ -28,7 +28,7 @@ namespace BibliotecaViva.Controllers
         [HttpPost("Consultar")]
         public async Task<IActionResult> Consultar(ImagemDTO documento)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<ImagemDTO>(documento, _BLL.Cadastrar));
+            return Ok(_Requisicao.ExecutarRequisicao<ImagemDTO>(documento, _BLL.Consultar));
         }
     }
 }

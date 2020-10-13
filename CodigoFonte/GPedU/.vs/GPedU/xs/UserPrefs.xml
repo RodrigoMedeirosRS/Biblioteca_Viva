@@ -6,7 +6,9 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="GPedU" expanded="True" selected="True" />
+          <Node name="GPedU" expanded="True" selected="True">
+            <Node name="BibliotecaViva.BLL" expanded="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>

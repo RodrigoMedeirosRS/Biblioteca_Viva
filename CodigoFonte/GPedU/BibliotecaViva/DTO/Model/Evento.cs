@@ -6,7 +6,7 @@ namespace BibliotecaViva.DTO.Model
     public class Evento
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         
         [Indexed]
         public int TipoEvento { get; set; }

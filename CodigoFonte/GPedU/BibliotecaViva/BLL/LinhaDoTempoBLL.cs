@@ -17,12 +17,12 @@ namespace BibliotecaViva.BLL
         }
         public async Task<string> Cadastrar(LinhaDoTempoDTO linhaDoTempo)
         {
-            LinhaDoTempoDAL.Cadastrar(linhaDoTempo);
+            LinhaDoTempoDAL.Cadastrar(TratarSwagger(linhaDoTempo));
             return "Sucesso!";
         }
         public async Task<string> Consultar(LinhaDoTempoDTO linhaDoTempo)
         {
-            return JsonConvert.SerializeObject(LinhaDoTempoDAL.Consultar(linhaDoTempo));
+            return JsonConvert.SerializeObject(LinhaDoTempoDAL.Consultar(TratarSwagger(linhaDoTempo)));
         }
         public async Task<string> VincularPessoa(LinhaDoTempoPessoaDTO linhaDoTempoPessoa)
         {
@@ -59,5 +59,15 @@ namespace BibliotecaViva.BLL
                 throw new Exception("Linha do Tempo ou Evento não Encontrado.");
             }
         }
+
+        private LinhaDoTempoDTO TratarSwagger(LinhaDoTempoDTO entrada)
+        {
+            if (entrada.Nome == "string" || string.IsNullOrEmpty(entrada.Nome))
+                entrada.Nome = "";
+            if (entrada.Descricao == "string" || string.IsNullOrEmpty(entrada.Descricao))
+                entrada.Descricao = "";
+            return entrada;
+        }
+
     }
 }
