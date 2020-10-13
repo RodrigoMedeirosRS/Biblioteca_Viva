@@ -4,7 +4,6 @@ using System.Linq;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
-using BibliotecaViva.DAL.Utils;
 
 namespace BibliotecaViva.DAL
 {
