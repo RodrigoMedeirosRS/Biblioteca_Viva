@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.Interface;
 using BibliotecaViva.BLL.Interfaces;
 
 namespace BibliotecaViva.Controllers
@@ -12,35 +13,23 @@ namespace BibliotecaViva.Controllers
     public class AudioController : Controller
     {
         private IDocumentoBLL _BLL { get; set; }
-        public AudioController(IDocumentoBLL bll)
+        private IRequisicao _Requisicao { get; set; }
+        public AudioController(IDocumentoBLL bll, IRequisicao requisicao)
         {
             _BLL = bll;
+            _Requisicao = requisicao;
         }
 
         [HttpPost("Cadastrar")]
         public async Task<IActionResult> Cadastrar(AudioDTO documento)
         {
-            try
-            {
-                return Ok(await Task.Run(async () => await _BLL.Cadastrar(documento)));
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Ok(_Requisicao.ExecutarRequisicao<AudioDTO>(documento, _BLL.Cadastrar));
         }
 
         [HttpPost("Consultar")]
         public async Task<IActionResult> Consultar(AudioDTO documento)
         {
-            try
-            {
-                return Ok(await Task.Run(async () => await _BLL.Consultar(documento)));
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Ok(_Requisicao.ExecutarRequisicao<AudioDTO>(documento, _BLL.Consultar));
         }
     }
 }

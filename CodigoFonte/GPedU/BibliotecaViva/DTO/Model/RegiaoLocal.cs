@@ -5,7 +5,7 @@ namespace BibliotecaViva.DTO.Model
     public class RegiaoLocal
     {
         [PrimaryKey, Indexed]
-        public int Regiao { get; set; }
+        public int? Regiao { get; set; }
 
         [Indexed]
         public int Local { get; set; }

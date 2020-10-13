@@ -4,10 +4,13 @@ namespace BibliotecaViva.DTO.Model
 {
     public class EventoLocalizacao
     {
-        [PrimaryKey, Indexed]
-        public int Evento { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int? Id { get; set; }
+
+        [Indexed]
+        public int? Evento { get; set; }
         
         [Indexed]
-        public int Localizacao { get; set; }
+        public int? Localizacao { get; set; }
     }
 }

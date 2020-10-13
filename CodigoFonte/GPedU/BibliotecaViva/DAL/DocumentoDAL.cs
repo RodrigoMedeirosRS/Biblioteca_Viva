@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
+using BibliotecaViva.DAL.Interfaces;
+using BibliotecaViva.DAL.Utils;
 
-namespace BibliotecaViva.DAL.Interfaces
+namespace BibliotecaViva.DAL
 {
     public class DocumentoDAL : IDocumentoDAL
     {
@@ -28,15 +30,87 @@ namespace BibliotecaViva.DAL.Interfaces
             Video = video;
             TipoRelacao = tipoRelacao;
         }
-
+        public List<DocumentoDTO> Consultar(DocumentoDTO documentoDTO)
+        {
+            var documentos = (documentoDTO.Nome == null || documentoDTO.Idioma == null) ? 
+            ObterDocumentoPorData(documentoDTO) : ObterDocumentoPorNome(documentoDTO); 
+            
+            foreach (var documento in documentos)
+                documento.PessoaVinculadas = BuscarPessoasVinculadas(documento.Id);
+            
+            return documentos;
+        }
+        private List<PessoaVinculadaDTO> BuscarPessoasVinculadas(int? documentoId)
+        {
+            return (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
+                join
+                    pessoaDocumento in DataContext.ObterDataContext().Table<PessoaDocumento>()
+                    on pessoa.Id equals pessoaDocumento.Pessoa
+                join
+                    documento in DataContext.ObterDataContext().Table<Documento>()
+                    on pessoaDocumento.Documento equals documento.Id
+                join
+                    tipoRelacao in DataContext.ObterDataContext().Table<TipoDeRelacao>()
+                    on pessoaDocumento.TipoDeRelacao equals tipoRelacao.Id
+                join
+                    genero in DataContext.ObterDataContext().Table<Genero>()
+                    on pessoa.Genero equals genero.Id
+                join
+                    apelido in DataContext.ObterDataContext().Table<Apelido>()
+                    on pessoa.Id equals apelido.Pessoa into leftJoin from apelidoLeft in leftJoin.DefaultIfEmpty()
+                join
+                    nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
+                    on pessoa.Id equals nomeSocial.Pessoa into leftJoin2 from nomeSocialLeft in leftJoin2.DefaultIfEmpty()
+                where documento.Id == documentoId
+                select new PessoaVinculadaDTO(pessoa.Id)
+                {
+                    Nome = pessoa.Nome,
+                    Sobrenome = pessoa.Sobrenome,
+                    Genero = genero.Nome,
+                    Apelido = apelidoLeft != null ? apelidoLeft.Nome : "",
+                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : "",
+                    TipoVinculo = tipoRelacao.Nome
+                }).ToList();
+        }
+        private List<DocumentoDTO> ObterDocumentoPorData(DocumentoDTO documentoDTO)
+        {
+            return (from documento in DataContext.ObterDataContext().Table<Documento>()
+                join
+                    idioma in DataContext.ObterDataContext().Table<Idioma>()
+                    on documento.Idioma equals idioma.Id
+                where documentoDTO.DataDigitalizacao.Date == documentoDTO.DataDigitalizacao.Date
+                select new DocumentoDTO(documento.Id)
+                {
+                    Nome = documento.Nome,
+                    Idioma = idioma.Nome,
+                    DataRegistro = documento.DataRegistro,
+                    DataDigitalizacao = documento.DataDigitalizacao
+                }).ToList();
+        }
+        private List<DocumentoDTO> ObterDocumentoPorNome(DocumentoDTO documentoDTO)
+        {
+            return (from documento in DataContext.ObterDataContext().Table<Documento>()
+                join
+                    idioma in DataContext.ObterDataContext().Table<Idioma>()
+                    on documento.Idioma equals idioma.Id
+                where documentoDTO.Nome == documento.Nome && idioma.Nome == documentoDTO.Idioma
+                select new DocumentoDTO(documento.Id)
+                {
+                    Nome = documento.Nome,
+                    Idioma = idioma.Nome,
+                    DataRegistro = documento.DataRegistro,
+                    DataDigitalizacao = documento.DataDigitalizacao
+                }).ToList();
+        }
         public void Cadastrar(DocumentoDTO documentoDTO)
         {
-            var idioma = Idioma.Consultar(documentoDTO.Idioma).Id;
-            var documento = Mapeadores.Mapeador.MapearCabecalhoDocumento(documentoDTO, idioma, VerificarJaRegistrado(documentoDTO, idioma));
-            DataContext.ObterDataContext().InsertOrReplace(documento);
-            VincularAutoria(documentoDTO, idioma);
-            VincularMencao(documento, documentoDTO);
+            var documento = VerificarJaRegistrado(documentoDTO);
+            RemoverVinculoAnterior(documento);
 
+            DataContext.ObterDataContext().InsertOrReplace(documento);
+            documentoDTO.AtualizarId(ObterDocumentoPorNome(documentoDTO).FirstOrDefault().Id);
+            VincularPessoas(documentoDTO);
+            
             switch (documentoDTO.GetType().Name)
             {
                 case ("AudioDTO"):
@@ -79,151 +153,37 @@ namespace BibliotecaViva.DAL.Interfaces
                     throw new Exception("Documento Inválido");
             }
         }
-
-        private int? VerificarJaRegistrado(DocumentoDTO documentoDTO, int idioma)
+        private Documento VerificarJaRegistrado(DocumentoDTO documentoDTO)
         {
-            var documentoCadastrado = Consultar(documentoDTO, idioma);
-            return documentoCadastrado != null ? documentoCadastrado.Id : null;
-        }
+            var documentoDB = ObterDocumentoPorNome(documentoDTO).FirstOrDefault();
 
-        private void VincularAutoria(DocumentoDTO documentoDTO, int idioma)
-        {
-            var autorAnterior = BuscarPessoasVinculadas(documentoDTO, idioma, "Autor", BuscarPessoaAutor(documentoDTO).GetId());
-            DataContext.ObterDataContext().Delete(autorAnterior.First());
-            DataContext.ObterDataContext().InsertOrReplace(autorAnterior.First());
-        }
-
-        private void VincularMencao(Documento documento, DocumentoDTO documentoDTO)
-        {
-            var mencoes = BuscarPessoasVinculadas(documento.Id,"Mencao").ToList();
-            foreach (var mencao in mencoes)
+            return new Documento()
             {
-                DataContext.ObterDataContext().Delete(mencao);
-            }
-            foreach (var mencao in BuscarPessoasMencionada(documentoDTO))
-            {
-                DataContext.ObterDataContext().InsertOrReplace(new PessoaDocumento()
-                {
-                    Pessoa = mencao.Id,
-                    Documento = documento.Id,
-                    TipoDeRelacao = TipoRelacao.Consultar("Mencao").Id
-                });
-            }            
-        }
-
-        private DocumentoDTO ObterMencao(Documento documento, DocumentoDTO documentoDTO)
-        {
-            documentoDTO.NomeMencao = new List<string>();
-            documentoDTO.SobrenomeMencao = new List<string>();
-            foreach (var mencao in BuscarPessoasVinculadas(documento.Id, "Mencao"))
-            {
-                documentoDTO.NomeMencao.Add(mencao.Nome);
-                documentoDTO.SobrenomeMencao.Add(mencao.Sobrenome);
-            }
-            return documentoDTO;
-        }
-
-        private PessoaDTO BuscarPessoaAutor(DocumentoDTO documentoDTO)
-        {
-            return Pessoa.Consultar(new PessoaDTO()
-            {
-                Nome = documentoDTO.NomeAutor,
-                Sobrenome = documentoDTO.SobreNomeAutor
-            }) ?? throw new Exception("Autor não encontrado!");
-        }
-
-        private List<Pessoa> BuscarPessoasMencionada(DocumentoDTO documentoDTO)
-        {
-            var retorno = new List<Pessoa>();
-            for (int i = 0; i < documentoDTO.NomeMencao.Count; i ++)
-            {
-                retorno.Add(Pessoa.Consultar(documentoDTO.NomeMencao[i], documentoDTO.SobrenomeMencao[i]));
-            }
-            return retorno;
-        }
-
-        private List<Pessoa> BuscarPessoasVinculadas(int? documentoId, string tipoVinculo)
-        {
-            var relacao = TipoRelacao.Consultar(tipoVinculo);
-            var mencoes = DataContext.ObterDataContext().Table<PessoaDocumento>().Where(mencao => mencao.Documento == documentoId && mencao.TipoDeRelacao == relacao.Id);
-            var retorno = new List<Pessoa>();
-            foreach (var mencao in mencoes)
-            {
-                retorno.Add(Pessoa.Consultar(mencao.Pessoa));
-            }
-            return retorno;
-        }
-
-        private List<PessoaDocumento> BuscarPessoasVinculadas(DocumentoDTO documentoDTO, int idioma, string tipoVinculo, int? pessoa)
-        {
-            var pessoaRelacionada = new PessoaDocumento()
-            {
-                Pessoa = pessoa,
-                Documento = Consultar(documentoDTO, idioma).Id,
-                TipoDeRelacao = TipoRelacao.Consultar(tipoVinculo).Id
+                Id = documentoDB != null ? documentoDB.Id : null,
+                Idioma = Idioma.Consultar(documentoDTO.Idioma).Id,
+                Nome = documentoDTO.Nome,
+                DataDigitalizacao = documentoDTO.DataDigitalizacao,
+                DataRegistro = documentoDTO.DataRegistro
             };
-            var pessoaRelacionadas = ConsultarRelacaoPessoaDocumento(pessoaRelacionada).ToList();
-            return pessoaRelacionadas.Count > 0 ? pessoaRelacionadas : new List<PessoaDocumento>(){ pessoaRelacionada };
         }
-
-        private List<PessoaDocumento> ConsultarRelacaoPessoaDocumento(PessoaDocumento pessoa)
+        private void VincularPessoas(DocumentoDTO documento)
         {
-            return pessoa.Pessoa != null ?
-                DataContext.ObterDataContext().Table<PessoaDocumento>().Where(pessoaDocumento => pessoaDocumento.Documento == pessoa.Documento && pessoaDocumento.TipoDeRelacao == pessoa.TipoDeRelacao && pessoaDocumento.Pessoa == pessoa.Pessoa).ToList() :
-                DataContext.ObterDataContext().Table<PessoaDocumento>().Where(pessoaDocumento => pessoaDocumento.Documento == pessoa.Documento && pessoaDocumento.TipoDeRelacao == pessoa.TipoDeRelacao).ToList();
+            foreach(var pessoa in documento.PessoaVinculadas)
+                DataContext.ObterDataContext().Insert(new PessoaDocumento()
+                {
+                    Pessoa = Pessoa.Consultar(pessoa).Id,
+                    Documento = documento.Id,
+                    TipoDeRelacao = TipoRelacao.Consultar(pessoa.TipoVinculo).Id
+                });
         }
-
-        public DocumentoDTO Consultar(DocumentoDTO documentoDTO)
+        private void RemoverVinculoAnterior(Documento documento)
         {
-            var idioma = Idioma.Consultar(documentoDTO.Idioma);
-            var documento = DataContext.ObterDataContext().Table<Documento>().FirstOrDefault(documentoDB => documentoDB.Nome == documentoDTO.Nome && documentoDB.Idioma == idioma.Id) ?? throw new Exception("Documento não encontrado");
-            var autor = Pessoa.Consultar(BuscarPessoasVinculadas(documentoDTO, idioma.Id, "Autor", null).First().Pessoa);
-            documentoDTO = PopularRetorno(documentoDTO, idioma, documento, autor);
-            return documentoDTO;
-        }
-
-        private DocumentoDTO PopularRetorno(DocumentoDTO documentoDTO, Idioma idioma, Documento documento, Pessoa autor)
-        {
-            documentoDTO.Nome = documento.Nome;
-            documentoDTO.DataRegistro = documento.DataRegistro;
-            documentoDTO.DataDigitalizacao = documento.DataDigitalizacao;
-            documentoDTO.Idioma = idioma.Nome;
-            documentoDTO.NomeAutor = autor.Nome;
-            documentoDTO.SobreNomeAutor = autor.Sobrenome;
-            documentoDTO = ObterMencao(documento, documentoDTO);
-
-            switch (documentoDTO.GetType().Name)
+            if (documento != null)
             {
-                case ("AudioDTO"):
-                    {
-                        (documentoDTO as AudioDTO).Base64 = Audio.Consultar(documento.Id).Base64;
-                        break;
-                    }
-                case ("ImagemDTO"):
-                    {
-                        (documentoDTO as ImagemDTO).Base64 = Imagem.Consultar(documento.Id).Base64;
-                        break;
-                    }
-                case ("TextoDTO"):
-                    {
-                        (documentoDTO as TextoDTO).Texto = Texto.Consultar(documento.Id).Corpo;
-                        break;
-                    }
-                case ("VideoDTO"):
-                    {
-                        (documentoDTO as VideoDTO).Url = Video.Consultar(documento.Id).Url;
-                        break;
-                    }
-                default:
-                    throw new Exception("Documento Inválido");
+                var vinculosAnteriores = DataContext.ObterDataContext().Table<PessoaDocumento>().Where(vinculo => vinculo.Documento == documento.Id);
+                foreach(var vinculo in vinculosAnteriores)
+                    DataContext.ObterDataContext().Delete(vinculosAnteriores);
             }
-
-            return documentoDTO;
-        }
-
-        public Documento Consultar(DocumentoDTO documentoDTO, int idioma)
-        {
-            return DataContext.ObterDataContext().Table<Documento>().FirstOrDefault(documentoDB => documentoDB.Nome == documentoDTO.Nome && documentoDB.Idioma == idioma);
         }
     }
 }

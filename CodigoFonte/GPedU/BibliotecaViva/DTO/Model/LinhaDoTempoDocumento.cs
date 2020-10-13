@@ -4,10 +4,13 @@ namespace BibliotecaViva.DTO.Model
 {
     public class LinhaDoTempoDocumento
     {
-        [PrimaryKey, Indexed]
-        public int LinhaDoTempo { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int? Id { get; set; } 
+        
+        [Indexed]
+        public int? LinhaDoTempo { get; set; }
 
         [Indexed]
-        public int Documento { get; set; }
+        public int? Documento { get; set; }
     }
 }

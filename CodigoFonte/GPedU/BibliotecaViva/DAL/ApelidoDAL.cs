@@ -17,7 +17,7 @@ namespace BibliotecaViva.DAL
         {
             DataContext.ObterDataContext().InsertOrReplace(new Apelido()
             {
-                Pessoa = (int)pessoaDTO.GetId(),
+                Pessoa = pessoaDTO.Id,
                 Nome = pessoaDTO.Apelido
             });
         }
@@ -26,7 +26,7 @@ namespace BibliotecaViva.DAL
         {
             try
             {
-                DataContext.ObterDataContext().Delete(Consultar(pessoaDTO.GetId()));
+                DataContext.ObterDataContext().Delete(Consultar(pessoaDTO.Id));
             }
             catch(Exception ex)
             {

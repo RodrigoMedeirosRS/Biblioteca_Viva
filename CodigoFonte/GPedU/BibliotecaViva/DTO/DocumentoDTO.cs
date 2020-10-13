@@ -4,14 +4,24 @@ using System.Collections.Generic;
 
 namespace BibliotecaViva.DTO
 {
-    public abstract class DocumentoDTO
-    {        
+    public class DocumentoDTO
+    {
+        public DocumentoDTO()
+        {
+            Id = null;
+        }
+        public DocumentoDTO(int? id)
+        {
+            Id = id;
+        }
+        public void AtualizarId(int? id)
+        {
+            Id = Id ?? id;
+        }
+        public int? Id { get; protected set;}
         public string Nome { get; set; }
         public string Idioma { get; set; }
-        public string NomeAutor { get; set; }
-        public string SobreNomeAutor { get; set; }
-        public List<string> NomeMencao { get; set; }
-        public List<string> SobrenomeMencao { get; set; }
+        public List<PessoaVinculadaDTO> PessoaVinculadas { get; set; }
         public DateTime DataRegistro { get; set; }
         public DateTime DataDigitalizacao { get; set; }
     }

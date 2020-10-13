@@ -1,9 +1,4 @@
 using System;
-using System.Linq;
-using System.Data.SQLite.Tools;
-using System.Collections.Generic;
-
-using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
@@ -22,12 +17,7 @@ namespace BibliotecaViva.DAL
 
         public Genero Consultar(string nome)
         {
-            return DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(genero => genero.Nome == nome) ?? throw new Exception("Genero não cadastrado!");
-        }
-
-        public Genero Consultar(int id)
-        {
-            return DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(genero => genero.Id == id) ?? throw new Exception("Genero não cadastrado!");
+            return DataContext.ObterDataContext().Table<Genero>().FirstOrDefault(genero => genero.Nome == nome) ?? throw new Exception("Genero nï¿½o cadastrado!");
         }
     }
 }
