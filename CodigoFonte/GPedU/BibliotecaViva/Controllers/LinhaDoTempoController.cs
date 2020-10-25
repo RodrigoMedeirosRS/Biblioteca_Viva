@@ -27,15 +27,15 @@ namespace BibliotecaViva.Controllers
         }
 
         [HttpPost("Consultar")]
-        public async Task<IActionResult> Consultar(LinhaDoTempoDTO linhaDoTempoDTO)
+        public async Task<IActionResult> Consultar(LinhaDoTempoConsulta linhaDoTempoDTO)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoDTO>(linhaDoTempoDTO, _BLL.Consultar));
+            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoConsulta>(linhaDoTempoDTO, _BLL.Consultar));
         }
 
         [HttpPost("VincularPessoa")]
-        public async Task<IActionResult> VincularPessoa(LinhaDoTempoPessoaDTO linhaDoTempoPessoa)
+        public async Task<IActionResult> VincularPessoa(LinhaDoTempoPessoaConsulta linhaDoTempoPessoa)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoPessoaDTO>(linhaDoTempoPessoa, _BLL.VincularPessoa));
+            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoPessoaConsulta>(linhaDoTempoPessoa, _BLL.VincularPessoa));
         }
 
         [HttpPost("VincularDocumento")]

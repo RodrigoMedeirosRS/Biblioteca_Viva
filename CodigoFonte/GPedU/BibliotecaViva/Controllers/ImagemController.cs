@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.Interface;
 using BibliotecaViva.BLL.Interfaces;
 
@@ -26,9 +27,9 @@ namespace BibliotecaViva.Controllers
         }
 
         [HttpPost("Consultar")]
-        public async Task<IActionResult> Consultar(ImagemDTO documento)
+        public async Task<IActionResult> Consultar(ImagemConsulta documento)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<ImagemDTO>(documento, _BLL.Consultar));
+            return Ok(_Requisicao.ExecutarRequisicao<ImagemConsulta>(documento, _BLL.Consultar));
         }
     }
 }

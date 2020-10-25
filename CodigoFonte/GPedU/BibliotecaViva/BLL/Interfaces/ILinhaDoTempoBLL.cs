@@ -8,8 +8,8 @@ namespace BibliotecaViva.BLL.Interfaces
     public interface ILinhaDoTempoBLL
     {
          Task<string> Cadastrar(LinhaDoTempoDTO linhaDoTempo);
-         Task<string> Consultar(LinhaDoTempoDTO linhaDoTempo);
-         Task<string> VincularPessoa(LinhaDoTempoPessoaDTO linhaDoTempoPessoa);
+         Task<string> Consultar(LinhaDoTempoConsulta linhaDoTempoEntrada);
+         Task<string> VincularPessoa(LinhaDoTempoPessoaConsulta linhaDoTempoPessoaEntrada);
          Task<string> VincularDocumento(LinhaDoTempoDocumentoDTO linhaDoTempoDocumento);
          Task<string> VincularEvento(LinhaDoTempoEventoDTO linhaDoTempoEvento);
     }

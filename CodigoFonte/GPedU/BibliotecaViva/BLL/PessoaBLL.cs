@@ -3,8 +3,11 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.BLL.Utils;
+using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
+
 
 namespace BibliotecaViva.BLL
 {
@@ -22,8 +25,9 @@ namespace BibliotecaViva.BLL
             return "Sucesso!";
         }
 
-        public async Task<string> Consultar(PessoaDTO pessoa)
+        public async Task<string> Consultar(PessoaConsulta pessoaEntrada)
         {
+            var pessoa = AutoMapperGenerico.Mapear<PessoaConsulta, PessoaDTO>(pessoaEntrada);
             return SerializarRetorno(_DAL.Consultar(pessoa));
         }
 
