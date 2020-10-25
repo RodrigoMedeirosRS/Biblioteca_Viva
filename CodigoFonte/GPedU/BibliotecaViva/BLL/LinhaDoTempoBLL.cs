@@ -40,11 +40,14 @@ namespace BibliotecaViva.BLL
                 throw new Exception("Linha do Tempo ou Pessoa não Encontrada.");
             }
         }
-        public async Task<string> VincularDocumento(LinhaDoTempoDocumentoDTO linhaDoTempoDocumento)
+        public async Task<string> VincularDocumento(LinhaDoTempoDocumentoConsulta linhaDoTempoDocumentoEntrada)
         {
+            var linhaDoTempo = AutoMapperGenerico.Mapear<LinhaDoTempoConsulta, LinhaDoTempoDTO>(linhaDoTempoDocumentoEntrada.LinhaDoTempo);
+            var documento = AutoMapperGenerico.Mapear<DocumentoConsulta, DocumentoDTO>(linhaDoTempoDocumentoEntrada.Documento);
+
             try
             {
-                LinhaDoTempoDAL.VincularDocumento(linhaDoTempoDocumento.LinhaDoTempo, linhaDoTempoDocumento.Documento);
+                LinhaDoTempoDAL.VincularDocumento(linhaDoTempo, documento);
                 return  "Sucesso!";
             }
             catch
@@ -52,7 +55,7 @@ namespace BibliotecaViva.BLL
                 throw new Exception("Linha do Tempo ou Documento não Encontrado.");
             }
         }
-        public async Task<string> VincularEvento(LinhaDoTempoEventoDTO linhaDoTempoEvento)
+        public async Task<string> VincularEvento(LinhaDoTempoEventoConsulta linhaDoTempoEventoEntrada)
         {
             try
             {

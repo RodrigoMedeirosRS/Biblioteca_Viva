@@ -10,7 +10,7 @@ namespace BibliotecaViva.BLL.Interfaces
          Task<string> Cadastrar(LinhaDoTempoDTO linhaDoTempo);
          Task<string> Consultar(LinhaDoTempoConsulta linhaDoTempoEntrada);
          Task<string> VincularPessoa(LinhaDoTempoPessoaConsulta linhaDoTempoPessoaEntrada);
-         Task<string> VincularDocumento(LinhaDoTempoDocumentoDTO linhaDoTempoDocumento);
-         Task<string> VincularEvento(LinhaDoTempoEventoDTO linhaDoTempoEvento);
+         Task<string> VincularDocumento(LinhaDoTempoDocumentoConsulta linhaDoTempoDocumentoEntrada);
+         Task<string> VincularEvento(LinhaDoTempoEventoConsulta linhaDoTempoEventoEntrada);
     }
 }
