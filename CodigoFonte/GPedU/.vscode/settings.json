@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    ".vs/GPedU": true,
+    ".vs": true,
+    ".vscode": true,
+    "BibliotecaViva/.vscode": true,
+    "BibliotecaViva/bin/Debug/netcoreapp3.1": true,
+    "BibliotecaViva/bin": true,
+    "BibliotecaViva/BLL/bin/Debug/netstandard2.0": true,
+    "BibliotecaViva/BLL/bin": true,
+    "BibliotecaViva/BLL/obj": true,
+    "BibliotecaViva/DAL/bin": true,
+    "BibliotecaViva/DAL/obj": true,
+    "BibliotecaViva/DTO/bin": true,
+    "BibliotecaViva/DTO/obj": true,
+    "BibliotecaViva/obj": true,
+    "BibliotecaViva/System.Data.SQLite.NetStandard/bin": true,
+    "BibliotecaViva/System.Data.SQLite.NetStandard/obj": true
+  }
+}
