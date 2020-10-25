@@ -1,8 +1,10 @@
+using System.Threading.Tasks.Dataflow;
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.Interface;
 using BibliotecaViva.BLL.Interfaces;
 
@@ -28,9 +30,9 @@ namespace BibliotecaViva.Controllers
         }
 
         [HttpPost("Consultar")]
-        public async Task<IActionResult> Consultar(PessoaDTO pessoa)
+        public async Task<IActionResult> Consultar(PessoaConsulta pessoa)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<PessoaDTO>(pessoa, _BLL.Consultar));
+            return Ok(_Requisicao.ExecutarRequisicao<PessoaConsulta>(pessoa, _BLL.Consultar));
         }
     }
 }
