@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.BLL.Utils;
+using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 
@@ -28,8 +30,9 @@ namespace BibliotecaViva.BLL
             DocumentoDAL.Cadastrar(ProcessarDocumentoSwagger(documento));
             return "Sucesso!";
         }
-        public async Task<string> Consultar(DocumentoDTO documento)
+        public async Task<string> Consultar(DocumentoConsulta documentoEntrada)
         {
+            var documento = MapearDocumento(documentoEntrada);
             var documentos = DocumentoDAL.Consultar(documento);
             
             switch (documento.GetType().Name)
@@ -42,6 +45,23 @@ namespace BibliotecaViva.BLL
                     return JsonConvert.SerializeObject(TextoDAL.Listar(documentos));
                 case ("VideoDTO"):
                     return JsonConvert.SerializeObject(VideoDAL.Listar(documentos));
+                default:
+                    throw new Exception("Documento Inválido");
+            }
+        }
+
+        private DocumentoDTO MapearDocumento(DocumentoConsulta documento)
+        {
+            switch(documento.GetType().Name)
+            {
+                case ("AudioConsulta"):
+                    return AutoMapperGenerico.Mapear<DocumentoConsulta, AudioDTO>(documento);
+                case ("ImagemConsulta"):
+                    return AutoMapperGenerico.Mapear<DocumentoConsulta, ImagemDTO>(documento);
+                case ("VideoConsulta"):
+                    return AutoMapperGenerico.Mapear<DocumentoConsulta, VideoDTO>(documento);
+                case ("TextoConsulta"):
+                    return AutoMapperGenerico.Mapear<DocumentoConsulta, TextoDTO>(documento);
                 default:
                     throw new Exception("Documento Inválido");
             }
