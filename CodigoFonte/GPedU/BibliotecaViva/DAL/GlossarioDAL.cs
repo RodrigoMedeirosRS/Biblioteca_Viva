@@ -17,7 +17,7 @@ namespace BibliotecaViva.DAL
 
         public void Cadastrar(GlossarioDTO glossario)
         {
-            DataContext.ObterDataContext().InsertOrReplace(VerificaLinhaDoTempoExistente(glossario));
+            DataContext.ObterDataContext().InsertOrReplace(VerificaGlossarioExistente(glossario));
         }
 
         public List<GlossarioDTO> Consultar(GlossarioDTO glossarioDTO)
@@ -35,7 +35,7 @@ namespace BibliotecaViva.DAL
             return retorno;
         }
 
-        private Glossario VerificaLinhaDoTempoExistente(GlossarioDTO glossarioDTO)
+        private Glossario VerificaGlossarioExistente(GlossarioDTO glossarioDTO)
         {
             return ObterGlossario(glossarioDTO).FirstOrDefault() ?? new Glossario()
             {

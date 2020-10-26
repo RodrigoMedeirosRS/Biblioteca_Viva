@@ -57,6 +57,7 @@ namespace BibliotecaViva
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IApelidoDAL, ApelidoDAL>();
+            services.AddScoped<IConceitoDAL, ConceitoDAL>();
             services.AddScoped<IGlossarioDAL, GlossarioDAL>();
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
