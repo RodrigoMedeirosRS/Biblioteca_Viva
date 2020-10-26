@@ -11,6 +11,8 @@ namespace BibliotecaViva.DTO
             Id = id;
         }
         public int? Id { get; private set; }
+        public int? GlossarioId { get; set; }
+        public string Glossario { get; set; }
         public string Nome { get; set; }
     }
 }

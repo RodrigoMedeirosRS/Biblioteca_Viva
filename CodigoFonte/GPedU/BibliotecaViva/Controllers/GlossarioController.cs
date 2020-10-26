@@ -31,5 +31,17 @@ namespace BibliotecaViva.Controllers
         {
             return Ok(_Requisicao.ExecutarRequisicao<GlossarioConsulta>(glossarioEntrada, _BLL.Consultar));
         }
+
+        [HttpPost("CadastrarConceito")]
+        public async Task<IActionResult> CadastrarConceito(ConceitoEntrada conceitoEntrada)
+        {
+            return Ok(_Requisicao.ExecutarRequisicao<ConceitoEntrada>(conceitoEntrada, _BLL.CadastrarConceito));
+        }
+
+        [HttpPost("ConsultarConceito")]
+        public async Task<IActionResult> ConsultarConceito(ConceitoConsulta conceitoConsulta)
+        {
+            return Ok(_Requisicao.ExecutarRequisicao<ConceitoConsulta>(conceitoConsulta, _BLL.ConsultarConceito));
+        }
     }
 }

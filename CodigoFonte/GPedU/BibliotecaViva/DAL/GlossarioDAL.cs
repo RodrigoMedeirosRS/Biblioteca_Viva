@@ -26,7 +26,7 @@ namespace BibliotecaViva.DAL
             var retorno = new List<GlossarioDTO>();
             foreach (var glossario in glossarios)
             {
-                retorno.Add(new GlossarioDTO()
+                retorno.Add(new GlossarioDTO(glossario.Id)
                 {
                     Nome = glossario.Nome,
                     Descricao = glossario.Descricao

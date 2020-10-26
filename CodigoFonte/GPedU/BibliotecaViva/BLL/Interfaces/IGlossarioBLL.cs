@@ -8,5 +8,7 @@ namespace BibliotecaViva.BLL.Interfaces
     {
         Task<string> Cadastrar(GlossarioDTO glossario);
         Task<string> Consultar(GlossarioConsulta glossarioEntrada);
+        Task<string> CadastrarConceito(ConceitoEntrada conceitoEntrada);
+        Task<string> ConsultarConceito(ConceitoConsulta conceitoConsulta);
     }
 }

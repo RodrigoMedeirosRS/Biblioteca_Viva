@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using BibliotecaViva.DTO;
@@ -16,37 +17,47 @@ namespace BibliotecaViva.DAL
             DataContext = dataContext;
         }
 
-        public void Cadastrar(ConceitoDTO conceito)
+        public void Cadastrar(ConceitoDTO conceitoDTO, GlossarioDTO glossarioDTO)
         {
-            DataContext.ObterDataContext().InsertOrReplace(VerificaConceitoExistente(conceito));
-        }
-        public  List<ConceitoDTO> Consultar(ConceitoDTO conceitoDTO)
-        {
-            var conceitos = ObterConceito(conceitoDTO);
-            var retorno = new List<ConceitoDTO>();
-            foreach (var glossario in conceitos)
-            {
-                retorno.Add(new ConceitoDTO()
-                {
-                    Nome = glossario.Nome
-                });
-            }
-            return retorno;
+            DataContext.ObterDataContext().InsertOrReplace(VerificaConceitoExistente(conceitoDTO, glossarioDTO));
         }
 
-        private Conceito VerificaConceitoExistente(ConceitoDTO conceitoDTO)
+        public List<ConceitoDTO> Consultar(ConceitoDTO conceitoDTO)
         {
-            return ObterConceito(conceitoDTO).FirstOrDefault() ?? new Conceito()
+            if (string.IsNullOrEmpty(conceitoDTO.Nome) && string.IsNullOrEmpty(conceitoDTO.Glossario))
+                throw new Exception("Erro, favor preencher nome ou glossario");
+            if (!string.IsNullOrEmpty(conceitoDTO.Glossario))
+                return (from conceito in DataContext.ObterDataContext().Table<Conceito>()
+                        join
+                            glossario in DataContext.ObterDataContext().Table<Glossario>()
+                            on conceito.Glossario equals glossario.Id
+                        where glossario.Nome == conceitoDTO.Glossario select new ConceitoDTO(conceito.Id)
+                        {
+                            Nome = conceito.Nome,
+                            Glossario = glossario.Nome,
+                            GlossarioId = conceito.Glossario
+                        }).ToList();
+            return (from conceito in DataContext.ObterDataContext().Table<Conceito>()
+                        join
+                            glossario in DataContext.ObterDataContext().Table<Glossario>()
+                            on conceito.Glossario equals glossario.Id
+                        where conceito.Nome == conceitoDTO.Nome select new ConceitoDTO(conceito.Id)
+                        {
+                            Nome = conceito.Nome,
+                            Glossario = glossario.Nome,
+                            GlossarioId = conceito.Glossario
+                        }).ToList();
+        }
+
+        private ConceitoDTO VerificaConceitoExistente(ConceitoDTO conceitoDTO, GlossarioDTO glossarioDTO)
+        {
+            var conceito = Consultar(conceitoDTO).FirstOrDefault() ?? new ConceitoDTO()
             {
-                Nome = conceitoDTO.Nome
+                Nome = conceitoDTO.Nome,
+                Glossario = glossarioDTO.Nome,
+                GlossarioId = glossarioDTO.Id
             };
-        }
-
-        private List<Conceito> ObterConceito(ConceitoDTO conceitoDTO)
-        {
-            if (string.IsNullOrEmpty(conceitoDTO.Nome))
-                return DataContext.ObterDataContext().Table<Conceito>().ToList();
-            return DataContext.ObterDataContext().Table<Conceito>().Where(conceito => conceito.Nome == conceitoDTO.Nome).ToList();
+            return conceito;
         }
     }
 }
