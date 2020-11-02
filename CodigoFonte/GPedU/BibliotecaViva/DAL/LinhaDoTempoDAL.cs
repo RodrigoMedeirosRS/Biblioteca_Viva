@@ -12,13 +12,15 @@ namespace BibliotecaViva.DAL
         private ISQLiteDataContext DataContext { get; set; }
         private IPessoaDAL PessoaDAL { get; set; }
         private IDocumentoDAL DocumentoDAL { get; set; }
+        private IEventoDAL EventoDAL { get; set; }
         private IIdiomaDAL IdiomaDAL { get; set; }
-        public LinhaDoTempoDAL(ISQLiteDataContext dataContext, IPessoaDAL pessoaDAL, IDocumentoDAL documentoDAL, IIdiomaDAL idiomaDAL)
+        public LinhaDoTempoDAL(ISQLiteDataContext dataContext, IPessoaDAL pessoaDAL, IDocumentoDAL documentoDAL, IIdiomaDAL idiomaDAL, EventoDAL eventoDAL)
         {
             DataContext = dataContext;
             PessoaDAL = pessoaDAL;
             DocumentoDAL = documentoDAL;
             IdiomaDAL = idiomaDAL;
+            EventoDAL = eventoDAL;
         }
 
         public void Cadastrar(LinhaDoTempoDTO linhaDoTempoDTO)
@@ -63,6 +65,13 @@ namespace BibliotecaViva.DAL
         }
         public void VincularEvento(LinhaDoTempoDTO linhaDoTempoDTO, EventoDTO eventoDTO)
         {
+            var linhdaDoTempoEvento = new LinhaDoTempoEvento()
+            {
+                Evento = EventoDAL.Consultar(eventoDTO).FirstOrDefault().GetID(),
+                LinhaDoTempo = ObterLinhaDoTempo(linhaDoTempoDTO).FirstOrDefault().Id
+            };         
+
+            DataContext.ObterDataContext().InsertOrReplace(linhdaDoTempoEvento);
         }  
 
         private List<LinhaDoTempo> ObterLinhaDoTempo(LinhaDoTempoDTO linhaDoTempoDTO)

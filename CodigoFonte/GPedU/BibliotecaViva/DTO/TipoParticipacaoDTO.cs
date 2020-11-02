@@ -16,9 +16,9 @@ namespace BibliotecaViva.DTO
             Id = id;
         }
 
-        public int? GetID(int id)
+        public int? GetID()
         {
-            return id;
+            return Id;
         }
         private int? Id { get; set; }
         public string Nome { get; set; }

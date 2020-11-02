@@ -37,6 +37,7 @@ namespace BibliotecaViva.BLL
 
         public async Task<string> Cadastrar(EventoDTO eventoDTO)
         {
+            EventoDAL.Cadastrar(eventoDTO);
             return "sucesso";
         }
 

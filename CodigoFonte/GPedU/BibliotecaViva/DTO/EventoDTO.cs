@@ -28,7 +28,7 @@ namespace BibliotecaViva.DTO
         }
         private int? Id { get; set; }
         public string Nome { get; set; }
-        public DateTime DataHora { get; set; }
+        public DateTime? DataHora { get; set; }
         public string Destricao { get; set; }
         public string Localizacao { get; set; }
         public List<PessoaDTO> Participantes { get; set; }
