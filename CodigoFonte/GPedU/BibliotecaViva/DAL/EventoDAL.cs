@@ -22,16 +22,6 @@ namespace BibliotecaViva.DAL
             PessoaDAL = PessoaDAL;
         }
 
-        public void CadastrarTipo(TipoEventoDTO tipo)
-        {
-
-        }
-
-        public void CadastrarTipoParticipacao(TipoParticipacaoDTO tipo)
-        {
-
-        }
-
         public void Cadastrar(EventoDTO eventoDTO)
         {
 

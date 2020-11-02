@@ -63,11 +63,14 @@ namespace BibliotecaViva
             services.AddScoped<IConceitoDAL, ConceitoDAL>();
             services.AddScoped<IGlossarioDAL, GlossarioDAL>();
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
+            services.AddScoped<ITipoEventoDAL, TipoEventoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
             services.AddScoped<ILocalizacaoDAL, LocalizacaoDAL>();
             services.AddScoped<ISignificadoDAL, SignificadoDAL>();
             services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();
             services.AddScoped<ILinhaDoTempoDAL, LinhaDoTempoDAL>();
+            services.AddScoped<ITipoParticipacaoDAL, TipoParticipacaoDAL>();
+            
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 
