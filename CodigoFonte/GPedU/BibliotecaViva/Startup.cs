@@ -43,6 +43,7 @@ namespace BibliotecaViva
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
             services.AddScoped<IGlossarioBLL, GlossarioBLL>();
             services.AddScoped<IDocumentoBLL, DocumentoBLL>();
+            services.AddScoped<ILocalizacaoBLL, LocalizacaoBLL>();
             services.AddScoped<ILinhaDoTempoBLL, LinhaDoTempoBLL>();
         }
 
@@ -61,6 +62,7 @@ namespace BibliotecaViva
             services.AddScoped<IGlossarioDAL, GlossarioDAL>();
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
+            services.AddScoped<ILocalizacaoDAL, LocalizacaoDAL>();
             services.AddScoped<ISignificadoDAL, SignificadoDAL>();
             services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();
             services.AddScoped<ILinhaDoTempoDAL, LinhaDoTempoDAL>();

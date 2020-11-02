@@ -8,6 +8,6 @@ namespace BibliotecaViva.DTO.Model
         public int? Regiao { get; set; }
 
         [Indexed]
-        public int Local { get; set; }
+        public int? Local { get; set; }
     }
 }
