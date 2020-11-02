@@ -59,6 +59,7 @@ namespace BibliotecaViva.BLL
 
             return "Sucesso";
         }
+
         public async Task<string> ConsultarConceito(ConceitoConsulta conceitoConsulta)
         {
             var conceito = AutoMapperGenerico.Mapear<ConceitoConsulta, ConceitoDTO>(conceitoConsulta);
