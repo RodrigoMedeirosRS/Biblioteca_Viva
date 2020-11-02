@@ -24,5 +24,6 @@ namespace BibliotecaViva.DTO
         public List<PessoaVinculadaDTO> PessoaVinculadas { get; set; }
         public DateTime DataRegistro { get; set; }
         public DateTime DataDigitalizacao { get; set; }
+        public List<GlossarioDTO> Glossarios {get; set; }
     }
 }

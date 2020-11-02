@@ -35,6 +35,7 @@ namespace BibliotecaViva.DAL
                     DataRegistro = documentos.DataRegistro,
                     DataDigitalizacao = documentos.DataDigitalizacao,
                     PessoaVinculadas = documentos.PessoaVinculadas,
+                    Glossarios = documentos.Glossarios,
                     Texto = textos.Corpo                    
                 }).ToList();
         }

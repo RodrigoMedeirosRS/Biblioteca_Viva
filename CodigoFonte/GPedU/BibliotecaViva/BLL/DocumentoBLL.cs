@@ -71,6 +71,9 @@ namespace BibliotecaViva.BLL
         {
             documento.Idioma = documento.Idioma.Replace("string", string.Empty);
             documento.Nome = documento.Nome.Replace("string", string.Empty);
+            
+            foreach(var glossario in documento.Glossarios)
+                glossario.Nome = glossario.Nome.Replace("string", string.Empty);
 
             switch (documento.GetType().Name)
             {
