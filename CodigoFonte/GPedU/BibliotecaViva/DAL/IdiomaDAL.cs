@@ -1,4 +1,5 @@
 ﻿using System;
+using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
@@ -11,9 +12,15 @@ namespace BibliotecaViva.DAL
         {
             DataContext = dataContext;
         }
-        public Idioma Consultar(string idioma)
+        public IdiomaDTO Consultar(string idioma)
         {
-            return DataContext.ObterDataContext().Table<Idioma>().FirstOrDefault(idiomaDB => idiomaDB.Nome == idioma) ?? throw new Exception("Idioma não cadastrado!");
+            var resultado = DataContext.ObterDataContext().Table<Idioma>().FirstOrDefault(idiomaDB => idiomaDB.Nome == idioma) 
+            ?? throw new Exception("Idioma não cadastrado!");
+            
+            return new IdiomaDTO(resultado.Id)
+            {
+                Nome = resultado.Nome
+            };
         }
     }
 }

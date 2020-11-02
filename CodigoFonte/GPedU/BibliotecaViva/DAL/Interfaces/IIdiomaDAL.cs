@@ -1,9 +1,9 @@
-﻿using BibliotecaViva.DTO.Model;
+﻿using BibliotecaViva.DTO;
 
 namespace BibliotecaViva.DAL.Interfaces
 {
     public interface IIdiomaDAL
     {
-        Idioma Consultar(string idioma);
+        IdiomaDTO Consultar(string idioma);
     }
 }

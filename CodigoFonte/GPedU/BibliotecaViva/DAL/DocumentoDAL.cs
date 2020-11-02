@@ -4,7 +4,6 @@ using System.Linq;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
-using BibliotecaViva.DAL.Utils;
 
 namespace BibliotecaViva.DAL
 {
@@ -18,8 +17,9 @@ namespace BibliotecaViva.DAL
         private IVideoDAL Video { get; set; }
         private IImagemDAL Imagem { get; set; }
         private ITextoDAL Texto { get; set; }
+        private IGlossarioDAL GlossarioDAL { get; set; }
 
-        public DocumentoDAL(ISQLiteDataContext dataContext, IIdiomaDAL idioma, IPessoaDAL pessoa, ITipoRelacaoDAL tipoRelacao, IAudioDAL audio, IVideoDAL video, IImagemDAL imagem, ITextoDAL texto)
+        public DocumentoDAL(ISQLiteDataContext dataContext, IIdiomaDAL idioma, IPessoaDAL pessoa, ITipoRelacaoDAL tipoRelacao, IAudioDAL audio, IVideoDAL video, IImagemDAL imagem, ITextoDAL texto, IGlossarioDAL glossarioDAL)
         {
             DataContext = dataContext;
             Idioma = idioma;
@@ -29,6 +29,7 @@ namespace BibliotecaViva.DAL
             Audio = audio;
             Video = video;
             TipoRelacao = tipoRelacao;
+            GlossarioDAL = glossarioDAL;
         }
         public List<DocumentoDTO> Consultar(DocumentoDTO documentoDTO)
         {
@@ -36,10 +37,14 @@ namespace BibliotecaViva.DAL
             ObterDocumentoPorData(documentoDTO) : ObterDocumentoPorNome(documentoDTO); 
             
             foreach (var documento in documentos)
+            {
                 documento.PessoaVinculadas = BuscarPessoasVinculadas(documento.Id);
-            
+                documento.Glossarios = BuscarGlossariosVinculados(documento.Id);
+            }
+
             return documentos;
         }
+
         private List<PessoaVinculadaDTO> BuscarPessoasVinculadas(int? documentoId)
         {
             return (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
@@ -72,6 +77,21 @@ namespace BibliotecaViva.DAL
                     TipoVinculo = tipoRelacao.Nome
                 }).ToList();
         }
+
+        private List<GlossarioDTO> BuscarGlossariosVinculados(int? documentoId)
+        {
+            return (from documentoGlossario in DataContext.ObterDataContext().Table<DocumentoGlossario>()
+                join
+                    glossario in DataContext.ObterDataContext().Table<Glossario>()
+                    on documentoGlossario.Glossario equals glossario.Id
+                where documentoGlossario.Documento == documentoId
+                select new GlossarioDTO(glossario.Id)
+                {
+                    Nome = glossario.Nome,
+                    Descricao = glossario.Descricao
+                }).ToList();
+        }
+
         private List<DocumentoDTO> ObterDocumentoPorData(DocumentoDTO documentoDTO)
         {
             return (from documento in DataContext.ObterDataContext().Table<Documento>()
@@ -105,11 +125,15 @@ namespace BibliotecaViva.DAL
         public void Cadastrar(DocumentoDTO documentoDTO)
         {
             var documento = VerificarJaRegistrado(documentoDTO);
+            
             RemoverVinculoAnterior(documento);
+            RemoverGlossarioAnterior(documento);
 
             DataContext.ObterDataContext().InsertOrReplace(documento);
             documentoDTO.AtualizarId(ObterDocumentoPorNome(documentoDTO).FirstOrDefault().Id);
+            
             VincularPessoas(documentoDTO);
+            VincularGlossarios(documentoDTO);
             
             switch (documentoDTO.GetType().Name)
             {
@@ -166,6 +190,7 @@ namespace BibliotecaViva.DAL
                 DataRegistro = documentoDTO.DataRegistro
             };
         }
+
         private void VincularPessoas(DocumentoDTO documento)
         {
             foreach(var pessoa in documento.PessoaVinculadas)
@@ -176,13 +201,38 @@ namespace BibliotecaViva.DAL
                     TipoDeRelacao = TipoRelacao.Consultar(pessoa.TipoVinculo).Id
                 });
         }
+
+        private void VincularGlossarios(DocumentoDTO documento)
+        {
+            foreach(var glossarioDTO in documento.Glossarios)
+            {
+                var glossario = GlossarioDAL.Consultar(glossarioDTO).FirstOrDefault();
+                if (glossario != null)
+                    DataContext.ObterDataContext().Insert(new DocumentoGlossario()
+                    {
+                        Documento = documento.Id,
+                        Glossario = glossario.Id
+                    });
+            }
+        }
+
         private void RemoverVinculoAnterior(Documento documento)
         {
             if (documento != null)
             {
                 var vinculosAnteriores = DataContext.ObterDataContext().Table<PessoaDocumento>().Where(vinculo => vinculo.Documento == documento.Id);
                 foreach(var vinculo in vinculosAnteriores)
-                    DataContext.ObterDataContext().Delete(vinculosAnteriores);
+                    DataContext.ObterDataContext().Delete(vinculo);
+            }
+        }
+
+        private void RemoverGlossarioAnterior(Documento documento)
+        {
+            if (documento != null)
+            {
+                var glossariosAnteriores = DataContext.ObterDataContext().Table<DocumentoGlossario>().Where(vinculo => vinculo.Documento == documento.Id);
+                foreach(var glossario in glossariosAnteriores)
+                    DataContext.ObterDataContext().Delete(glossario);
             }
         }
     }

@@ -27,27 +27,27 @@ namespace BibliotecaViva.Controllers
         }
 
         [HttpPost("Consultar")]
-        public async Task<IActionResult> Consultar(LinhaDoTempoDTO linhaDoTempoDTO)
+        public async Task<IActionResult> Consultar(LinhaDoTempoConsulta linhaDoTempoDTO)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoDTO>(linhaDoTempoDTO, _BLL.Consultar));
+            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoConsulta>(linhaDoTempoDTO, _BLL.Consultar));
         }
 
         [HttpPost("VincularPessoa")]
-        public async Task<IActionResult> VincularPessoa(LinhaDoTempoPessoaDTO linhaDoTempoPessoa)
+        public async Task<IActionResult> VincularPessoa(LinhaDoTempoPessoaConsulta linhaDoTempoPessoa)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoPessoaDTO>(linhaDoTempoPessoa, _BLL.VincularPessoa));
+            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoPessoaConsulta>(linhaDoTempoPessoa, _BLL.VincularPessoa));
         }
 
         [HttpPost("VincularDocumento")]
-        public async Task<IActionResult> VincularDocumento(LinhaDoTempoDocumentoDTO linhaDoTempoDocumento)
+        public async Task<IActionResult> VincularDocumento(LinhaDoTempoDocumentoConsulta linhaDoTempoDocumento)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoDocumentoDTO>(linhaDoTempoDocumento, _BLL.VincularDocumento));
+            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoDocumentoConsulta>(linhaDoTempoDocumento, _BLL.VincularDocumento));
         }
 
         [HttpPost("VincularEvento")]
-        public async Task<IActionResult> VincularEvento(LinhaDoTempoEventoDTO linhaDoTempoEvento)
+        public async Task<IActionResult> VincularEvento(LinhaDoTempoEventoConsulta linhaDoTempoEvento)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoEventoDTO>(linhaDoTempoEvento, _BLL.VincularEvento));
+            return Ok(_Requisicao.ExecutarRequisicao<LinhaDoTempoEventoConsulta>(linhaDoTempoEvento, _BLL.VincularEvento));
         }
     }
 }
