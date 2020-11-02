@@ -9,6 +9,8 @@ namespace BibliotecaViva.DTO.Model
         
         [Indexed]
         public int? Glossario { get; set; }
+        
+        [Unique]
         public string Nome { get; set; }
     }
 }

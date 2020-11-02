@@ -15,11 +15,13 @@ namespace BibliotecaViva.BLL
         private IGlossarioDAL GlossarioDAL { get; set; }
         private IIdiomaDAL IdiomaDAL { get; set; }
         private IConceitoDAL ConceitoDAL { get; set; }
-        public GlossarioBLL(IGlossarioDAL glossarioDAL, IIdiomaDAL idiomaDAL, IConceitoDAL conceitoDAL)
+        private ISignificadoDAL SignificadoDAL { get; set; }
+        public GlossarioBLL(IGlossarioDAL glossarioDAL, IIdiomaDAL idiomaDAL, IConceitoDAL conceitoDAL, ISignificadoDAL significadoDAL)
         {
             IdiomaDAL = idiomaDAL;
             ConceitoDAL = conceitoDAL;
             GlossarioDAL = glossarioDAL;
+            SignificadoDAL = significadoDAL;
         }
         public async Task<string> Cadastrar(GlossarioDTO glossario)
         {
@@ -36,15 +38,25 @@ namespace BibliotecaViva.BLL
         {
             var conceito = new ConceitoDTO(){
                 Nome = conceitoEntrada.Nome };
+            
             var glossario = GlossarioDAL.Consultar(new GlossarioDTO(){
-                Nome = conceitoEntrada.Glossario }).FirstOrDefault();
-            if (glossario == null)
+                Nome = conceitoEntrada.Glossario }).FirstOrDefault() ??
                 throw new Exception("Erro: Glossário inválido!");
 
-            ConceitoDAL.Cadastrar(conceito, glossario);
+            
+            var idioma = IdiomaDAL.Consultar(conceitoEntrada.Idioma) ?? 
+                throw new Exception("Idioma não cadastrado, por favor insira um idioma válido");
+            
+            var significado = new SignificadoDTO(){
+                Idioma = idioma.Id,
+                NomeIdioma = idioma.Nome,
+                Descricao = conceitoEntrada.Significado,
+                Link = conceitoEntrada.LinkSignificado };
 
-            //Inserir Busca do significado do conceito
-            //var idioma = IdiomaDAL.Consultar(conceitoEntrada.Idioma);
+            ConceitoDAL.Cadastrar(conceito, glossario);
+            conceito.Id = ConceitoDAL.Consultar(conceito).FirstOrDefault().Id;
+            SignificadoDAL.Cadastrar(conceito, idioma, significado);
+
             return "Sucesso";
         }
         public async Task<string> ConsultarConceito(ConceitoConsulta conceitoConsulta)

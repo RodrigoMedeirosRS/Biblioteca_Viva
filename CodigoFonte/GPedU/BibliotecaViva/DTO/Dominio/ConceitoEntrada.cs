@@ -4,7 +4,8 @@ namespace BibliotecaViva.DTO.Dominio
     {
         public string Nome { get; set; }
         public string Glossario { get; set; }
-        public string Significado { get; set; }
         public string Idioma { get; set; }
+        public string Significado { get; set; }
+        public string LinkSignificado { get; set; }
     }
 }

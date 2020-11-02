@@ -34,6 +34,7 @@ namespace BibliotecaViva.DAL
                     {
                         Conceito = significado.Conceito,
                         Idioma = significado.Idioma,
+                        NomeIdioma = idioma.Nome,
                         Link = significado.Link,
                         Descricao = significado.Descricao
                     }).ToList();
@@ -49,21 +50,29 @@ namespace BibliotecaViva.DAL
                 {
                     Conceito = significado.Conceito,
                     Idioma = significado.Idioma,
+                    NomeIdioma = idioma.Nome,
                     Link = significado.Link,
                     Descricao = significado.Descricao
                 }).ToList();
         }
 
-        private SignificadoDTO VerificaConceitoExistente(ConceitoDTO conceitoDTO, IdiomaDTO idiomaDTO, SignificadoDTO significadoDTO)
+        private Significado VerificaConceitoExistente(ConceitoDTO conceitoDTO, IdiomaDTO idiomaDTO, SignificadoDTO significadoDTO)
         {
-            var conceito = Consultar(idiomaDTO, conceitoDTO).FirstOrDefault() ?? new SignificadoDTO()
-            {
-                Conceito = conceitoDTO.Id,
-                Idioma = idiomaDTO.Id,
-                Link = significadoDTO.Link,
-                Descricao = significadoDTO.Descricao
-            };
-            return conceito;
+            var significado = Consultar(idiomaDTO, conceitoDTO).FirstOrDefault();
+            return significado == null ? new Significado()
+                {
+                    Conceito = conceitoDTO.Id,
+                    Idioma = idiomaDTO.Id,
+                    Link = significadoDTO.Link,
+                    Descricao = significadoDTO.Descricao
+                } : new Significado()
+                {
+                    Id = significado.Id,
+                    Conceito = significado.Conceito,
+                    Idioma = significado.Idioma,
+                    Link = significado.Link,
+                    Descricao = significado.Descricao
+                };
         }
     }
 }
