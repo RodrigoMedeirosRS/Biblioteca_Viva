@@ -13,6 +13,6 @@ namespace BibliotecaViva.DTO.Model
 
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public DateTime DataHora { get; set; }
+        public DateTime DataRegistro { get; set; }
     }
 }
