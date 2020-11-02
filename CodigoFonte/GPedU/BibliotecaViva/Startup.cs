@@ -40,6 +40,7 @@ namespace BibliotecaViva
 
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
+            services.AddScoped<IEventoBLL, EventoBLL>();
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
             services.AddScoped<IGlossarioBLL, GlossarioBLL>();
             services.AddScoped<IDocumentoBLL, DocumentoBLL>();
@@ -53,6 +54,7 @@ namespace BibliotecaViva
             services.AddScoped<IVideoDAL, VideoDAL>();
             services.AddScoped<IAudioDAL, AudioDAL>();
             services.AddScoped<IImagemDAL, ImagemDAL>();
+            services.AddScoped<IEventoDAL, EventoDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IGeneroDAL, GeneroDAL>();
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
