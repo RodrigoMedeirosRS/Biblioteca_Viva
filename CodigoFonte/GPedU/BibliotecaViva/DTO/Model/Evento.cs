@@ -9,7 +9,7 @@ namespace BibliotecaViva.DTO.Model
         public int? Id { get; set; }
         
         [Indexed]
-        public int TipoEvento { get; set; }
+        public int? TipoEvento { get; set; }
 
         [Unique]
         public string Nome { get; set; }

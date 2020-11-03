@@ -40,6 +40,7 @@ namespace BibliotecaViva
 
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
+            services.AddScoped<IEventoBLL, EventoBLL>();
             services.AddScoped<IPerssoaBLL, PessoaBLL>();
             services.AddScoped<IGlossarioBLL, GlossarioBLL>();
             services.AddScoped<IDocumentoBLL, DocumentoBLL>();
@@ -53,6 +54,7 @@ namespace BibliotecaViva
             services.AddScoped<IVideoDAL, VideoDAL>();
             services.AddScoped<IAudioDAL, AudioDAL>();
             services.AddScoped<IImagemDAL, ImagemDAL>();
+            services.AddScoped<IEventoDAL, EventoDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IGeneroDAL, GeneroDAL>();
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
@@ -61,11 +63,14 @@ namespace BibliotecaViva
             services.AddScoped<IConceitoDAL, ConceitoDAL>();
             services.AddScoped<IGlossarioDAL, GlossarioDAL>();
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
+            services.AddScoped<ITipoEventoDAL, TipoEventoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
             services.AddScoped<ILocalizacaoDAL, LocalizacaoDAL>();
             services.AddScoped<ISignificadoDAL, SignificadoDAL>();
             services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();
             services.AddScoped<ILinhaDoTempoDAL, LinhaDoTempoDAL>();
+            services.AddScoped<ITipoParticipacaoDAL, TipoParticipacaoDAL>();
+            
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 
