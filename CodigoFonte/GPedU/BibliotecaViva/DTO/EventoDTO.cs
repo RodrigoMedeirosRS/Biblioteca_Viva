@@ -31,6 +31,7 @@ namespace BibliotecaViva.DTO
         public DateTime? DataHora { get; set; }
         public string Destricao { get; set; }
         public string Localizacao { get; set; }
+        public string TipoEvento { get; set; }
         public List<PessoaDTO> Participantes { get; set; }
         public List<DocumentoDTO> Documentos { get; set; }
     }

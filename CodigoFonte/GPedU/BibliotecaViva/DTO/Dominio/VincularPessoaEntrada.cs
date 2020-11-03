@@ -2,7 +2,8 @@ namespace BibliotecaViva.DTO.Dominio
 {
     public class VincularPessoaEntrada
     {
-        public PessoaConsulta pessoaDTO { get; set; } 
-        public EventoConsulta eventoDTO { get; set; }
+        public PessoaConsulta Pessoa { get; set; } 
+        public EventoConsulta Evento { get; set; }
+        public TipoParticipacaoDTO TipoParticipacao { get; set; }
     }
 }

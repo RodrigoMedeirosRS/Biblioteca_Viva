@@ -43,17 +43,23 @@ namespace BibliotecaViva.BLL
 
         public async Task<string> VincularPessoa(VincularPessoaEntrada vincularPessoaEntrada)
         {
+            var pessoaDTO = AutoMapperGenerico.Mapear<PessoaConsulta, PessoaDTO>(vincularPessoaEntrada.Pessoa);
+            var eventoDTO = AutoMapperGenerico.Mapear<EventoConsulta, EventoDTO>(vincularPessoaEntrada.Evento);
+            EventoDAL.VincularPessoa(pessoaDTO, eventoDTO, vincularPessoaEntrada.TipoParticipacao);
             return "sucesso";
         }
 
         public async Task<string> VincularDocumento(VincularDocumentoEntrada vincularDocumentoEntrada)
         {
+            var documentoDTO = AutoMapperGenerico.Mapear<DocumentoConsulta, DocumentoDTO>(vincularDocumentoEntrada.Documento);
+            var eventoDTO = AutoMapperGenerico.Mapear<EventoConsulta, EventoDTO>(vincularDocumentoEntrada.Evento);
+            EventoDAL.VincularDocumento(documentoDTO, eventoDTO);
             return "sucesso";
         }
 
-        public async Task<string> Consultar(EventoConsulta eventoDTO)
+        public async Task<string> Consultar(EventoConsulta evento)
         {
-            return "sucesso";
+            return JsonConvert.SerializeObject(EventoDAL.Consultar(AutoMapperGenerico.Mapear<EventoConsulta, EventoDTO>(evento)));
         }
 
         

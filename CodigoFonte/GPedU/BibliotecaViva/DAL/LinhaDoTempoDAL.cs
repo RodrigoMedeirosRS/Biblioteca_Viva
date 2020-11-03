@@ -14,7 +14,7 @@ namespace BibliotecaViva.DAL
         private IDocumentoDAL DocumentoDAL { get; set; }
         private IEventoDAL EventoDAL { get; set; }
         private IIdiomaDAL IdiomaDAL { get; set; }
-        public LinhaDoTempoDAL(ISQLiteDataContext dataContext, IPessoaDAL pessoaDAL, IDocumentoDAL documentoDAL, IIdiomaDAL idiomaDAL, EventoDAL eventoDAL)
+        public LinhaDoTempoDAL(ISQLiteDataContext dataContext, IPessoaDAL pessoaDAL, IDocumentoDAL documentoDAL, IIdiomaDAL idiomaDAL, IEventoDAL eventoDAL)
         {
             DataContext = dataContext;
             PessoaDAL = pessoaDAL;

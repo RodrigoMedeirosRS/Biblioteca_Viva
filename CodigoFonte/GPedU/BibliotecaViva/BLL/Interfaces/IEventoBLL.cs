@@ -11,6 +11,6 @@ namespace BibliotecaViva.BLL.Interfaces
         Task<string> Cadastrar(EventoDTO eventoDTO);
         Task<string> VincularPessoa(VincularPessoaEntrada vincularPessoaEntrada);
         Task<string> VincularDocumento(VincularDocumentoEntrada vincularDocumentoEntrada);
-        Task<string> Consultar(EventoConsulta eventoDTO);
+        Task<string> Consultar(EventoConsulta evento);
     }
 }
