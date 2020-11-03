@@ -7,7 +7,6 @@ namespace BibliotecaViva.DAL
 {
     public class GeneroDAL : IGeneroDAL
     {
-
         private ISQLiteDataContext DataContext { get; set; }
 
         public GeneroDAL(ISQLiteDataContext dataContext)

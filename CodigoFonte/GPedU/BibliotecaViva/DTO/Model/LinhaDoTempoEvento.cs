@@ -11,6 +11,6 @@ namespace BibliotecaViva.DTO.Model
         public int? LinhaDoTempo { get; set; }
 
         [Indexed]
-        public int Evento { get; set; }
+        public int? Evento { get; set; }
     }
 }

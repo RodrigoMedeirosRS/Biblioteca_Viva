@@ -12,6 +12,11 @@ namespace BibliotecaViva.DTO
         {
             Id = id;
         }
+
+        public void SetID(int? id)
+        {
+            Id = id;
+        }
         public int? Id { get; protected set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
