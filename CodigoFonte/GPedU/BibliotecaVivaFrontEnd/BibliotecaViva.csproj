@@ -17,4 +17,7 @@
     <ProjectReference Include="BLL\BLL.csproj" />
     <ProjectReference Include="DTO\DTO.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\SideBarController.cs" />
+  </ItemGroup>
 </Project>
