@@ -12,10 +12,12 @@ namespace BibliotecaViva.DataContext
 
         public SQLiteDataContext()
         {
-            if (!File.Exists("./BibliotecaViva.db"))
+            var caminho = Path.Combine(Directory.GetCurrentDirectory(), "BibliotecaViva.db");
+            if (!File.Exists(caminho))
+            {
                 throw new Exception("Banco de Dados não encontrado.");
-
-            BancoDeDadosLocal = new SQLiteConnection(Path.Combine("./BibliotecaViva.db"));
+            }
+            BancoDeDadosLocal = new SQLiteConnection(caminho);
         }
         public SQLiteConnection ObterDataContext()
         {
