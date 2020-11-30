@@ -11,6 +11,9 @@
     "SAL/obj": true,
     "Source/SAL/obj": true,
     "Source/DTO/obj": true,
-    "Source/BLL/obj": true
+    "Source/BLL/obj": true,
+    "Source/BLL/bin": true,
+    "Source/DTO/bin": true,
+    "Source/SAL/bin": true
   }
 }

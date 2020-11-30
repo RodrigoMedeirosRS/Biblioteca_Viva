@@ -9,10 +9,10 @@
     <Deterministic>false</Deterministic>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Source\Controllers\ButtonController.cs" />
-    <Compile Include="Source\Controllers\SideBarController.cs" />
+    <Compile Include="Controllers\ButtonController.cs" />
+    <Compile Include="Controllers\SideBarController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Source\BLL\BLL.csproj" />
+    <ProjectReference Include="BLL\BLL.csproj" />
   </ItemGroup>
 </Project>

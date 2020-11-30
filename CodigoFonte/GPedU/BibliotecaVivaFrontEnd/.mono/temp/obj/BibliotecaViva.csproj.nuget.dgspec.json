@@ -4,60 +4,14 @@
     "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj": {}
   },
   "projects": {
-    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj": {
+    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BLL/BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj",
-        "projectName": "BibliotecaViva",
-        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj",
-        "packagesPath": "/home/rmlehnemann/.nuget/packages/",
-        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net472"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net472": {
-            "projectReferences": {
-              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/BLL.csproj": {
-                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/BLL.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net472": {
-          "dependencies": {
-            "Microsoft.NETFramework.ReferenceAssemblies": {
-              "target": "Package",
-              "version": "[1.0.0, )",
-              "autoReferenced": true
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.404/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/BLL.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/BLL.csproj",
+        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BLL/BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/BLL.csproj",
+        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BLL/BLL.csproj",
         "packagesPath": "/home/rmlehnemann/.nuget/packages/",
-        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/obj/",
+        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BLL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
@@ -71,11 +25,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj": {
-                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj"
+              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/DTO.csproj": {
+                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/DTO.csproj"
               },
-              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/SAL/SAL.csproj": {
-                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/SAL/SAL.csproj"
+              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/SAL/SAL.csproj": {
+                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/SAL/SAL.csproj"
               }
             }
           }
@@ -110,14 +64,60 @@
         }
       }
     },
-    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj": {
+    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj",
-        "projectName": "DTO",
-        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj",
+        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj",
+        "projectName": "BibliotecaViva",
+        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj",
         "packagesPath": "/home/rmlehnemann/.nuget/packages/",
-        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/obj/",
+        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BLL/BLL.csproj": {
+                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BLL/BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "target": "Package",
+              "version": "[1.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.404/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/DTO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/DTO.csproj",
+        "projectName": "DTO",
+        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/DTO.csproj",
+        "packagesPath": "/home/rmlehnemann/.nuget/packages/",
+        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
@@ -163,14 +163,14 @@
         }
       }
     },
-    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/SAL/SAL.csproj": {
+    "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/SAL/SAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/SAL/SAL.csproj",
+        "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/SAL/SAL.csproj",
         "projectName": "SAL",
-        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/SAL/SAL.csproj",
+        "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/SAL/SAL.csproj",
         "packagesPath": "/home/rmlehnemann/.nuget/packages/",
-        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/SAL/obj/",
+        "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/SAL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
@@ -184,8 +184,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj": {
-                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj"
+              "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/DTO.csproj": {
+                "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/DTO/DTO.csproj"
               }
             }
           }

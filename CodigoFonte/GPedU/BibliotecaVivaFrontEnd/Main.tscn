@@ -14,4 +14,9 @@ centered = false
 
 [node name="SideBar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 82.8952, 299.842 )
-TituloPreview = "Home"
+Titulo = "Home"
+
+[node name="Label" parent="SideBar/Forma/Header" index="1"]
+text = "Home"
+
+[editable path="SideBar"]

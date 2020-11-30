@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference Include="..\DTO\DTO.csproj"/>
+        <ProjectReference Include="..\SAL\SAL.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="GodotSharp">
+            <HintPath>../../../../../../../../../usr/share/myapps/Godot/Godot/GodotSharp/Api/Debug/GodotSharp.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="GodotSharpEditor">
+            <HintPath>../../../../../../../../../usr/share/myapps/Godot/Godot/GodotSharp/Api/Debug/GodotSharpEditor.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+</Project>
