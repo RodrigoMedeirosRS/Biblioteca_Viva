@@ -3,21 +3,13 @@
     <OutputType>Library</OutputType>
     <RootNamespace>BibliotecaViva</RootNamespace>
     <AssemblyName>BibliotecaViva</AssemblyName>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <!--The following properties were overriden during migration to prevent errors.
-    Enabling them may require other manual changes to the project and its files.-->
+    <TargetFramework>net472</TargetFramework>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Deterministic>false</Deterministic>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="BLL\BLL.csproj" />
-    <ProjectReference Include="DTO\DTO.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controllers\SideBarController.cs" />
+    <Compile Include="Source\Controllers\ButtonController.cs" />
+    <Compile Include="Source\Controllers\SideBarController.cs" />
   </ItemGroup>
 </Project>

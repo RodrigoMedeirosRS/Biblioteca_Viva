@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    ".import": true,
+    ".mono": true,
+    ".vscode": true,
+    "BLL/bin": true,
+    "BLL/obj": true,
+    "DTO/bin": true,
+    "DTO/obj": true,
+    "SAL/bin": true,
+    "SAL/obj": true
+  }
+}

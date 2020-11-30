@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "3e/x5EzUx/PxHnqWqiUNzsyVJXyzBC9lYoyh8bfbibYE82/w9iRfknmMqwlK8K63/4zB0ID2py/YCLuZOJ5Asg==",
+  "dgSpecHash": "Wpv+2UE1ltflUO8z0BY+65ngJ1qXUD3nwxcG+W59Y9zgho5PNyRTWH5761LHIeRQr/V/8eZtwfIMWJISBnFWkw==",
   "success": true,
   "projectFilePath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/BibliotecaViva.csproj",
   "expectedPackageFiles": [
-    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+    "/home/rmlehnemann/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.0/microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.0/microsoft.netframework.referenceassemblies.net472.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

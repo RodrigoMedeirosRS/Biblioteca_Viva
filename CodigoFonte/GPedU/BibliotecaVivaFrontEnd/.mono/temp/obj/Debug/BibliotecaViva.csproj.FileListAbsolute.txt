@@ -1,14 +1,6 @@
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/BibliotecaViva.deps.json
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/BibliotecaViva.dll
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/BibliotecaViva.pdb
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/BLL.dll
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/DTO.dll
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/SAL.dll
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/BLL.pdb
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/DTO.pdb
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/Debug/SAL.pdb
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/Debug/BibliotecaViva.csprojAssemblyReference.cache
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/Debug/BibliotecaViva.csproj.CoreCompileInputs.cache
-/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/Debug/BibliotecaViva.csproj.CopyComplete
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/Debug/BibliotecaViva.dll
 /home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/Debug/BibliotecaViva.pdb

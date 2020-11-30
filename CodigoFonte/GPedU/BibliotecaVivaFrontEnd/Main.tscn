@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Resource/Cenas/SideBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resource/Sprites/Background.png" type="Texture" id=2]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Sprite"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Background"]
+z_index = -4096
+texture = ExtResource( 2 )
+centered = false
 
 [node name="SideBar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 82.8952, 299.842 )
-Titulo = "Home"
+TituloPreview = "Home"

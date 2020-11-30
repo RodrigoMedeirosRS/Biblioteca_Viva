@@ -1,0 +1,6 @@
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/ExportDebug/BibliotecaViva.dll
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/bin/ExportDebug/BibliotecaViva.pdb
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/ExportDebug/BibliotecaViva.csproj.CoreCompileInputs.cache
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/ExportDebug/BibliotecaViva.dll
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/ExportDebug/BibliotecaViva.pdb
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/.mono/temp/obj/ExportDebug/BibliotecaViva.csprojAssemblyReference.cache
