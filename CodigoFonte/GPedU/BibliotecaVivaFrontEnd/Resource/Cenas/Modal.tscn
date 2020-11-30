@@ -159,6 +159,7 @@ tracks/5/keys = {
 
 [node name="Modal" type="Node2D"]
 script = ExtResource( 5 )
+Titulo = "Modal"
 
 [node name="Body" type="Node2D" parent="."]
 
@@ -194,7 +195,7 @@ margin_top = 4.0
 margin_right = 124.0
 margin_bottom = 28.0
 custom_fonts/font = ExtResource( 4 )
-text = "Titulo"
+text = "Modal"
 align = 1
 valign = 1
 autowrap = true
