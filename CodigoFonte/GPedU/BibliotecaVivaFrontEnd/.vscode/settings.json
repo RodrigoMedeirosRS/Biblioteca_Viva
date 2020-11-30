@@ -8,6 +8,9 @@
     "DTO/bin": true,
     "DTO/obj": true,
     "SAL/bin": true,
-    "SAL/obj": true
+    "SAL/obj": true,
+    "Source/SAL/obj": true,
+    "Source/DTO/obj": true,
+    "Source/BLL/obj": true
   }
 }

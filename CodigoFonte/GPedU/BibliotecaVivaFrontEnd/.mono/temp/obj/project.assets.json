@@ -13,6 +13,43 @@
         "build": {
           "build/Microsoft.NETFramework.ReferenceAssemblies.net472.targets": {}
         }
+      },
+      "BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "DTO": "1.0.0",
+          "SAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
+      },
+      "DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DTO.dll": {}
+        }
+      },
+      "SAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "DTO": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SAL.dll": {}
+        }
       }
     }
   },
@@ -407,10 +444,26 @@
         "microsoft.netframework.referenceassemblies.net472.1.0.0.nupkg.sha512",
         "microsoft.netframework.referenceassemblies.net472.nuspec"
       ]
+    },
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "Source/BLL/BLL.csproj",
+      "msbuildProject": "Source/BLL/BLL.csproj"
+    },
+    "DTO/1.0.0": {
+      "type": "project",
+      "path": "Source/DTO/DTO.csproj",
+      "msbuildProject": "Source/DTO/DTO.csproj"
+    },
+    "SAL/1.0.0": {
+      "type": "project",
+      "path": "Source/SAL/SAL.csproj",
+      "msbuildProject": "Source/SAL/SAL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
+      "BLL >= 1.0.0",
       "Microsoft.NETFramework.ReferenceAssemblies >= 1.0.0"
     ]
   },
@@ -437,7 +490,11 @@
       },
       "frameworks": {
         "net472": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/BLL.csproj": {
+              "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/BLL/BLL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

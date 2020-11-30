@@ -12,4 +12,7 @@
     <Compile Include="Source\Controllers\ButtonController.cs" />
     <Compile Include="Source\Controllers\SideBarController.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Source\BLL\BLL.csproj" />
+  </ItemGroup>
 </Project>
