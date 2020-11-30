@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "mrRNaV0tl6Rj7NGzkUno8RtL8W8scgbtrJDXJHsZw6UujMbLSY0w+ZmnwstNzBsUSQL6LCZqMJ8IfRPkvWj8/Q==",
+  "success": true,
+  "projectFilePath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/DTO.csproj",
+  "expectedPackageFiles": [
+    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

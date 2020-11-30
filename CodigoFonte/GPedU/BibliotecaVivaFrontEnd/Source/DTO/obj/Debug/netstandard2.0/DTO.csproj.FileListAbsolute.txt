@@ -1,0 +1,9 @@
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/bin/Debug/netstandard2.0/DTO.deps.json
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/bin/Debug/netstandard2.0/DTO.dll
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/bin/Debug/netstandard2.0/DTO.pdb
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/obj/Debug/netstandard2.0/DTO.csprojAssemblyReference.cache
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/obj/Debug/netstandard2.0/DTO.AssemblyInfoInputs.cache
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/obj/Debug/netstandard2.0/DTO.AssemblyInfo.cs
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/obj/Debug/netstandard2.0/DTO.csproj.CoreCompileInputs.cache
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/obj/Debug/netstandard2.0/DTO.dll
+/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaVivaFrontEnd/Source/DTO/obj/Debug/netstandard2.0/DTO.pdb
