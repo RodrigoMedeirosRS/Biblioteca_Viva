@@ -31,7 +31,7 @@ public class ModalController : Node2D
 	public override void _Ready()
 	{
 		Maximizado = false;
-		PosicaoCentral = new Vector2(184, -254);
+		PosicaoCentral = new Vector2(131, 37);
 		TweenBll = new TweenBLL(this, GetNode<Tween>("./Tween"));
 		Animation = GetNode<AnimationPlayer>("./AnimationPlayer");
 		LabelTitulo.PopularLabel(this);
