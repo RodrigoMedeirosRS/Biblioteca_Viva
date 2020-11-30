@@ -3,7 +3,7 @@
 [ext_resource path="res://Resource/Sprites/Transparent.png" type="Texture" id=1]
 [ext_resource path="res://Resource/Sprites/White.png" type="Texture" id=2]
 [ext_resource path="res://Resource/Sprites/Color.png" type="Texture" id=3]
-[ext_resource path="res://Resource/Fonts/LinuxBioLinum.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Resource/Fonts/RussoOne.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Controllers/SideBarController.cs" type="Script" id=5]
 
 [node name="SideBar" type="Node2D"]

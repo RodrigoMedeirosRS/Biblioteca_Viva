@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controllers\ButtonController.cs" />
+    <Compile Include="Controllers\ModalController.cs" />
     <Compile Include="Controllers\SideBarController.cs" />
   </ItemGroup>
   <ItemGroup>
