@@ -14,10 +14,10 @@ namespace BibliotecaViva.Controllers
     [ApiController]
     public class PessoaController : Controller
     {
-        private IPerssoaBLL _BLL { get; set; }
+        private IPessoaBLL _BLL { get; set; }
         private IRequisicao _Requisicao { get; set; }
         
-        public PessoaController(IPerssoaBLL bll, IRequisicao requisicao)
+        public PessoaController(IPessoaBLL bll, IRequisicao requisicao)
         {
             _BLL = bll;
             _Requisicao= requisicao;

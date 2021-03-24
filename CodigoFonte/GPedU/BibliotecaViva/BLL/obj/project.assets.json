@@ -83,6 +83,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AutoMapper": "10.0.0",
+          "BibliotecaViva.DAO": "1.0.0",
           "BibliotecaViva.DTO": "1.0.0",
           "System.Data.SQLite.NetStandard": "1.0.0"
         },
@@ -91,6 +92,19 @@
         },
         "runtime": {
           "bin/placeholder/BibliotecaViva.DAL.dll": {}
+        }
+      },
+      "BibliotecaViva.DAO/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "System.Data.SQLite.NetStandard": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BibliotecaViva.DAO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BibliotecaViva.DAO.dll": {}
         }
       },
       "BibliotecaViva.DTO/1.0.0": {
@@ -496,6 +510,11 @@
       "path": "../DAL/BibliotecaViva.DAL.csproj",
       "msbuildProject": "../DAL/BibliotecaViva.DAL.csproj"
     },
+    "BibliotecaViva.DAO/1.0.0": {
+      "type": "project",
+      "path": "../DAO/BibliotecaViva.DAO.csproj",
+      "msbuildProject": "../DAO/BibliotecaViva.DAO.csproj"
+    },
     "BibliotecaViva.DTO/1.0.0": {
       "type": "project",
       "path": "../DTO/BibliotecaViva.DTO.csproj",
@@ -521,11 +540,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
+      "projectUniqueName": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
       "projectName": "BibliotecaViva.BLL",
-      "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
+      "projectPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
       "packagesPath": "C:\\Users\\edmundo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\obj\\",
+      "outputPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\edmundo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -542,11 +561,11 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj": {
-              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj"
+            "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj": {
+              "projectPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj"
             },
-            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj": {
-              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj"
+            "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj": {
+              "projectPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj"
             }
           }
         }

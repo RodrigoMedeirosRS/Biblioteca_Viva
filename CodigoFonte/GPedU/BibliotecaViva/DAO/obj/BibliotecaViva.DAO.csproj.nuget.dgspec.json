@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj": {}
+    "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj": {
+    "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj",
+        "projectUniqueName": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj",
         "projectName": "BibliotecaViva.DAO",
-        "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj",
+        "projectPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj",
         "packagesPath": "C:\\Users\\edmundo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\obj\\",
+        "outputPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\edmundo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
             "projectReferences": {
-              "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj": {
-                "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj"
+              "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj": {
+                "projectPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj"
               }
             }
           }
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj": {
+    "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj",
+        "projectUniqueName": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj",
         "projectName": "System.Data.SQLite.NetStandard",
-        "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj",
+        "projectPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj",
         "packagesPath": "C:\\Users\\edmundo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\obj\\",
+        "outputPath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\edmundo\\AppData\\Roaming\\NuGet\\NuGet.Config",

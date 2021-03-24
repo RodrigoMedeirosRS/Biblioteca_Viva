@@ -11,7 +11,7 @@ using BibliotecaViva.BLL.Interfaces;
 
 namespace BibliotecaViva.BLL
 {
-    public class PessoaBLL : IPerssoaBLL
+    public class PessoaBLL : IPessoaBLL
     {
         private IPessoaDAL _DAL { get; set; }
         public PessoaBLL(IPessoaDAL dal)
@@ -25,10 +25,15 @@ namespace BibliotecaViva.BLL
             return "Sucesso!";
         }
 
-        public async Task<string> Consultar(PessoaConsulta pessoaEntrada)
+        public async Task<string> Consultar(PessoaConsulta pessoa)
         {
-            var pessoa = AutoMapperGenerico.Mapear<PessoaConsulta, PessoaDTO>(pessoaEntrada);
-            return SerializarRetorno(_DAL.Consultar(pessoa));
+            var pessoaEntrada = AutoMapperGenerico.Mapear<PessoaConsulta, PessoaDTO>(pessoa);
+            return SerializarRetorno(_DAL.Consultar(pessoaEntrada));
+        }
+
+        public async Task<string> Editar(PessoaDTO pessoa)
+        {
+            return "Sucesso!";
         }
 
         private string SerializarRetorno(PessoaDTO pessoa)

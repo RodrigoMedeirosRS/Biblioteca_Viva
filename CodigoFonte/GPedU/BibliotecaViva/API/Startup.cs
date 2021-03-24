@@ -39,37 +39,20 @@ namespace API
 
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
-            services.AddScoped<IEventoBLL, EventoBLL>();
-            services.AddScoped<IPerssoaBLL, PessoaBLL>();
-            services.AddScoped<IGlossarioBLL, GlossarioBLL>();
+            services.AddScoped<IPessoaBLL, PessoaBLL>();
             services.AddScoped<IDocumentoBLL, DocumentoBLL>();
-            services.AddScoped<ILocalizacaoBLL, LocalizacaoBLL>();
-            services.AddScoped<ILinhaDoTempoBLL, LinhaDoTempoBLL>();
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
         {
-            services.AddScoped<ITextoDAL, TextoDAL>();
-            services.AddScoped<IVideoDAL, VideoDAL>();
-            services.AddScoped<IAudioDAL, AudioDAL>();
-            services.AddScoped<IImagemDAL, ImagemDAL>();
-            services.AddScoped<IEventoDAL, EventoDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
-            services.AddScoped<IGeneroDAL, GeneroDAL>();
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IApelidoDAL, ApelidoDAL>();
-            services.AddScoped<IConceitoDAL, ConceitoDAL>();
-            services.AddScoped<IGlossarioDAL, GlossarioDAL>();
             services.AddScoped<IDocumentoDAL, DocumentoDAL>();
-            services.AddScoped<ITipoEventoDAL, TipoEventoDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
             services.AddScoped<ILocalizacaoDAL, LocalizacaoDAL>();
-            services.AddScoped<ISignificadoDAL, SignificadoDAL>();
-            services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();
-            services.AddScoped<ILinhaDoTempoDAL, LinhaDoTempoDAL>();
-            services.AddScoped<ITipoParticipacaoDAL, TipoParticipacaoDAL>();
-            
+            services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();            
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 

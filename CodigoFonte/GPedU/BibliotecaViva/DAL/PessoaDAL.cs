@@ -1,6 +1,6 @@
 using System.Linq;
+using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
@@ -8,7 +8,6 @@ namespace BibliotecaViva.DAL
     public class PessoaDAL : IPessoaDAL
     {
         private ISQLiteDataContext DataContext { get; set; }
-        private IGeneroDAL GeneroDAL { get; set; }
         private IApelidoDAL ApelidoDAL { get; set; }
         private INomeSocialDAL NomeSocialDAL { get; set; }
 
@@ -50,7 +49,7 @@ namespace BibliotecaViva.DAL
 
             return new Pessoa()
             {
-                Id = pessoaCadastrada != null ? pessoaCadastrada.Id : null,
+                Codigo = pessoaCadastrada != null ? pessoaCadastrada.Id : null,
                 Nome = pessoa.Nome,
                 Sobrenome = pessoa.Sobrenome,
                 Genero = GeneroDAL.Consultar(pessoa.Genero).Id

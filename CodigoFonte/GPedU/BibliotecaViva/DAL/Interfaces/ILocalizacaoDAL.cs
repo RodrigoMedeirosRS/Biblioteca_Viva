@@ -6,7 +6,8 @@ namespace BibliotecaViva.DAL.Interfaces
 {
     public interface ILocalizacaoDAL
     {
-        void Cadastrar(LocalizacaoDTO localizacaoDTO);
-        List<LocalizacaoDTO> Consultar(LocalizacaoDTO localizacaoDTO, double inicioX, double inicioY, double fimX, double fimY);
+        List<LocalizacaoGeograficaDTO> Consultar(LocalizacaoGeograficaDTO localizacaoDTO, double inicioX, double inicioY, double fimX, double fimY);
+        void Cadastrar(LocalizacaoGeograficaDTO localizacaoDTO);
+        
     }
 }

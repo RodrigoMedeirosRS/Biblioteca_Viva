@@ -8,6 +8,7 @@ namespace BibliotecaViva.BLL.Interfaces
     public interface IDocumentoBLL
     {
         Task<string> Cadastrar(DocumentoDTO documento);
-        Task<string> Consultar(DocumentoConsulta documentoEntrada);
+        Task<string> Consultar(DocumentoConsulta documento);
+        Task<string> Editar(DocumentoDTO documento);
     }
 }

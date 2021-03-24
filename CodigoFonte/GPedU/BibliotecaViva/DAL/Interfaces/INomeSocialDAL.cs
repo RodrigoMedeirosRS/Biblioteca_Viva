@@ -1,12 +1,12 @@
 ﻿using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Model;
 
 namespace BibliotecaViva.DAL.Interfaces
 {
     public interface INomeSocialDAL
     {
-        NomeSocial Consultar(int? pessoaId);
+        string Consultar(PessoaDTO pessoaDTO);
         void Deletar(PessoaDTO pessoaDTO);
         void Cadastrar(PessoaDTO pessoaDTO);
+        void Editar(PessoaDTO pessoaDTO);
     }
 }

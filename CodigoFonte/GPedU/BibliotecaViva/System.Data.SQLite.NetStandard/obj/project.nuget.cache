@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CiGpzoOzFlZJ9hivnShnZDxA8NqYwSu7v1c1mhQIWT6qP8s1YF6H6SzFBWvFPSy9cmSCHnIY3mjgULTnVE0byA==",
+  "dgSpecHash": "8yoPLWHa7sX9WPfztct1VYiVgse/qaGrXEGAp3zX5ZkaPt/+65gLcKGjN11FEsmCT2gviayWvew8N8bsB0xv0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj",
+  "projectFilePath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\edmundo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\edmundo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "f+zXFZ32McoBAqRT/uk960sI4StoAOoiePhj7QG7O7iv9HNux/TDq9q8OYRwKB3aTScqgg0JxuJfzzVKDz6m6Q==",
+  "dgSpecHash": "nNC//66mYoOX5T+TI2N3lB5sTQXXMINLkRz9iii3Ee4DBdV6YY/oAdYbUmXwvOlIVsU12gN3kZuOU2cAoWwENw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj",
+  "projectFilePath": "c:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAO\\BibliotecaViva.DAO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\edmundo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\edmundo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

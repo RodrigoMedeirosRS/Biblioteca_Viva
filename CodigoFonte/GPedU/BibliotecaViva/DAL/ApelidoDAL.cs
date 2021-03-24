@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
 {
     public class ApelidoDAL : IApelidoDAL
     {
-        private ISQLiteDataContext DataContext;
+        private ISQLiteDataContext DataContext { get; set; }
 
         public ApelidoDAL(ISQLiteDataContext dataContext)
         {
@@ -17,27 +18,23 @@ namespace BibliotecaViva.DAL
         {
             DataContext.ObterDataContext().InsertOrReplace(new Apelido()
             {
-                Pessoa = pessoaDTO.Id,
                 Nome = pessoaDTO.Apelido
             });
         }
 
         public void Deletar(PessoaDTO pessoaDTO)
         {
-            try
-            {
-                DataContext.ObterDataContext().Delete(Consultar(pessoaDTO.Id));
-            }
-            catch(Exception ex)
-            {
-                if (ex.Message != "Cannot delete Object: it has no PK")
-                    throw ex;
-            }
+
         }
 
-        public Apelido Consultar(int? pessoaId)
+        public List<Apelido> Consultar(PessoaDTO pessoaDTO)
         {
-            return DataContext.ObterDataContext().Table<Apelido>().FirstOrDefault(apelido => apelido.Pessoa == pessoaId);
+            return DataContext.ObterDataContext().Table<Apelido>().FirstOrDefault(apelido => apelido.Pessoa == pessoaDTO.Codigo);
+        }
+
+        public void Editar(PessoaDTO pessoaDTO)
+        {
+
         }
     }
 }
