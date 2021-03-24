@@ -2,12 +2,14 @@ using System.Data.SQLite.Tools;
 
 namespace BibliotecaViva.DAO
 {
-    public class Apelido
+    public class NomeSocial
     {
         [PrimaryKey, AutoIncrement]
         public int? Codigo { get; set; }
-        
-        [Unique]
+
+        [Indexed]
+        public int Pessoa { get; set; }
+
         public string Nome { get; set; }
     }
 }

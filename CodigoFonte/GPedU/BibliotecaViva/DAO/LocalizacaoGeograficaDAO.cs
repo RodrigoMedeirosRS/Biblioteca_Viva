@@ -2,12 +2,12 @@ using System.Data.SQLite.Tools;
 
 namespace BibliotecaViva.DAO
 {
-    public class Apelido
+    public class LocalizacaoGeografica
     {
         [PrimaryKey, AutoIncrement]
         public int? Codigo { get; set; }
-        
-        [Unique]
-        public string Nome { get; set; }
+
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }

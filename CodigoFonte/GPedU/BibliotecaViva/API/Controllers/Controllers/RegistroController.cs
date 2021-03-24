@@ -9,14 +9,14 @@ using BibliotecaViva.BLL.Interfaces;
 
 namespace BibliotecaViva.Controllers
 {
-    [Route("Api/Documento/Texto")]
+    [Route("Api/Registro")]
     [ApiController]
-    public class TextoController : Controller
+    public class RegistroController : Controller
     {
         private IDocumentoBLL _BLL { get; set; }
         private IRequisicao _Requisicao { get; set; }
         
-        public TextoController(IDocumentoBLL bll, IRequisicao requisicao)
+        public RegistroController(IDocumentoBLL bll, IRequisicao requisicao)
         {
             _BLL = bll;
             _Requisicao = requisicao;
@@ -32,6 +32,12 @@ namespace BibliotecaViva.Controllers
         public async Task<IActionResult> Consultar(TextoConsulta documento)
         {
             return Ok(_Requisicao.ExecutarRequisicao<TextoConsulta>(documento, _BLL.Consultar));
+        }
+
+        [HttpPost("Editar")]
+        public async Task<IActionResult> Editar(TextoConsulta documento)
+        {
+            return Ok();
         }
     }
 }

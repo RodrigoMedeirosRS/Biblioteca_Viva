@@ -18,6 +18,8 @@
     "BibliotecaViva/System.Data.SQLite.NetStandard/obj": true,
     "BibliotecaViva\\API\\bin\\Debug\\netcoreapp3.1": true,
     "BibliotecaViva\\API\\bin": true,
-    "BibliotecaViva\\API\\obj": true
+    "BibliotecaViva\\API\\obj": true,
+    "BibliotecaViva\\DAO\\bin": true,
+    "BibliotecaViva\\DAO\\obj": true
   }
 }
