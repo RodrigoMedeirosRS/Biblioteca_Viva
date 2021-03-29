@@ -7,6 +7,5 @@ namespace BibliotecaViva.DAL.Interfaces
     {
         List<RegistroDTO> Consultar(RegistroDTO documentoDTO);
         void Cadastrar(RegistroDTO documentoDTO);
-        void Editar(RegistroDTO documentoDTO);
     }
 }

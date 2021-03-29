@@ -16,11 +16,8 @@ namespace BibliotecaViva.DAL
         {
             throw new NotImplementedException();
         }
+        
         public void Cadastrar(RegistroDTO documentoDTO)
-        {
-            throw new NotImplementedException();
-        }
-        public void Editar(RegistroDTO documentoDTO)
         {
             throw new NotImplementedException();
         }

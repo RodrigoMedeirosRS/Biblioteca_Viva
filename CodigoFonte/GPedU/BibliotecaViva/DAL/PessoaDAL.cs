@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DAL.Interfaces;
@@ -14,17 +15,27 @@ namespace BibliotecaViva.DAL
 
         public void Cadastrar(PessoaDTO pessoaDTO)
         {
-            throw new NotImplementedException();
+            DataContext.ObterDataContext().InsertOrReplace(Mapear<PessoaDTO, Pessoa>(pessoaDTO));
         }
 
-        public void Editar(PessoaDTO pessoaDTO)
+        public List<PessoaDTO> Consultar(PessoaDTO pessoaDTO)
         {
-            throw new NotImplementedException();
+            return MapearPessoas(ObterPessoa(pessoaDTO));
         }
 
-        public PessoaDTO Consultar(PessoaDTO pessoaDTO)
+        private List<Pessoa> ObterPessoa(PessoaDTO pessoaDTO)
         {
-            throw new NotImplementedException();
+            return DataContext.ObterDataContext().Table<Pessoa>().Where(pessoa => pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome).ToList();
+        }
+
+        private List<PessoaDTO> MapearPessoas(List<Pessoa> pessoas)
+        {
+            var retorno = new List<PessoaDTO>();
+
+            foreach(var pessoa in pessoas)
+                retorno.Add(Mapear<Pessoa, PessoaDTO>(pessoa));
+
+            return retorno;
         }
     }
 }

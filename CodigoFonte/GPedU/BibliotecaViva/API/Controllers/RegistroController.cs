@@ -33,11 +33,5 @@ namespace BibliotecaViva.Controllers
         {
             return Ok(_Requisicao.ExecutarRequisicao<RegistroConsulta>(registro, _BLL.Consultar));
         }
-
-        [HttpPost("Editar")]
-        public async Task<IActionResult> Editar(RegistroDTO registro)
-        {
-            return Ok();
-        }
     }
 }

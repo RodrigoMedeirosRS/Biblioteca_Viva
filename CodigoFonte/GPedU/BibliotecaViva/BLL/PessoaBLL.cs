@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using BibliotecaViva.DTO;
-using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
-
 
 namespace BibliotecaViva.BLL
 {
@@ -19,22 +17,22 @@ namespace BibliotecaViva.BLL
 
         public async Task<string> Cadastrar(PessoaDTO pessoa)
         {
-            throw new NotImplementedException();
-            //_DAL.Cadastrar(pessoa);
-            //return "Sucesso!";
+            _DAL.Cadastrar(pessoa);
+            return ObterMensagemDeSucesso(pessoa);
         }
 
         public async Task<string> Consultar(PessoaConsulta pessoa)
         {
-            throw new NotImplementedException();
-            //var pessoaEntrada = AutoMapperGenerico.Mapear<PessoaConsulta, PessoaDTO>(pessoa);
-            //return SerializarRetorno(_DAL.Consultar(pessoaEntrada));
+            return SerializarRetorno(_DAL.Consultar(new PessoaDTO()
+            {
+                Nome = pessoa.Nome,
+                Sobrenome = pessoa.Sobrenome
+            }));
         }
 
-        public async Task<string> Editar(PessoaDTO pessoa)
+        private string ObterMensagemDeSucesso(PessoaDTO pessoa)
         {
-            throw new NotImplementedException();
+            return pessoa.Nome + " " + pessoa.Sobrenome + " Registrado(a) com Sucesso!";
         }
-
     }
 }

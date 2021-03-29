@@ -9,6 +9,5 @@ namespace BibliotecaViva.BLL.Interfaces
     {
         Task<string> Cadastrar(RegistroDTO registro);
         Task<string> Consultar(RegistroConsulta registro);
-        Task<string> Editar(RegistroDTO registro);
     }
 }
