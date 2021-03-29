@@ -6,7 +6,6 @@ namespace BibliotecaViva.DAO
     {
         [PrimaryKey, AutoIncrement]
         public int? Codigo { get; set; }
-
         public string Genero { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
