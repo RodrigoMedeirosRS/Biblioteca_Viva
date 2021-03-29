@@ -13,29 +13,29 @@ namespace BibliotecaViva.Controllers
     [ApiController]
     public class RegistroController : Controller
     {
-        private IDocumentoBLL _BLL { get; set; }
+        private IRegistroBLL _BLL { get; set; }
         private IRequisicao _Requisicao { get; set; }
         
-        public RegistroController(IDocumentoBLL bll, IRequisicao requisicao)
+        public RegistroController(IRegistroBLL bll, IRequisicao requisicao)
         {
             _BLL = bll;
             _Requisicao = requisicao;
         }
 
         [HttpPost("Cadastrar")]
-        public async Task<IActionResult> Cadastrar(TextoDTO documento)
+        public async Task<IActionResult> Cadastrar(RegistroDTO registro)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<TextoDTO>(documento, _BLL.Cadastrar));
+            return Ok(_Requisicao.ExecutarRequisicao<RegistroDTO>(registro, _BLL.Cadastrar));
         }
 
         [HttpPost("Consultar")]
-        public async Task<IActionResult> Consultar(TextoConsulta documento)
+        public async Task<IActionResult> Consultar(RegistroConsulta registro)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<TextoConsulta>(documento, _BLL.Consultar));
+            return Ok(_Requisicao.ExecutarRequisicao<RegistroConsulta>(registro, _BLL.Consultar));
         }
 
         [HttpPost("Editar")]
-        public async Task<IActionResult> Editar(TextoConsulta documento)
+        public async Task<IActionResult> Editar(RegistroDTO registro)
         {
             return Ok();
         }

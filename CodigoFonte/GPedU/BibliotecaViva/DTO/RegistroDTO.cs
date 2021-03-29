@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 
 namespace BibliotecaViva.DTO
 {
-    public class DocumentoDTO : BaseDTO
+    public class RegistroDTO : BaseDTO
     {
         public string Nome { get; set; }
         public string Idioma { get; set; }

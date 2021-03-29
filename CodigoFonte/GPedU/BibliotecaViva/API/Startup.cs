@@ -40,19 +40,14 @@ namespace API
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
             services.AddScoped<IPessoaBLL, PessoaBLL>();
-            services.AddScoped<IDocumentoBLL, DocumentoBLL>();
+            services.AddScoped<IRegistroBLL, RegistroBLL>();
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
         {
             services.AddScoped<IPessoaDAL, PessoaDAL>();
-            services.AddScoped<IIdiomaDAL, IdiomaDAL>();
             services.AddScoped<IRequisicao, Requisicao>();
-            services.AddScoped<IApelidoDAL, ApelidoDAL>();
-            services.AddScoped<IDocumentoDAL, DocumentoDAL>();
-            services.AddScoped<INomeSocialDAL, NomeSocialDAL>();
-            services.AddScoped<ILocalizacaoDAL, LocalizacaoDAL>();
-            services.AddScoped<ITipoRelacaoDAL, TipoRelacaoDAL>();            
+            services.AddScoped<IRegistroDAL, RegistroDAL>();           
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 

@@ -20,6 +20,12 @@
     "BibliotecaViva\\API\\bin": true,
     "BibliotecaViva\\API\\obj": true,
     "BibliotecaViva\\DAO\\bin": true,
-    "BibliotecaViva\\DAO\\obj": true
+    "BibliotecaViva\\DAO\\obj": true,
+    "BibliotecaViva/DAO/bin": true,
+    "BibliotecaViva/DAO/bin/Debug/netstandard2.0/System.Data.SQLite.NetStandard.pdb": true,
+    "BibliotecaViva/DAO/bin/Debug/netstandard2.0": true,
+    "BibliotecaViva/DAO/obj": true,
+    "BibliotecaViva/API/obj": true,
+    "BibliotecaViva/API/bin": true
   }
 }
