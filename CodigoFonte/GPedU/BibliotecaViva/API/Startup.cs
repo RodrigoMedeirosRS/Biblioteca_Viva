@@ -47,7 +47,8 @@ namespace API
         {
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IRequisicao, Requisicao>();
-            services.AddScoped<IRegistroDAL, RegistroDAL>();           
+            services.AddScoped<IRegistroDAL, RegistroDAL>();
+            services.AddScoped<INomeSocialDAL, NomeSocialDAL>();          
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 
