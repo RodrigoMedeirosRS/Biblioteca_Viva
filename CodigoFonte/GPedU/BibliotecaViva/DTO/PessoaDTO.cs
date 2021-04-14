@@ -1,23 +1,7 @@
-using BibliotecaViva.DTO.Model;
-
 namespace BibliotecaViva.DTO
 {
-    public class PessoaDTO
+    public class PessoaDTO : BaseDTO
     {
-        public PessoaDTO()
-        {
-            Id = null;
-        }
-        public PessoaDTO(int? id)
-        {
-            Id = id;
-        }
-
-        public void SetID(int? id)
-        {
-            Id = id;
-        }
-        public int? Id { get; protected set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public string Genero { get; set; }

@@ -1,17 +1,13 @@
 using System;
-using Newtonsoft.Json;
 using System.Threading.Tasks;
-
 using BibliotecaViva.DTO;
-using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 
-
 namespace BibliotecaViva.BLL
 {
-    public class PessoaBLL : IPerssoaBLL
+    public class PessoaBLL : BaseBLL, IPessoaBLL
     {
         private IPessoaDAL _DAL { get; set; }
         public PessoaBLL(IPessoaDAL dal)
@@ -22,18 +18,21 @@ namespace BibliotecaViva.BLL
         public async Task<string> Cadastrar(PessoaDTO pessoa)
         {
             _DAL.Cadastrar(pessoa);
-            return "Sucesso!";
+            return ObterMensagemDeSucesso(pessoa);
         }
 
-        public async Task<string> Consultar(PessoaConsulta pessoaEntrada)
+        public async Task<string> Consultar(PessoaConsulta pessoa)
         {
-            var pessoa = AutoMapperGenerico.Mapear<PessoaConsulta, PessoaDTO>(pessoaEntrada);
-            return SerializarRetorno(_DAL.Consultar(pessoa));
+            return SerializarRetorno(_DAL.Consultar(new PessoaDTO()
+            {
+                Nome = pessoa.Nome,
+                Sobrenome = pessoa.Sobrenome
+            }));
         }
 
-        private string SerializarRetorno(PessoaDTO pessoa)
+        private string ObterMensagemDeSucesso(PessoaDTO pessoa)
         {
-            return pessoa != null ? JsonConvert.SerializeObject(pessoa) : throw new Exception("Pessoa Não Encontrada");
+            return pessoa.Nome + " " + pessoa.Sobrenome + " Registrado(a) com Sucesso!";
         }
     }
 }

@@ -74,11 +74,20 @@
       "BibliotecaViva.DAL/1.0.0": {
         "dependencies": {
           "AutoMapper": "10.0.0",
+          "BibliotecaViva.DAO": "1.0.0",
           "BibliotecaViva.DTO": "1.0.0",
           "System.Data.SQLite.NetStandard": "1.0.0"
         },
         "runtime": {
           "BibliotecaViva.DAL.dll": {}
+        }
+      },
+      "BibliotecaViva.DAO/1.0.0": {
+        "dependencies": {
+          "System.Data.SQLite.NetStandard": "1.0.0"
+        },
+        "runtime": {
+          "BibliotecaViva.DAO.dll": {}
         }
       },
       "BibliotecaViva.DTO/1.0.0": {
@@ -152,6 +161,11 @@
       "hashPath": "system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512"
     },
     "BibliotecaViva.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BibliotecaViva.DAO/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

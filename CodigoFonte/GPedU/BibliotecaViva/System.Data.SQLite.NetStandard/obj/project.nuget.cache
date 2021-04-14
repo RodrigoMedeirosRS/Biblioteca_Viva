@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p+0Os4vlx3OPsF3ZzigaUn5fWm5DQMdYKJRrGA3sskG/IdcOHwK9c/E4ifYQ6VUU9/CoTa3Dy+oJNpYOpadprw==",
+  "dgSpecHash": "6ztgJ6ydpbF014LAMgKOJcwmlUn9LrQg90xljtKPd+o0V2bfnHUz5K/aO2sa1nHz3q8aKYEDQQgLqGSlrD3hgA==",
   "success": true,
-  "projectFilePath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/System.Data.SQLite.NetStandard.csproj",
+  "projectFilePath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/System.Data.SQLite.NetStandard.csproj",
   "expectedPackageFiles": [
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"

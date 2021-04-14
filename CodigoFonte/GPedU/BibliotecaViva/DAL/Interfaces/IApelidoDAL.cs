@@ -1,12 +1,11 @@
-﻿using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Model;
+using BibliotecaViva.DTO;
 
 namespace BibliotecaViva.DAL.Interfaces
 {
-    public interface IApelidoDAL
+    public interface IApelidoDAL : IBaseDAL
     {
-        Apelido Consultar(int? pessoaId);
-        void Deletar(PessoaDTO pessoaDTO);
-        void Cadastrar(PessoaDTO pessoaDTO);
+        void Cadastrar(ApelidoDTO apelidoDTO);
+        void Remover(int? codigoPessoa);
+        void VincularPessoaApelido(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO);
     }
 }

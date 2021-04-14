@@ -1,99 +1,107 @@
+using System;
 using System.Linq;
+using System.Collections.Generic;
+using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
 {
-    public class PessoaDAL : IPessoaDAL
+    public class PessoaDAL : BaseDAL, IPessoaDAL
     {
-        private ISQLiteDataContext DataContext { get; set; }
-        private IGeneroDAL GeneroDAL { get; set; }
-        private IApelidoDAL ApelidoDAL { get; set; }
         private INomeSocialDAL NomeSocialDAL { get; set; }
-
-        public PessoaDAL(ISQLiteDataContext dataContext, IGeneroDAL generoDAL, IApelidoDAL apelidoDAL, INomeSocialDAL nomeSocialDAL)
+        private IApelidoDAL ApelidoDAL { get; set; }
+        
+        public PessoaDAL(ISQLiteDataContext dataContext, INomeSocialDAL nomeSocialDAL, IApelidoDAL apelidoDAL) : base(dataContext)
         {
-            DataContext = dataContext;
-            GeneroDAL = generoDAL;
-            ApelidoDAL = apelidoDAL;
             NomeSocialDAL = nomeSocialDAL;
+            ApelidoDAL = apelidoDAL;
         }
 
         public void Cadastrar(PessoaDTO pessoaDTO)
         {
-            TratarValoresSwagger(pessoaDTO);
-            DataContext.ObterDataContext().InsertOrReplace(VerificarJaRegistrado(pessoaDTO));
-            CadastrarApelido(pessoaDTO);
-            CadastrarNomeSocial(pessoaDTO);
+            DataContext.ObterDataContext().InsertOrReplace(Mapear<PessoaDTO, Pessoa>(pessoaDTO)); 
+            CadastrarDadosOpcionais(pessoaDTO);
         }
 
-        private void CadastrarApelido(PessoaDTO pessoaDTO)
+        public List<PessoaDTO> Consultar(PessoaDTO pessoaDTO)
         {
-            if (string.IsNullOrEmpty(pessoaDTO.Apelido))
-                ApelidoDAL.Deletar(pessoaDTO);
-            else
-                ApelidoDAL.Cadastrar(pessoaDTO);              
+            return (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
+                join
+                    nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
+                    on pessoa.Codigo equals nomeSocial.Pessoa into nomeSocialLeftJoin from nomeSocialLeft in nomeSocialLeftJoin.DefaultIfEmpty()
+                join
+                    pessoaApelido in DataContext.ObterDataContext().Table<PessoaApelido>()
+                    on pessoa.Codigo equals pessoaApelido.Pessoa into pessoaApelidoLeftJoin from pessoaApelidoLeft in pessoaApelidoLeftJoin.DefaultIfEmpty()
+                join
+                   apelido in DataContext.ObterDataContext().Table<Apelido>()
+                   on new PessoaApelido(){ 
+                       Apelido = pessoaApelidoLeft != null ? pessoaApelidoLeft.Apelido : 0
+                    }.Apelido equals apelido.Codigo into apelidoLeftJoin from apelidoLeft in apelidoLeftJoin.DefaultIfEmpty()
+                
+                where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
+                
+                select new PessoaDTO()
+                {
+                    Codigo = pessoa.Codigo,
+                    Nome = pessoa.Nome,
+                    Sobrenome = pessoa.Sobrenome,
+                    Genero = pessoa.Genero,
+                    Apelido = apelidoLeft != null ? apelidoLeft.Nome : string.Empty,
+                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : string.Empty
+                }).ToList();
+        }
+
+        private List<PessoaDTO> MapearPessoas(List<Pessoa> pessoas)
+        {
+            var retorno = new List<PessoaDTO>();
+
+            foreach(var pessoa in pessoas)
+                retorno.Add(Mapear<Pessoa, PessoaDTO>(pessoa));
+
+            return retorno;
+        }
+
+        private PessoaDTO PopularCodigo(PessoaDTO pessoaDTO)
+        {
+            if (pessoaDTO.Codigo == null)
+                pessoaDTO.Codigo = Consultar(pessoaDTO).FirstOrDefault().Codigo;
+            return pessoaDTO;
+        }
+
+        private void CadastrarDadosOpcionais(PessoaDTO pessoaDTO)
+        {
+            pessoaDTO = PopularCodigo(pessoaDTO);
+            CadastrarNomeSocial(pessoaDTO);
+            CadastrarApelido(pessoaDTO);
         }
 
         private void CadastrarNomeSocial(PessoaDTO pessoaDTO)
         {
             if (string.IsNullOrEmpty(pessoaDTO.NomeSocial))
-                NomeSocialDAL.Deletar(pessoaDTO);
+                NomeSocialDAL.Remover(pessoaDTO.Codigo);
             else
-                NomeSocialDAL.Cadastrar(pessoaDTO);
-        }
-
-        private Pessoa VerificarJaRegistrado(PessoaDTO pessoa)
-        {
-            var pessoaCadastrada = Consultar(pessoa);
-
-            return new Pessoa()
-            {
-                Id = pessoaCadastrada != null ? pessoaCadastrada.Id : null,
-                Nome = pessoa.Nome,
-                Sobrenome = pessoa.Sobrenome,
-                Genero = GeneroDAL.Consultar(pessoa.Genero).Id
-            };
-        }
-
-        private void TratarValoresSwagger(PessoaDTO pessoaDTO)
-        {
-            pessoaDTO.Apelido = pessoaDTO.Apelido.Replace("string", string.Empty);
-            pessoaDTO.NomeSocial = pessoaDTO.NomeSocial.Replace("string", string.Empty);
-        }
-
-        public PessoaDTO Consultar(PessoaDTO pessoaDTO)
-        {
-            return (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
-                join
-                    genero in DataContext.ObterDataContext().Table<Genero>()
-                    on pessoa.Genero equals genero.Id
-                join
-                    apelido in DataContext.ObterDataContext().Table<Apelido>()
-                    on pessoa.Id equals apelido.Pessoa into leftJoin from apelidoLeft in leftJoin.DefaultIfEmpty()
-                join
-                    nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
-                    on pessoa.Id equals nomeSocial.Pessoa into leftJoin2 from nomeSocialLeft in leftJoin2.DefaultIfEmpty()
-                where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
-                select new PessoaDTO(pessoa.Id)
+                NomeSocialDAL.Cadastrar(new NomeSocialDTO()
                 {
-                    Nome = pessoa.Nome,
-                    Sobrenome = pessoa.Sobrenome,
-                    Genero = genero.Nome,
-                    Apelido = apelidoLeft != null ? apelidoLeft.Nome : "",
-                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : ""
-                }).FirstOrDefault();
-        }
-        
-        public Pessoa Consultar(int? pessoaId)
-        {
-            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Id == pessoaId);
+                    Pessoa = pessoaDTO.Codigo,
+                    Nome = pessoaDTO.NomeSocial
+                });
         }
 
-        public Pessoa Consultar(string nome, string sobrenome)
+        private void CadastrarApelido(PessoaDTO pessoaDTO)
         {
-            return DataContext.ObterDataContext().Table<Pessoa>().FirstOrDefault(pessoaDB => pessoaDB.Nome == nome && pessoaDB.Sobrenome == sobrenome);
+            if (string.IsNullOrEmpty(pessoaDTO.Apelido))
+                ApelidoDAL.Remover(pessoaDTO.Codigo);
+            else
+            {
+                var apelidoDTO = new ApelidoDTO()
+                { 
+                    Nome = pessoaDTO.Apelido 
+                };
+                
+                ApelidoDAL.Cadastrar(apelidoDTO);
+                ApelidoDAL.VincularPessoaApelido(apelidoDTO, pessoaDTO);
+            }     
         }
     }
 }
