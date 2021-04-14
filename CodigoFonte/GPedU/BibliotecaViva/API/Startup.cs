@@ -46,6 +46,7 @@ namespace API
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
         {
             services.AddScoped<IApelidoDAL, ApelidoDAL>();
+            services.AddScoped<IIdiomaDAL, IdiomaDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IRegistroDAL, RegistroDAL>();
