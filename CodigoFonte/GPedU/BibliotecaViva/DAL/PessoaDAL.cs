@@ -29,16 +29,26 @@ namespace BibliotecaViva.DAL
             var pessoas = (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
                 join
                     nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
-                    on pessoa.Codigo equals nomeSocial.Pessoa into leftJoin from nomeSocialLeft in leftJoin.DefaultIfEmpty()
+                    on pessoa.Codigo equals nomeSocial.Pessoa into nomeSocialLeftJoin from nomeSocialLeft in nomeSocialLeftJoin.DefaultIfEmpty()
+                join
+                    pessoaApelido in DataContext.ObterDataContext().Table<PessoaApelido>()
+                    on pessoa.Codigo equals pessoaApelido.Pessoa into pessoaApelidoLeftJoin from pessoaApelidoLeft in pessoaApelidoLeftJoin.DefaultIfEmpty()
+                join
+                   apelido in DataContext.ObterDataContext().Table<Apelido>()
+                   on new PessoaApelido(){ 
+                       Apelido = pessoaApelidoLeft != null ? pessoaApelidoLeft.Apelido : 0
+                    }.Apelido equals apelido.Codigo into apelidoLeftJoin from apelidoLeft in apelidoLeftJoin.DefaultIfEmpty()
+                
                 where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
+                
                 select new PessoaDTO()
                 {
                     Codigo = pessoa.Codigo,
                     Nome = pessoa.Nome,
                     Sobrenome = pessoa.Sobrenome,
                     Genero = pessoa.Genero,
-                    Apelido = "",
-                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : ""
+                    Apelido = apelidoLeft != null ? apelidoLeft.Nome : string.Empty,
+                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : string.Empty
                 }).ToList();
 
             return pessoas;
