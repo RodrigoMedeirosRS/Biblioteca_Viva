@@ -9,7 +9,7 @@ namespace BibliotecaViva.DAL
     {
         public RegistroDAL(ISQLiteDataContext dataContext) : base(dataContext)
         {
-
+            
         }
 
         public List<RegistroDTO> Consultar(RegistroDTO documentoDTO)

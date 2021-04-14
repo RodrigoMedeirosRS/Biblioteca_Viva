@@ -10,9 +10,12 @@ namespace BibliotecaViva.DAL
     public class PessoaDAL : BaseDAL, IPessoaDAL
     {
         private INomeSocialDAL NomeSocialDAL { get; set; }
-        public PessoaDAL(ISQLiteDataContext dataContext, INomeSocialDAL nomeSocialDAL) : base(dataContext)
+        private IApelidoDAL ApelidoDAL { get; set; }
+        
+        public PessoaDAL(ISQLiteDataContext dataContext, INomeSocialDAL nomeSocialDAL, IApelidoDAL apelidoDAL) : base(dataContext)
         {
             NomeSocialDAL = nomeSocialDAL;
+            ApelidoDAL = apelidoDAL;
         }
 
         public void Cadastrar(PessoaDTO pessoaDTO)
@@ -62,6 +65,7 @@ namespace BibliotecaViva.DAL
         {
             pessoaDTO = PopularCodigo(pessoaDTO);
             CadastrarNomeSocial(pessoaDTO);
+            CadastrarApelido(pessoaDTO);
         }
 
         private void CadastrarNomeSocial(PessoaDTO pessoaDTO)
@@ -74,6 +78,22 @@ namespace BibliotecaViva.DAL
                     Pessoa = pessoaDTO.Codigo,
                     Nome = pessoaDTO.NomeSocial
                 });
+        }
+
+        private void CadastrarApelido(PessoaDTO pessoaDTO)
+        {
+            if (string.IsNullOrEmpty(pessoaDTO.Apelido))
+                ApelidoDAL.Remover(pessoaDTO.Codigo);
+            else
+            {
+                var apelidoDTO = new ApelidoDTO()
+                { 
+                    Nome = pessoaDTO.Apelido 
+                };
+                
+                ApelidoDAL.Cadastrar(apelidoDTO);
+                ApelidoDAL.VincularPessoaApelido(apelidoDTO, pessoaDTO);
+            }     
         }
     }
 }

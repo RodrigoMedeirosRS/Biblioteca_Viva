@@ -11,7 +11,7 @@ namespace BibliotecaViva.BLL
 {
     public class RegistroBLL : BaseBLL, IRegistroBLL
     {
-        IRegistroDAL _DAL { get; set; }
+        private IRegistroDAL _DAL { get; set; }
         public RegistroBLL(IRegistroDAL documentoDAL)
         {
             _DAL = documentoDAL;
