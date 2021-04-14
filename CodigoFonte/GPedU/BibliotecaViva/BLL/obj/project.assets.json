@@ -535,34 +535,37 @@
     ]
   },
   "packageFolders": {
-    "/home/rmlehnemann/.nuget/packages/": {}
+    "C:\\Users\\edmundo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/BibliotecaViva.BLL.csproj",
+      "projectUniqueName": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
       "projectName": "BibliotecaViva.BLL",
-      "projectPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/BibliotecaViva.BLL.csproj",
-      "packagesPath": "/home/rmlehnemann/.nuget/packages/",
-      "outputPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/obj/",
+      "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\BibliotecaViva.BLL.csproj",
+      "packagesPath": "C:\\Users\\edmundo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\edmundo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DAL/BibliotecaViva.DAL.csproj": {
-              "projectPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DAL/BibliotecaViva.DAL.csproj"
+            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj": {
+              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DAL\\BibliotecaViva.DAL.csproj"
             },
-            "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DTO/BibliotecaViva.DTO.csproj": {
-              "projectPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DTO/BibliotecaViva.DTO.csproj"
+            "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj": {
+              "projectPath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\DTO\\BibliotecaViva.DTO.csproj"
             }
           }
         }
@@ -575,6 +578,7 @@
     },
     "frameworks": {
       "netstandard2.0": {
+        "targetAlias": "netstandard2.0",
         "dependencies": {
           "NETStandard.Library": {
             "suppressParent": "All",
@@ -597,7 +601,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.407/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

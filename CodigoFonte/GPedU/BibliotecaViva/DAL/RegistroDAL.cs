@@ -31,12 +31,22 @@ namespace BibliotecaViva.DAL
                 join
                     descricao in DataContext.ObterDataContext().Table<Descricao>()
                     on registro.Codigo equals descricao.Registro into descricaoLeftJoin from descricaoLeft in descricaoLeftJoin.DefaultIfEmpty()
-                
+                join
+                    registroApelido in DataContext.ObterDataContext().Table<RegistroApelido>()
+                    on registro.Codigo equals registroApelido.Registro into registroApelidoLeftJoin from registroApelidoLeft in registroApelidoLeftJoin.DefaultIfEmpty()
+                join
+                   apelido in DataContext.ObterDataContext().Table<Apelido>()
+                   on new RegistroApelido(){ 
+                       Apelido = registroApelidoLeft != null ? registroApelidoLeft.Apelido : 0
+                    }.Apelido equals apelido.Codigo into apelidoLeftJoin from apelidoLeft in apelidoLeftJoin.DefaultIfEmpty()
+
                 where registro.Nome == registroDTO.Nome && registro.Idioma == registro.Idioma
                 
                 select new RegistroDTO()
                 {
                     Codigo = registro.Codigo,
+                    Nome = registro.Nome,
+                    Apelido = apelidoLeft != null ? apelidoLeft.Nome : string.Empty,
                     Idioma = idioma.Nome,
                     Tipo = tipo.Nome,
                     Conteudo = registro.Conteudo,
@@ -71,6 +81,7 @@ namespace BibliotecaViva.DAL
         {
             registroDTO = PopularCodigo(registroDTO);
             CadastrarDescricao(registroDTO);
+            CadastrarApelido(registroDTO);
         }
 
         private RegistroDTO PopularCodigo(RegistroDTO registroDTO)
@@ -90,6 +101,22 @@ namespace BibliotecaViva.DAL
                     Registro = registroDTO.Codigo,
                     Conteudo = registroDTO.Descricao
                 });
+        }
+
+        private void CadastrarApelido(RegistroDTO registroDTO)
+        {
+            if (string.IsNullOrEmpty(registroDTO.Apelido))
+                ApelidoDAL.RemoverVinculoPessoa(registroDTO.Codigo);
+            else
+            {
+                var apelidoDTO = new ApelidoDTO()
+                { 
+                    Nome = registroDTO.Apelido 
+                };
+                
+                ApelidoDAL.Cadastrar(apelidoDTO);
+                ApelidoDAL.VincularRegistroApelido(apelidoDTO, registroDTO);
+            }     
         }
     }
 }

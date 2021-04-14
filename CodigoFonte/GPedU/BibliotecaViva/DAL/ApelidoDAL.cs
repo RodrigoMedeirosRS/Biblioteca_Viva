@@ -28,10 +28,28 @@ namespace BibliotecaViva.DAL
                     Apelido = (int)apelidoDTO.Codigo
                 });
         }
+
+        public void VincularRegistroApelido(ApelidoDTO apelidoDTO, RegistroDTO registroDTO)
+        {
+            apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
+            if (apelidoDTO.Codigo != null)
+                DataContext.ObterDataContext().InsertOrReplace(new RegistroApelido()
+                {
+                    Registro = (int)registroDTO.Codigo,
+                    Apelido = (int)apelidoDTO.Codigo
+                });
+        }
         
-        public void Remover(int? codigoPessoa)
+        public void RemoverVinculoPessoa(int? codigoPessoa)
         {
             var resultado = DataContext.ObterDataContext().Table<PessoaApelido>().FirstOrDefault(apelido => apelido.Pessoa == codigoPessoa);
+            if (resultado != null)
+                DataContext.ObterDataContext().Delete(resultado);
+        }
+
+        public void RemoverVinculoRegistro(int? codigoRegistro)
+        {
+            var resultado = DataContext.ObterDataContext().Table<RegistroApelido>().FirstOrDefault(apelido => apelido.Registro == codigoRegistro);
             if (resultado != null)
                 DataContext.ObterDataContext().Delete(resultado);
         }

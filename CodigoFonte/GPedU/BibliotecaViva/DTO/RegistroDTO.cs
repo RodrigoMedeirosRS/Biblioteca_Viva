@@ -5,6 +5,7 @@ namespace BibliotecaViva.DTO
     public class RegistroDTO : BaseDTO
     {
         public string Nome { get; set; }
+        public string Apelido { get; set; }
         public string Idioma { get; set; }
         public string Tipo { get; set; }
         public string Conteudo { get; set; }
