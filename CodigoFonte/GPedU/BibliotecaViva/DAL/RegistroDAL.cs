@@ -21,7 +21,28 @@ namespace BibliotecaViva.DAL
 
         public List<RegistroDTO> Consultar(RegistroDTO registroDTO)
         {
-            throw new NotImplementedException();
+            return (from registro in DataContext.ObterDataContext().Table<Registro>()
+                join
+                    idioma in DataContext.ObterDataContext().Table<Idioma>()
+                    on registro.Idioma equals idioma.Id
+                join
+                    tipo in DataContext.ObterDataContext().Table<Tipo>()
+                    on registro.Tipo equals tipo.Codigo
+                join
+                    descricao in DataContext.ObterDataContext().Table<Descricao>()
+                    on registro.Codigo equals descricao.Registro into descricaoLeftJoin from descricaoLeft in descricaoLeftJoin.DefaultIfEmpty()
+                
+                where registro.Nome == registroDTO.Nome && registro.Idioma == registro.Idioma
+                
+                select new RegistroDTO()
+                {
+                    Codigo = registro.Codigo,
+                    Idioma = idioma.Nome,
+                    Tipo = tipo.Nome,
+                    Conteudo = registro.Conteudo,
+                    Descricao = descricaoLeft != null ? descricaoLeft.Conteudo : string.Empty,
+                    DataInsercao = registro.DataInsercao
+                }).ToList(); 
         }
         
         public void Cadastrar(RegistroDTO registroDTO)

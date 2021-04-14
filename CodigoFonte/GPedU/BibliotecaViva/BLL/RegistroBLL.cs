@@ -18,11 +18,20 @@ namespace BibliotecaViva.BLL
         }
         public async Task<string> Cadastrar(RegistroDTO registro) 
         {
-            throw new NotImplementedException();
+            _DAL.Cadastrar(registro);
+            return ObterMensagemDeSucesso(registro);
         }
         public async Task<string> Consultar(RegistroConsulta registro)
         {
-            throw new NotImplementedException();
+            return SerializarRetorno(_DAL.Consultar(new RegistroDTO()
+            {
+                Nome = registro.Nome,
+                Idioma = registro.Idioma
+            }));
+        }
+        private string ObterMensagemDeSucesso(RegistroDTO registro)
+        {
+            return registro.Nome + " Registrado(a) com Sucesso!";
         }
     }
 }

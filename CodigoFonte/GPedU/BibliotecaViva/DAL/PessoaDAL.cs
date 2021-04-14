@@ -26,7 +26,7 @@ namespace BibliotecaViva.DAL
 
         public List<PessoaDTO> Consultar(PessoaDTO pessoaDTO)
         {
-            var pessoas = (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
+            return (from pessoa in DataContext.ObterDataContext().Table<Pessoa>()
                 join
                     nomeSocial in DataContext.ObterDataContext().Table<NomeSocial>()
                     on pessoa.Codigo equals nomeSocial.Pessoa into nomeSocialLeftJoin from nomeSocialLeft in nomeSocialLeftJoin.DefaultIfEmpty()
@@ -50,8 +50,6 @@ namespace BibliotecaViva.DAL
                     Apelido = apelidoLeft != null ? apelidoLeft.Nome : string.Empty,
                     NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : string.Empty
                 }).ToList();
-
-            return pessoas;
         }
 
         private List<PessoaDTO> MapearPessoas(List<Pessoa> pessoas)
