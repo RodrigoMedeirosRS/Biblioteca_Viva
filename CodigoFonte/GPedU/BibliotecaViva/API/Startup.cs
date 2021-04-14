@@ -44,12 +44,14 @@ namespace API
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
-        {
-            services.AddScoped<IApelidoDAL, ApelidoDAL>();
+        { 
+            services.AddScoped<ITipoDAL, TipoDAL>();
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
+            services.AddScoped<IApelidoDAL, ApelidoDAL>();
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IRegistroDAL, RegistroDAL>();
+            services.AddScoped<IDescricaoDAL, DescricaoDAL>(); 
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>();          
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
