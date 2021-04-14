@@ -5,7 +5,7 @@ namespace BibliotecaViva.DAL.Interfaces
 {
     public interface IRegistroDAL
     {
-        List<RegistroDTO> Consultar(RegistroDTO documentoDTO);
-        void Cadastrar(RegistroDTO documentoDTO);
+        List<RegistroDTO> Consultar(RegistroDTO registroDTO);
+        void Cadastrar(RegistroDTO registroDTO);
     }
 }
