@@ -11,5 +11,7 @@ namespace BibliotecaViva.DTO
         public string Conteudo { get; set; }
         public string Descricao { get; set; }
         public DateTime DataInsercao { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; } 
     }
 }

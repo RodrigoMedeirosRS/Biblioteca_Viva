@@ -21,7 +21,7 @@ namespace BibliotecaViva.DAL
         {
             localizacaoGeograficaDTO.Codigo = ValidarJaCadastrado(localizacaoGeograficaDTO);
             if (localizacaoGeograficaDTO.Codigo != null)
-                DataContext.ObterDataContext().InsertOrReplace(new PessoaLocalizacao()
+                DataContext.ObterDataContext().InsertOrReplace(new PessoaLocalizao()
                 {
                     Pessoa = (int)pessoaDTO.Codigo,
                     LocalizacaoGeografica = (int)localizacaoGeograficaDTO.Codigo
@@ -41,7 +41,7 @@ namespace BibliotecaViva.DAL
         
         public void RemoverVinculoPessoa(int? codigoPessoa)
         {
-            var resultado = DataContext.ObterDataContext().Table<PessoaLocalizacao>().FirstOrDefault(localizacaoGeografica => localizacaoGeografica.Pessoa == codigoPessoa);
+            var resultado = DataContext.ObterDataContext().Table<PessoaLocalizao>().FirstOrDefault(localizacaoGeografica => localizacaoGeografica.Pessoa == codigoPessoa);
             if (resultado != null)
                 DataContext.ObterDataContext().Delete(resultado);
         }

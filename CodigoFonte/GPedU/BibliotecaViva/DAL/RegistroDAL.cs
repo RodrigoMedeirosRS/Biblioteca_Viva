@@ -13,10 +13,15 @@ namespace BibliotecaViva.DAL
         private IApelidoDAL ApelidoDAL { get ;set; }
         private IIdiomaDAL IdiomaDAL { get ;set; }
         private ITipoDAL TipoDAL { get ;set; }
+        private ILocalizacaoGeograficaDAL LocalizacaoGeograficaDAL { get; set; }
 
-        public RegistroDAL(ISQLiteDataContext dataContext) : base(dataContext)
+        public RegistroDAL(ISQLiteDataContext dataContext, IDescricaoDAL descricaoDAL, IIdiomaDAL idiomaDAL, IApelidoDAL apelidoDAL,ITipoDAL tipoDAL, ILocalizacaoGeograficaDAL localizacaoGeograficaDAL) : base(dataContext)
         {
-            
+            DescricaoDAL = descricaoDAL;
+            ApelidoDAL = apelidoDAL;
+            IdiomaDAL = idiomaDAL;
+            TipoDAL = tipoDAL;
+            LocalizacaoGeograficaDAL = localizacaoGeograficaDAL;
         }
 
         public List<RegistroDTO> Consultar(RegistroDTO registroDTO)
@@ -116,6 +121,23 @@ namespace BibliotecaViva.DAL
                 
                 ApelidoDAL.Cadastrar(apelidoDTO);
                 ApelidoDAL.VincularRegistro(apelidoDTO, registroDTO);
+            }     
+        }
+
+        private void CadastrarLocalizacaoGeografica(RegistroDTO registroDTO)
+        {
+            if (registroDTO.Latitude == null || registroDTO.Longitude == null)
+                LocalizacaoGeograficaDAL.RemoverVinculoRegistro(registroDTO.Codigo);
+            else
+            {
+                var localizacaoGeograficaDTO = new LocalizacaoGeograficaDTO()
+                { 
+                    Latitude = (double)registroDTO.Latitude,
+                    Longitude = (double)registroDTO.Longitude,
+                };
+                
+                LocalizacaoGeograficaDAL.Cadastrar(localizacaoGeograficaDTO);
+                LocalizacaoGeograficaDAL.Vincular(localizacaoGeograficaDTO, registroDTO);
             }     
         }
     }

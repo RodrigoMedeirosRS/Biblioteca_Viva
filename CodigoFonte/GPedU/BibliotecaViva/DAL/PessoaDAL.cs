@@ -11,11 +11,13 @@ namespace BibliotecaViva.DAL
     {
         private INomeSocialDAL NomeSocialDAL { get; set; }
         private IApelidoDAL ApelidoDAL { get; set; }
+        private ILocalizacaoGeograficaDAL LocalizacaoGeograficaDAL { get; set; }
         
-        public PessoaDAL(ISQLiteDataContext dataContext, INomeSocialDAL nomeSocialDAL, IApelidoDAL apelidoDAL) : base(dataContext)
+        public PessoaDAL(ISQLiteDataContext dataContext, INomeSocialDAL nomeSocialDAL, IApelidoDAL apelidoDAL, ILocalizacaoGeograficaDAL localizacaoGeograficaDAL) : base(dataContext)
         {
             NomeSocialDAL = nomeSocialDAL;
             ApelidoDAL = apelidoDAL;
+            LocalizacaoGeograficaDAL = localizacaoGeograficaDAL;
         }
 
         public void Cadastrar(PessoaDTO pessoaDTO)
@@ -38,6 +40,14 @@ namespace BibliotecaViva.DAL
                    on new PessoaApelido(){ 
                        Apelido = pessoaApelidoLeft != null ? pessoaApelidoLeft.Apelido : 0
                     }.Apelido equals apelido.Codigo into apelidoLeftJoin from apelidoLeft in apelidoLeftJoin.DefaultIfEmpty()
+                join
+                    pessoaLocalizacao in DataContext.ObterDataContext().Table<PessoaLocalizao>()
+                    on pessoa.Codigo equals pessoaLocalizacao.Pessoa into pessoaLocalizacaoLeftJoin from pessoaLocalizacaoApelidoLeft in pessoaLocalizacaoLeftJoin.DefaultIfEmpty()
+                join
+                   localizacaoGeografica in DataContext.ObterDataContext().Table<LocalizacaoGeografica>()
+                   on new PessoaLocalizao(){ 
+                       LocalizacaoGeografica = pessoaLocalizacaoApelidoLeft != null ? pessoaLocalizacaoApelidoLeft.LocalizacaoGeografica : 0
+                    }.LocalizacaoGeografica equals localizacaoGeografica.Codigo into localizacaoGeograficaLeftJoin from localizacaoGeograficaLeft in localizacaoGeograficaLeftJoin.DefaultIfEmpty()
                 
                 where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
                 
@@ -48,8 +58,17 @@ namespace BibliotecaViva.DAL
                     Sobrenome = pessoa.Sobrenome,
                     Genero = pessoa.Genero,
                     Apelido = apelidoLeft != null ? apelidoLeft.Nome : string.Empty,
-                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : string.Empty
+                    NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : string.Empty,
+                    Latitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, true),
+                    Longitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, false),
                 }).ToList();
+        }
+
+        private double? ObterLocalizacaoGeorafica(LocalizacaoGeografica localizacaoGeograficaLeft, bool latitude)
+        {
+            if (localizacaoGeograficaLeft != null)
+                return latitude ? localizacaoGeograficaLeft.Latitude : localizacaoGeograficaLeft.Longitude;
+            return null;
         }
 
         private List<PessoaDTO> MapearPessoas(List<Pessoa> pessoas)
@@ -74,6 +93,7 @@ namespace BibliotecaViva.DAL
             pessoaDTO = PopularCodigo(pessoaDTO);
             CadastrarNomeSocial(pessoaDTO);
             CadastrarApelido(pessoaDTO);
+            CadastrarLocalizacaoGeografica(pessoaDTO);
         }
 
         private void CadastrarNomeSocial(PessoaDTO pessoaDTO)
@@ -101,6 +121,23 @@ namespace BibliotecaViva.DAL
                 
                 ApelidoDAL.Cadastrar(apelidoDTO);
                 ApelidoDAL.VincularPessoa(apelidoDTO, pessoaDTO);
+            }     
+        }
+
+        private void CadastrarLocalizacaoGeografica(PessoaDTO pessoaDTO)
+        {
+            if (pessoaDTO.Latitude == null || pessoaDTO.Longitude == null)
+                LocalizacaoGeograficaDAL.RemoverVinculoPessoa(pessoaDTO.Codigo);
+            else
+            {
+                var localizacaoGeograficaDTO = new LocalizacaoGeograficaDTO()
+                { 
+                    Latitude = (double)pessoaDTO.Latitude,
+                    Longitude = (double)pessoaDTO.Longitude,
+                };
+                
+                LocalizacaoGeograficaDAL.Cadastrar(localizacaoGeograficaDTO);
+                LocalizacaoGeograficaDAL.Vincular(localizacaoGeograficaDTO, pessoaDTO);
             }     
         }
     }
