@@ -30,7 +30,7 @@ namespace BibliotecaViva.DAL
             return (from registro in DataContext.ObterDataContext().Table<Registro>()
                 join
                     idioma in DataContext.ObterDataContext().Table<Idioma>()
-                    on registro.Idioma equals idioma.Id
+                    on registro.Idioma equals idioma.Codigo
                 join
                     tipo in DataContext.ObterDataContext().Table<Tipo>()
                     on registro.Tipo equals tipo.Codigo
@@ -45,6 +45,15 @@ namespace BibliotecaViva.DAL
                    on new RegistroApelido(){ 
                        Apelido = registroApelidoLeft != null ? registroApelidoLeft.Apelido : 0
                     }.Apelido equals apelido.Codigo into apelidoLeftJoin from apelidoLeft in apelidoLeftJoin.DefaultIfEmpty()
+                join
+                    registroLocalizacao in DataContext.ObterDataContext().Table<RegistroLocalizacao>()
+                    on registro.Codigo equals registroLocalizacao.Registro into registroLocalizacaoLeftJoin from registroLocalizacaoLeft in registroLocalizacaoLeftJoin.DefaultIfEmpty()
+                join
+                   localizacaoGeografica in DataContext.ObterDataContext().Table<LocalizacaoGeografica>()
+                   on new RegistroLocalizacao(){ 
+                       LocalizacaoGeografica = registroLocalizacaoLeft != null ? registroLocalizacaoLeft.LocalizacaoGeografica : 0
+                    }.LocalizacaoGeografica equals localizacaoGeografica.Codigo into localizacaoGeograficaLeftJoin from localizacaoGeograficaLeft in localizacaoGeograficaLeftJoin.DefaultIfEmpty()
+
 
                 where registro.Nome == registroDTO.Nome && registro.Idioma == registro.Idioma
                 
@@ -57,8 +66,17 @@ namespace BibliotecaViva.DAL
                     Tipo = tipo.Nome,
                     Conteudo = registro.Conteudo,
                     Descricao = descricaoLeft != null ? descricaoLeft.Conteudo : string.Empty,
-                    DataInsercao = registro.DataInsercao
+                    DataInsercao = registro.DataInsercao,
+                    Latitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, true),
+                    Longitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, false),
                 }).DistinctBy(registroDB => registroDB.Codigo).ToList();; 
+        }
+
+        private double? ObterLocalizacaoGeorafica(LocalizacaoGeografica localizacaoGeograficaLeft, bool latitude)
+        {
+            if (localizacaoGeograficaLeft != null)
+                return latitude ? localizacaoGeograficaLeft.Latitude : localizacaoGeograficaLeft.Longitude;
+            return null;
         }
         
         public void Cadastrar(RegistroDTO registroDTO)
@@ -69,7 +87,7 @@ namespace BibliotecaViva.DAL
 
         private Registro MapearRegistro(RegistroDTO registroDTO)
         {
-            var idioma = IdiomaDAL.ObterIdioma(new IdiomaDTO(){ Nome = registroDTO.Nome });
+            var idioma = IdiomaDAL.ObterIdioma(new IdiomaDTO(){ Nome = registroDTO.Idioma });
             var tipo = TipoDAL.ObterTipo(new TipoDTO(){ Nome = registroDTO.Tipo });
 
             return new Registro()
@@ -88,6 +106,7 @@ namespace BibliotecaViva.DAL
             registroDTO = PopularCodigo(registroDTO);
             CadastrarDescricao(registroDTO);
             CadastrarApelido(registroDTO);
+            CadastrarLocalizacaoGeografica(registroDTO);
         }
 
         private RegistroDTO PopularCodigo(RegistroDTO registroDTO)

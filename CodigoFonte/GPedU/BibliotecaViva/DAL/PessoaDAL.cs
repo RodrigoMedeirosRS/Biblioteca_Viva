@@ -42,11 +42,11 @@ namespace BibliotecaViva.DAL
                     }.Apelido equals apelido.Codigo into apelidoLeftJoin from apelidoLeft in apelidoLeftJoin.DefaultIfEmpty()
                 join
                     pessoaLocalizacao in DataContext.ObterDataContext().Table<PessoaLocalizao>()
-                    on pessoa.Codigo equals pessoaLocalizacao.Pessoa into pessoaLocalizacaoLeftJoin from pessoaLocalizacaoApelidoLeft in pessoaLocalizacaoLeftJoin.DefaultIfEmpty()
+                    on pessoa.Codigo equals pessoaLocalizacao.Pessoa into pessoaLocalizacaoLeftJoin from pessoaLocalizacaoLeft in pessoaLocalizacaoLeftJoin.DefaultIfEmpty()
                 join
                    localizacaoGeografica in DataContext.ObterDataContext().Table<LocalizacaoGeografica>()
                    on new PessoaLocalizao(){ 
-                       LocalizacaoGeografica = pessoaLocalizacaoApelidoLeft != null ? pessoaLocalizacaoApelidoLeft.LocalizacaoGeografica : 0
+                       LocalizacaoGeografica = pessoaLocalizacaoLeft != null ? pessoaLocalizacaoLeft.LocalizacaoGeografica : 0
                     }.LocalizacaoGeografica equals localizacaoGeografica.Codigo into localizacaoGeograficaLeftJoin from localizacaoGeograficaLeft in localizacaoGeograficaLeftJoin.DefaultIfEmpty()
                 
                 where pessoa.Nome == pessoaDTO.Nome && pessoa.Sobrenome == pessoaDTO.Sobrenome
