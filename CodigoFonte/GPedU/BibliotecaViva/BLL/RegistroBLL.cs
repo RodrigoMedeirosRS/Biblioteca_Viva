@@ -29,12 +29,12 @@ namespace BibliotecaViva.BLL
             });
             return SerializarRetorno(resultado);
         }
-        public async Task<string> ObterReferencias(ReferenciaConsulta referencia)
+        public async Task<string> ObterReferencias(int codRegistro)
         {
-            var resultado = ReferenciaDAL.ObterReferencia(new ReferenciaDTO()
+            var resultado = ReferenciaDAL.ObterReferenciaCompleta(new RegistroDTO()
             {
-                Registro = referencia.Registro
-            });
+                Codigo = codRegistro
+            }, RegistroDAL);
             return SerializarRetorno(resultado);
         }
         private string ObterMensagemDeSucesso(RegistroDTO registro)

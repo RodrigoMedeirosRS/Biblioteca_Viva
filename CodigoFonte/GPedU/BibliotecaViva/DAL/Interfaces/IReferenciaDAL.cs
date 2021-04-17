@@ -5,8 +5,8 @@ namespace BibliotecaViva.DAL.Interfaces
 {
     public interface IReferenciaDAL
     {
-        void VincularReferencia(ReferenciaDTO referenciaDTO);
-        void RemoverReferencia(ReferenciaDTO referenciaDTO);
-        List<RegistroDTO> ObterReferencia(ReferenciaDTO referenciaDTO);
+        void VincularReferencia(RegistroDTO registroDTO);
+        List<ReferenciaDTO> ObterReferencia(int codRegistro);
+        List<RegistroDTO> ObterReferenciaCompleta(RegistroDTO registroDTO, IRegistroDAL registroDAL);
     }
 }

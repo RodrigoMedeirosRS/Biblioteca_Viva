@@ -9,6 +9,6 @@ namespace BibliotecaViva.DAO
         [Indexed]
         public int? ProximaReferencia { get; set; }
         [Indexed]
-        public int Registro { get; set; }
+        public int? Registro { get; set; }
     }
 }

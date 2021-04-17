@@ -10,18 +10,20 @@ namespace BibliotecaViva.DAL
 {
     public class RegistroDAL : BaseDAL, IRegistroDAL
     {
-        private IDescricaoDAL DescricaoDAL { get ; set; }
-        private IApelidoDAL ApelidoDAL { get ; set; }
-        private IIdiomaDAL IdiomaDAL { get ; set; }
         private ITipoDAL TipoDAL { get ; set; }
+        private IIdiomaDAL IdiomaDAL { get ; set; }
+        private IApelidoDAL ApelidoDAL { get ; set; }
+        private IReferenciaDAL ReferenciaDAL { get; set; }
+        private IDescricaoDAL DescricaoDAL { get ; set; }
         private ILocalizacaoGeograficaDAL LocalizacaoGeograficaDAL { get; set; }
 
-        public RegistroDAL(ISQLiteDataContext dataContext, IDescricaoDAL descricaoDAL, IIdiomaDAL idiomaDAL, IApelidoDAL apelidoDAL,ITipoDAL tipoDAL, ILocalizacaoGeograficaDAL localizacaoGeograficaDAL) : base(dataContext)
+        public RegistroDAL(ISQLiteDataContext dataContext, IDescricaoDAL descricaoDAL, IIdiomaDAL idiomaDAL, IApelidoDAL apelidoDAL,ITipoDAL tipoDAL, ILocalizacaoGeograficaDAL localizacaoGeograficaDAL, IReferenciaDAL referenciaDAL) : base(dataContext)
         {
-            DescricaoDAL = descricaoDAL;
-            ApelidoDAL = apelidoDAL;
-            IdiomaDAL = idiomaDAL;
             TipoDAL = tipoDAL;
+            IdiomaDAL = idiomaDAL;
+            ApelidoDAL = apelidoDAL;
+            DescricaoDAL = descricaoDAL;
+            ReferenciaDAL = referenciaDAL;
             LocalizacaoGeograficaDAL = localizacaoGeograficaDAL;
         }
 
@@ -66,8 +68,9 @@ namespace BibliotecaViva.DAL
                     Conteudo = registro.Conteudo,
                     Descricao = descricaoLeft != null ? descricaoLeft.Conteudo : string.Empty,
                     DataInsercao = registro.DataInsercao,
-                    Latitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, true),
-                    Longitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, false),
+                    Latitude = ObterLocalizacaoGeografica(localizacaoGeograficaLeft, true),
+                    Longitude = ObterLocalizacaoGeografica(localizacaoGeograficaLeft, false),
+                    Referencias = ReferenciaDAL.ObterReferencia((int)registro.Codigo)
                 }).FirstOrDefault(); 
         }
 
@@ -113,12 +116,13 @@ namespace BibliotecaViva.DAL
                     Conteudo = registro.Conteudo,
                     Descricao = descricaoLeft != null ? descricaoLeft.Conteudo : string.Empty,
                     DataInsercao = registro.DataInsercao,
-                    Latitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, true),
-                    Longitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, false),
+                    Latitude = ObterLocalizacaoGeografica(localizacaoGeograficaLeft, true),
+                    Longitude = ObterLocalizacaoGeografica(localizacaoGeograficaLeft, false),
+                    Referencias = ReferenciaDAL.ObterReferencia((int)registro.Codigo)
                 }).DistinctBy(registroDB => registroDB.Codigo).ToList(); 
         }
 
-        private double? ObterLocalizacaoGeorafica(LocalizacaoGeografica localizacaoGeograficaLeft, bool latitude)
+        private double? ObterLocalizacaoGeografica(LocalizacaoGeografica localizacaoGeograficaLeft, bool latitude)
         {
             if (localizacaoGeograficaLeft != null)
                 return latitude ? localizacaoGeograficaLeft.Latitude : localizacaoGeograficaLeft.Longitude;
@@ -205,6 +209,11 @@ namespace BibliotecaViva.DAL
                 LocalizacaoGeograficaDAL.Cadastrar(localizacaoGeograficaDTO);
                 LocalizacaoGeograficaDAL.Vincular(localizacaoGeograficaDTO, registroDTO);
             }     
+        }
+
+        private void CadastrarReferencias(RegistroDTO registroDTO)
+        {           
+            ReferenciaDAL.VincularReferencia(registroDTO);
         }
     }
 }

@@ -34,9 +34,9 @@ namespace BibliotecaViva.Controllers
         }
 
         [HttpPost("ObterReferencias")]
-        public async Task<IActionResult> ObterReferencias(ReferenciaConsulta referencia)
+        public async Task<IActionResult> ObterReferencias(int codRegistro)
         {
-            return Ok(_Requisicao.ExecutarRequisicao<ReferenciaConsulta>(referencia, _BLL.ObterReferencias));
+            return Ok(_Requisicao.ExecutarRequisicao<int>(codRegistro, _BLL.ObterReferencias));
         }
     }
 }

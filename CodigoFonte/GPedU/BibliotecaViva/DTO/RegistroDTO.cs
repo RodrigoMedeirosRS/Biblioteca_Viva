@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace BibliotecaViva.DTO
 {
@@ -13,5 +14,6 @@ namespace BibliotecaViva.DTO
         public DateTime DataInsercao { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; } 
+        public List<ReferenciaDTO> Referencias { get; set; }
     }
 }

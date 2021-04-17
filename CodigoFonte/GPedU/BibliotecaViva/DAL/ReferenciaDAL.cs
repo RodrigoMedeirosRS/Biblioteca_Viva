@@ -8,44 +8,44 @@ namespace BibliotecaViva.DAL
 {
     public class ReferenciaDAL : BaseDAL, IReferenciaDAL
     {
-        private IRegistroDAL RegistroDAL { get; set; }
-        public ReferenciaDAL(ISQLiteDataContext dataContext, IRegistroDAL registroDAL) : base(dataContext)
+        public ReferenciaDAL(ISQLiteDataContext dataContext) : base(dataContext)
         {
-            RegistroDAL = registroDAL;
         }
-        public void VincularReferencia(ReferenciaDTO referenciaDTO)
-        {
-            referenciaDTO.Codigo = ValidarJaCadastrado(referenciaDTO);
-            DataContext.ObterDataContext().InsertOrReplace(referenciaDTO);
+        public void VincularReferencia(RegistroDTO registroDTO)
+        {          
+            DataContext.ObterDataContext().Table<Referencia>().Delete(referencia => referencia.Registro == registroDTO.Codigo);  
+            
+            foreach(var referencia in registroDTO.Referencias)
+                DataContext.ObterDataContext().InsertOrReplace(new Referencia()
+                {
+                    Registro = referencia.Registro,
+                    ProximaReferencia = referencia.Referencia
+                });
         }
-        public void RemoverReferencia(ReferenciaDTO referenciaDTO)
+        public List<RegistroDTO> ObterReferenciaCompleta(RegistroDTO registroDTO, IRegistroDAL registroDAL)
         {
-            var resultado = DataContext.ObterDataContext().Table<Referencia>().
-            FirstOrDefault(referencia => referencia.Registro == referenciaDTO.Registro && 
-                referencia.ProximaReferencia == referenciaDTO.Referencia);
-            if (resultado != null)
-                DataContext.ObterDataContext().Delete(resultado);
-        }
-        public List<RegistroDTO> ObterReferencia(ReferenciaDTO referenciaDTO)
-        {
-            var referencias = DataContext.ObterDataContext().Table<Referencia>().Where(referencia => referencia.Registro == referenciaDTO.Registro);
+            var referencias = DataContext.ObterDataContext().Table<Referencia>().Where(referencia => referencia.Registro == registroDTO.Codigo);
             var registros = new List<RegistroDTO>();
 
             if (referencias == null)
                 return registros;
 
             foreach(var referencia in referencias)
-                registros.Add(RegistroDAL.Consultar((int)referencia.ProximaReferencia));
+                registros.Add(registroDAL.Consultar((int)referencia.ProximaReferencia));
 
             return registros;
         }
 
-        private int? ValidarJaCadastrado(ReferenciaDTO referenciaDTO)
+        public List<ReferenciaDTO> ObterReferencia(int codRegistro)
         {
-            var resultado = DataContext.ObterDataContext().Table<Referencia>().
-                FirstOrDefault(referencia => referencia.Registro == referenciaDTO.Registro && 
-                referencia.ProximaReferencia == referenciaDTO.Referencia);
-            return resultado != null ? resultado.Codigo : null;
-        } 
+            return (from referencia in DataContext.ObterDataContext().Table<Referencia>()
+            where referencia.Registro == codRegistro
+            select new ReferenciaDTO()
+            {
+                Codigo = referencia.Codigo,
+                Registro = (int)referencia.Registro,
+                Referencia = (int)referencia.ProximaReferencia
+            }).ToList();
+        }
     }
 }
