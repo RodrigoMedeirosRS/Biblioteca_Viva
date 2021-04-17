@@ -9,9 +9,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using API.Interface;
 using BibliotecaViva.BLL;
 using BibliotecaViva.DAL;
-using BibliotecaViva.DTO;
 using BibliotecaViva.DataContext;
-using BibliotecaViva.Controllers;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 namespace API
