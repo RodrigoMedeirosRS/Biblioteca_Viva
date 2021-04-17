@@ -5,7 +5,9 @@ namespace BibliotecaViva.DAL.Interfaces
     public interface IApelidoDAL : IBaseDAL
     {
         void Cadastrar(ApelidoDTO apelidoDTO);
-        void Remover(int? codigoPessoa);
-        void VincularPessoaApelido(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO);
+        void RemoverVinculo(int? codigoPessoa);
+        void RemoverVinculoRegistro(int? codigoRegistro);
+        void VincularPessoa(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO);
+        void VincularRegistro(ApelidoDTO apelidoDTO, RegistroDTO registroDTO);
     }
 }

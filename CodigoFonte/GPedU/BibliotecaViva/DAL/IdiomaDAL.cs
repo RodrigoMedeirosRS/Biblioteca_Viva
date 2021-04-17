@@ -15,7 +15,7 @@ namespace BibliotecaViva.DAL
             var resultado = new Idioma();
 
             if (string.IsNullOrEmpty(idiomaDTO.Nome))
-                resultado = DataContext.ObterDataContext().Table<Idioma>().FirstOrDefault(idioma => idioma.Id == idiomaDTO.Codigo);
+                resultado = DataContext.ObterDataContext().Table<Idioma>().FirstOrDefault(idioma => idioma.Codigo == idiomaDTO.Codigo);
             else
                 resultado = DataContext.ObterDataContext().Table<Idioma>().FirstOrDefault(idioma => idioma.Nome == idiomaDTO.Nome);
             

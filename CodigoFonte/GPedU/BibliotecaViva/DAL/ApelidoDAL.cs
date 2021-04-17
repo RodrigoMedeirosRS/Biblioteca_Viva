@@ -1,4 +1,3 @@
-using AutoMapper;
 using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DAL.Interfaces;
@@ -18,7 +17,7 @@ namespace BibliotecaViva.DAL
             DataContext.ObterDataContext().InsertOrReplace(Mapear<ApelidoDTO, Apelido>(apelidoDTO));
         }
 
-        public void VincularPessoaApelido(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO)
+        public void VincularPessoa(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO)
         {
             apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
             if (apelidoDTO.Codigo != null)
@@ -28,10 +27,28 @@ namespace BibliotecaViva.DAL
                     Apelido = (int)apelidoDTO.Codigo
                 });
         }
+
+        public void VincularRegistro(ApelidoDTO apelidoDTO, RegistroDTO registroDTO)
+        {
+            apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
+            if (apelidoDTO.Codigo != null)
+                DataContext.ObterDataContext().InsertOrReplace(new RegistroApelido()
+                {
+                    Registro = (int)registroDTO.Codigo,
+                    Apelido = (int)apelidoDTO.Codigo
+                });
+        }
         
-        public void Remover(int? codigoPessoa)
+        public void RemoverVinculo(int? codigoPessoa)
         {
             var resultado = DataContext.ObterDataContext().Table<PessoaApelido>().FirstOrDefault(apelido => apelido.Pessoa == codigoPessoa);
+            if (resultado != null)
+                DataContext.ObterDataContext().Delete(resultado);
+        }
+
+        public void RemoverVinculoRegistro(int? codigoRegistro)
+        {
+            var resultado = DataContext.ObterDataContext().Table<RegistroApelido>().FirstOrDefault(apelido => apelido.Registro == codigoRegistro);
             if (resultado != null)
                 DataContext.ObterDataContext().Delete(resultado);
         }

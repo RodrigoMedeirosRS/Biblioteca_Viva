@@ -7,5 +7,7 @@ namespace BibliotecaViva.DTO
         public string Genero { get; set; }
         public string Apelido { get; set; }
         public string NomeSocial { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
     }
 }

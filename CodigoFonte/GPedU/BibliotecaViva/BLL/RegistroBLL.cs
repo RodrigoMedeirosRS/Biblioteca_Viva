@@ -1,8 +1,5 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using BibliotecaViva.DTO;
 using System.Threading.Tasks;
-
-using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
@@ -23,11 +20,12 @@ namespace BibliotecaViva.BLL
         }
         public async Task<string> Consultar(RegistroConsulta registro)
         {
-            return SerializarRetorno(_DAL.Consultar(new RegistroDTO()
+            var resultado = _DAL.Consultar(new RegistroDTO()
             {
                 Nome = registro.Nome,
                 Idioma = registro.Idioma
-            }));
+            });
+            return SerializarRetorno(resultado);
         }
         private string ObterMensagemDeSucesso(RegistroDTO registro)
         {

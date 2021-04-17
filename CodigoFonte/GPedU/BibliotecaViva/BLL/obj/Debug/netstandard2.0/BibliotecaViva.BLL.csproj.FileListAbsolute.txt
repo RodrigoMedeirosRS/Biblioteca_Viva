@@ -20,10 +20,12 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.BLL.dll
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.BLL.pdb
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.DAL.dll
+C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.DAO.dll
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.DTO.dll
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/System.Data.SQLite.NetStandard.dll
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.DAL.pdb
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.DTO.pdb
+C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/BibliotecaViva.DAO.pdb
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/bin/Debug/netstandard2.0/System.Data.SQLite.NetStandard.pdb
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/obj/Debug/netstandard2.0/BibliotecaViva.BLL.csprojAssemblyReference.cache
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/obj/Debug/netstandard2.0/BibliotecaViva.BLL.AssemblyInfoInputs.cache

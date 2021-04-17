@@ -52,7 +52,9 @@ namespace API
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IRegistroDAL, RegistroDAL>();
             services.AddScoped<IDescricaoDAL, DescricaoDAL>(); 
-            services.AddScoped<INomeSocialDAL, NomeSocialDAL>();          
+            services.AddScoped<INomeSocialDAL, NomeSocialDAL>(); 
+            services.AddScoped<ILocalizacaoGeograficaDAL, LocalizacaoGeograficaDAL>();         
+            
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
         }
 

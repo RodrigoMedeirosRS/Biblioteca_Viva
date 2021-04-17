@@ -5,7 +5,7 @@ namespace BibliotecaViva.DAO
     public class Idioma
     {
         [PrimaryKey, AutoIncrement]
-        public int? Id { get; set; }
+        public int? Codigo { get; set; }
 
         [Unique]
         public string Nome { get; set; }

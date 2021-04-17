@@ -2,7 +2,7 @@ using System.Data.SQLite.Tools;
 
 namespace BibliotecaViva.DAO
 {
-    public class PessoaLocalizacao
+    public class PessoaLocalizao
     {
         [PrimaryKey, AutoIncrement]
         public int? Codigo { get; set; }
