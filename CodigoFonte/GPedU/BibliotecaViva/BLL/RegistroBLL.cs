@@ -1,6 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Dominio;

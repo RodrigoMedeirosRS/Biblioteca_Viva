@@ -17,7 +17,7 @@ namespace BibliotecaViva.DAL
             DataContext.ObterDataContext().InsertOrReplace(Mapear<ApelidoDTO, Apelido>(apelidoDTO));
         }
 
-        public void VincularPessoaApelido(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO)
+        public void VincularPessoa(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO)
         {
             apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
             if (apelidoDTO.Codigo != null)
@@ -28,7 +28,7 @@ namespace BibliotecaViva.DAL
                 });
         }
 
-        public void VincularRegistroApelido(ApelidoDTO apelidoDTO, RegistroDTO registroDTO)
+        public void VincularRegistro(ApelidoDTO apelidoDTO, RegistroDTO registroDTO)
         {
             apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
             if (apelidoDTO.Codigo != null)
@@ -39,7 +39,7 @@ namespace BibliotecaViva.DAL
                 });
         }
         
-        public void RemoverVinculoPessoa(int? codigoPessoa)
+        public void RemoverVinculo(int? codigoPessoa)
         {
             var resultado = DataContext.ObterDataContext().Table<PessoaApelido>().FirstOrDefault(apelido => apelido.Pessoa == codigoPessoa);
             if (resultado != null)

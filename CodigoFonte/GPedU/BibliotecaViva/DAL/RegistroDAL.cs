@@ -106,7 +106,7 @@ namespace BibliotecaViva.DAL
         private void CadastrarApelido(RegistroDTO registroDTO)
         {
             if (string.IsNullOrEmpty(registroDTO.Apelido))
-                ApelidoDAL.RemoverVinculoPessoa(registroDTO.Codigo);
+                ApelidoDAL.RemoverVinculo(registroDTO.Codigo);
             else
             {
                 var apelidoDTO = new ApelidoDTO()
@@ -115,7 +115,7 @@ namespace BibliotecaViva.DAL
                 };
                 
                 ApelidoDAL.Cadastrar(apelidoDTO);
-                ApelidoDAL.VincularRegistroApelido(apelidoDTO, registroDTO);
+                ApelidoDAL.VincularRegistro(apelidoDTO, registroDTO);
             }     
         }
     }
