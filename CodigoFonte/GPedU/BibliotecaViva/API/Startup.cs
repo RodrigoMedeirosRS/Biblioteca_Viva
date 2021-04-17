@@ -52,6 +52,7 @@ namespace API
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IRegistroDAL, RegistroDAL>();
             services.AddScoped<IDescricaoDAL, DescricaoDAL>(); 
+            services.AddScoped<IReferenciaDAL, ReferenciaDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>(); 
             services.AddScoped<ILocalizacaoGeograficaDAL, LocalizacaoGeograficaDAL>();         
             
