@@ -10,10 +10,10 @@ namespace BibliotecaViva.DAL
 {
     public class RegistroDAL : BaseDAL, IRegistroDAL
     {
-        private IDescricaoDAL DescricaoDAL { get ;set; }
-        private IApelidoDAL ApelidoDAL { get ;set; }
-        private IIdiomaDAL IdiomaDAL { get ;set; }
-        private ITipoDAL TipoDAL { get ;set; }
+        private IDescricaoDAL DescricaoDAL { get ; set; }
+        private IApelidoDAL ApelidoDAL { get ; set; }
+        private IIdiomaDAL IdiomaDAL { get ; set; }
+        private ITipoDAL TipoDAL { get ; set; }
         private ILocalizacaoGeograficaDAL LocalizacaoGeograficaDAL { get; set; }
 
         public RegistroDAL(ISQLiteDataContext dataContext, IDescricaoDAL descricaoDAL, IIdiomaDAL idiomaDAL, IApelidoDAL apelidoDAL,ITipoDAL tipoDAL, ILocalizacaoGeograficaDAL localizacaoGeograficaDAL) : base(dataContext)
