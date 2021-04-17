@@ -1,6 +1,6 @@
 using BibliotecaViva.DTO;
 
-namespace BibliotecaViva.DAL
+namespace BibliotecaViva.DAL.Interfaces
 {
     public interface INomeSocialDAL
     {

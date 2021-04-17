@@ -1,4 +1,3 @@
-using AutoMapper;
 using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DAL.Interfaces;

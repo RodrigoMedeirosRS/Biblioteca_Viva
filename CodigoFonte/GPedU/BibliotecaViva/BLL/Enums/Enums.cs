@@ -1,4 +1,4 @@
-namespace BLL.Enums
+namespace BibliotecaViva.BLL.Enums
 {
     public class Enums
     {
