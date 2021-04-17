@@ -348,6 +348,17 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
+      "morelinq/3.3.2": {
+        "runtime": {
+          "lib/netstandard2.0/MoreLinq.dll": {
+            "assemblyVersion": "3.3.2.0",
+            "fileVersion": "3.3.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MoreLinq.dll": {}
+        }
+      },
       "Newtonsoft.Json/12.0.3": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -425,7 +436,8 @@
           "AutoMapper": "10.0.0",
           "BibliotecaViva.DAO": "1.0.0",
           "BibliotecaViva.DTO": "1.0.0",
-          "System.Data.SQLite.NetStandard": "1.0.0"
+          "System.Data.SQLite.NetStandard": "1.0.0",
+          "morelinq": "3.3.2"
         },
         "runtime": {
           "BibliotecaViva.DAL.dll": {}
@@ -2191,6 +2203,13 @@
       "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
+    "morelinq/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MQc8GppZJLmjvcpEdf3EkC6ovsp7gRWt2e5mC7dcIOrgwSc+yjFd3JQ0iRqr3XrUT6rb/phv0IkEmBtbfVA7AQ==",
+      "path": "morelinq/3.3.2",
+      "hashPath": "morelinq.3.3.2.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.3": {
       "type": "package",

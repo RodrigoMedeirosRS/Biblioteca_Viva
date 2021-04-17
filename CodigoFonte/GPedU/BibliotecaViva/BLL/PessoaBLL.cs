@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Dominio;
@@ -23,11 +22,12 @@ namespace BibliotecaViva.BLL
 
         public async Task<string> Consultar(PessoaConsulta pessoa)
         {
-            return SerializarRetorno(_DAL.Consultar(new PessoaDTO()
+            var resultado = _DAL.Consultar(new PessoaDTO()
             {
                 Nome = pessoa.Nome,
                 Sobrenome = pessoa.Sobrenome
-            }));
+            });
+            return SerializarRetorno(resultado);
         }
 
         private string ObterMensagemDeSucesso(PessoaDTO pessoa)

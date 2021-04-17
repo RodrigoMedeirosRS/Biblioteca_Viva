@@ -27,7 +27,6 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/bin/Debug/netstandard2.0/System.Data.SQLite.NetStandard.deps.json
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/bin/Debug/netstandard2.0/System.Data.SQLite.NetStandard.dll
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/bin/Debug/netstandard2.0/System.Data.SQLite.NetStandard.pdb
-/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/obj/Debug/netstandard2.0/System.Data.SQLite.NetStandard.csprojAssemblyReference.cache
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/obj/Debug/netstandard2.0/System.Data.SQLite.NetStandard.AssemblyInfoInputs.cache
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/obj/Debug/netstandard2.0/System.Data.SQLite.NetStandard.AssemblyInfo.cs
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/obj/Debug/netstandard2.0/System.Data.SQLite.NetStandard.csproj.CoreCompileInputs.cache

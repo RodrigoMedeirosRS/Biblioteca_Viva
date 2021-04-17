@@ -1,4 +1,5 @@
 using System;
+using MoreLinq;
 using System.Linq;
 using System.Collections.Generic;
 using BibliotecaViva.DTO;
@@ -57,7 +58,7 @@ namespace BibliotecaViva.DAL
                     Conteudo = registro.Conteudo,
                     Descricao = descricaoLeft != null ? descricaoLeft.Conteudo : string.Empty,
                     DataInsercao = registro.DataInsercao
-                }).ToList(); 
+                }).DistinctBy(registroDB => registroDB.Codigo).ToList();; 
         }
         
         public void Cadastrar(RegistroDTO registroDTO)

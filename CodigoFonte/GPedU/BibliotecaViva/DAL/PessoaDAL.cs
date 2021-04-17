@@ -1,4 +1,4 @@
-using System;
+using MoreLinq;
 using System.Linq;
 using System.Collections.Generic;
 using BibliotecaViva.DAO;
@@ -61,7 +61,7 @@ namespace BibliotecaViva.DAL
                     NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : string.Empty,
                     Latitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, true),
                     Longitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, false),
-                }).ToList();
+                }).DistinctBy(pessoaDB => pessoaDB.Codigo).ToList();
         }
 
         private double? ObterLocalizacaoGeorafica(LocalizacaoGeografica localizacaoGeograficaLeft, bool latitude)
