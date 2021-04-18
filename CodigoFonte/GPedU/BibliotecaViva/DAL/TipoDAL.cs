@@ -14,8 +14,12 @@ namespace BibliotecaViva.DAL
 
         public void Cadastrar(TipoDTO tipoDTO)
         {
-            tipoDTO.Codigo = ValidarJaCadastrado(tipoDTO);
-            DataContext.ObterDataContext().InsertOrReplace(tipoDTO);
+            DataContext.ObterDataContext().InsertOrReplace(new Tipo()
+            {
+                Codigo = ValidarJaCadastrado(tipoDTO),
+                Nome = tipoDTO.Nome,
+                Extensao = tipoDTO.Extensao
+            });
         }
         
         public TipoDTO Consultar(TipoDTO tipoDTO)

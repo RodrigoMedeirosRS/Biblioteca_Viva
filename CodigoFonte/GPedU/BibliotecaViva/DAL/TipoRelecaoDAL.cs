@@ -13,8 +13,11 @@ namespace BibliotecaViva.DAL
         }
         public void Cadastrar(TipoRelacaoDTO tipoRelacaoDTO)
         {
-            tipoRelacaoDTO.Codigo = ValidarJaCadastrado(tipoRelacaoDTO);
-            DataContext.ObterDataContext().InsertOrReplace(tipoRelacaoDTO);
+            DataContext.ObterDataContext().InsertOrReplace(new TipoRelacao()
+            {
+                Codigo = ValidarJaCadastrado(tipoRelacaoDTO),
+                Nome = tipoRelacaoDTO.Nome
+            });
         }
         public TipoRelacaoDTO Consultar(TipoRelacaoDTO tipoRelacaoDTO)
         {
