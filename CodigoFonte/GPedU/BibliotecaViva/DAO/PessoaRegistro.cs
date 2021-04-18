@@ -8,12 +8,12 @@ namespace BibliotecaViva.DAO
         public int? Codigo { get; set; }
         
         [Indexed]
-        public int TipoRelacao { get; set; }
+        public int? TipoRelacao { get; set; }
         
         [Indexed]
-        public int Pessoa { get; set; }
+        public int? Pessoa { get; set; }
                 
         [Indexed]
-        public int Registro { get; set; }
+        public int? Registro { get; set; }
     }
 }
