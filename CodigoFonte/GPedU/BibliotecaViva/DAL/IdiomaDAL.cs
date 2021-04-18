@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Collections.Generic;
 using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DAL.Interfaces;
@@ -10,7 +12,12 @@ namespace BibliotecaViva.DAL
         {
         }
 
-        public IdiomaDTO ObterIdioma(IdiomaDTO idiomaDTO)
+        public void Cadastrar(IdiomaDTO idiomaDTO)
+        {
+            idiomaDTO.Codigo = ValidarJaCadastrado(idiomaDTO);
+            DataContext.ObterDataContext().InsertOrReplace(idiomaDTO);
+        }
+        public IdiomaDTO Consultar(IdiomaDTO idiomaDTO)
         {
             var resultado = new Idioma();
 
@@ -21,5 +28,20 @@ namespace BibliotecaViva.DAL
             
             return Mapear<Idioma, IdiomaDTO>(resultado);
         }
+
+        public List<IdiomaDTO> Listar()
+        {
+            return (from tipo in DataContext.ObterDataContext().Table<Idioma>() select new IdiomaDTO()
+            {
+                Codigo = tipo.Codigo,
+                Nome = tipo.Nome
+            }).ToList(); 
+        }
+
+        private int? ValidarJaCadastrado(IdiomaDTO idiomaDTO)
+        {
+            var resultado = DataContext.ObterDataContext().Table<Idioma>().FirstOrDefault(idioma => idioma.Nome == idiomaDTO.Nome);
+            return resultado != null ? resultado.Codigo : null;
+        }  
     }
 }

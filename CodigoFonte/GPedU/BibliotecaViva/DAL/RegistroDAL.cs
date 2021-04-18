@@ -137,8 +137,8 @@ namespace BibliotecaViva.DAL
 
         private Registro MapearRegistro(RegistroDTO registroDTO)
         {
-            var idioma = IdiomaDAL.ObterIdioma(new IdiomaDTO(){ Nome = registroDTO.Idioma });
-            var tipo = TipoDAL.ObterTipo(new TipoDTO(){ Nome = registroDTO.Tipo });
+            var idioma = IdiomaDAL.Consultar(new IdiomaDTO(){ Nome = registroDTO.Idioma });
+            var tipo = TipoDAL.Consultar(new TipoDTO(){ Nome = registroDTO.Tipo });
 
             return new Registro()
             {

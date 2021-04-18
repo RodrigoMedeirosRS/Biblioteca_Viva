@@ -1,6 +1,9 @@
+using System.Linq;
+using System.Collections.Generic;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DAO;
 using BibliotecaViva.DAL.Interfaces;
+
 namespace BibliotecaViva.DAL
 {
     public class TipoRelecaoDAL : BaseDAL, ITipoRelacaoDAL
@@ -8,7 +11,12 @@ namespace BibliotecaViva.DAL
         public TipoRelecaoDAL(ISQLiteDataContext dataContext) : base(dataContext)
         {
         }
-        public TipoRelacaoDTO ObterTipo(TipoRelacaoDTO tipoRelacaoDTO)
+        public void Cadastrar(TipoRelacaoDTO tipoRelacaoDTO)
+        {
+            tipoRelacaoDTO.Codigo = ValidarJaCadastrado(tipoRelacaoDTO);
+            DataContext.ObterDataContext().InsertOrReplace(tipoRelacaoDTO);
+        }
+        public TipoRelacaoDTO Consultar(TipoRelacaoDTO tipoRelacaoDTO)
         {
             var resultado = new TipoRelacao();
 
@@ -19,5 +27,20 @@ namespace BibliotecaViva.DAL
             
             return Mapear<TipoRelacao, TipoRelacaoDTO>(resultado);
         }
+
+        public List<TipoRelacaoDTO> Listar()
+        {
+            return (from tipo in DataContext.ObterDataContext().Table<TipoRelacao>() select new TipoRelacaoDTO()
+            {
+                Codigo = tipo.Codigo,
+                Nome = tipo.Nome
+            }).ToList(); 
+        }
+
+        private int? ValidarJaCadastrado(TipoRelacaoDTO tipoRelacaoDTO)
+        {
+            var resultado = DataContext.ObterDataContext().Table<TipoRelacao>().FirstOrDefault(tipoRelacao => tipoRelacao.Nome == tipoRelacaoDTO.Nome);
+            return resultado != null ? resultado.Codigo : null;
+        } 
     }
 }

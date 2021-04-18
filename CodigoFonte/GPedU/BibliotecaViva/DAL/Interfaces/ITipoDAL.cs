@@ -1,9 +1,12 @@
 using BibliotecaViva.DTO;
+using System.Collections.Generic;
 
 namespace BibliotecaViva.DAL.Interfaces
 {
     public interface ITipoDAL
     {
-        TipoDTO ObterTipo(TipoDTO tipoDTO);
+        void Cadastrar(TipoDTO tipoDTO);
+        TipoDTO Consultar(TipoDTO tipoDTO);
+        List<TipoDTO> Listar();
     }
 }

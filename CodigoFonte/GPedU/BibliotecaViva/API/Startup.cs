@@ -37,6 +37,7 @@ namespace API
 
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
+            services.AddScoped<ITipoBLL, TipoBLL>();
             services.AddScoped<IPessoaBLL, PessoaBLL>();
             services.AddScoped<IRegistroBLL, RegistroBLL>();
         }

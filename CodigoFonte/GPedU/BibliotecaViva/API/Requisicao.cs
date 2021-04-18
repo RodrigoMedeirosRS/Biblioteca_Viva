@@ -22,5 +22,20 @@ namespace API
                 return ex.Message;
             }
         }
+
+        public ActionResult<string> ExecutarRequisicao(Func<Task<string>> metodo)
+        {
+            try
+            {
+                return Task<string>.Run(async () =>
+                {
+                    return await metodo();
+                }).Result;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 }

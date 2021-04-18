@@ -25,7 +25,7 @@ namespace BibliotecaViva.DAL
                 {
                     Pessoa = relacao.Pessoa,
                     Registro = relacao.Registro,
-                    TipoRelacao = TipoRelacaoDAL.ObterTipo(new TipoRelacaoDTO()
+                    TipoRelacao = TipoRelacaoDAL.Consultar(new TipoRelacaoDTO()
                     {
                         Nome =relacao.TipoRelacao
                     }).Codigo
@@ -40,7 +40,7 @@ namespace BibliotecaViva.DAL
                 Codigo = relacao.Codigo,
                 Registro = (int)relacao.Registro,
                 Pessoa = (int)relacao.Pessoa,
-                TipoRelacao = TipoRelacaoDAL.ObterTipo(new TipoRelacaoDTO()
+                TipoRelacao = TipoRelacaoDAL.Consultar(new TipoRelacaoDTO()
                 {
                     Codigo = relacao.TipoRelacao
                 }).Nome
