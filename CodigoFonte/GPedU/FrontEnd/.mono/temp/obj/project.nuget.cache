@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ms4CDyxAAkGKfuwOChCf/N1Y5OTbIH8wGu9MKi4N8cI9PIEzs2UOPe29VCcoHCZxcDo+d4YMmLGIu3XZF8iFZg==",
+  "success": true,
+  "projectFilePath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/Front End.csproj",
+  "expectedPackageFiles": [
+    "/home/rmlehnemann/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.0/microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.0/microsoft.netframework.referenceassemblies.net472.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
