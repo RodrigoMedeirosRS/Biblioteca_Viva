@@ -53,6 +53,7 @@ namespace API
             services.AddScoped<IReferenciaDAL, ReferenciaDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>(); 
             services.AddScoped<ITipoRelacaoDAL, TipoRelecaoDAL>();
+            services.AddScoped<IPessoaRegistroDAL, PessoaRegistroDAL>();
             services.AddScoped<ILocalizacaoGeograficaDAL, LocalizacaoGeograficaDAL>();         
             
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();

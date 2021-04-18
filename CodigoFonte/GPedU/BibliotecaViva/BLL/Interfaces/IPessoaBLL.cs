@@ -8,5 +8,6 @@ namespace BibliotecaViva.BLL.Interfaces
     {
         Task<string> Cadastrar(PessoaDTO pessoa);
         Task<string> Consultar(PessoaConsulta pessoa);
+        Task<string> ObterRelacoes(int codPessoa);
     }
 }
