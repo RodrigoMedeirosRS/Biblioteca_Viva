@@ -6,6 +6,7 @@ namespace API.Interface
 {
     public interface IRequisicao
     {
-        public ActionResult<string> ExecutarRequisicao<T>(T entrada, Func<T, Task<string>> metodo);
+        ActionResult<string> ExecutarRequisicao<T>(T entrada, Func<T, Task<string>> metodo);
+        ActionResult<string> ExecutarRequisicao(Func<Task<string>> metodo);
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace BibliotecaViva.DTO
 {
     public class PessoaDTO : BaseDTO
@@ -9,5 +11,6 @@ namespace BibliotecaViva.DTO
         public string NomeSocial { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+        public List<PessoaRegistroDTO> Relacoes { get; set; }
     }
 }

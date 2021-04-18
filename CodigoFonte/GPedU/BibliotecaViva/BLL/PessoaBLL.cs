@@ -8,24 +8,35 @@ namespace BibliotecaViva.BLL
 {
     public class PessoaBLL : BaseBLL, IPessoaBLL
     {
-        private IPessoaDAL _DAL { get; set; }
-        public PessoaBLL(IPessoaDAL dal)
+        private IPessoaDAL PessoaDAL { get; set; }
+        private IPessoaRegistroDAL PessoaRegistroDAL { get; set; }
+        public PessoaBLL(IPessoaDAL referenciaDAL, IPessoaRegistroDAL pessoaRegistroDAL)
         {
-            _DAL = dal;
+            PessoaDAL = referenciaDAL;
+            PessoaRegistroDAL = pessoaRegistroDAL;
         }
 
         public async Task<string> Cadastrar(PessoaDTO pessoa)
         {
-            _DAL.Cadastrar(pessoa);
+            PessoaDAL.Cadastrar(pessoa);
             return ObterMensagemDeSucesso(pessoa);
         }
 
         public async Task<string> Consultar(PessoaConsulta pessoa)
         {
-            var resultado = _DAL.Consultar(new PessoaDTO()
+            var resultado = PessoaDAL.Consultar(new PessoaDTO()
             {
                 Nome = pessoa.Nome,
                 Sobrenome = pessoa.Sobrenome
+            });
+            return SerializarRetorno(resultado);
+        }
+
+        public async Task<string> ObterRelacoes(int codPessoa)
+        {
+            var resultado = PessoaRegistroDAL.ObterRelacaoCompleta(new PessoaDTO()
+            {
+                Codigo = codPessoa
             });
             return SerializarRetorno(resultado);
         }

@@ -8,23 +8,33 @@ namespace BibliotecaViva.BLL
 {
     public class RegistroBLL : BaseBLL, IRegistroBLL
     {
-        private IRegistroDAL _DAL { get; set; }
-        public RegistroBLL(IRegistroDAL documentoDAL)
+        private IRegistroDAL RegistroDAL { get; set; }
+        private IReferenciaDAL ReferenciaDAL { get; set; }
+        public RegistroBLL(IRegistroDAL registroDAL, IReferenciaDAL referenciaDAL)
         {
-            _DAL = documentoDAL;
+            RegistroDAL = registroDAL;
+            ReferenciaDAL = referenciaDAL;
         }
         public async Task<string> Cadastrar(RegistroDTO registro) 
         {
-            _DAL.Cadastrar(registro);
+            RegistroDAL.Cadastrar(registro);
             return ObterMensagemDeSucesso(registro);
         }
         public async Task<string> Consultar(RegistroConsulta registro)
         {
-            var resultado = _DAL.Consultar(new RegistroDTO()
+            var resultado = RegistroDAL.Consultar(new RegistroDTO()
             {
                 Nome = registro.Nome,
                 Idioma = registro.Idioma
             });
+            return SerializarRetorno(resultado);
+        }
+        public async Task<string> ObterReferencias(int codRegistro)
+        {
+            var resultado = ReferenciaDAL.ObterReferenciaCompleta(new RegistroDTO()
+            {
+                Codigo = codRegistro
+            }, RegistroDAL);
             return SerializarRetorno(resultado);
         }
         private string ObterMensagemDeSucesso(RegistroDTO registro)

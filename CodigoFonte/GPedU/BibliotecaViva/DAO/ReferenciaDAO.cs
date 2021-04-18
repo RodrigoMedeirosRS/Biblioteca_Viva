@@ -6,12 +6,9 @@ namespace BibliotecaViva.DAO
     {
         [PrimaryKey, AutoIncrement]
         public int? Codigo { get; set; }
-
-        [Indexed]
-        public int TipoRelacao { get; set; }
         [Indexed]
         public int? ProximaReferencia { get; set; }
         [Indexed]
-        public int Registro { get; set; }
+        public int? Registro { get; set; }
     }
 }

@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Collections.Generic;
 using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DAL.Interfaces;
@@ -9,7 +11,14 @@ namespace BibliotecaViva.DAL
         public TipoDAL(ISQLiteDataContext dataContext) : base(dataContext)
         {
         }
-        public TipoDTO ObterTipo(TipoDTO tipoDTO)
+
+        public void Cadastrar(TipoDTO tipoDTO)
+        {
+            tipoDTO.Codigo = ValidarJaCadastrado(tipoDTO);
+            DataContext.ObterDataContext().InsertOrReplace(tipoDTO);
+        }
+        
+        public TipoDTO Consultar(TipoDTO tipoDTO)
         {
             var resultado = new Tipo();
 
@@ -20,5 +29,20 @@ namespace BibliotecaViva.DAL
             
             return Mapear<Tipo, TipoDTO>(resultado);
         }
+        public List<TipoDTO> Listar()
+        {
+            return (from tipo in DataContext.ObterDataContext().Table<Tipo>() select new TipoDTO()
+            {
+                Codigo = tipo.Codigo,
+                Nome = tipo.Nome,
+                Extensao = tipo.Extensao
+            }).ToList(); 
+        }
+
+        private int? ValidarJaCadastrado(TipoDTO tipoDTO)
+        {
+            var resultado = DataContext.ObterDataContext().Table<Tipo>().FirstOrDefault(tipo => tipo.Nome == tipoDTO.Nome);
+            return resultado != null ? resultado.Codigo : null;
+        }  
     }
 }

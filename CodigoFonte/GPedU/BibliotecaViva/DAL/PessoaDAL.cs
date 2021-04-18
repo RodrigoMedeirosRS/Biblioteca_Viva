@@ -12,11 +12,13 @@ namespace BibliotecaViva.DAL
         private INomeSocialDAL NomeSocialDAL { get; set; }
         private IApelidoDAL ApelidoDAL { get; set; }
         private ILocalizacaoGeograficaDAL LocalizacaoGeograficaDAL { get; set; }
+        private IPessoaRegistroDAL PessoaRegistroDAL { get; set; }
         
-        public PessoaDAL(ISQLiteDataContext dataContext, INomeSocialDAL nomeSocialDAL, IApelidoDAL apelidoDAL, ILocalizacaoGeograficaDAL localizacaoGeograficaDAL) : base(dataContext)
+        public PessoaDAL(ISQLiteDataContext dataContext, INomeSocialDAL nomeSocialDAL, IApelidoDAL apelidoDAL, ILocalizacaoGeograficaDAL localizacaoGeograficaDAL, IPessoaRegistroDAL pessoaRegistroDAL) : base(dataContext)
         {
-            NomeSocialDAL = nomeSocialDAL;
             ApelidoDAL = apelidoDAL;
+            NomeSocialDAL = nomeSocialDAL;
+            PessoaRegistroDAL = pessoaRegistroDAL;
             LocalizacaoGeograficaDAL = localizacaoGeograficaDAL;
         }
 
@@ -61,6 +63,7 @@ namespace BibliotecaViva.DAL
                     NomeSocial = nomeSocialLeft != null ? nomeSocialLeft.Nome : string.Empty,
                     Latitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, true),
                     Longitude = ObterLocalizacaoGeorafica(localizacaoGeograficaLeft, false),
+                    Relacoes = PessoaRegistroDAL.ObterRelacao((int)pessoa.Codigo)
                 }).DistinctBy(pessoaDB => pessoaDB.Codigo).ToList();
         }
 

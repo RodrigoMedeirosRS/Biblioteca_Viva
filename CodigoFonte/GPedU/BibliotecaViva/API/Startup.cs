@@ -9,9 +9,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using API.Interface;
 using BibliotecaViva.BLL;
 using BibliotecaViva.DAL;
-using BibliotecaViva.DTO;
 using BibliotecaViva.DataContext;
-using BibliotecaViva.Controllers;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 namespace API
@@ -39,6 +37,7 @@ namespace API
 
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
+            services.AddScoped<ITipoBLL, TipoBLL>();
             services.AddScoped<IPessoaBLL, PessoaBLL>();
             services.AddScoped<IRegistroBLL, RegistroBLL>();
         }
@@ -52,7 +51,10 @@ namespace API
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<IRegistroDAL, RegistroDAL>();
             services.AddScoped<IDescricaoDAL, DescricaoDAL>(); 
+            services.AddScoped<IReferenciaDAL, ReferenciaDAL>();
             services.AddScoped<INomeSocialDAL, NomeSocialDAL>(); 
+            services.AddScoped<ITipoRelacaoDAL, TipoRelecaoDAL>();
+            services.AddScoped<IPessoaRegistroDAL, PessoaRegistroDAL>();
             services.AddScoped<ILocalizacaoGeograficaDAL, LocalizacaoGeograficaDAL>();         
             
             services.AddSingleton<ISQLiteDataContext, SQLiteDataContext>();
