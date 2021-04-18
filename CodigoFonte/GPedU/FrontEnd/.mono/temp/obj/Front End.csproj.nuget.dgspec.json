@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/Front End.csproj": {}
+  },
+  "projects": {
+    "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/Front End.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/Front End.csproj",
+        "projectName": "Front End",
+        "projectPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/Front End.csproj",
+        "packagesPath": "/home/rmlehnemann/.nuget/packages/",
+        "outputPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "target": "Package",
+              "version": "[1.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.408/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 using BibliotecaViva.DTO;
 using System.Threading.Tasks;
-using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 

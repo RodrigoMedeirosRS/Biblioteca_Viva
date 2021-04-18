@@ -1,0 +1,8 @@
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/bin/Debug/Front End.dll
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/bin/Debug/Front End.pdb
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.csprojAssemblyReference.cache
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.AssemblyInfoInputs.cache
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.AssemblyInfo.cs
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.csproj.CoreCompileInputs.cache
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.dll
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.pdb
