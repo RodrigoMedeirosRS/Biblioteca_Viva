@@ -9,9 +9,11 @@ namespace BibliotecaViva.DAL
     public class PessoaRegistroDAL : BaseDAL, IPessoaRegistroDAL
     {
         ITipoRelacaoDAL TipoRelacaoDAL { get; set; }
-        public PessoaRegistroDAL(ISQLiteDataContext dataContext, ITipoRelacaoDAL tipoRelacaoDAL) : base(dataContext)
+        IRegistroDAL RegistroDAL { get; set; }
+        public PessoaRegistroDAL(ISQLiteDataContext dataContext, ITipoRelacaoDAL tipoRelacaoDAL, IRegistroDAL registroDAL) : base(dataContext)
         {
             TipoRelacaoDAL = tipoRelacaoDAL;
+            RegistroDAL = registroDAL;
         }
 
         public void VincularReferencia(PessoaDTO pessoaDTO)
@@ -46,8 +48,18 @@ namespace BibliotecaViva.DAL
         }
         public List<RegistroDTO> ObterRelacaoCompleta(PessoaDTO pessoaDTO)
         {
+            var relacoes = DataContext.ObterDataContext().Table<PessoaRegistro>().Where(
+                relacao => relacao.Codigo == pessoaDTO.Codigo);
             
-            return new List<RegistroDTO>();
+            var registros = new List<RegistroDTO>();
+
+            if (relacoes == null)
+                return registros;
+
+            foreach(var relacao in relacoes)
+                registros.Add(RegistroDAL.Consultar((int)relacao.Registro));
+
+            return registros;
         }
     }
 }
