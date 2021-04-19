@@ -1,45 +1,32 @@
-﻿using System;
+using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
 namespace BibliotecaViva.DAL
 {
-    public class NomeSocialDAL : INomeSocialDAL
+    public class NomeSocialDAL : BaseDAL, INomeSocialDAL
     {
-        private ISQLiteDataContext DataContext { get; set; }
-
-        public NomeSocialDAL(ISQLiteDataContext dataContext)
+        public NomeSocialDAL(ISQLiteDataContext dataContext) : base(dataContext)
         {
-            DataContext = dataContext;
         }
 
-        public void Cadastrar(PessoaDTO pessoaDTO)
+        public void Cadastrar(NomeSocialDTO nomeSocial)
         {
-            DataContext.ObterDataContext().InsertOrReplace(new NomeSocial()
-            {
-                Pessoa = pessoaDTO.Id,
-                Nome = pessoaDTO.NomeSocial
-            });
+            nomeSocial.Codigo = ValidarJaCadastrado(nomeSocial);
+            DataContext.ObterDataContext().InsertOrReplace(Mapear<NomeSocialDTO, NomeSocial>(nomeSocial));
+        }
+        
+        public void Remover(int? codigoPessoa)
+        {
+            var resultado = DataContext.ObterDataContext().Table<NomeSocial>().FirstOrDefault(nomeSocial => nomeSocial.Pessoa == codigoPessoa);
+            if (resultado != null)
+                DataContext.ObterDataContext().Delete(resultado);
         }
 
-        public void Deletar(PessoaDTO pessoaDTO)
+        private int? ValidarJaCadastrado(NomeSocialDTO nomeSocialDTO)
         {
-            try
-            {
-                DataContext.ObterDataContext().Delete(Consultar(pessoaDTO.Id));
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message != "Cannot delete Object: it has no PK")
-                    throw ex;
-            }
-            
-        }
-
-        public NomeSocial Consultar(int? pessoaId)
-        {
-            return DataContext.ObterDataContext().Table<NomeSocial>().FirstOrDefault(nomeSocial => nomeSocial.Pessoa == pessoaId);
-        }
+            var resultado = DataContext.ObterDataContext().Table<NomeSocial>().FirstOrDefault(nomeSocial => nomeSocial.Pessoa == nomeSocialDTO.Pessoa);
+            return resultado != null ? resultado.Codigo : null;
+        }  
     }
 }

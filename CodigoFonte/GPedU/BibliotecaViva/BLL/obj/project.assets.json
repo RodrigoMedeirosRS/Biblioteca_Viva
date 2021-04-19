@@ -33,120 +33,13 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "NETStandard.Library/2.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/_._": {}
-        },
-        "build": {
-          "build/netstandard2.0/NETStandard.Library.targets": {}
-        }
-      },
-      "Newtonsoft.Json/12.0.3": {
+      "morelinq/3.3.2": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/MoreLinq.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
-        }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        }
-      },
-      "BibliotecaViva.DAL/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AutoMapper": "10.0.0",
-          "BibliotecaViva.DTO": "1.0.0",
-          "System.Data.SQLite.NetStandard": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/BibliotecaViva.DAL.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BibliotecaViva.DAL.dll": {}
-        }
-      },
-      "BibliotecaViva.DTO/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "System.Data.SQLite.NetStandard": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/BibliotecaViva.DTO.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BibliotecaViva.DTO.dll": {}
-        }
-      },
-      "System.Data.SQLite.NetStandard/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/System.Data.SQLite.NetStandard.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/System.Data.SQLite.NetStandard.dll": {}
-        }
-      }
-    },
-    ".NETStandard,Version=v2.0/linux-x64": {
-      "AutoMapper/10.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.7.0",
-          "System.Reflection.Emit": "4.7.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/AutoMapper.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/AutoMapper.dll": {}
-        }
-      },
-      "Microsoft.CSharp/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/Microsoft.CSharp.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.CSharp.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Platforms/1.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard1.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/_._": {}
+          "lib/netstandard2.0/MoreLinq.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -199,14 +92,29 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AutoMapper": "10.0.0",
+          "BibliotecaViva.DAO": "1.0.0",
           "BibliotecaViva.DTO": "1.0.0",
-          "System.Data.SQLite.NetStandard": "1.0.0"
+          "System.Data.SQLite.NetStandard": "1.0.0",
+          "morelinq": "3.3.2"
         },
         "compile": {
           "bin/placeholder/BibliotecaViva.DAL.dll": {}
         },
         "runtime": {
           "bin/placeholder/BibliotecaViva.DAL.dll": {}
+        }
+      },
+      "BibliotecaViva.DAO/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "System.Data.SQLite.NetStandard": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BibliotecaViva.DAO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BibliotecaViva.DAO.dll": {}
         }
       },
       "BibliotecaViva.DTO/1.0.0": {
@@ -333,6 +241,27 @@
         "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json"
+      ]
+    },
+    "morelinq/3.3.2": {
+      "sha512": "MQc8GppZJLmjvcpEdf3EkC6ovsp7gRWt2e5mC7dcIOrgwSc+yjFd3JQ0iRqr3XrUT6rb/phv0IkEmBtbfVA7AQ==",
+      "type": "package",
+      "path": "morelinq/3.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "COPYING.txt",
+        "lib/net451/MoreLinq.dll",
+        "lib/net451/MoreLinq.pdb",
+        "lib/net451/MoreLinq.xml",
+        "lib/netstandard1.0/MoreLinq.dll",
+        "lib/netstandard1.0/MoreLinq.pdb",
+        "lib/netstandard1.0/MoreLinq.xml",
+        "lib/netstandard2.0/MoreLinq.dll",
+        "lib/netstandard2.0/MoreLinq.pdb",
+        "lib/netstandard2.0/MoreLinq.xml",
+        "morelinq.3.3.2.nupkg.sha512",
+        "morelinq.nuspec"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -612,6 +541,11 @@
       "path": "../DAL/BibliotecaViva.DAL.csproj",
       "msbuildProject": "../DAL/BibliotecaViva.DAL.csproj"
     },
+    "BibliotecaViva.DAO/1.0.0": {
+      "type": "project",
+      "path": "../DAO/BibliotecaViva.DAO.csproj",
+      "msbuildProject": "../DAO/BibliotecaViva.DAO.csproj"
+    },
     "BibliotecaViva.DTO/1.0.0": {
       "type": "project",
       "path": "../DTO/BibliotecaViva.DTO.csproj",
@@ -637,11 +571,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/BibliotecaViva.BLL.csproj",
+      "projectUniqueName": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/BibliotecaViva.BLL.csproj",
       "projectName": "BibliotecaViva.BLL",
-      "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/BibliotecaViva.BLL.csproj",
+      "projectPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/BibliotecaViva.BLL.csproj",
       "packagesPath": "/home/rmlehnemann/.nuget/packages/",
-      "outputPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/obj/",
+      "outputPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/BLL/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
@@ -655,11 +589,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DAL/BibliotecaViva.DAL.csproj": {
-              "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DAL/BibliotecaViva.DAL.csproj"
+            "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DAL/BibliotecaViva.DAL.csproj": {
+              "projectPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DAL/BibliotecaViva.DAL.csproj"
             },
-            "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DTO/BibliotecaViva.DTO.csproj": {
-              "projectPath": "/home/rmlehnemann/Documentos/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DTO/BibliotecaViva.DTO.csproj"
+            "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DTO/BibliotecaViva.DTO.csproj": {
+              "projectPath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/DTO/BibliotecaViva.DTO.csproj"
             }
           }
         }
@@ -694,12 +628,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "linux-x64": {
-        "#import": []
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.408/RuntimeIdentifierGraph.json"
       }
     }
   }

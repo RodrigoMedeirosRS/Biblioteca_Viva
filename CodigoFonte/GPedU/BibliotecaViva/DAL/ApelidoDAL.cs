@@ -1,43 +1,62 @@
-﻿using System;
+using BibliotecaViva.DAO;
 using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Model;
 using BibliotecaViva.DAL.Interfaces;
 
-namespace BibliotecaViva.DAL
+namespace BibliotecaViva.DAL 
 {
-    public class ApelidoDAL : IApelidoDAL
+    public class ApelidoDAL : BaseDAL, IApelidoDAL
     {
-        private ISQLiteDataContext DataContext;
+        public ApelidoDAL(ISQLiteDataContext dataContext) : base(dataContext)
+        {
 
-        public ApelidoDAL(ISQLiteDataContext dataContext)
-        {
-            DataContext = dataContext;
-        }
-        public void Cadastrar(PessoaDTO pessoaDTO)
-        {
-            DataContext.ObterDataContext().InsertOrReplace(new Apelido()
-            {
-                Pessoa = pessoaDTO.Id,
-                Nome = pessoaDTO.Apelido
-            });
         }
 
-        public void Deletar(PessoaDTO pessoaDTO)
+        public void Cadastrar(ApelidoDTO apelidoDTO)
         {
-            try
-            {
-                DataContext.ObterDataContext().Delete(Consultar(pessoaDTO.Id));
-            }
-            catch(Exception ex)
-            {
-                if (ex.Message != "Cannot delete Object: it has no PK")
-                    throw ex;
-            }
+            apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
+            DataContext.ObterDataContext().InsertOrReplace(Mapear<ApelidoDTO, Apelido>(apelidoDTO));
         }
 
-        public Apelido Consultar(int? pessoaId)
+        public void VincularPessoa(ApelidoDTO apelidoDTO, PessoaDTO pessoaDTO)
         {
-            return DataContext.ObterDataContext().Table<Apelido>().FirstOrDefault(apelido => apelido.Pessoa == pessoaId);
+            apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
+            if (apelidoDTO.Codigo != null)
+                DataContext.ObterDataContext().InsertOrReplace(new PessoaApelido()
+                {
+                    Pessoa = (int)pessoaDTO.Codigo,
+                    Apelido = (int)apelidoDTO.Codigo
+                });
         }
+
+        public void VincularRegistro(ApelidoDTO apelidoDTO, RegistroDTO registroDTO)
+        {
+            apelidoDTO.Codigo = ValidarJaCadastrado(apelidoDTO);
+            if (apelidoDTO.Codigo != null)
+                DataContext.ObterDataContext().InsertOrReplace(new RegistroApelido()
+                {
+                    Registro = (int)registroDTO.Codigo,
+                    Apelido = (int)apelidoDTO.Codigo
+                });
+        }
+        
+        public void RemoverVinculo(int? codigoPessoa)
+        {
+            var resultado = DataContext.ObterDataContext().Table<PessoaApelido>().FirstOrDefault(apelido => apelido.Pessoa == codigoPessoa);
+            if (resultado != null)
+                DataContext.ObterDataContext().Delete(resultado);
+        }
+
+        public void RemoverVinculoRegistro(int? codigoRegistro)
+        {
+            var resultado = DataContext.ObterDataContext().Table<RegistroApelido>().FirstOrDefault(apelido => apelido.Registro == codigoRegistro);
+            if (resultado != null)
+                DataContext.ObterDataContext().Delete(resultado);
+        }
+
+        private int? ValidarJaCadastrado(ApelidoDTO apelidoDTO)
+        {
+            var resultado = DataContext.ObterDataContext().Table<Apelido>().FirstOrDefault(apelido => apelido.Nome == apelidoDTO.Nome);
+            return resultado != null ? resultado.Codigo : null;
+        }  
     }
 }

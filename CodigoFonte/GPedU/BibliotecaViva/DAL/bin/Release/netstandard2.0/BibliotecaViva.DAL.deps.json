@@ -10,9 +10,11 @@
       "BibliotecaViva.DAL/1.0.0": {
         "dependencies": {
           "AutoMapper": "10.0.0",
+          "BibliotecaViva.DAO": "1.0.0",
           "BibliotecaViva.DTO": "1.0.0",
           "NETStandard.Library": "2.0.3",
-          "System.Data.SQLite.NetStandard": "1.0.0"
+          "System.Data.SQLite.NetStandard": "1.0.0",
+          "morelinq": "3.3.2"
         },
         "runtime": {
           "BibliotecaViva.DAL.dll": {}
@@ -39,6 +41,14 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
+      "morelinq/3.3.2": {
+        "runtime": {
+          "lib/netstandard2.0/MoreLinq.dll": {
+            "assemblyVersion": "3.3.2.0",
+            "fileVersion": "3.3.2.0"
+          }
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -61,6 +71,14 @@
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.700.19.56404"
           }
+        }
+      },
+      "BibliotecaViva.DAO/1.0.0": {
+        "dependencies": {
+          "System.Data.SQLite.NetStandard": "1.0.0"
+        },
+        "runtime": {
+          "BibliotecaViva.DAO.dll": {}
         }
       },
       "BibliotecaViva.DTO/1.0.0": {
@@ -105,6 +123,13 @@
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
+    "morelinq/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MQc8GppZJLmjvcpEdf3EkC6ovsp7gRWt2e5mC7dcIOrgwSc+yjFd3JQ0iRqr3XrUT6rb/phv0IkEmBtbfVA7AQ==",
+      "path": "morelinq/3.3.2",
+      "hashPath": "morelinq.3.3.2.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -125,6 +150,11 @@
       "sha512": "sha512-AucBYo3DSI0IDxdUjKksBcQJXPHyoPyrCXYURW1WDsLI4M65Ar/goSHjdnHOAY9MiYDNKqDlIgaYm+zL2hA1KA==",
       "path": "system.reflection.emit.ilgeneration/4.7.0",
       "hashPath": "system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512"
+    },
+    "BibliotecaViva.DAO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "BibliotecaViva.DTO/1.0.0": {
       "type": "project",
