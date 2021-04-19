@@ -3,19 +3,31 @@ using System;
 
 public class WindowController : Node2D
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+	private enum Animations { Maximized, Minimized, Normal}
+	private Animations LastAnimation { get; set; }
+	private AnimationPlayer Window { get; set; }
 
-	// Called when the node enters the scene tree for the first time.
+	public WindowController()
+	{
+		LastAnimation = Animations.Normal;
+	}
 	public override void _Ready()
 	{
-		
+		Window = GetNode<AnimationPlayer>("./AnimationPlayer");
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+	private void _on_Header_button_up()
+	{
+		if (LastAnimation == Animations.Normal || LastAnimation == Animations.Minimized)
+		{
+			Window.Play(Animations.Maximized.ToString());
+			LastAnimation = Animations.Maximized;
+		}
+		else
+		{
+			Window.Play(Animations.Minimized.ToString());
+			LastAnimation = Animations.Minimized;
+		}
+
+	}
 }
