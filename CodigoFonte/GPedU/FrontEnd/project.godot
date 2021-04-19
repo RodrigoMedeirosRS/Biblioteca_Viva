@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Front End"
-run/main_scene="res://Cenas/Main.tscn"
+run/main_scene="res://RES/Cenas/Main.tscn"
 config/icon="res://icon.png"
 
 [physics]
