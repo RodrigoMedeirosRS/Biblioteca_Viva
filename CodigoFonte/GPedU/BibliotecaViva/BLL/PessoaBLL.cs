@@ -1,39 +1,49 @@
-using System;
-using Newtonsoft.Json;
 using System.Threading.Tasks;
-
 using BibliotecaViva.DTO;
-using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.DAL.Interfaces;
 using BibliotecaViva.BLL.Interfaces;
 
-
 namespace BibliotecaViva.BLL
 {
-    public class PessoaBLL : IPerssoaBLL
+    public class PessoaBLL : BaseBLL, IPessoaBLL
     {
-        private IPessoaDAL _DAL { get; set; }
-        public PessoaBLL(IPessoaDAL dal)
+        private IPessoaDAL PessoaDAL { get; set; }
+        private IPessoaRegistroDAL PessoaRegistroDAL { get; set; }
+        public PessoaBLL(IPessoaDAL referenciaDAL, IPessoaRegistroDAL pessoaRegistroDAL)
         {
-            _DAL = dal;
+            PessoaDAL = referenciaDAL;
+            PessoaRegistroDAL = pessoaRegistroDAL;
         }
 
         public async Task<string> Cadastrar(PessoaDTO pessoa)
         {
-            _DAL.Cadastrar(pessoa);
-            return "Sucesso!";
+            PessoaDAL.Cadastrar(pessoa);
+            return ObterMensagemDeSucesso(pessoa);
         }
 
-        public async Task<string> Consultar(PessoaConsulta pessoaEntrada)
+        public async Task<string> Consultar(PessoaConsulta pessoa)
         {
-            var pessoa = AutoMapperGenerico.Mapear<PessoaConsulta, PessoaDTO>(pessoaEntrada);
-            return SerializarRetorno(_DAL.Consultar(pessoa));
+            var resultado = PessoaDAL.Consultar(new PessoaDTO()
+            {
+                Nome = pessoa.Nome,
+                Sobrenome = pessoa.Sobrenome
+            });
+            return SerializarRetorno(resultado);
         }
 
-        private string SerializarRetorno(PessoaDTO pessoa)
+        public async Task<string> ObterRelacoes(int codPessoa)
         {
-            return pessoa != null ? JsonConvert.SerializeObject(pessoa) : throw new Exception("Pessoa Não Encontrada");
+            var resultado = PessoaRegistroDAL.ObterRelacaoCompleta(new PessoaDTO()
+            {
+                Codigo = codPessoa
+            });
+            return SerializarRetorno(resultado);
+        }
+
+        private string ObterMensagemDeSucesso(PessoaDTO pessoa)
+        {
+            return pessoa.Nome + " " + pessoa.Sobrenome + " Registrado(a) com Sucesso!";
         }
     }
 }

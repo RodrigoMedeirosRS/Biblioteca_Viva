@@ -1,71 +1,30 @@
-DROP TABLE Legenda;
+DROP TABLE RegistroLocalizacao;
 
-DROP TABLE AudioDescricaoVideo;
+DROP TABLE RegistroApelido;
 
-DROP TABLE AudioDescricaoImagem;
+DROP TABLE Descricao;
 
-DROP TABLE DossieDocumento;
+DROP TABLE PessoaRegistro;
 
-DROP TABLE Transcricao;
+DROP TABLE Referencia;
 
-DROP TABLE Dossie;
+DROP TABLE PessoaApelido;
 
-DROP TABLE Video;
+DROP TABLE PessoaLocalizao;
 
-DROP TABLE Audio;
-
-DROP TABLE Texto;
-
-DROP TABLE Participacao;
-
-DROP TABLE Imagem;
-
-DROP TABLE LinhaDoTempoDocumento;
-
-DROP TABLE LinhaDoTempoPessoa;
-
-DROP TABLE LinhaDoTempoEvento;
-
-DROP TABLE GlossarioLocal;
-
-DROP TABLE DocumentoGlossario;
-
-DROP TABLE EventoLocalizacao;
-
-DROP TABLE EventoDocumento;
-
-DROP TABLE PessoaTermo;
-
-DROP TABLE RegiaoLocal;
-
-DROP TABLE Significado;
-
-DROP TABLE Documento;
-
-DROP TABLE Evento;
-
-DROP TABLE Apelido;
-
-DROP TABLE Conceito;
-
-DROP TABLE Genero;
+DROP TABLE Registro;
 
 DROP TABLE NomeSocial;
 
-DROP TABLE LinhaDoTempo;
+DROP TABLE Idioma;
+
+DROP TABLE Tipo;
+
+DROP TABLE Apelido;
 
 DROP TABLE Pessoa;
 
-DROP TABLE Localizacao;
+DROP TABLE TipoRelacao;
 
-DROP TABLE Idioma;
-
-DROP TABLE TipoEvento;
-
-DROP TABLE Termo;
-
-DROP TABLE Glossario;
-
-DROP TABLE TipoParticipacao;
-
+DROP TABLE LocalizacaoGeografica;
 

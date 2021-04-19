@@ -1,9 +1,12 @@
-﻿using BibliotecaViva.DTO.Model;
+using System.Collections.Generic;
+using BibliotecaViva.DTO;
 
 namespace BibliotecaViva.DAL.Interfaces
 {
     public interface ITipoRelacaoDAL
     {
-        TipoDeRelacao Consultar(string nomeRelacao);
+        void Cadastrar(TipoRelacaoDTO tipoRelacaoDTO);
+        TipoRelacaoDTO Consultar(TipoRelacaoDTO tipoRelacaoDTO);
+        List<TipoRelacaoDTO> Listar();
     }
 }
