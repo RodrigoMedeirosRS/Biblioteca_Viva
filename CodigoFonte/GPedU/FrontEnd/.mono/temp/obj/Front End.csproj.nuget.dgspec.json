@@ -272,11 +272,19 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "DewRESTClientStandard": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
@@ -329,11 +337,19 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "DewRESTClientStandard": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [

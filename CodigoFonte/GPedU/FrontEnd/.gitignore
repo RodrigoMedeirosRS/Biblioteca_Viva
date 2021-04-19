@@ -8,3 +8,5 @@ SAL/bin
 SAL/obj
 .import
 .mono
+DTO/bin
+DAO/bin

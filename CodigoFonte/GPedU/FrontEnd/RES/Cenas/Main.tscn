@@ -117,3 +117,7 @@ position = Vector2( 119.487, 66.071 )
 rotation = -1.57079
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 11 )
+
+[node name="ObterIdiomas" type="HTTPRequest" parent="Controles"]
+
+[connection signal="request_completed" from="Controles/ObterIdiomas" to="." method="_on_ObterIdiomas_request_completed"]

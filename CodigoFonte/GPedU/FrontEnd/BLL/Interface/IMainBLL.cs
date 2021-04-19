@@ -1,4 +1,6 @@
 using Godot;
+using DTO;
+using System.Collections.Generic;
 
 namespace BLL.Interface
 {

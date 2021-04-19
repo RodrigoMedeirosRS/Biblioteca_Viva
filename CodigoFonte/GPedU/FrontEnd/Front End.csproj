@@ -24,4 +24,8 @@
     <ProjectReference Include="DTO\DTO.csproj" />
     <ProjectReference Include="BLL\BLL.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DewRESTClientStandard" Version="1.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 </Project>

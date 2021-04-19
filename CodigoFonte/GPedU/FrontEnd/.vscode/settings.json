@@ -10,6 +10,8 @@
     "SAL/obj": true,
     ".import": true,
     ".mono": true,
-    ".vscode": true
+    ".vscode": true,
+    "DTO/bin": true,
+    "DAO/bin": true
   }
 }

@@ -1,13 +1,29 @@
 using Godot;
+using DTO;
+using SAL;
+using SAL.Interface;
 using BLL.Utils;
 using BLL.Interface;
+using System.Collections.Generic;
+
 
 namespace BLL
 {
     public class MainBLL : IMainBLL
     {
+        private IMainSAL SAL { get; set; }
+        private List<IdiomaDTO> Idiomas { get; set; }
+        public MainBLL()
+        {
+            SAL = new MainSAL();
+            Idiomas = new List<IdiomaDTO>();
+        }
+
         public void PopularDropDownIdioma(OptionButton idiomaDropDown)
         {
+            var idioma = SAL.ObterIdiomas();
+            GD.Print(idioma);
+            
             idiomaDropDown.AddItem("", 0);
             idiomaDropDown.AddItem("Português Brasil", 1);
             idiomaDropDown.AddItem("Português Portugal", 2);
