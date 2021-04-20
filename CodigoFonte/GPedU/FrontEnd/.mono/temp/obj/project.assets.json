@@ -39,39 +39,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "DAL": "1.0.0",
-          "DTO": "1.0.0",
-          "SAL": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/BLL.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BLL.dll": {}
-        }
-      },
-      "DAL/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "DAO": "1.0.0",
           "DTO": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/DAL.dll": {}
+          "bin/placeholder/BLL.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DAL.dll": {}
-        }
-      },
-      "DAO/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/DAO.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DAO.dll": {}
+          "bin/placeholder/BLL.dll": {}
         }
       },
       "DTO/1.0.0": {
@@ -82,20 +56,6 @@
         },
         "runtime": {
           "bin/placeholder/DTO.dll": {}
-        }
-      },
-      "SAL/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "DTO": "1.0.0",
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "bin/placeholder/SAL.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SAL.dll": {}
         }
       }
     }
@@ -277,25 +237,10 @@
       "path": "BLL/BLL.csproj",
       "msbuildProject": "BLL/BLL.csproj"
     },
-    "DAL/1.0.0": {
-      "type": "project",
-      "path": "DAL/DAL.csproj",
-      "msbuildProject": "DAL/DAL.csproj"
-    },
-    "DAO/1.0.0": {
-      "type": "project",
-      "path": "DAO/DAO.csproj",
-      "msbuildProject": "DAO/DAO.csproj"
-    },
     "DTO/1.0.0": {
       "type": "project",
       "path": "DTO/DTO.csproj",
       "msbuildProject": "DTO/DTO.csproj"
-    },
-    "SAL/1.0.0": {
-      "type": "project",
-      "path": "SAL/SAL.csproj",
-      "msbuildProject": "SAL/SAL.csproj"
     }
   },
   "projectFileDependencyGroups": {

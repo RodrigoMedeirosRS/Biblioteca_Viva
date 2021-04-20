@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
-        <ProjectReference Include="..\DAL\DAL.csproj"/>
         <ProjectReference Include="..\DTO\DTO.csproj"/>
-        <ProjectReference Include="..\SAL\SAL.csproj"/>
     </ItemGroup>
     <ItemGroup>
         <Reference Include="GodotSharp">
