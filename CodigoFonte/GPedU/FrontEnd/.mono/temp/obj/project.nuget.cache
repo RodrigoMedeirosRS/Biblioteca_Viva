@@ -1,15 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "10EEFHry0q+DvDlkc7+K8bWq5iScXndlBidICtgF2/RW0azK3C3vQ5+tKsn5Vc9pxXNAen0x4fNWvZzWuxG3mw==",
+  "dgSpecHash": "DWsedFrpwYEKFh2z3346vNmXzdwiBfSbnuzaNE0VAn5laImFubKtc490bLZV4DbepWhKOxHjJfb1oUvbjpJoUg==",
   "success": true,
   "projectFilePath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/Front End.csproj",
   "expectedPackageFiles": [
-    "/home/rmlehnemann/.nuget/packages/dewrestclientstandard/1.0.8/dewrestclientstandard.1.0.8.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.jit/1.0.2/microsoft.netcore.jit.1.0.2.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.portable.compatibility/1.0.1/microsoft.netcore.portable.compatibility.1.0.1.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.runtime.coreclr/1.0.2/microsoft.netcore.runtime.coreclr.1.0.2.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.windows.apisets/1.0.1/microsoft.netcore.windows.apisets.1.0.1.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
     "/home/rmlehnemann/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
   ],

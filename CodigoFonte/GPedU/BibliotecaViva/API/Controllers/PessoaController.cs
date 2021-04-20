@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
@@ -35,9 +36,9 @@ namespace BibliotecaViva.Controllers
         }
 
         [HttpPost("ObterRelacoes")]
-        public async Task<List<RegistroDTO>> Relacoes(int codRegistro)
+        public async Task<List<RegistroDTO>> Relacoes(string codRegistro)
         {
-            return _Requisicao.ExecutarRequisicao<int, List<RegistroDTO>>(codRegistro, _BLL.ObterRelacoes).Result;
+            return _Requisicao.ExecutarRequisicao<int, List<RegistroDTO>>(Convert.ToInt32(codRegistro), _BLL.ObterRelacoes).Result;
         }
     }
 }

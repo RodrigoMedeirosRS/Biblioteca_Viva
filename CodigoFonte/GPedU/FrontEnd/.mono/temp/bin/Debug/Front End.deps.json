@@ -11,7 +11,6 @@
         "dependencies": {
           "BLL": "1.0.0",
           "DTO": "1.0.0",
-          "DewRESTClientStandard": "1.0.8",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.1"
         },
@@ -19,82 +18,7 @@
           "Front End.dll": {}
         }
       },
-      "DewRESTClientStandard/1.0.8": {
-        "dependencies": {
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "NETStandard.Library": "2.0.3"
-        },
-        "runtime": {
-          "lib/netstandard1.3/DewRestClient.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Microsoft.NETCore.Jit/1.0.2": {},
       "Microsoft.NETCore.Platforms/1.1.0": {},
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
-        },
-        "runtime": {
-          "lib/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Core.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Net.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Numerics.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Runtime.Serialization.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.ServiceModel.Web.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.ServiceModel.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Windows.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Xml.Linq.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Xml.Serialization.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.Xml.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          },
-          "lib/netstandard1.0/System.dll": {
-            "assemblyVersion": "2.0.5.0",
-            "fileVersion": "4.6.24214.0"
-          }
-        }
-      },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
-        "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
-          "Microsoft.NETCore.Windows.ApiSets": "1.0.1"
-        }
-      },
-      "Microsoft.NETCore.Windows.ApiSets/1.0.1": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -140,7 +64,6 @@
       "SAL/1.0.0": {
         "dependencies": {
           "DTO": "1.0.0",
-          "DewRESTClientStandard": "1.0.8",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
@@ -155,47 +78,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "DewRESTClientStandard/1.0.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mdnN7qEi/SzhEIRQRO082Z9DQtmptLGFJ9Lzt4yNTuEGgWlLL0xSrz0rS2hDf3RaO2WT5MGMR4d0F58M4+J8EA==",
-      "path": "dewrestclientstandard/1.0.8",
-      "hashPath": "dewrestclientstandard.1.0.8.nupkg.sha512"
-    },
-    "Microsoft.NETCore.Jit/1.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Ok2vWofa6X8WD9vc4pfLHwvJz1/B6t3gOAoZcjrjrQf7lQOlNIuZIZtLn3wnWX28DuQGpPJkRlBxFj7Z5txNqw==",
-      "path": "microsoft.netcore.jit/1.0.2",
-      "hashPath": "microsoft.netcore.jit.1.0.2.nupkg.sha512"
-    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
-    },
-    "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Vd+lvLcGwvkedxtKn0U8s9uR4p0Lm+0U2QvDsLaw7g4S1W4KfPDbaW+ROhhLCSOx/gMYC72/b+z+o4fqS/oxVg==",
-      "path": "microsoft.netcore.portable.compatibility/1.0.1",
-      "hashPath": "microsoft.netcore.portable.compatibility.1.0.1.nupkg.sha512"
-    },
-    "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-A0x1xtTjYJWZr2DRzgfCOXgB0JkQg8twnmtTJ79wFje+IihlLbXtx6Z2AxyVokBM5ruwTedR6YdCmHk39QJdtQ==",
-      "path": "microsoft.netcore.runtime.coreclr/1.0.2",
-      "hashPath": "microsoft.netcore.runtime.coreclr.1.0.2.nupkg.sha512"
-    },
-    "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-SaToCvvsGMxTgtLv/BrFQ5IFMPRE1zpWbnqbpwykJa8W5XiX82CXI6K2o7yf5xS7EP6t/JzFLV0SIDuWpvBZVw==",
-      "path": "microsoft.netcore.windows.apisets/1.0.1",
-      "hashPath": "microsoft.netcore.windows.apisets.1.0.1.nupkg.sha512"
     },
     "NETStandard.Library/2.0.3": {
       "type": "package",

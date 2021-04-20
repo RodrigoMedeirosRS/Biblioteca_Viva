@@ -41,13 +41,13 @@ namespace BibliotecaViva.Controllers
         }
 
         [HttpPost("ConsultarIdiomas")]
-        public async Task<List<IdiomaDTO>> ConsultarIdiomas()
+        public async Task<List<IdiomaDTO>> ConsultarIdiomas(string entrada)
         {
             return _Requisicao.ExecutarRequisicao<List<IdiomaDTO>>(_BLL.ConsultarIdiomas).Result;
         }
 
         [HttpPost("ConsultarTipos")]
-        public async Task<List<TipoDTO>> ConsultarTipos()
+        public async Task<List<TipoDTO>> ConsultarTipos(string entrada)
         {
             return _Requisicao.ExecutarRequisicao<List<TipoDTO>>(_BLL.ConsultarTipos).Result;
         }
