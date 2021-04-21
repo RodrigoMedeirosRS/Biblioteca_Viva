@@ -39,7 +39,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "DTO": "1.0.0"
+          "DTO": "1.0.0",
+          "Newtonsoft.Json": "13.0.1",
+          "SAL": "1.0.0"
         },
         "compile": {
           "bin/placeholder/BLL.dll": {}
@@ -56,6 +58,20 @@
         },
         "runtime": {
           "bin/placeholder/DTO.dll": {}
+        }
+      },
+      "SAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "DTO": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "bin/placeholder/SAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SAL.dll": {}
         }
       }
     }
@@ -241,6 +257,11 @@
       "type": "project",
       "path": "DTO/DTO.csproj",
       "msbuildProject": "DTO/DTO.csproj"
+    },
+    "SAL/1.0.0": {
+      "type": "project",
+      "path": "SAL/SAL.csproj",
+      "msbuildProject": "SAL/SAL.csproj"
     }
   },
   "projectFileDependencyGroups": {

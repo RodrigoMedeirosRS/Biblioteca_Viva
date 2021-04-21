@@ -12,3 +12,5 @@
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.csproj.CopyComplete
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.dll
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/obj/Debug/Front End.pdb
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/bin/Debug/SAL.dll
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/.mono/temp/bin/Debug/SAL.pdb
