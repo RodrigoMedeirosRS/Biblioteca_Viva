@@ -10,7 +10,6 @@ namespace BLL
 	{		
 		public MainBLL()
 		{
-
 		}	
 
 		public void ControlarJanela(Node2D windowController, Vector2 mouseMovement, float delta)

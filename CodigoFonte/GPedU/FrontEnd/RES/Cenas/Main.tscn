@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://RES/Sprites/GUI/SideButtonSearch.png" type="Texture" id=1]
 [ext_resource path="res://RES/Sprites/GUI/SideButtomPlusPressed.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://RES/Sprites/GUI/compass.png" type="Texture" id=9]
 [ext_resource path="res://RES/Sprites/GUI/Pessoa.png" type="Texture" id=10]
 [ext_resource path="res://RES/Sprites/GUI/RegistroIcon.png" type="Texture" id=11]
+[ext_resource path="res://CTRL/BarraDeBuscaController.cs" type="Script" id=12]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 7 )
@@ -36,7 +37,7 @@ position = Vector2( 1797.97, 794.103 )
 
 [node name="Controles" type="Node2D" parent="."]
 
-[node name="Busca" type="LineEdit" parent="Controles"]
+[node name="BarraDeBusca" type="LineEdit" parent="Controles"]
 modulate = Color( 1, 1, 1, 0.686275 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,11 +47,12 @@ margin_right = 700.314
 margin_bottom = 37.4228
 caret_blink = true
 caret_blink_speed = 0.5
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Idioma" type="OptionButton" parent="Controles"]
+[node name="DropDownIdioma" type="OptionButton" parent="Controles"]
 modulate = Color( 1, 1, 1, 0.686275 )
 margin_left = 781.0
 margin_top = 13.0
@@ -122,5 +124,6 @@ texture = ExtResource( 11 )
 
 [node name="ObterIdiomas" type="HTTPRequest" parent="Controles"]
 
-[connection signal="button_down" from="Controles/AddButtom" to="Controles/Idioma" method="_on_AddButtom_button_down"]
+[connection signal="button_down" from="Controles/Pessoa" to="Controles/BarraDeBusca" method="_on_Pessoa_button_down"]
+[connection signal="button_down" from="Controles/Registro" to="Controles/BarraDeBusca" method="_on_Registro_button_down"]
 [connection signal="request_completed" from="Controles/ObterIdiomas" to="." method="_on_ObterIdiomas_request_completed"]
