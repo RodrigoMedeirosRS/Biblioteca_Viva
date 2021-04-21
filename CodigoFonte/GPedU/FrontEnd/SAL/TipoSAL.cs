@@ -1,4 +1,5 @@
 using DTO;
+using Godot;
 using SAL.Interface;
 using Newtonsoft.Json;
 
@@ -10,6 +11,7 @@ namespace SAL
 		{
 			
 		}
+        
 		public void CadastrarTipo(TipoDTO tipoDTO)
         {
             CriarRequest("CadastrarTipoResult", "/Api/Tipo/CadastrarTipo", JsonConvert.SerializeObject(tipoDTO));
