@@ -18,6 +18,8 @@ namespace Controller
 		{
 			PopularNodes();
 			BLL = new MainBLL(this);
+			Request = new HTTPRequest();
+			this.AddChild(Request);
 			CriarRequest();
 		}
 

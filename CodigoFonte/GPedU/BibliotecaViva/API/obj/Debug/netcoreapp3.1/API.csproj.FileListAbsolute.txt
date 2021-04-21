@@ -37,7 +37,6 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/obj/Debug/netcoreapp3.1/API.dll
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/obj/Debug/netcoreapp3.1/API.pdb
 C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/obj/Debug/netcoreapp3.1/API.genruntimeconfig.cache
-/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/bin/Debug/netcoreapp3.1/BibliotecaViva.db
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/bin/Debug/netcoreapp3.1/appsettings.json
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
@@ -77,3 +76,4 @@ C:/Users/edmundo/Documents/Rodrigo/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/Bi
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/obj/Debug/netcoreapp3.1/API.dll
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/obj/Debug/netcoreapp3.1/API.pdb
 /home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/obj/Debug/netcoreapp3.1/API.genruntimeconfig.cache
+/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/API/bin/Debug/netcoreapp3.1/BibliotecaViva.db

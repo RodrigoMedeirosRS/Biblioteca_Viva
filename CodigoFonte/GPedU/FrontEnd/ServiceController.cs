@@ -15,8 +15,6 @@ namespace Controller
 
         protected void CriarRequest()
 		{
-			Request = new HTTPRequest();
-			this.AddChild(Request);
 			Request.Connect("request_completed", this, "RequestResult");
 			var error = Request.Request("http://localhost:5000/Api/Tipo/ConsultarIdiomas", null, false, HTTPClient.Method.Post, "vivo");
 		}
