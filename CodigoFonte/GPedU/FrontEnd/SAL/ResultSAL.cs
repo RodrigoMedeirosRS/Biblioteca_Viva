@@ -17,13 +17,13 @@ namespace SAL
         protected virtual List<PessoaDTO> ConsultarPessoaResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-		    return JsonConvert.DeserializeObject<List<PessoaDTO>>(json);
+		    return JsonConvert.DeserializeObject<List<PessoaDTO>>(json) ?? new List<PessoaDTO>();
         }
 
         protected virtual List<RegistroDTO> ObterRelacoesPessoaResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-		    return JsonConvert.DeserializeObject<List<RegistroDTO>>(json);
+		    return JsonConvert.DeserializeObject<List<RegistroDTO>>(json) ?? new List<RegistroDTO>();
         }
         #endregion
 
@@ -36,13 +36,13 @@ namespace SAL
         protected virtual List<RegistroDTO> ConsultarRegistroResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-		    return JsonConvert.DeserializeObject<List<RegistroDTO>>(json);
+		    return JsonConvert.DeserializeObject<List<RegistroDTO>>(json) ?? new List<RegistroDTO>();
         }
 
         protected virtual List<RegistroDTO> ObterReferenciasRegistroResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-		    return JsonConvert.DeserializeObject<List<RegistroDTO>>(json);
+		    return JsonConvert.DeserializeObject<List<RegistroDTO>>(json) ?? new List<RegistroDTO>();
         }
         #endregion
 
@@ -50,7 +50,7 @@ namespace SAL
         protected virtual SonarRetorno ConsultarSonarResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-            return JsonConvert.DeserializeObject<SonarRetorno>(json);
+            return JsonConvert.DeserializeObject<SonarRetorno>(json) ?? new SonarRetorno();
         }
         #endregion
         
@@ -73,19 +73,19 @@ namespace SAL
 	    protected virtual List<TipoDTO> ConsultarTipoResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-            return JsonConvert.DeserializeObject<List<TipoDTO>>(json);
+            return JsonConvert.DeserializeObject<List<TipoDTO>>(json) ?? new List<TipoDTO>();
         }
 
 	    protected virtual List<TipoRelacaoDTO> ConsultarTipoRelacaoResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-            return JsonConvert.DeserializeObject<List<TipoRelacaoDTO>>(json);
+            return JsonConvert.DeserializeObject<List<TipoRelacaoDTO>>(json) ?? new List<TipoRelacaoDTO>();
         }
 
 	    protected virtual List<IdiomaDTO> ConsultarIdiomaResult(int result, int response_code, string[] headers, byte[] body)
         {
 		    var json = System.Text.Encoding.UTF8.GetString(body);
-            return JsonConvert.DeserializeObject<List<IdiomaDTO>>(json);    
+            return JsonConvert.DeserializeObject<List<IdiomaDTO>>(json) ?? new List<IdiomaDTO>();    
         }
         #endregion
     }
