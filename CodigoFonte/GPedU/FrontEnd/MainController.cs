@@ -1,10 +1,15 @@
+using System.Collections.Generic;
 using BLL;
+using BLL.Interface;
+using BLL.Utils;
+using DTO;
 using Godot;
 
 namespace Controller
 {
-	public class MainController : ServiceController
+	public class MainController : Result
 	{
+		public IMainBLL BLL { get; set; }
 		private Node2D WindowsControler { get; set; } 
 		private Vector2 MouseMovement { get; set; }
 		private Vector2 MouseLastMovement { get; set; }
@@ -17,14 +22,12 @@ namespace Controller
 		public override void _Ready()
 		{
 			PopularNodes();
-			BLL = new MainBLL(this);
-			Request = new HTTPRequest();
-			this.AddChild(Request);
-			CriarRequest();
+			BLL.RequisitarDadosBasicos();
 		}
 
 		private void PopularNodes()
 		{
+			BLL = new MainBLL(this);
 			WindowsControler = GetNode<Node2D>("./Windows");
 		}
 
@@ -47,6 +50,13 @@ namespace Controller
 				MouseMovement = new Vector2(0,0);
 			else
 				MouseLastMovement = MouseMovement;
+		}
+
+		protected override List<IdiomaDTO> ConsultarIdiomaResult(int result, int response_code, string[] headers, byte[] body)
+		{
+			BLL.Idiomas = base.ConsultarIdiomaResult(result, response_code, headers, body);
+			BLL.PopularDropDownIdioma(GetNode<OptionButton>("./Controles/Idioma"));
+			return BLL.Idiomas;
 		}
 	}
 }

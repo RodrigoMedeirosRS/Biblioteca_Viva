@@ -1,6 +1,6 @@
 using Godot;
 using DTO;
-using DTO.Dominio;
+using SAL;
 using BLL.Utils;
 using BLL.Interface;
 using System.Collections.Generic;
@@ -11,14 +11,16 @@ namespace BLL
 	public class MainBLL : IMainBLL
 	{
 		public List<IdiomaDTO> Idiomas { get; set; }
+		public TipoSAL ServiceTipoSAL { get; set; }
 		
-		public MainBLL(Node2D pai)
+		public MainBLL(Result nodoPai)
 		{
+			ServiceTipoSAL = new TipoSAL(nodoPai);
 		}
 
 		public void RequisitarDadosBasicos()
 		{
-
+			ServiceTipoSAL.ConsultarIdioma();
 		}
 
 		public void PopularDropDownIdioma(OptionButton idiomaDropDown)
