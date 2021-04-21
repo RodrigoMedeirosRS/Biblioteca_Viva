@@ -38,6 +38,7 @@ namespace API
         private static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
             services.AddScoped<ITipoBLL, TipoBLL>();
+            services.AddScoped<ISonarBLL, SonarBLL>();
             services.AddScoped<IPessoaBLL, PessoaBLL>();
             services.AddScoped<IRegistroBLL, RegistroBLL>();
         }
@@ -45,6 +46,7 @@ namespace API
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)
         { 
             services.AddScoped<ITipoDAL, TipoDAL>();
+            services.AddScoped<ISonarDAL, SonarDAL>();
             services.AddScoped<IIdiomaDAL, IdiomaDAL>();
             services.AddScoped<IPessoaDAL, PessoaDAL>();
             services.AddScoped<IApelidoDAL, ApelidoDAL>();

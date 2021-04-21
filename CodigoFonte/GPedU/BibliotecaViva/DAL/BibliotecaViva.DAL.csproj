@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <None Update="BibliotecaViva.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

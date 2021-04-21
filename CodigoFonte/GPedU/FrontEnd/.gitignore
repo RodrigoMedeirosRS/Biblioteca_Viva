@@ -6,3 +6,7 @@ DAO/obj
 DTO/obj
 SAL/bin
 SAL/obj
+.import
+.mono
+DTO/bin
+DAO/bin
