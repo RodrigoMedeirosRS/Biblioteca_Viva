@@ -6,32 +6,34 @@ namespace SAL
 	public static class StaticSAL
 	{
 		private static string Host { get; set; }
-		private static List<string> Headers { get; set; }
-		private static void PopularHeaders()
+		private static string[] PopularHeader(int tamanho)
 		{
-			
-			Host = false ? "20.62.91.99​:8080" : "localhost:5000";
-			Headers = new List<string>()
+			return new string[]
 			{
 				"Content-Type: application/json",
-				"Accept: */*",
-				"Accept-Encoding: gzip, deflate, br",
-				"Connection: keep-alive"
+				//"Accept: */*",
+				//"Accept-Encoding: gzip, deflate, br",
+				//"Connection: keep-alive",
+				//"Content-Length: " + tamanho
 			};
 		}
 
 		public static void CriarRequest(string metodoDeRetorno, string endpoint, string body, Node requisitor, HTTPRequest request)
 		{
-			if (Headers == null)
-				PopularHeaders();
+			VerificarHost();
 			ExecutarRequest(metodoDeRetorno, endpoint, body, requisitor, request);
+		}
+
+		private static void VerificarHost()
+		{
+			if (string.IsNullOrEmpty(Host))
+				Host = false ? "20.62.91.99​:8080" : "localhost:5000";
 		}
 
 		private static void ExecutarRequest(string metodoDeRetorno, string endpoint, string body, Node requisitor, HTTPRequest request)
 		{
-			Headers.Add("Content-Length: " + body.Length);
 			request.Connect("request_completed", requisitor, metodoDeRetorno);
-			request.Request("http://" + Host + endpoint, Headers.ToArray(), false, HTTPClient.Method.Post, body);
+			var a = request.Request("http://" + Host + endpoint, new string[] { "Content-Type: application/json" }, false, HTTPClient.Method.Post, body);
 		}
 	}
 }

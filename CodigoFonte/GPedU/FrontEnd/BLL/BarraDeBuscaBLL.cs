@@ -31,15 +31,5 @@ namespace BLL
             var corpo = JsonConvert.SerializeObject(registroConsulta);
             StaticSAL.CriarRequest("ConsultarRegistroResult", "/Api/Registro/Consultar", corpo, BarraDeBusca, Request);
         }
-
-        public void PopularJanelaPessoa(PessoaDTO pessoaDTO)
-        {
-            
-        }
-
-        public void PopularJanelaRegistro(RegistroDTO registroDTO)
-        {
-
-        }
     }
 }

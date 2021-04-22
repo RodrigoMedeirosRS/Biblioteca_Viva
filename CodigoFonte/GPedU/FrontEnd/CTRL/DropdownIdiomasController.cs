@@ -19,7 +19,7 @@ public class DropdownIdiomasController : OptionButton
 
 	public string ObterIdiomaSelecionado()
 	{
-		return Idiomas[this.Selected].Nome;
+		return Idiomas[Selected -1].Nome;
 	}
 
 	protected void ConsultarIdiomaResult(int result, int response_code, string[] headers, byte[] body)
