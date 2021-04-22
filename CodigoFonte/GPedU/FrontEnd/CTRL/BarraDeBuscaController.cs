@@ -67,11 +67,14 @@ public class BarraDeBuscaController : LineEdit
 		{
 			var json = System.Text.Encoding.UTF8.GetString(body);
 			var pessoas = JsonConvert.DeserializeObject<List<PessoaDTO>>(json) ?? new List<PessoaDTO>();
-			
+			var incremento = 0;
 			foreach(var pessoa in pessoas)
 			{
-				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, Janelas.ToLocal(Target.GlobalPosition)) as WindowController;
+				var posicao = Janelas.ToLocal(Target.GlobalPosition);
+				posicao.x += incremento;
+				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, posicao) as WindowController;
 				janela.ExibirPessoa(pessoa);
+				incremento += 1000;
 			}
 		}
 		catch(Exception ex)
@@ -86,10 +89,14 @@ public class BarraDeBuscaController : LineEdit
 		{
 			var json = System.Text.Encoding.UTF8.GetString(body);
 			var registros = JsonConvert.DeserializeObject<List<RegistroDTO>>(json) ?? new List<RegistroDTO>();
+			var incremento = 0;
 			foreach(var registro in registros)
 			{
-				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, Janelas.ToLocal(Target.GlobalPosition)) as WindowController;
+				var posicao = Janelas.ToLocal(Target.GlobalPosition);
+				posicao.x += incremento;
+				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, posicao) as WindowController;
 				janela.ExibirRegistro(registro);
+				incremento += 1000;
 			}
 		}
 		catch(Exception ex)

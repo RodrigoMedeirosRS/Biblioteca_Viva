@@ -49,7 +49,7 @@ public class WindowController : Node2D
 	{
 		Texto.Visible = true;
 		BLL.ExibirPessoa(pessoaDTO, GetNode<Label>("./LabelsDeExibicao/Titulo"), 
-		GetNode<RichTextLabel>("./LabelsDeExibicao/Descricao"), 
+		GetNode<Label>("./LabelsDeExibicao/Descricao"), 
 		GetNode<RichTextLabel>("./LabelsDeExibicao/Texto/CorpoDoTexto"));
 	}
 
@@ -57,7 +57,7 @@ public class WindowController : Node2D
 	{
 		Texto.Visible = true;
 		BLL.ExibirRegistro(registroDTO, GetNode<Label>("./LabelsDeExibicao/Titulo"), 
-		GetNode<RichTextLabel>("./LabelsDeExibicao/Descricao"), 
+		GetNode<Label>("./LabelsDeExibicao/Descricao"), 
 		GetNode<RichTextLabel>("./LabelsDeExibicao/Texto/CorpoDoTexto"));
 	}
 }

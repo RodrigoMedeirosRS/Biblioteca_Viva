@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "fdNc2uam8xv7e5M6vK+qijzhge5sxF+dwlQj91kqUwg8HkZCN88D54ivMTkw36knJeRpSyFCFUvEFciUdqWd8A==",
+  "dgSpecHash": "Ud1H5Y8p0MijbItZoBBGclPLttSTbvnE7epcOTQ9qcZjWBsjPZ0ErYTpptKFi7o5xJqwPfMdVLn69h0W7PMauA==",
   "success": true,
-  "projectFilePath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/BibliotecaViva/System.Data.SQLite.NetStandard/System.Data.SQLite.NetStandard.csproj",
+  "projectFilePath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\BibliotecaViva\\System.Data.SQLite.NetStandard\\System.Data.SQLite.NetStandard.csproj",
   "expectedPackageFiles": [
-    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\edmundo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\edmundo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Otz7R7YyS9SLpTbIM34rjvBQztL5hHUKbtQVukUtByX9B9Ms5Od0C6+XH9UBayAX/q0jxzRytRZJEdTwGDZXsw==",
+  "dgSpecHash": "qR+J7wO4gwq4n8tbrzZrvyBxFB0bUeUrixZb0sjfGCygrwIFz21BrQWj4Y1iLg4YcyvivyvK1xOkV6FEO1o9nQ==",
   "success": true,
-  "projectFilePath": "/home/rmlehnemann/Projetos/Biblioteca_Viva/CodigoFonte/GPedU/FrontEnd/Front End.csproj",
+  "projectFilePath": "C:\\Users\\edmundo\\Documents\\Rodrigo\\Projetos\\Biblioteca_Viva\\CodigoFonte\\GPedU\\FrontEnd\\Front End.csproj",
   "expectedPackageFiles": [
-    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
-    "/home/rmlehnemann/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\edmundo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\edmundo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\edmundo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

@@ -27,7 +27,7 @@ namespace SAL
 		private static void VerificarHost()
 		{
 			if (string.IsNullOrEmpty(Host))
-				Host = false ? "20.62.91.99​:8080" : "localhost:8080";
+				Host = false ? "20.62.91.99​:8080" : "localhost:5000";
 		}
 
 		private static void ExecutarRequest(string metodoDeRetorno, string endpoint, string body, Node requisitor, HTTPRequest request)
