@@ -17,7 +17,9 @@ namespace BLL
 
         private string PopularPessoaTitulo(PessoaDTO pessoaDTO)
         {
-            return string.IsNullOrEmpty(pessoaDTO.NomeSocial) ? pessoaDTO.Nome : pessoaDTO.Sobrenome;
+            var nome = string.IsNullOrEmpty(pessoaDTO.NomeSocial) ? pessoaDTO.Nome : pessoaDTO.NomeSocial;
+            nome += " " + pessoaDTO.Sobrenome;
+            return nome;
         }
 
         private string PopularPessoaDescricao(PessoaDTO pessoaDTO)
