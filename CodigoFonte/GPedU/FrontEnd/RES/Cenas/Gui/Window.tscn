@@ -18,7 +18,7 @@
 [ext_resource path="res://RES/Font/Corpo.tres" type="DynamicFont" id=16]
 [ext_resource path="res://RES/Font/CorpoNegrito.tres" type="DynamicFont" id=17]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Close"
 length = 0.2
 tracks/0/type = "value"
@@ -34,8 +34,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Maximized"
+[sub_resource type="Animation" id=2]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Bottom:position")
@@ -146,8 +145,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Minimized"
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Middle:position")
@@ -258,7 +256,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Middle:scale")
 tracks/0/interp = 1
@@ -483,21 +481,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Descricao" type="RichTextLabel" parent="LabelsDeExibicao"]
+[node name="Descricao" type="Label" parent="LabelsDeExibicao"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = -314.0
 margin_top = -83.0
 margin_right = 308.0
 margin_bottom = 323.0
-custom_fonts/bold_font = ExtResource( 17 )
-custom_fonts/normal_font = ExtResource( 16 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_enabled = true
-bbcode_text = "A 1782 \"Sale Catalog & Specimen of the James Foundry\" shows a reproduction of that same type under the name \"Two-Line Double Pica Macilent\". Some specimens from unknown English printers dating back to circa 1650 also show the same typeface, but no proper references were given. The last recorded reference to Guyot's type can be found in \"Type Specimen Fascimiles, vol. 1, No. 1 - 15,\" by John Dreyfus et al, printed in London circa 1963."
-text = "A 1782 \"Sale Catalog & Specimen of the James Foundry\" shows a reproduction of that same type under the name \"Two-Line Double Pica Macilent\". Some specimens from unknown English printers dating back to circa 1650 also show the same typeface, but no proper references were given. The last recorded reference to Guyot's type can be found in \"Type Specimen Fascimiles, vol. 1, No. 1 - 15,\" by John Dreyfus et al, printed in London circa 1963."
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+clip_text = true
 
 [node name="Texto" type="Node2D" parent="LabelsDeExibicao"]
 
@@ -511,17 +504,16 @@ custom_fonts/normal_font = ExtResource( 16 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "Day Roman was not the work of just me. Thanks are due in no particular order to, among others, François Guyot for the beautiful letters, Steelsius, vanDiest, Rotarius, Dunham and Day for leaving a trace of them, Peter deRoos for the inexhaustible historical resources, Jeff C. for the beer and entertainment, Intel and Motorola for the processors, Alan Kay for the mouse and interface, Candy L. for the endless supply of Chinese sweet and sour stuff, Vinton Cerf, Robert Kahn, Tim Berners-Lee and Al Gore for the internet, Albert King, Otis Rush and Roger Waters for the music, Acer and Fujitsu for the scanners, Western Digital, Iomega and Seagate for the storage, Ikea for the desks and chairs, duMaurier for the smokes, Wacom for the tablet, Yuri Yarmola for Fontlab, Walter Tracy for the great analysis of spacing Roman type, Altsys and Macromedia for Freehand, John Warnock for Postscript, Sampo Kaasila for TrueType, Jennifer S. for the Bauducco wafers, Columbus for misreading maps, Dan Goleman from the NY Times for confirming that people are afraid of death, Becky N. for the cold cuts, Plato for the legend of Thamus, Gutenberg for movable type, Claude Garamond for the most mysterious gauntlet, the Phoenicians for the zero, Joseph Wizenbaum and Neil Postman for the immortal pages, native Indians for forgiving us, Laënnec for the stethoscope, Edison for the light, Bell for the phone, Parsons for cable, Frances Longo for marrying her hairdresser, Kim N. for the memories, Ryalux for the maximum-absorption carpet, Julien G. for the ceiling, Helen H. for the phone call, Ann P. for the universal schizoid principle, Michel N. and Remy T. for the genetical construct, Frank Z. for the handle, Eddy V. for Wishlist, Sanford for the pens, Apple for Windows, Microsoft for OSX, Mitch N. for taking it as it comes, Telus for the cell, Obus Forme for the mattress, Michelle R. for the sneak preview, Lisa R. for the brute force, Roy & Bénot for the wood, Samsung, KDS and Sony for the screens, Becky A for the aroma, and Jean Chretien for allowing Santa Claus a tax exemption this year.    "
-text = "Day Roman was not the work of just me. Thanks are due in no particular order to, among others, François Guyot for the beautiful letters, Steelsius, vanDiest, Rotarius, Dunham and Day for leaving a trace of them, Peter deRoos for the inexhaustible historical resources, Jeff C. for the beer and entertainment, Intel and Motorola for the processors, Alan Kay for the mouse and interface, Candy L. for the endless supply of Chinese sweet and sour stuff, Vinton Cerf, Robert Kahn, Tim Berners-Lee and Al Gore for the internet, Albert King, Otis Rush and Roger Waters for the music, Acer and Fujitsu for the scanners, Western Digital, Iomega and Seagate for the storage, Ikea for the desks and chairs, duMaurier for the smokes, Wacom for the tablet, Yuri Yarmola for Fontlab, Walter Tracy for the great analysis of spacing Roman type, Altsys and Macromedia for Freehand, John Warnock for Postscript, Sampo Kaasila for TrueType, Jennifer S. for the Bauducco wafers, Columbus for misreading maps, Dan Goleman from the NY Times for confirming that people are afraid of death, Becky N. for the cold cuts, Plato for the legend of Thamus, Gutenberg for movable type, Claude Garamond for the most mysterious gauntlet, the Phoenicians for the zero, Joseph Wizenbaum and Neil Postman for the immortal pages, native Indians for forgiving us, Laënnec for the stethoscope, Edison for the light, Bell for the phone, Parsons for cable, Frances Longo for marrying her hairdresser, Kim N. for the memories, Ryalux for the maximum-absorption carpet, Julien G. for the ceiling, Helen H. for the phone call, Ann P. for the universal schizoid principle, Michel N. and Remy T. for the genetical construct, Frank Z. for the handle, Eddy V. for Wishlist, Sanford for the pens, Apple for Windows, Microsoft for OSX, Mitch N. for taking it as it comes, Telus for the cell, Obus Forme for the mattress, Michelle R. for the sneak preview, Lisa R. for the brute force, Roy & Bénot for the wood, Samsung, KDS and Sony for the screens, Becky A for the aroma, and Jean Chretien for allowing Santa Claus a tax exemption this year.    "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Normal"
-anims/Close = SubResource( 4 )
-anims/Maximized = SubResource( 1 )
-anims/Minimized = SubResource( 2 )
-anims/Normal = SubResource( 3 )
+anims/Close = SubResource( 1 )
+anims/Maximized = SubResource( 2 )
+anims/Minimized = SubResource( 3 )
+anims/Normal = SubResource( 4 )
 
 [connection signal="button_down" from="Header" to="." method="_on_Header_button_down"]
 [connection signal="button_down" from="Header/Close" to="." method="_on_Close_button_down"]
