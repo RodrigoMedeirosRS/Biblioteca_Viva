@@ -1,5 +1,7 @@
 using DTO;
+using Godot;
 using DTO.Dominio;
+using System.Collections.Generic;
 
 namespace BLL.Interface
 {

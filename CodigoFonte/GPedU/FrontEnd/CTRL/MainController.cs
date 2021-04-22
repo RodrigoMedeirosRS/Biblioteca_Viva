@@ -7,7 +7,8 @@ namespace Controller
 	public class MainController : Node2D
 	{
 		public IMainBLL BLL { get; set; }
-		private Node2D WindowsControler { get; set; } 
+		private Node2D WindowsControler { get; set; }
+		private Node2D WindowTarget { get; set; } 
 		private Vector2 MouseMovement { get; set; }
 		private Vector2 MouseLastMovement { get; set; }
 		public MainController()
@@ -25,6 +26,7 @@ namespace Controller
 		{
 			BLL = new MainBLL();
 			WindowsControler = GetNode<Node2D>("./Windows");
+			WindowTarget = GetNode<Node2D>("./Target");
 		}
 
   		public override void _Process(float delta)
