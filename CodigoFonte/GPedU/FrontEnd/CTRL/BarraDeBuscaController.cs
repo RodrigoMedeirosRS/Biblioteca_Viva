@@ -14,11 +14,13 @@ public class BarraDeBuscaController : LineEdit
 	private DropdownIdiomasController DropdownIdioma { get; set; }
 	private IBarraDeBuscaBLL BLL { get; set; }
 	private Node2D Janelas { get; set; }
+	private Node2D Target { get; set; }
 
 	public override void _Ready()
 	{
 		DropdownIdioma = GetNode<DropdownIdiomasController>("../DropDownIdioma");
 		Janelas = GetParent().GetNode<Node2D>("../Windows");
+		Target = GetParent().GetNode<Node2D>("../Target");
 		BLL = new BarraDeBuscaBLL(this);
 	}
 
@@ -65,10 +67,10 @@ public class BarraDeBuscaController : LineEdit
 		{
 			var json = System.Text.Encoding.UTF8.GetString(body);
 			var pessoas = JsonConvert.DeserializeObject<List<PessoaDTO>>(json) ?? new List<PessoaDTO>();
-			GD.Print(pessoas.Count);
+			
 			foreach(var pessoa in pessoas)
 			{
-				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, new Vector2(0,0)) as WindowController;
+				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, Janelas.ToLocal(Target.GlobalPosition)) as WindowController;
 				janela.ExibirPessoa(pessoa);
 			}
 		}
@@ -86,7 +88,7 @@ public class BarraDeBuscaController : LineEdit
 			var registros = JsonConvert.DeserializeObject<List<RegistroDTO>>(json) ?? new List<RegistroDTO>();
 			foreach(var registro in registros)
 			{
-				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, new Vector2(0,0)) as WindowController;
+				var janela = InstanciadorBLL.InstanciarObjeto(Janelas, Janelas.ToLocal(Target.GlobalPosition)) as WindowController;
 				janela.ExibirRegistro(registro);
 			}
 		}

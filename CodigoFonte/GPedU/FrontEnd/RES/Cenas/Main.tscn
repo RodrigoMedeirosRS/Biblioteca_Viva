@@ -123,6 +123,9 @@ texture = ExtResource( 11 )
 
 [node name="ObterIdiomas" type="HTTPRequest" parent="Controles"]
 
+[node name="Target" type="Node2D" parent="."]
+position = Vector2( 524.673, 298.399 )
+
 [connection signal="button_down" from="Controles/Pessoa" to="Controles/BarraDeBusca" method="_on_Pessoa_button_down"]
 [connection signal="button_down" from="Controles/Registro" to="Controles/BarraDeBusca" method="_on_Registro_button_down"]
 [connection signal="request_completed" from="Controles/ObterIdiomas" to="." method="_on_ObterIdiomas_request_completed"]

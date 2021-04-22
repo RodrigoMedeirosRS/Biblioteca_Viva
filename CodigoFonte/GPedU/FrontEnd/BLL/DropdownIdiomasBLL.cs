@@ -8,19 +8,18 @@ namespace BLL
 {
     public class DropdownIdiomasBLL : IDropdownIdiomasBLL
     {
-        protected HTTPRequest Request { get; set; }
         public OptionButton DropDown { get; set; }
 		
 		public DropdownIdiomasBLL(OptionButton dropdown)
 		{
             DropDown = dropdown;
-            Request = new HTTPRequest();
-            DropDown.AddChild(Request);
 		}
 
         public void ObterIdiomas()
 	    {
-            StaticSAL.CriarRequest("ConsultarIdiomaResult", "/Api/Tipo/ConsultarIdiomas", "Idioma", DropDown, Request);
+            var request = new HTTPRequest();
+            DropDown.AddChild(request);
+            StaticSAL.CriarRequest("ConsultarIdiomaResult", "/Api/Tipo/ConsultarIdiomas", "Idioma", DropDown, request);
 	    }
 
         public void PopularDropDownIdioma(List<IdiomaDTO> idiomas)

@@ -21,10 +21,16 @@ namespace BLL
 		public void Zoom(Node2D windowController, float delta)
 		{
 			if (InputEventBLL.GetKey(InputAction.ScrollDown, KeyStatus.Released))
-				windowController.Scale += new Vector2(0.3f * delta, 0.3f * delta);
+				AplicarZoom(windowController, 1f * delta);
 			if (InputEventBLL.GetKey(InputAction.ScrollUp, KeyStatus.Released))
-				windowController.Scale -= new Vector2(0.3f * delta, 0.3f * delta);
+				AplicarZoom(windowController, -1f * delta);
 		}
+
+		private void AplicarZoom(Node2D windowController, float incremento)
+		{
+			windowController.Scale += new Vector2(incremento, incremento);
+		}
+		
 		public void Drag(Node2D windowController, Vector2 mouseMovement, float delta)
 		{
 			if (InputEventBLL.GetKey(InputAction.LeftClick, KeyStatus.Hold))
