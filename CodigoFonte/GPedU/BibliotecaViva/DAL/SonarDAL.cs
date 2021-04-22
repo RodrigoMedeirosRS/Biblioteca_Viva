@@ -26,6 +26,39 @@ namespace BibliotecaViva.DAL
                 Registros = PopularRegistros(BuscarRegistros(sonar))
             };
         }
+        public List<LocalizacaoGeograficaDTO> Rastrear(int codRegistro)
+        {
+            var resultado = RastrearPessoa(codRegistro);
+            resultado.AddRange(RastrearRegistro(codRegistro));
+            return resultado;
+        }
+
+        private List<LocalizacaoGeograficaDTO> RastrearPessoa(int codRegistro)
+        {
+            return (from pessoaLocalizao in DataContext.ObterDataContext().Table<PessoaLocalizao>()
+                join
+                    localizacaoGeografica in DataContext.ObterDataContext().Table<LocalizacaoGeografica>()
+                    on pessoaLocalizao.LocalizacaoGeografica equals localizacaoGeografica.Codigo
+                where pessoaLocalizao.Pessoa == codRegistro
+                select new LocalizacaoGeograficaDTO()
+                {
+                    Latitude = localizacaoGeografica.Latitude,
+                    Longitude = localizacaoGeografica.Longitude
+                }).DistinctBy(localizacao => localizacao.Codigo).ToList();
+        }
+        private List<LocalizacaoGeograficaDTO> RastrearRegistro(int codRegistro)
+        {
+            return (from registroLocalizacao in DataContext.ObterDataContext().Table<RegistroLocalizacao>()
+                join
+                    localizacaoGeografica in DataContext.ObterDataContext().Table<LocalizacaoGeografica>()
+                    on registroLocalizacao.LocalizacaoGeografica equals localizacaoGeografica.Codigo
+                where registroLocalizacao.Registro == codRegistro
+                select new LocalizacaoGeograficaDTO()
+                {
+                    Latitude = localizacaoGeografica.Latitude,
+                    Longitude = localizacaoGeografica.Longitude
+                }).DistinctBy(localizacao => localizacao.Codigo).ToList();
+        }
 
         private List<PessoaDTO> PopularPessoas(List<PessoaDTO> pessoas)
         {

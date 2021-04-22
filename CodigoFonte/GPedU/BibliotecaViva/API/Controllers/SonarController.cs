@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,11 @@ namespace BibliotecaViva.Controllers
         public async Task<SonarRetorno> Consultar(SonarConsulta sonar)
         {
             return _Requisicao.ExecutarRequisicao<SonarConsulta, SonarRetorno>(sonar, _BLL.Consultar).Result;
+        }
+        [HttpPost("Rastros")]
+        public async Task<List<LocalizacaoGeograficaDTO>> Rastrear(string codRegistro)
+        {
+            return _Requisicao.ExecutarRequisicao<int, List<LocalizacaoGeograficaDTO>>(Convert.ToInt32(codRegistro), _BLL.Rastrear).Result;
         }
     }
 }

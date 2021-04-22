@@ -1,4 +1,6 @@
+using BibliotecaViva.DTO;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.BLL.Interfaces;
 using BibliotecaViva.DAL.Interfaces;
@@ -16,6 +18,11 @@ namespace BibliotecaViva.BLL
         public async Task<SonarRetorno> Consultar(SonarConsulta sonar)
         {
             return SonarDAL.Consultar(sonar);
+        }
+
+        public async Task<List<LocalizacaoGeograficaDTO>> Rastrear(int codRegistro)
+        {
+            return SonarDAL.Rastrear(codRegistro);
         }
     }
 }
