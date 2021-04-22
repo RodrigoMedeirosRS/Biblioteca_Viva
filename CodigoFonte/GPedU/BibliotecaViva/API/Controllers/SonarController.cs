@@ -23,12 +23,12 @@ namespace BibliotecaViva.Controllers
             _Requisicao = requisicao;
         }
 
-        [HttpPost("Consultar")]
+        [HttpPost("Consultar")] //Quase lá, ainda precisa ser revista.
         public async Task<SonarRetorno> Consultar(SonarConsulta sonar)
         {
             return _Requisicao.ExecutarRequisicao<SonarConsulta, SonarRetorno>(sonar, _BLL.Consultar).Result;
         }
-        [HttpPost("Rastros")]
+        [HttpPost("Rastros")] //Precisa ser revista, esta confundido registros com pessoas.
         public async Task<List<LocalizacaoGeograficaDTO>> Rastrear(string codRegistro)
         {
             return _Requisicao.ExecutarRequisicao<int, List<LocalizacaoGeograficaDTO>>(Convert.ToInt32(codRegistro), _BLL.Rastrear).Result;
