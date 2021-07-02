@@ -1,3 +1,5 @@
 dotnet publish -c Release --runtime linux-x64 --self-contained true
 
 dotnet publish -c Release --runtime win-x64 --self-contained true
+
+dotnet ef  dbcontext scaffold "Host=10.0.18.78;Database=detran-ba;Username=postgres;Password=Compuletra*123" Npgsql.EntityFrameworkCore.PostgreSQL --startup-project VistoriaPro.Api.BA/ --project DAO/
